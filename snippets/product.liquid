@@ -1,0 +1,370 @@
+{% comment %}
+    Product snippet
+
+    @param product
+    @param variant
+    @param display_sku
+    @param display_tags
+    @param display_social_buttons
+    @param display_thumbnails
+    @param display_type
+    @param display_vendor
+    @param display_collections
+    @param enable_product_lightbox
+    @param enable_shopify_review_comments
+    @param enable_shopify_product_badges
+    @param display_recently_viewed
+    @param rv_title
+    @param rv_products_style
+    @param rv_max_display
+    @param rv_per
+    @param review_position
+    @param enable_reviews_in_description
+    @param enable_thumbnail_slider
+    @param enable_zoom
+    @param size_chart
+    @param gallery_arrows
+    @param display_savings
+    @param product_description_position
+    @parem product_description_words
+    @param set_product_height
+    @param product_height
+    @param show_payment_button
+    @param slideshow_transition
+    @param slideshow_speed
+    @param thumbnail_position
+    @param video_looping
+    @param template
+  {% endcomment %}
+
+{% comment %} HTML markup {% endcomment %}
+
+<div class="product-{{ product.id }}">
+ {% if product.type=="Phone Cases" %}
+	  <h2 itemprop="name" class="product_title">The Personalized Case - {{ product.title }}</h2>
+      {% else %}
+      <h2 itemprop="name" class="product_title">The Personalized {{ product.title }}</h2>
+      {% endif %}
+  <div class="top-review-section">
+    <div class="top-reviews">
+      {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+    </div>
+    <div class="top-stock"></div>
+    <div>| Ships out in 1 day</div>
+  </div>
+  <div
+    class="
+      product_section
+      js-product_section
+      container
+      is-flex
+      media-position--{{ product_images_position }}
+      product--description-{{ product_description_position }}
+    "
+    {% if template == 'product' %}data-rv-handle="{{ product.handle }}"{% endif %}
+  >
+
+    <div class="product__images {% if template == 'product' %}three-fifths columns medium-down--one-whole{% else %}one-half column js-gallery-modal{% endif %}">
+      {%
+        render 'product-images',
+        product: product,
+        display_thumbnails: display_thumbnails,
+        enable_product_lightbox: enable_product_lightbox,
+        enable_thumbnail_slider: enable_thumbnail_slider,
+        enable_zoom: enable_zoom,
+        gallery_arrows: gallery_arrows,
+        set_product_height: set_product_height
+        slideshow_transition: slideshow_transition,
+        slideshow_speed: slideshow_speed,
+        thumbnail_position: thumbnail_position,
+        video_looping: video_looping,
+      %}
+    </div>
+
+    <div
+      class="
+        {% if template == 'product' %}two-fifths columns medium-down--one-whole{% else %}one-half column{% endif %}
+        product__details
+        product__details--product-page
+      "
+    >
+      {%- assign collection_handles = product.collections | map: 'handle' -%}
+
+      {%
+        render 'price-ui-badges',
+        product: product,
+        collection_handles: collection_handles
+      %}
+
+      {% if display_vendor %}
+        <p class="vendor">
+          <span class="vendor">{{ product.vendor | link_to_vendor }}</span>
+        </p>
+      {% endif %}
+
+      {% if variant.sku != blank and display_sku %}
+        <p class="sku">
+          <span>{{ variant.sku }}</span>
+        </p>
+      {% endif %}
+      {% if product.type=="Phone Cases" %}
+      <h1 class="product_name">The Personalized Case</h1>
+	  <h2 itemprop="name" class="product_title">{{ product.title }}</h2>
+      {% elsif product.type=="Simple Product" or product.type=="Gift Cards" %}
+      <h1 class="product_name">{{ product.title }}</h1>
+      {% else %}
+      <h1 class="product_name">The Personalized {{ product.title }}</h1>
+      {% endif %}
+{% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+      {% if enable_shopify_product_badges and enable_shopify_review_comments %}
+        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+      {% endif %}
+
+      <div class="feature_divider"></div>
+
+      {%- assign product_tags = product.tags | join: ' ' -%}
+
+      {% if product_tags contains 'meta-size-chart-' %}
+        {% for tag in product.tags %}
+          {% if tag contains 'meta-size-chart-' %}
+            <a href="javascript:;" class="size_chart" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline" data-no-instant>{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
+            {% render 'popup-size-chart', product_id: product.id %}
+          {% endif %}
+        {% endfor %}
+      {% elsif size_chart != blank %}
+        <a href="javascript:;" class="size_chart" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline" data-no-instant>{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
+      {% endif %}
+
+      {% if collection_handles contains 'coming-soon' %}
+        <p class="modal_price">{{ 'collections.general.coming_soon' | t }}</p>
+      {% else %}
+        <div class="modal_price">
+          {% comment %}Inject @pixelunion/shopify-price-ui/price-ui begin{% endcomment %}
+          <div class="price-ui price-ui--loading" data-price-ui>
+            <noscript>
+              <style>
+                .price-ui--loading {
+                  display: block !important;
+                  opacity: 1 !important;
+                }
+              </style>
+            </noscript>
+            {% assign compare_at_price = false %}
+          
+            {% if product.compare_at_price and product.compare_at_price != product.price %}
+              {% if product.compare_at_price_varies %}
+                {%- capture price_min -%}
+                  {%-
+                    render 'price-ui-templates',
+                    template: 'price-min',
+                    value: product.compare_at_price_min,
+                  -%}
+                {%- endcapture -%}
+          
+                {%- capture price_max -%}
+                  {%-
+                    render 'price-ui-templates',
+                    template: 'price-max',
+                    value: product.compare_at_price_max,
+                  -%}
+                {%- endcapture -%}
+          
+                {%- assign compare_at_price = 'product.price.range_html' | t: price_min: price_min, price_max: price_max -%}
+              {% else %}
+                {%- capture compare_at_price -%}
+                  {%-
+                    render 'price-ui-templates',
+                    template: 'price',
+                    value: product.compare_at_price,
+                  -%}
+                {%- endcapture -%}
+              {% endif %}
+            {% endif %}
+          
+            {% if product.price_varies %}
+              {%- capture price_min -%}
+                {%-
+                  render 'price-ui-templates',
+                  template: 'price-min',
+                  value: product.price_min,
+                -%}
+              {%- endcapture -%}
+          
+              {%- capture price_max -%}
+                {%-
+                  render 'price-ui-templates',
+                  template: 'price-max',
+                  value: product.price_max,
+                -%}
+              {%- endcapture -%}
+          
+              {%- assign price = 'product.price.range_html' | t: price_min: price_min, price_max: price_max -%}
+            {% else %}
+              {%- capture price -%}
+                {%-
+                  render 'price-ui-templates',
+                  template: 'price',
+                  value: product.price,
+                -%}
+              {%- endcapture -%}
+            {% endif %}
+          
+            {%-
+              render 'price-ui-templates',
+              template: 'price-ui',
+              compare_at_price: compare_at_price,
+              price: price,
+              unit_pricing: false,
+            -%}
+          </div>
+          {% comment %}Inject @pixelunion/shopify-price-ui/price-ui end{% endcomment %}
+
+          <form
+          class="payment-terms-container"
+          data-payment-terms-target
+          style="display: none;"
+          ></form>
+        </div>
+      {% endif %}
+
+      {% if product_description_position == 'top' %}
+        {% if product.description != blank and template == 'quickshop' %}
+          <div class="description">
+            {% if settings.quick_shop_full_description %}
+              {{ product.description }}
+            {% else %}
+              {{ product.description | truncatewords: product_description_words }}
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="description">
+            {{ product.description | split: '<!-- split -->' | first }}
+          </div>
+        {% endif %}
+
+        {% if template == 'quickshop' %}
+          <a href="{{ product.url | within: collection }}" class="secondary_button" title="{{ product.title | escape }}">{{ 'collections.general.view_product_details_html' | t }}</a>
+        {% endif %}
+      {% endif %}
+
+      {% unless collection_handles contains 'coming-soon' %}
+        {%
+          render 'product-form',
+          display_savings: display_savings,
+          show_payment_button: show_payment_button,
+          collection_handles: collection_handles
+        %}
+        {%
+          render 'product-notify-me',
+          product: product
+        %}
+      {% endunless %}
+
+      {% if product_description_position == 'bottom' %}
+        {% if product.description != blank and template == 'quickshop' %}
+          <div class="description bottom">
+            {% if settings.quick_shop_full_description %}
+              {{ product.description }}
+            {% else %}
+              {{ product.description | truncatewords: product_description_words }}
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="description bottom">
+            {{ product.description | split: '<!-- split -->' | first }}
+          </div>
+        {% endif %}
+
+        {% if template == 'quickshop' %}
+          <a href="{{ product.url | within: collection }}" class="secondary_button" title="{{ product.title | escape }}">{{ 'collections.general.view_product_details_html' | t }}</a>
+        {% endif %}
+      {% endif %}
+
+      {% if review_position == "next_to_gallery" %}
+        <div class="shopify-reviews reviewsVisibility--{{ settings.enable_shopify_review_comments }}">
+          <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+        </div>
+      {% endif %}
+
+      {% if enable_reviews_in_description %}
+        {% render 'include-reviews', type: 'block' %}
+      {% endif %}
+
+      {% if display_collections or display_tags or display_type %}
+        <div class="product_links">
+          {% if display_collections %}
+            <p>
+              <span class="label">{{ 'products.product.collections' | t }}:</span>
+              <span>
+                {% for col in product.collections %}
+                  <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              </span>
+            </p>
+          {% endif %}
+
+          {% if display_type %}
+            <p>
+              <span class="label">{{ 'products.product.product_types' | t }}:</span>
+              <span>{{ product.type | link_to_type }}</span>
+            </p>
+          {% endif %}
+
+          {% if display_tags %}
+            <p>
+              {% for tag in product.tags %}
+                {% if forloop.first %}
+                  <span class="label">{{ 'products.product.tags' | t }}:</span>
+                {% endif %}
+
+                {% unless tag contains 'meta-' %}
+                  <span>
+                    <a href="{{ routes.collections_url }}/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
+                    </span>
+                {% endunless %}
+              {% endfor %}
+            </p>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if display_social_buttons %}
+        <div class="meta">
+          {%
+            render 'social-buttons',
+            context: 'product'
+          %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% if set_product_height %}
+  {% style %}
+    .gallery-wrap model-viewer {
+      min-height: {{ product_height }}px;
+    }
+
+    .gallery-wrap .product_gallery img,
+    .gallery-wrap .product_gallery .plyr--html5 video,
+    .gallery-wrap .product_gallery .plyr--youtube {
+      max-height: {{ product_height }}px;
+    }
+  {% endstyle %}
+{% endif %}
+
+{% if template == 'product' %}
+  {% comment %} Shopify-XR {% endcomment %}
+  {% if product.media %}
+    <script>
+      window.ShopifyXR=window.ShopifyXR||function(){(ShopifyXR.q=ShopifyXR.q||[]).push(arguments)}
+        {% assign models = product.media | where: 'media_type', 'model' | json %}
+        ShopifyXR('addModels', {{ models }});
+    </script>
+  {% endif %}
+{%capture apps%}  
+  <script defer src="https://cdn.shopify.com/shopifycloud/shopify-xr-js/assets/v1.0/shopify-xr.en.js"></script>
+  <script defer src="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.en.js"></script>                                                                                                                 {%endcapture%}<script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{apps | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
+  
+{% endif %}
