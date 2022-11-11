@@ -1316,13 +1316,13 @@
         "type": "checkbox",
         "id": "notify_me_form",
         "label": "Enable \"Back in stock request\" form",
-        "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/115013035567-How-does-the-back-in-stock-notification-form-work-)"
+        "info": "[Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115013035567-How-does-the-back-in-stock-notification-form-work-)"
       },
       {
         "type": "richtext",
         "id": "notify_me_richtext",
         "label": "\"Back in stock request\" form text",
-        "default": "<p>Notify me when this product is available:</p>"
+        "default": "<p>Notify me when this product is available:<\/p>"
       },
       {
         "type": "radio",
@@ -1569,7 +1569,7 @@
       {
         "type": "header",
         "content": "Media",
-        "info": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+        "info": "Learn more about [media types](https:\/\/help.shopify.com\/en\/manual\/products\/product-media)"
       },
       {
         "type": "radio",
@@ -1709,7 +1709,7 @@
       {
         "type": "header",
         "content": "Custom theme currency converter",
-        "info": "If custom converter is enabled, the native multi-currency converter will be disabled. [Learn more](https://help.shopify.com/en/manual/payments/shopify-payments/multi-currency/setup)"
+        "info": "If custom converter is enabled, the native multi-currency converter will be disabled. [Learn more](https:\/\/help.shopify.com\/en\/manual\/payments\/shopify-payments\/multi-currency\/setup)"
       },
       {
         "type": "checkbox",
@@ -1807,7 +1807,7 @@
         "id": "image_crop",
         "label": "Image cropping",
         "default": "none",
-        "info": "Only applied when image is larger/wider than recommended",
+        "info": "Only applied when image is larger\/wider than recommended",
         "options": [
           {
             "value": "left",
@@ -2047,7 +2047,7 @@
       {
         "type": "text",
         "id": "disqus_shortname",
-        "label": "[DISQUS](http:\/\/help.disqus.com/en/articles/1717111-what-s-a-shortname\/) shortname"
+        "label": "[DISQUS](http:\/\/help.disqus.com\/en\/articles\/1717111-what-s-a-shortname\/) shortname"
       }
     ]
   }
