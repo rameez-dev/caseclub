@@ -1,5 +1,6 @@
 [
   {
+    
     "name": "theme_info",
     "theme_name": "Turbo",
     "theme_author": "Out of the Sandbox",
@@ -1156,6 +1157,52 @@
         "type": "checkbox",
         "id": "mega_menu_5",
         "label": "Enable mega menu 5"
+      }
+    ]
+  },
+  {
+    "name": "Sale",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_sales_label",
+        "label": "Enable sale",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "sale_text",
+        "label": "Sales label",
+        "default": "On sale"
+      },
+      {
+        "type": "text",
+        "id": "discount_code_text",
+        "label": "Discount Code Text",
+        "default": "Sale"
+      },
+      {
+        "type": "number",
+        "id": "sale_amount",
+        "label": "Sale Percentage",
+        "default": 20
+      },
+      {
+        "type": "color",
+        "id": "sale_label_color",
+        "label": "Label text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "sale_bg_color",
+        "label": "Label background",
+        "default": "#FF0000"
+      },
+      {
+        "type": "collection_list",
+        "id": "sale_collection_list",
+        "label": "Collections"
       }
     ]
   },

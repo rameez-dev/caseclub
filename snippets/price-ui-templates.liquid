@@ -94,9 +94,29 @@
 {%- elsif template == 'unit-measurement' -%}
   <span class="unit-measurement" data-unit-measurement>{%- if value != blank -%}{{- value -}}{%- endif -%}</span>
 {%- elsif template == 'price-ui' -%}
+  {%- assign saleOn = false -%}
+  {%- for colprod in product.collections -%}
+    {%- for col in settings.sale_collection_list -%}
+      {%- if colprod.id == col.id -%}
+        {%- assign saleOn = true -%}
+        {% break %}
+        {% break %}
+      {%- endif -%}  
+    {%- endfor -%}
+  {%- endfor -%}
+  {%- if settings.show_sales_label and saleOn -%}
+  {% assign perc = 100 | minus: settings.sale_amount %}
+  {% assign perc = perc | divided_by: 100.0 %}
+  {% assign cmp_price = product.price | times: perc %}
+  
+  <span class="price price--sale money" style="margin-left: 10px;">{%- if cmp_price != blank -%}{{- cmp_price | money_without_trailing_zeros -}}{%- endif -%}</span>
+  <span class="compare-at-price" data-price>{%- if price != blank -%}{{- price -}}{%- endif -%}</span>
+  <span class="salelabel_inline" style="color: {{settings.sale_label_color}}; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>
+  {% else %}
   <span class="price {% if compare_at_price != blank and compare_at_price != false -%}price--sale{%- endif -%}" data-price>{%- if price != blank -%}{{- price -}}{%- endif -%}</span>
   {%- if compare_at_price != false -%}<span class="compare-at-price" data-compare-at-price>{%- if compare_at_price != blank -%}{{- compare_at_price -}}{%- endif -%}</span>{%- endif -%}
   {%- if unit_pricing != false -%}<span class="unit-pricing" data-unit-pricing>{%- if unit_pricing != blank -%}{{- unit_pricing -}}{%- endif -%}</span>{%- endif -%}
+  {%- endif -%}
 {%- elsif template == 'price-ui-badge' -%}
   <div class="price-ui-badge__sticker">
     <span class="price-ui-badge__sticker-text" data-badge>{%- if badge != blank -%}{{- badge -}}{%- endif -%}</span>
