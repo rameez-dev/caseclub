@@ -1191,13 +1191,13 @@
         "type": "color",
         "id": "sale_label_color",
         "label": "Label text color",
-        "default": "#ffffff"
+        "default": "#fff"
       },
       {
         "type": "color",
         "id": "sale_bg_color",
         "label": "Label background",
-        "default": "#FF0000"
+        "default": "#000"
       },
       {
         "type": "collection_list",

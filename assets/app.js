@@ -842,8 +842,14 @@ $(() => {
       cartActionHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(cart.total_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>${Shopify.translation.cart_subtotal_text}</span>`;
       totalSaving += cart.total_discount;
       if (window.Shopify.theme_settings.display_savings && totalSaving > 0) {
-        cartSavingsHTML = `<span class="right"><span class="money">${window.Shopify.formatMoney(totalSaving, $('body').data('money-format'))}</span></span>`
-            + `<span>${window.Shopify.translation.cart_savings_text}</span>`;
+        cartSavingsHTML = `<span class="right">-<span class="money">${window.Shopify.formatMoney(totalSaving, $('body').data('money-format'))}</span></span>`
+            + `<span>${window.Shopify.translation.cart_savings_text}<span id="cart-sale-tag"
+            style="color: ${window.Shopify.theme_settings.sale_label_color}; background-color: ${window.Shopify.theme_settings.sale_bg_color};"
+            >
+            <svg focusable="false" width="10" height="10" class="icon icon--discount-badge" viewBox="0 0 10 10" 
+            style=" margin-right: 6px;">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.93734 1.1171C9.97075 0.521457 9.47854 0.0292498 8.88291 0.0626607L5.39562 0.258271C5.15016 0.27204 4.91836 0.375751 4.74452 0.549595L0.707107 4.58701C0.316582 4.97753 0.316583 5.6107 0.707107 6.00122L3.99878 9.29289C4.3893 9.68342 5.02247 9.68342 5.41299 9.29289L9.4504 5.25548C9.62425 5.08163 9.72796 4.84984 9.74173 4.60438L9.93734 1.1171ZM7.05882 2.94118C7.3837 3.26605 7.91042 3.26605 8.23529 2.94118C8.56017 2.6163 8.56017 2.08958 8.23529 1.76471C7.91042 1.43983 7.3837 1.43983 7.05882 1.76471C6.73395 2.08958 6.73395 2.6163 7.05882 2.94118Z" fill="currentColor"></path>
+            </svg>${window.Shopify.theme_settings.discount_code_text}</span></span>`;
       } else {
         cartSavingsHTML = '';
       }
