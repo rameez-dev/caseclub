@@ -208,7 +208,7 @@
                 -%}
               {%- endcapture -%}
             {% endif %}
-          
+
             {%-
               render 'price-ui-templates',
               template: 'price-ui',
@@ -216,6 +216,7 @@
               price: price,
               unit_pricing: false,
             -%}
+
           </div>
           {% comment %}Inject @pixelunion/shopify-price-ui/price-ui end{% endcomment %}
 
@@ -225,6 +226,7 @@
           style="display: none;"
           ></form>
         </div>
+        <br>
       {% endif %}
 
       {% if product_description_position == 'top' %}

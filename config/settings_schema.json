@@ -1160,6 +1160,52 @@
     ]
   },
   {
+    "name": "Sale",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_sales_label",
+        "label": "Enable sale",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "sale_text",
+        "label": "Sales label",
+        "default": "On sale"
+      },
+      {
+        "type": "text",
+        "id": "discount_code_text",
+        "label": "Discount Code Text",
+        "default": "Sale"
+      },
+      {
+        "type": "number",
+        "id": "sale_amount",
+        "label": "Sale Percentage",
+        "default": 20
+      },
+      {
+        "type": "color",
+        "id": "sale_label_color",
+        "label": "Label text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "sale_bg_color",
+        "label": "Label background",
+        "default": "#000"
+      },
+      {
+        "type": "collection_list",
+        "id": "sale_collection_list",
+        "label": "Collections"
+      }
+    ]
+  },
+  {
     "name": "Search",
     "settings": [
       {

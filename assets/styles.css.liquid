@@ -18962,9 +18962,10 @@ li.cart-bottom-note span {
 }
 .modal_price .price:before {
     position: absolute;
-    content: "In Stock";
+    content: "In Stock (Limited Availibility)";
     top: -12px;
     left: 20px;
+    font-size: 15px
 }
 .modal_price .price:after {
     position: absolute;
@@ -20410,7 +20411,7 @@ ul.cart-foot {
     bottom: 0;
 }
 .cart_savings span {
-    color: #000;
+    color: #357922;
 }
 .mini-cart__item-price .money.was_price {
     padding: 0 2px;
@@ -20551,7 +20552,6 @@ font-size: 12px ;
     display: none;
 }
 
-
 .salelabel_inline {
   position: relative;
   bottom: -30px;
@@ -20576,4 +20576,14 @@ font-size: 12px ;
   background: #000;
   color: #fff;
   line-height: normal;
+  margin-left: 5px;
+}
+.notification-discount {
+  visibility: hidden;
+}
+.compare-at-price span {
+  color : {{settings.was_price_color}} !important;
+}
+.compare-at-price {
+  color : {{settings.was_price_color}} !important;
 }

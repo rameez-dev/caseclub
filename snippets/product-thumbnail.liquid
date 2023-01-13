@@ -122,5 +122,27 @@
       </div>
     {% endunless %}
   {% endif %}
+  
+  {%- assign saleOn = false -%}
+  {%- for colprod in product.collections -%}
+    {%- for col in settings.sale_collection_list -%}
+      {%- if colprod.id == col.id -%}
+        {%- assign saleOn = true -%}
+        {% break %}
+        {% break %}
+      {%- endif -%}  
+    {%- endfor -%}
+  {%- endfor -%}
+
+  {%- if settings.show_sales_label and saleOn -%}
+  {% assign perc = 100 | minus: settings.sale_amount %}
+  {% assign perc = perc | divided_by: 100.0 %}
+  {% assign cmp_price = product.price_min | times: perc %}
+  <h5>
+    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+  </h5>
+  {%- else -%}
   <h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
+  {% endif %} 
 </div>
