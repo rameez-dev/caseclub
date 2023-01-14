@@ -66,12 +66,12 @@ var x = setInterval(function() {
   var date1 = new Date();
   var now = new Date( date1.toLocaleString('en-US', { timeZone: 'Europe\/Amsterdam' }) ).getTime();
   var distance = countDownDate - now;
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  jQuery(".countdown-view").html( days + "d " + hours + "h " + minutes + "m " + seconds + "s " ); 
+  jQuery(".countdown-view").html( hours + "h " + minutes + "m " + seconds + "s " ); 
   if (distance < 0) {
     clearInterval(x);
     jQuery(".countdown-view").html( "EXPIRED" );
@@ -79,7 +79,7 @@ var x = setInterval(function() {
 }, 1000);
 </script>
 <div class="top-notify-bar">
-  <span>NEW YEAR SALE: 20% OFF EVERYTHING <span class="countdown-view" style="color: gold;font-weight: bold;"></span></span>
+  <span>NEW YEAR SALE NOW ON 20% OFF EVERYTHING WHEN YOU ORDER BEFORE <span class="countdown-view" style="color: gold;font-weight: bold;"></span></span>
   <span>BUY 2 ITEMS FOR EXTRA 10% OFF - CODE: XM2</span></span>
 </div>
 
