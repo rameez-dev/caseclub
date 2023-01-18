@@ -52,6 +52,8 @@
   </div>
 {% endif %}
 {% endcomment %}
+
+{% assign  count = 1 %}
   
 {% if product.type == 'Phone Cases' %}
   <ul class="phone-case-info"><li><i class="icon-check"></i> Protect your phone in style</li>
@@ -59,7 +61,8 @@
 <li><i class="icon-check"></i> Say no to bulky plastic cases</li></ul>
   
   <div class="select-model">
-    <label class="form-label"><span class="label-badge">1</span>Select your device</label>
+    <label class="form-label"><span class="label-badge">{{count}}</span>Select your device</label>
+    {% assign  count = count | plus:1 %}
     <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
             <option value="/products/iphone-14-pro-max" {% if product.title == "iPhone 14 Pro Max" %}selected{% endif %}>iPhone 14 Pro Max</option>
             <option value="/products/iphone-14-pro" {% if product.title == "iPhone 14 Pro" %}selected{% endif %}>iPhone 14 Pro</option>
@@ -94,6 +97,13 @@
 {% endif %}
   {% form 'product', product %}
 
+  {% if product.options.size == 1 and settings.product_form_style == 'dropdown' and product.options[0] == 'Color' %}
+    <label class="form-label"><span class="label-badge">{{count}}</span>Select your color</label>
+    {% assign  count = count | plus:1 %}
+  {% elsif product.options.size == 1 and settings.product_form_style == 'dropdown' and product.options[0] == 'Size' %}
+    <label class="form-label"><span class="label-badge">{{count}}</span>Select your size</label>
+    {% assign  count = count | plus:1 %}
+  {% endif %}
   <div
     class="
       select
@@ -160,7 +170,14 @@
   {% endif %}
   
   {% if product.type!="Simple Product" and product.type!="Gift Cards" and template.suffix != "customily-products" %}
-      <div class="new-tcc-design-3">
+     {% if product.type == 'Phone Cases' %}
+      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your case</label>
+    {% elsif product.type == 'Card Holders' %}
+      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card holder</label>
+    {% elsif product.type == 'Card Wallets' %}
+      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card wallet</label>
+    {% endif %}
+      <div class="new-tcc-design">
         <div class="tcc-left-section">
           <div class="tcc-initial-wrap">
             <input type="text" name='properties[Letters]' class="tcc-initial-input" autocomplete="off" maxlength="6" placeholder="Type your text">
@@ -168,6 +185,11 @@
           </div>
           <div class="tcc-color-wrap">
             <div class="dis">
+              <style>
+                input[type="radio"].tcc-color-select:checked + span.checkmark{
+                  border: 1px solid black;
+                }
+              </style>
               <label class="container"> 
                 <input type="radio" name="properties[Letter Color]" class="tcc-color-select" value="gold" checked><span class="checkmark">
                 <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Gold-color.png"></span> 
