@@ -95,6 +95,10 @@ window.Shopify.translation.cart_discount_text = "{{ 'cart.general.discount'| t }
 window.Shopify.translation.cart_subtotal_text = "{{ 'layout.general.subtotal'| t }}";
 window.Shopify.translation.cart_remove_text = "{{ 'cart.general.remove'| t }}";
 window.Shopify.translation.cart_free_text = "{{ 'cart.general.free'| t }}";
+window.Shopify.theme_settings.discount_code_text = {{ settings.discount_code_text | json }};
+window.Shopify.theme_settings.sale_label_color = {{ settings.sale_label_color | json }};
+window.Shopify.theme_settings.sale_bg_color = {{ settings.sale_bg_color | json }};
+window.Shopify.theme_settings.sale_amount = {{ settings.sale_amount | json }};
 
 {% comment %} Newsletter {% endcomment %}
 window.Shopify.translation.newsletter_success_text = "{{ 'general.newsletter_form.success_text'| t }}";

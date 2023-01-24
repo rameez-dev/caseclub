@@ -52,6 +52,8 @@
   </div>
 {% endif %}
 {% endcomment %}
+
+{% assign  count = 1 %}
   
 {% if product.type == 'Phone Cases' %}
   <ul class="phone-case-info"><li><i class="icon-check"></i> Protect your phone in style</li>
@@ -59,7 +61,8 @@
 <li><i class="icon-check"></i> Say no to bulky plastic cases</li></ul>
   
   <div class="select-model">
-    <h5 style="font-weight: 700;">Select Device</h5>
+    <label class="form-label"><span class="label-badge">{{count}}</span>Select your device</label>
+    {% assign  count = count | plus:1 %}
     <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
             <option value="/products/iphone-14-pro-max" {% if product.title == "iPhone 14 Pro Max" %}selected{% endif %}>iPhone 14 Pro Max</option>
             <option value="/products/iphone-14-pro" {% if product.title == "iPhone 14 Pro" %}selected{% endif %}>iPhone 14 Pro</option>
@@ -94,6 +97,13 @@
 {% endif %}
   {% form 'product', product %}
 
+  {% if product.options.size == 1 and settings.product_form_style == 'dropdown' and product.options[0] == 'Color' %}
+    <label class="form-label"><span class="label-badge">{{count}}</span>Select your color</label>
+    {% assign  count = count | plus:1 %}
+  {% elsif product.options.size == 1 and settings.product_form_style == 'dropdown' and product.options[0] == 'Size' %}
+    <label class="form-label"><span class="label-badge">{{count}}</span>Select your size</label>
+    {% assign  count = count | plus:1 %}
+  {% endif %}
   <div
     class="
       select
@@ -160,6 +170,13 @@
   {% endif %}
   
   {% if product.type!="Simple Product" and product.type!="Gift Cards" and template.suffix != "customily-products" %}
+     {% if product.type == 'Phone Cases' %}
+      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your case</label>
+    {% elsif product.type == 'Card Holders' %}
+      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card holder</label>
+    {% elsif product.type == 'Card Wallets' %}
+      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card wallet</label>
+    {% endif %}
       <div class="new-tcc-design">
         <div class="tcc-left-section">
           <div class="tcc-initial-wrap">
@@ -168,6 +185,11 @@
           </div>
           <div class="tcc-color-wrap">
             <div class="dis">
+              <style>
+                input[type="radio"].tcc-color-select:checked + span.checkmark{
+                  border: 1px solid black;
+                }
+              </style>
               <label class="container"> 
                 <input type="radio" name="properties[Letter Color]" class="tcc-color-select" value="gold" checked><span class="checkmark">
                 <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Gold-color.png"></span> 
@@ -241,10 +263,10 @@
   {% assign seconds12 = 4 | times: 24 | times: 60 | times: 60 %}
   <div class="new-design-block">
     <ul>
-      <li>Free shipping to <span class="country-info"></span></li>
-      <li>Order today, estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</li>
+      <li><b>Free shipping</b> to <span class="country-info"></span></li>
+      <li>Order today, <b>estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</li></b>
       {% if product.type == 'Phone Cases' %}
-      <li>Buy 2 items, get extra 10% off with code XM2</li>
+      <li><b>Buy 2</b> items, get <b>extra 10% off</b> with code <b>XM2</b></li>
       {% endif %}
     </ul>
     <quote>
@@ -282,7 +304,28 @@
           <p>{{product.description}}</p>
         </div>
         <div class="pro-foot">
-          <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+            {%- assign saleOn = false -%}
+            {%- for colprod in product.collections -%}
+              {%- for col in settings.sale_collection_list -%}
+                {%- if colprod.id == col.id -%}
+                  {%- assign saleOn = true -%}
+                  {% break %}
+                  {% break %}
+                {%- endif -%}  
+              {%- endfor -%}
+            {%- endfor -%}
+
+            {%- if settings.show_sales_label and saleOn -%}
+            {% assign perc = 100 | minus: settings.sale_amount %}
+            {% assign perc = perc | divided_by: 100.0 %}
+            {% assign cmp_price = product.price_min | times: perc %}
+            <h5>
+              <span class="money compare-at-price">{% render 'price-element', price: product.price_min %}</span>
+              <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+            </h5>
+            {%- else -%}
+              <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+            {% endif %} 
           <form method="post" action="/cart/add">
             <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
             <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
@@ -318,7 +361,28 @@
           <p>{{product.description}}</p>
         </div>
         <div class="pro-foot">
-          <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+            {%- assign saleOn = false -%}
+            {%- for colprod in product.collections -%}
+              {%- for col in settings.sale_collection_list -%}
+                {%- if colprod.id == col.id -%}
+                  {%- assign saleOn = true -%}
+                  {% break %}
+                  {% break %}
+                {%- endif -%}  
+              {%- endfor -%}
+            {%- endfor -%}
+
+            {%- if settings.show_sales_label and saleOn -%}
+            {% assign perc = 100 | minus: settings.sale_amount %}
+            {% assign perc = perc | divided_by: 100.0 %}
+            {% assign cmp_price = product.price_min | times: perc %}
+            <h5>
+              <span class="money compare-at-price">{% render 'price-element', price: product.price_min %}</span>
+              <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+            </h5>
+            {%- else -%}
+              <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+            {% endif %} 
           <form method="post" action="/cart/add">
             <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
             <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
@@ -352,7 +416,28 @@
           <p>{{product.description}}</p>
         </div>
         <div class="pro-foot">
-          <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+            {%- assign saleOn = false -%}
+            {%- for colprod in product.collections -%}
+              {%- for col in settings.sale_collection_list -%}
+                {%- if colprod.id == col.id -%}
+                  {%- assign saleOn = true -%}
+                  {% break %}
+                  {% break %}
+                {%- endif -%}  
+              {%- endfor -%}
+            {%- endfor -%}
+
+            {%- if settings.show_sales_label and saleOn -%}
+            {% assign perc = 100 | minus: settings.sale_amount %}
+            {% assign perc = perc | divided_by: 100.0 %}
+            {% assign cmp_price = product.price_min | times: perc %}
+            <h5>
+              <span class="money compare-at-price">{% render 'price-element', price: product.price_min %}</span>
+              <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+            </h5>
+            {%- else -%}
+              <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+            {% endif %} 
            <form method="post" action="/cart/add">
             <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
             <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
