@@ -109,8 +109,18 @@
   {% assign perc = perc | divided_by: 100.0 %}
   {% assign cmp_price = product.price | times: perc %}
   
+  <style>
+    .for-pseudo-content::before{
+      position: absolute;
+      content: "(Limited Availibility)";
+      top: -12px;
+      left: 80px;
+      font-size: 10px;
+      color: black
+    }
+  </style>
   <span class="price price--sale money" style="margin-left: 10px;">{%- if cmp_price != blank -%}{{- cmp_price | money_without_trailing_zeros -}}{%- endif -%}</span>
-  <span class="compare-at-price" data-price>{%- if price != blank -%}{{- price -}}{%- endif -%}</span>
+  <span class="compare-at-price for-pseudo-content" data-price>{%- if price != blank -%}{{- price -}}{%- endif -%}</span>
   <span class="salelabel_inline" style="color: {{settings.sale_label_color}}; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>
   {% else %}
   <span class="price {% if compare_at_price != blank and compare_at_price != false -%}price--sale{%- endif -%}" data-price>{%- if price != blank -%}{{- price -}}{%- endif -%}</span>
