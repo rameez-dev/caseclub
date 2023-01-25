@@ -2730,9 +2730,9 @@ function initial_fun(){
     jQuery('.tcc-initial-input').val(tccinitials);
     jQuery('.max-words').text(tccinitials.length+'/2');
   }else{
-    var tccinitials = cu_val.substr(0,5);
+    var tccinitials = cu_val.substr(0,8);
     jQuery('.tcc-initial-input').val(tccinitials);
-    jQuery('.max-words').text(tccinitials.length+'/5');
+    jQuery('.max-words').text(tccinitials.length+'/8');
   }
   
   var ckp = jQuery('.tcc-initial-input').closest('.product_form').hasClass('small-leather-goods');
@@ -2750,9 +2750,15 @@ function initial_fun(){
   jQuery('.flickity-slider .initials').addClass(tcccolor);  
   jQuery('.matching-products .initials').addClass(tcccolor); 
   
-  jQuery('.product #pwzrswiper-slide-0 .initials').text(tccinitials);
   jQuery('.product #pwzrswiper-slide-0 .initials').attr('class','').addClass(curinitial+' '+ptype);
   jQuery('.product #pwzrswiper-slide-0 .initials').addClass(tcccolor);
+  if (tccinitials.length > 5){
+    jQuery('.product #pwzrswiper-slide-0 .initials').addClass('five_plus_characters');
+    jQuery('.product #pwzrswiper-slide-0 .initials').text(tccinitials);
+  } else {
+    jQuery('.product #pwzrswiper-slide-0 .initials').removeClass('five_plus_characters');
+    jQuery('.product #pwzrswiper-slide-0 .initials').text(tccinitials);
+  }
 }
 function setCookie(cname,cvalue,exdays) {
   var d = new Date();
