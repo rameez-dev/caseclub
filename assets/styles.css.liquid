@@ -17728,6 +17728,22 @@ footer .social_icons a:hover {
 */
 /* #Custom Styles
 ================================================== */
+
+ @font-face {
+      font-family: 'Arbesco DT';
+      src: url({{ 'ArbescoDT.otf' | asset_url }}) format("opentype");
+      font-weight: normal;
+      font-style: bold;
+      font-display: swap; 
+    }
+
+    @font-face {
+      font-family: 'fontello';
+      src: url({{ 'fontello.ttf' | asset_url }}) format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap; 
+    }
   
  /* #Custom Homepage
 ================================================== */ 
@@ -19266,7 +19282,7 @@ span.initials {
     text-shadow: 0 1px 0 rgba(0,0,0,0)!important;
     background: #d9c277;
     /* background: -webkit-linear-gradient(transparent,transparent),url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/gold.jpg) repeat; */
-    font-family: "Arbesco-DT",serif;
+    font-family: 'Arbesco DT';
     text-transform: uppercase;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
