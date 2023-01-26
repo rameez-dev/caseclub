@@ -2825,6 +2825,8 @@ jQuery(document).on('click', '.store-change-color', function(){
 });
 
 jQuery(document).ready(function(){
+ 
+
   if( getCookie("tcc_country")=='' ){
     $.get("https://ipinfo.io/json", function (response) {
         setCookie("tcc_country", response.country, 30);
