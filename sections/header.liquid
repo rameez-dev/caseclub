@@ -1,45 +1,47 @@
 <script
   type="application/json"
   data-section-type="header"
-  data-section-id="{{ section.id }}"></script>
+  data-section-id="{{ section.id }}"
+>
+</script>
 
 {% comment %} Structured data {% endcomment %}
 
 <script type="application/ld+json">
   {
-  "@context": "http://schema.org",
-      "@type": "Organization",
-      "name": "{{ shop.name }}",
-  {% if section.settings.logo %}
-    {% assign image_size = section.settings.logo.width | append: 'x' %}
-    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
-  {% endif %}
-  "sameAs": [
-  "{{ settings.twitter_link }}",
-  "{{ settings.facebook_link }}",
-  "{{ settings.pinterest_link }}",
-  "{{ settings.instagram_link }}",
-  "{{ settings.tumblr_link }}",
-  "{{ settings.snapchat_link }}",
-  "{{ settings.youtube_link }}",
-  "{{ settings.vimeo_link }}"
-  ],
-      "url": "{{ shop.url }}{{ page.url }}"
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "{{ shop.name }}",
+    {% if section.settings.logo %}
+      {% assign image_size = section.settings.logo.width | append:'x' %}
+      "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+    {% endif %}
+    "sameAs": [
+      "{{ settings.twitter_link }}",
+      "{{ settings.facebook_link }}",
+      "{{ settings.pinterest_link }}",
+      "{{ settings.instagram_link }}",
+      "{{ settings.tumblr_link }}",
+      "{{ settings.snapchat_link }}",
+      "{{ settings.youtube_link }}",
+      "{{ settings.vimeo_link }}"
+    ],
+    "url": "{{ shop.url }}{{ page.url }}"
   }
 </script>
 
 {% if template.name == 'index' %}
   <script type="application/ld+json">
     {
-    "@context": "http://schema.org",
-          "@type": "WebSite",
-          "name": "{{ shop.name }}",
-    "potentialAction": {
-            "@type": "SearchAction",
-            "target": "{{ routes.search_url }}?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-          },
-          "url": "{{ shop.url }}{{ page.url }}"
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ routes.search_url }}?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
     }
   </script>
 {% endif %}
@@ -58,47 +60,40 @@
 {% comment %}Mobile navigation{% endcomment %}
 
 <script>
-  var cnt = '{{ "now"| date: "%s" | plus: 172800 | date: "%b %d, %Y" }}';
-  var countDownDate = new Date(cnt + " 00:00:00").getTime();
-  var x = setInterval(function() {
-    var date1 = new Date();
-    var now = new Date(date1.toLocaleString('en-US', {timeZone: 'Europe\/Amsterdam'})).getTime();
-    var distance = countDownDate - now;
+var cnt = '{{ "now"| date: "%s" | plus: 172800 | date: "%b %d, %Y" }}';
+var countDownDate = new Date(cnt+" 00:00:00").getTime();
+var x = setInterval(function() {
+  var date1 = new Date();
+  var now = new Date( date1.toLocaleString('en-US', { timeZone: 'Europe\/Amsterdam' }) ).getTime();
+  var distance = countDownDate - now;
+  //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-// var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    jQuery(".countdown-view").html(hours + "h " + minutes + "m " + seconds + "s ");
-    if (distance < 0) {
-      clearInterval(x);
-      jQuery(".countdown-view").html("EXPIRED");
-    }
-  }, 1000);
+  jQuery(".countdown-view").html( hours + "h " + minutes + "m " + seconds + "s " ); 
+  if (distance < 0) {
+    clearInterval(x);
+    jQuery(".countdown-view").html( "EXPIRED" );
+  }
+}, 1000);
 </script>
 <div class="top-notify-bar">
-  <div>💕 VALENTINE SALE NOW ON: 20% OFF EVERYTHING WHEN YOU ORDER BEFORE
-    <span class="countdown-view" style="color: gold;font-weight: bold;"></span>
-  </div>
+  <div>💕 VALENTINE SALE NOW ON: 20% OFF EVERYTHING WHEN YOU ORDER BEFORE <span class="countdown-view" style="color: gold;font-weight: bold;"></span></div>
   <div>BUY 2 ITEMS FOR EXTRA 10% OFF - CODE: XM2</div>
 </div>
 
 <div style="display:none;">
-  {% form 'localization' %}
-    <select name="country_code">
-      {% for country in localization.available_countries %}
-        <option
-          value="{{ country.iso_code }}"
-          {%- if country == localization.country %}
-          selected="selected"
-          {% endif %}>
-          {{ country.name }} ({{ country.iso_code }}) - {{ country.currency.symbol }}
-        </option>
-      {% endfor %}
-    </select>
-    <input type="submit" value="Update">
-  {% endform %}
+{% form 'localization' %}
+<select name="country_code">  
+{% for country in localization.available_countries %}
+<option value="{{ country.iso_code }}" {%- if country == localization.country %} selected="selected"{% endif %}>      
+{{ country.name }} ({{ country.iso_code }}) - {{ country.currency.symbol }}    
+</option> 
+{% endfor %} 
+</select>  
+<input type="submit" value="Update">
+{% endform %}
 </div>
 
 <header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
@@ -112,10 +107,7 @@
   {% endif %}
 
   <div class="top-bar">
-    <a
-      class="mobile_nav dropdown_link"
-      data-dropdown-rel="mobile_menu"
-      data-no-instant="true">
+    <a class="mobile_nav dropdown_link" data-dropdown-rel="mobile_menu" data-no-instant="true">
       <div>
         <span></span>
         <span></span>
@@ -126,15 +118,9 @@
       <span class="menu_title">{{ 'layout.general.menu' | t }}</span>
     </a>
 
-    <a
-      href="{{ routes.root_url }}"
-      title="{{ shop.name | escape }}"
-      class="mobile_logo logo">
+    <a href="{{ routes.root_url }}" title="{{ shop.name | escape }}" class="mobile_logo logo">
       {% if section.settings.logo_mobile != blank %}
-        <img
-          src="{{ section.settings.logo_mobile | img_url: '410x' }}"
-          alt="{{ shop.name | escape }}"
-          class="lazyload" />
+        <img src="{{ section.settings.logo_mobile | img_url: '410x' }}" alt="{{ shop.name | escape }}" class="lazyload" />
       {% elsif section.settings.logo != blank %}
         <img src="{{ section.settings.logo | img_url: '410x' }}" alt="{{ shop.name | escape }}" />
       {% else %}
@@ -144,22 +130,12 @@
 
     <div class="top-bar--right">
       {% if section.settings.search_enabled %}
-        <a
-          href="{{ routes.search_url }}"
-          class="icon-search dropdown_link"
-          title="{{ 'general.search.title' | t | escape }}"
-          data-dropdown-rel="search"></a>
+        <a href="{{ routes.search_url }}" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
       {% endif %}
 
       {% if section.settings.show_cart %}
         <div class="cart-container">
-          <a
-            href="{{ routes.cart_url }}"
-            class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link"
-            title="{{ 'layout.general.cart' | t | escape }}"
-            data-no-instant>
-            <span class="cart_count">{{ cart.item_count }}</span>
-          </a>
+          <a href="{{ routes.cart_url }}" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" title="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count">{{ cart.item_count }}</span></a>
         </div>
       {% endif %}
     </div>
@@ -169,19 +145,9 @@
     <div class="dropdown_container" data-dropdown="search">
       <div class="dropdown" data-autocomplete-{{ settings.enable_autocomplete }}>
         <form action="{{ routes.search_url }}" class="header_search_form">
-          <input
-            type="hidden"
-            name="type"
-            value="{{ settings.search_option }}" />
+          <input type="hidden" name="type" value="{{ settings.search_option }}" />
           <span class="icon-search search-submit"></span>
-          <input
-            type="text"
-            name="q"
-            placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}"
-            autocapitalize="off"
-            autocomplete="off"
-            autocorrect="off"
-            class="search-terms" />
+          <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
         </form>
       </div>
     </div>
@@ -191,12 +157,14 @@
     <div class="dropdown">
       <ul class="mobile_menu" id="mobile_menu2">
         {%
-           render 'mobile-menu',
-           menu: section.settings.main_linklist %}
+          render 'mobile-menu',
+          menu: section.settings.main_linklist
+        %}
         {%
-           render 'mobile-menu',
-           menu: section.settings.top_bar_menu,
-           context: 'top_bar_menu' %}
+          render 'mobile-menu',
+          menu: section.settings.top_bar_menu,
+          context: 'top_bar_menu'
+        %}
 
         {% if section.settings.phone_number != blank %}
           <li>
@@ -222,11 +190,12 @@
 
         {% if locale_selector or currency_selector or settings.show_multiple_currencies == true %}
           {%
-             render 'localization-switcher-mobile',
-             additional_classes: 'mobile-menu__disclosure',
-             currency_selector: currency_selector,
-             locale_selector: locale_selector,
-             show_currency: section.settings.show_currency_selector %}
+            render 'localization-switcher-mobile',
+            additional_classes: 'mobile-menu__disclosure',
+            currency_selector: currency_selector,
+            locale_selector: locale_selector,
+            show_currency: section.settings.show_currency_selector
+          %}
         {% endif %}
       </ul>
     </div>
@@ -286,17 +255,11 @@
           <div class="header__logo {% if section.settings.logo_home == blank and section.settings.logo == blank %}logo--text{% else %}logo--image{% endif %}">
             <a href="{{ routes.root_url }}" title="{{ shop.name }}">
               {% if section.settings.logo_home != blank %}
-                <img
-                  src="{{ section.settings.logo_home | img_url: '410x' }}"
-                  class="secondary_logo"
-                  alt="{{ shop.name | escape }}" />
+                <img src="{{ section.settings.logo_home | img_url: '410x' }}" class="secondary_logo" alt="{{ shop.name | escape }}" />
               {% endif %}
 
               {% if section.settings.logo != blank %}
-                <img
-                  src="{{ section.settings.logo | img_url: '410x' }}"
-                  class="primary_logo lazyload"
-                  alt="{{ shop.name | escape }}" />
+                <img src="{{ section.settings.logo | img_url: '410x' }}" class="primary_logo lazyload" alt="{{ shop.name | escape }}" />
               {% else %}
                 <span class="header__logo-text">{{ shop.name }}</span>
               {% endif %}
@@ -309,24 +272,28 @@
         {% capture menu_left %}
           {% if vertical_menu %}
             {%
-               render 'vertical-menu',
-               linklist: section.settings.main_linklist %}
+              render 'vertical-menu',
+              linklist: section.settings.main_linklist
+            %}
           {% else %}
             {%
-               render 'menu',
-               linklist: section.settings.main_linklist %}
+              render 'menu',
+              linklist: section.settings.main_linklist
+            %}
           {% endif %}
         {% endcapture %}
 
         {% capture menu_right %}
           {% if vertical_menu %}
             {%
-               render 'vertical-menu',
-               linklist: section.settings.main_linklist2 %}
+              render 'vertical-menu',
+              linklist: section.settings.main_linklist2
+            %}
           {% else %}
             {%
-               render 'menu',
-               linklist: section.settings.main_linklist2 %}
+              render 'menu',
+              linklist: section.settings.main_linklist2
+            %}
           {% endif %}
         {% endcapture %}
 
@@ -334,27 +301,13 @@
           {% if section.settings.search_enabled %}
             <div class="search-container" data-autocomplete-{{ settings.enable_autocomplete }}>
               <form action="{{ routes.search_url }}" class="search__form">
-                <input
-                  type="hidden"
-                  name="type"
-                  value="{{ settings.search_option }}" />
+                <input type="hidden" name="type" value="{{ settings.search_option }}" />
                 <span class="icon-search search-submit"></span>
-                <input
-                  type="text"
-                  name="q"
-                  placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}"
-                  value="{% if search and search.results.first.price %}{{ search.terms | replace: '*', '' }}{% endif %}"
-                  autocapitalize="off"
-                  autocomplete="off"
-                  autocorrect="off" />
+                <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" value="{% if search and search.results.first.price %}{{ search.terms | replace: '*', '' }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
               </form>
 
               <div class="search-link">
-                <a
-                  href="{{ routes.search_url }}"
-                  class="icon-search dropdown_link"
-                  title="{{ 'general.search.title' | t | escape }}"
-                  data-dropdown-rel="search"></a>
+                <a href="{{ routes.search_url }}" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
               </div>
             </div>
           {% endif %}
@@ -385,609 +338,468 @@
               <ul class="menu {% if section.settings.menu_alignment == 'align_left' %}align_right{% elsif section.settings.menu_alignment == 'align_right' %}align_left{% else %}{{ section.settings.menu_alignment }}{% endif %}">
                 {{ menu_right }}
               </ul>
-
+              
               <ul class="menu">
-                {% if section.settings.phone_number != blank %}
-                  <li>
-                    <a href="tel:{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a>
-                  </li>
-                {% endif %}
+        {% if section.settings.phone_number != blank %}
+          <li>
+            <a href="tel:{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a>
+          </li>
+        {% endif %}
 
-                {% if section.settings.top_bar_menu != blank %}
-                  {% for link in linklists[section.settings.top_bar_menu].links %}
-                    <li>
-                      <a href="{{ link.url }}">{{ link.title }}</a>
-                    </li>
-                  {% endfor %}
-                {% endif %}
-              </ul>
+        {% if section.settings.top_bar_menu != blank %}
+          {% for link in linklists[section.settings.top_bar_menu].links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
 
-              <div class="top-bar--right-menu">
-                <a href="/apps/help-center" class="need-help">Need help?</a>
-                <ul class="menu">
-                  {% if locale_selector or currency_selector or settings.show_multiple_currencies == true %}
-                    <li class="localization-wrap">
-                      {%
-                         render 'localization-switcher',
-                         additional_classes: 'header-menu__disclosure',
-                         id: 'header__selector-form',
-                         currency_selector: currency_selector,
-                         locale_selector: locale_selector,
-                         show_currency: section.settings.show_currency_selector %}
-                    </li>
+      <div class="top-bar--right-menu">
+        <a href="/apps/help-center" class="need-help" >Need help?</a>
+        <ul class="menu">
+          {% if locale_selector or currency_selector or settings.show_multiple_currencies == true %}
+            <li class="localization-wrap">
+              {%
+                render 'localization-switcher',
+                additional_classes: 'header-menu__disclosure',
+                id: 'header__selector-form',
+                currency_selector: currency_selector,
+                locale_selector: locale_selector,
+                show_currency: section.settings.show_currency_selector
+              %}
+            </li>
+          {% endif %}
+
+          {% if shop.customer_accounts_enabled %}
+            <li>
+              <a href="{{ routes.account_url }}" class="icon-user" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span></a>
+            </li>
+          {% endif %}
+        </ul>
+
+        {% if section.settings.show_cart %}
+          <div class="cart-container">
+            <a href="{{ routes.cart_url }}" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" data-no-instant>
+              <span class="cart_count">{{ cart.item_count }}</span>
+            </a>
+
+            {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
+              <div class="tos_warning cart_content animated fadeIn">
+                <div class="cart-head-top">
+                 <a href="" class="cart__remove-btn close-side-cart"><span class="remove-icon"></span></a>
+					<span class="cart-head-text">Your Cart</span>
+                  <span class="cart-count-num">1 Item</span>
+                </div>
+                <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
+                  <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
+                </div>
+
+                <!--<form action="{{ routes.cart_url }}"
+                      method="post"
+                      class="{% if cart.item_count == 0 %}hidden{% endif %}"
+                      data-total-discount="{{ cart.total_discount }}"
+                      data-money-format="{{ shop.money_format | strip_html }}"
+                      data-shop-currency="{{ shop.currency }}"
+                      data-shop-name="{{ shop.name | escape }}"
+                      data-cart-form="mini-cart">-->
+                {% assign free_ship_amt = 1 %}
+                {% assign free_ship = 100 %}
+                {% assign cart_tot = cart.total_price | divided_by: 100 %}
+                <div class="shipping-bar">
+                  {% if cart_tot < free_ship_amt %}
+                  {% assign free_ship2 = free_ship_amt | minus: cart_tot | times:100  %}
+                  {% assign free_ship3 = free_ship2 | divided_by:free_ship_amt %}
+                  {% assign free_ship = free_ship | minus:free_ship3 %}
+                <span class="free-shipping-txt">You're {{ free_ship2 | money_without_trailing_zeros }} away from free shipping.</span>
+                  {% else %}
+                <span class="free-shipping-txt">Congrats! You get free shipping.</span>
                   {% endif %}
+                <div class="free-shipping-bar"><span style="width: {{free_ship}}%;"></span></div>
+                </div>
+                
+                {% assign giftcnt = 0 %}
+                {% assign giftcss = '' %}
+                {% if cart.item_count > 1 %}
+                	{% assign giftcnt = 100 %}
+                	<div class="gift-text">Congrats! Free gift with your order</div>
+                {% elsif cart.item_count > 0 %}
+                	{% assign giftcnt = 50 %}
+                    {% assign giftcss = 'half' %}
+                	<div class="gift-text">ADD 1 MORE PRODUCT FOR FREE GIFT</div>
+                {% else %}
+                	<div class="gift-text">ADD 2 PRODUCTS FOR FREE GIFT</div>
+                {% endif %}
+                <div class="gift-bar {{giftcss}}"><span style="width: {{giftcnt}}%;"></span></div>
+                
+ 				  {% assign curr_pro = '' %}
+                  {% assign curr_pro_intial = '' %}
+                  {% assign curr_pro_color = '' %}
+                  {% assign curr_pro_title = '' %}
+			<div class="cart-inner-wrap">
+                  <ul class="cart_items js-cart_items">
+                    {%- assign total_saving = 0 -%}
 
-                  {% if shop.customer_accounts_enabled %}
-                    <li>
-                      <a
-                        href="{{ routes.account_url }}"
-                        class="icon-user"
-                        title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}">
-                        <span>
-                          {% if customer %}
-                            {{ 'layout.customer.my_account' | t }}
-                          {% else %}
-                            {{ 'layout.customer.log_in' | t }}{% endif %}
-                        </span>
-                      </a>
-                    </li>
-                  {% endif %}
-                </ul>
-
-                {% if section.settings.show_cart %}
-                  <div class="cart-container">
-                    <a
-                      href="{{ routes.cart_url }}"
-                      class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link"
-                      data-no-instant>
-                      <span class="cart_count">{{ cart.item_count }}</span>
-                    </a>
-
-                    {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
-                      <div class="tos_warning cart_content animated fadeIn">
-                        <div class="cart-head-top">
-                          <a href="" class="cart__remove-btn close-side-cart">
-                            <span class="remove-icon"></span>
-                          </a>
-                          <span class="cart-head-text">Your Cart</span>
-                          <span class="cart-count-num">1 Item</span>
-                        </div>
-                        <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
-                          <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
-                        </div>
-
-                        <!--<form action="{{ routes.cart_url }}"
-                        method="post"
-                        class="{% if cart.item_count == 0 %}hidden{% endif %}"
-                        data-total-discount="{{ cart.total_discount }}"
-                        data-money-format="{{ shop.money_format | strip_html }}"
-                        data-shop-currency="{{ shop.currency }}"
-                        data-shop-name="{{ shop.name | escape }}"
-                        data-cart-form="mini-cart">-->
-                        {% assign free_ship_amt = 1 %}
-                        {% assign free_ship = 100 %}
-                        {% assign cart_tot = cart.total_price | divided_by: 100 %}
-                        <div class="shipping-bar">
-                          {% if cart_tot < free_ship_amt %}
-                            {% assign free_ship2 = free_ship_amt | minus: cart_tot | times: 100 %}
-                            {% assign free_ship3 = free_ship2 | divided_by: free_ship_amt %}
-                            {% assign free_ship = free_ship | minus: free_ship3 %}
-                            <span class="free-shipping-txt">You're {{ free_ship2 | money_without_trailing_zeros }} away from free shipping.</span>
-                          {% else %}
-                            <span class="free-shipping-txt">Congrats! You get free shipping.</span>
+                    {% for item in cart.items %}
+                      {% if item.variant.compare_at_price > item.variant.price %}
+                        {%- assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
+                        {%- assign total_saving = saving | plus: total_saving -%}
+                      {% endif %}
+                      <li class="mini-cart__item {{ item.product.type | downcase | replace: ' ', '-' }}" data-cart-item data-line-id="{{ forloop.index }}" data-variant-id="{{ item.id }}">
+                        <a href="{{ item.url }}" class="mini-cart__item-a">
+                          {% if item.image %}
+                            <div class="cart_image mini-cart__item-image">
+                              <img src="{{ item.image | img_url: '320x' }}" alt="{{ item.title | escape }}" class="lazyload" />
+                            </div>
                           {% endif %}
-                          <div class="free-shipping-bar">
-                            <span style="width: {{free_ship}}%;"></span>
-                          </div>
-                        </div>
+                          <span class="initials
+                     {% for p in item.properties %}
+                        {% unless p.last == blank %}
+                    	  {% if p.first=='Letter Color' %}{% assign  curr_pro_color = p.last %}{{ p.last }}{% endif %}
+                      {% endunless %}
+                    {% endfor %}">
+                    {% for p in item.properties %}
+                        {% unless p.last == blank %}
+                          {% if p.first=='Letters' %}{% assign curr_pro_intial = p.last %}{{ p.last }}{% endif %}
+                      {% endunless %}
+                      {% endfor %}</span>
+                  <div class="tc-logo {{ item.variant.title | downcase | replace: ' ', '-' }}">
+                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                  </div>
+                        </a>
 
-                        {% assign giftcnt = 0 %}
-                        {% assign giftcss = '' %}
-                        {% if cart.item_count > 1 %}
-                          {% assign giftcnt = 100 %}
-                          <div class="gift-text">Congrats! Free gift with your order</div>
-                        {% elsif cart.item_count > 0 %}
-                          {% assign giftcnt = 50 %}
-                          {% assign giftcss = 'half' %}
-                          <div class="gift-text">ADD 1 MORE PRODUCT FOR FREE GIFT</div>
-                        {% else %}
-                          <div class="gift-text">ADD 2 PRODUCTS FOR FREE GIFT</div>
-                        {% endif %}
-                        <div class="gift-bar {{giftcss}}">
-                          <span style="width: {{giftcnt}}%;"></span>
-                        </div>
+                        <div class="mini-cart__item-content">
+                          <div class="mini-cart__item-title">
+                            {% if item.product.type=='Phone Cases' %}
+							<h4 class="product_name">The Personalized Case</h4>
+							{% endif %}
+							{% if item.product.type=='Card Wallets' %}
+							<h4 class="product_name">The Personalized Card Wallet</h4>
+							{% endif %}
+							{% if item.product.type=='Card Holders' %}
+							<h4 class="product_name">The Personalized Card Holder</h4>
+							{% endif %}
+                            <a href="{{ item.url }}" >
+                              {{ item.product.title }}
 
-                        {% assign curr_pro = '' %}
-                        {% assign curr_pro_intial = '' %}
-                        {% assign curr_pro_color = '' %}
-                        {% assign curr_pro_title = '' %}
-                        <div class="cart-inner-wrap">
-                          <ul class="cart_items js-cart_items">
-                            {%- assign total_saving = 0 -%}
+                              {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
+                                -
+                                {% for option in item.product.options %}
+                                  {{ item.variant.options[forloop.index0] }} {% unless forloop.last %}/{% endunless %}
+                                {% endfor %}
+                              {% endunless %}
 
-                            {% for item in cart.items %}
-                              {% if item.variant.compare_at_price > item.variant.price %}
-                                {%- assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
-                                {%- assign total_saving = saving | plus: total_saving -%}
-                              {% endif %}
-                              <li
-                                class="mini-cart__item {{ item.product.type | downcase | replace: ' ', '-' }}"
-                                data-cart-item
-                                data-line-id="{{ forloop.index }}"
-                                data-variant-id="{{ item.id }}">
-                                <a href="{{ item.url }}" class="mini-cart__item-a">
-                                  {% if item.image %}
-                                    <div class="cart_image mini-cart__item-image">
-                                      <img
-                                        src="{{ item.image | img_url: '320x' }}"
-                                        alt="{{ item.title | escape }}"
-                                        class="lazyload" />
+                              {% if item.properties %}
+                                {% for p in item.properties %}
+                                  {% if p.last != blank %}
+                                    <div class="line-item color-{{ p.last }}">
+                                      {{ p.first }}: {{ p.last }}
                                     </div>
                                   {% endif %}
-                                  <span
-                                    class='initials
-                                    {% for p in item.properties %}
-                                      {% unless p.last == blank %}
-                                        {% if p.first == 'Letter Color' %}
-                                          {% assign curr_pro_color = p.last %}{{ p.last }}{% endif %}
-                                      {% endunless %}
-                                    {% endfor %}'>
-                                    {% for p in item.properties %}
-                                      {% unless p.last == blank %}
-                                        {% if p.first == 'Letters' %}
-                                          {% assign curr_pro_intial = p.last %}{{ p.last }}{% endif %}
-                                      {% endunless %}
-                                    {% endfor %}
-                                  </span>
-                                  <div class="tc-logo {{ item.variant.title | downcase | replace: ' ', '-' }}">
-                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-                                  </div>
-                                </a>
-
-                                <div class="mini-cart__item-content">
-                                  <div class="mini-cart__item-title">
-                                    {% if item.product.type == 'Phone Cases' %}
-                                      <h4 class="product_name">The Personalized Case</h4>
-                                    {% endif %}
-                                    {% if item.product.type == 'Card Wallets' %}
-                                      <h4 class="product_name">The Personalized Card Wallet</h4>
-                                    {% endif %}
-                                    {% if item.product.type == 'Card Holders' %}
-                                      <h4 class="product_name">The Personalized Card Holder</h4>
-                                    {% endif %}
-                                    <a href="{{ item.url }}">
-                                      {{ item.product.title }}
-
-                                      {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
-                                        -
-                                        {% for option in item.product.options %}
-                                          {{ item.variant.options[forloop.index0] }}
-                                          {% unless forloop.last %}/{% endunless %}
-                                        {% endfor %}
-                                      {% endunless %}
-
-                                      {% if item.properties %}
-                                        {% for p in item.properties %}
-                                          {% if p.last != blank %}
-                                            <div class="line-item color-{{ p.last }}">
-                                              {{ p.first }}: {{ p.last }}
-                                            </div>
-                                          {% endif %}
-                                        {% endfor %}
-                                      {% endif %}
-                                    </a>
-                                  </div>
-
-                                  <div class="mini-cart__item-price">
-                                    {% if item.price > 0 %}
-                                      {%- if settings.show_sales_label -%}
-                                        <span class="money" style="margin-left:5px;">{{ item.final_price | money_without_trailing_zeros }}</span>
-                                        <span class="money compare-at-price {% if item.price < item.variant.compare_at_price or item.line_level_discount_allocations.size > 0 %}sale{% endif %}">
-                                          {{ product.price_min | money_without_trailing_zeros }}
-                                        </span>
-                                      {%- else -%}
-                                        <span class="money {% if item.price < item.variant.compare_at_price or item.line_level_discount_allocations.size > 0 %}sale{% endif %}">
-                                          {{ item.final_price | money_without_trailing_zeros }}
-                                        </span>
-                                        {% if item.price < item.variant.compare_at_price or item.line_level_discount_allocations.size > 0 %}
-                                          <span class="money was_price">
-                                            {{ item.variant.compare_at_price | money_without_trailing_zeros }}
-                                          </span>
-                                        {% endif %}
-                                      {% endif %}
-
-
-                                    {% else %}
-                                      {{ settings.free_price_text }}
-                                    {% endif %}
-                                  </div>
-
-                                  {%
-                                     render 'unit-price',
-                                     item: item,
-                                     variant: item.variant,
-                                     product: item.product,
-                                     class: 'mini-cart__unit-price' %}
-
-                                  {% if item.line_level_discount_allocations.size > 0 %}
-                                    {% for discount_allocation in item.line_level_discount_allocations %}
-                                      <p class="notification-discount meta">
-                                        {{ discount_allocation.discount_application.title }}
-                                      </p>
-                                    {% endfor %}
-                                  {% endif %}
-
-                                  <div class="product-quantity-box">
-                                    <span class="ss-icon product-minus js-change-quantity" data-func="minus">
-                                      <span class="icon-minus"></span>
-                                    </span>
-
-                                    <input
-                                      type="number"
-                                      min="0"
-                                      size="2"
-                                      class="quantity"
-                                      name="updates[]"
-                                      id="updates_{{ item.id }}"
-                                      value="{{ item.quantity }}"
-                                      data-cart-quantity-input="mini-cart"
-                                      {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %} />
-
-                                    <span class="ss-icon product-plus js-change-quantity" data-func="plus">
-                                      <span class="icon-plus"></span>
-                                    </span>
-                                  </div>
-                                </div>
-
-                                <a
-                                  href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0"
-                                  class="cart__remove-btn"
-                                  data-line-id="{{ forloop.index }}"
-                                  data-remove-item="mini-cart">
-                                  <span class="remove-icon"></span>
-                                </a>
-                              </li>
-                              {% if curr_pro == '' %}
-                                {% assign curr_pro = item.product.type %}
-                                {% assign curr_pro_title = item.variant.title %}
-                              {% endif; %}
-                            {% endfor %}
-                          </ul>
-                        </div>
-                        <!-- sticky cart bottom -->
-                        <div class="new-checkout-wrap">
-                          <div class="mix-match-wrap">
-                            <div class="add-match-item">
-                              <a href="javascript:void(0);" class="active">Mix &amp; Match</a>
-                            </div>
-
-                            {% assign cho_cnt = 0 %}
-                            {% assign cw_cnt = 0 %}
-                            {% assign pc_cnt = 0 %}
-                            <div class="full-width-desktop-padding mix-match-products">
-                              <ul>
-                                {% for product in collections.all.products %}
-                                  {% if curr_pro != 'Card Holders' %}
-                                    {% if product.type == 'Card Holders' %}
-
-                                      {% for v in product.variants %}
-                                        {% if cho_cnt == 0 and v.title == curr_pro_title %}
-                                          <li class="product card-holders">
-                                            <div class="product-slide-inner">
-                                              <a href="{{ product.url | within: collection }}">
-                                                {% assign cho_cnt = 1 %}
-                                                <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
-                                                  <div class="tc-logo">
-                                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-                                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-                                                  </div>
-                                                </div>
-                                              </a>
-                                              <div class="mix-pro-price">
-                                                <div>
-                                                  <h4>{{ product.type }}</h4>
-                                                  <p>Sleek designed card holders which slide into any sized pocket and bag.</p>
-                                                </div>
-
-                                                {%- if settings.show_sales_label -%}
-                                                  {% assign perc = 100 | minus: settings.sale_amount %}
-                                                  {% assign perc = perc | divided_by: 100.0 %}
-                                                  {% assign cmp_price = product.price_min | times: perc %}
-                                                  <h5>
-                                                    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-                                                  </h5>
-                                                {%- else -%}
-                                                  <h5>
-                                                    <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                  </h5>
-                                                {% endif %}
-
-                                                <form method="post" action="/cart/add">
-                                                  <input
-                                                    type="hidden"
-                                                    name="properties[Letters]"
-                                                    value="{{curr_pro_intial}}">
-                                                  <input
-                                                    type="hidden"
-                                                    name="properties[Letter Color]"
-                                                    value="{{curr_pro_color}}">
-                                                  <input
-                                                    type="hidden"
-                                                    name="id"
-                                                    value="{{ v.id }}" />
-                                                  <input
-                                                    min="1"
-                                                    type="hidden"
-                                                    id="quantity"
-                                                    name="quantity"
-                                                    value="1" />
-                                                  <input
-                                                    type="submit"
-                                                    value="+ ADD"
-                                                    class="btn add_to_cart ajax-submit" />
-                                                </form>
-                                              </div>
-                                            </div>
-                                          </li>
-                                        {% endif %}
-                                      {% endfor %}
-
-                                    {% endif %}
-                                  {% endif %}
-                                  {% if curr_pro != 'Phone Cases' %}
-                                    {% if product.type == 'Phone Cases' %}
-
-                                      {% for v in product.variants %}
-                                        {% if pc_cnt == 0 and v.title == curr_pro_title %}
-                                          <li class="product phone-cases">
-                                            <div class="product-slide-inner">
-                                              <a href="{{ product.url | within: collection }}">
-                                                {% assign pc_cnt = 1 %}
-                                                <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
-                                                  <div class="tc-logo {{ v.title | downcase | replace: ' ', '-' }}">
-                                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-                                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-                                                  </div>
-                                                </div>
-                                              </a>
-                                              <div class="mix-pro-price">
-                                                <div>
-                                                  <h4>{{ product.type }}</h4>
-                                                  <p>You deserve a phone case made just for you.</p>
-                                                </div>
-                                                {%- if settings.show_sales_label -%}
-                                                  {% assign perc = 100 | minus: settings.sale_amount %}
-                                                  {% assign perc = perc | divided_by: 100.0 %}
-                                                  {% assign cmp_price = product.price_min | times: perc %}
-                                                  <h5>
-                                                    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-                                                  </h5>
-                                                {%- else -%}
-                                                  <h5>
-                                                    <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                  </h5>
-                                                {% endif %}
-
-                                                <form method="post" action="/cart/add">
-                                                  <input
-                                                    type="hidden"
-                                                    name="properties[Letters]"
-                                                    value="{{curr_pro_intial}}">
-                                                  <input
-                                                    type="hidden"
-                                                    name="properties[Letter Color]"
-                                                    value="{{curr_pro_color}}">
-                                                  <input
-                                                    type="hidden"
-                                                    name="id"
-                                                    value="{{ v.id }}" />
-                                                  <input
-                                                    min="1"
-                                                    type="hidden"
-                                                    id="quantity"
-                                                    name="quantity"
-                                                    value="1" />
-                                                  <input
-                                                    type="submit"
-                                                    value="+ ADD"
-                                                    class="btn add_to_cart ajax-submit" />
-                                                </form>
-                                              </div>
-                                            </div>
-                                          </li>
-                                        {% endif %}
-                                      {% endfor %}
-
-                                    {% endif %}
-                                  {% endif %}
-                                  {% if curr_pro != 'Card Wallets' %}
-                                    {% if product.type == 'Card Wallets' %}
-
-                                      {% for v in product.variants %}
-                                        {% if cw_cnt == 0 and v.title == curr_pro_title %}
-                                          <li class="product card-wallets">
-                                            <div class="product-slide-inner">
-                                              <a href="{{ product.url | within: collection }}">
-                                                {% assign cw_cnt = 1 %}
-                                                <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
-                                                  <div class="tc-logo">
-                                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-                                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-                                                  </div>
-                                                </div>
-
-                                              </a>
-                                              <div class="mix-pro-price">
-                                                <div>
-                                                  <h4>{{ product.type }}</h4>
-                                                  <p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p>
-                                                </div>
-
-                                                {%- if settings.show_sales_label -%}
-                                                  {% assign perc = 100 | minus: settings.sale_amount %}
-                                                  {% assign perc = perc | divided_by: 100.0 %}
-                                                  {% assign cmp_price = product.price_min | times: perc %}
-                                                  <h5>
-                                                    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-                                                  </h5>
-                                                {%- else -%}
-                                                  <h5>
-                                                    <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                  </h5>
-                                                {% endif %}
-
-                                                <form method="post" action="/cart/add">
-                                                  <input
-                                                    type="hidden"
-                                                    name="properties[Letters]"
-                                                    value="{{curr_pro_intial}}">
-                                                  <input
-                                                    type="hidden"
-                                                    name="properties[Letter Color]"
-                                                    value="{{curr_pro_color}}">
-                                                  <input
-                                                    type="hidden"
-                                                    name="id"
-                                                    value="{{ v.id }}" />
-                                                  <input
-                                                    min="1"
-                                                    type="hidden"
-                                                    id="quantity"
-                                                    name="quantity"
-                                                    value="1" />
-                                                  <input
-                                                    type="submit"
-                                                    value="+ ADD"
-                                                    class="btn add_to_cart ajax-submit" />
-                                                </form>
-                                              </div>
-                                            </div>
-                                          </li>
-                                        {% endif %}
-                                      {% endfor %}
-
-                                    {% endif %}
-                                  {% endif %}
                                 {% endfor %}
-                              </ul>
-                            </div>
+                              {% endif %}
+                            </a>
                           </div>
 
-                          <ul class="cart-foot">
-                            <li class="cart_discounts js-cart_discounts sale">
-                              {% if cart.cart_level_discount_applications != blank %}
-                                {% for discount_application in cart.cart_level_discount_applications %}
-                                  <span class="cart_discounts--title">{{ discount_application.title }}</span>
-
-                                  <span class="cart_discounts--price">
-                                    -<span class="money">
-                                      {%
-                                        render 'price-element',
-                                        price: discount_application.total_allocated_amount %}
+                          <div class="mini-cart__item-price">
+                            {% if item.price > 0 %}
+                                {%- if settings.show_sales_label -%}
+                                  <span class="money" style="margin-left:5px;">{{ item.final_price | money_without_trailing_zeros }}</span>
+                                  <span class="money compare-at-price {% if item.price < item.variant.compare_at_price or item.line_level_discount_allocations.size > 0 %}sale{% endif %}">
+                                  {{ product.price_min | money_without_trailing_zeros }}
+                                  </span>
+                                {%- else -%}
+                                  <span class="money {% if item.price < item.variant.compare_at_price or item.line_level_discount_allocations.size > 0 %}sale{% endif %}">
+                                    {{ item.final_price | money_without_trailing_zeros }}
+                                  </span>
+                                  {% if item.price < item.variant.compare_at_price or item.line_level_discount_allocations.size > 0 %}
+                                    <span class="money was_price">
+                                      {{ item.variant.compare_at_price | money_without_trailing_zeros }}
                                     </span>
-                                  </span>
-                                {% endfor %}
-                              {% endif %}
-                            </li>
-
-                            <li></li>
-
-                            <li class="cart_subtotal js-cart_subtotal">
-                              <span class="right">
-                                <span class="money">
-                                  {{ cart.total_price | money_without_trailing_zeros }}
-                                </span>
-                              </span>
-
-                              <span>{{ 'layout.general.subtotal' | t }}</span>
-                            </li>
-
-                            <li class="cart_savings sale js-cart_savings">
-                              {% if settings.display_savings and total_saving > 0 or settings.display_savings and cart.total_discount > 0 %}
-                                <span class="right">
-                                  -<span class="money">
-                                    {% assign total_savings = total_saving | plus: cart.total_discount %}
-                                    {{ total_savings | money_without_trailing_zeros }}
-                                  </span>
-                                </span>
-
-                                <span>{{ 'layout.general.savings' | t }}
-                                  {%- if settings.show_sales_label -%}
-                                    <span id="cart-sale-tag" style="color: #fff !important; background-color: #000 !important;">
-                                      <svg
-                                        focusable="false"
-                                        width="10"
-                                        height="10"
-                                        class="icon icon--discount-badge"
-                                        viewBox="0 0 10 10"
-                                        style="margin-right: 6px;">
-                                        <path
-                                          fill-rule="evenodd"
-                                          clip-rule="evenodd"
-                                          d="M9.93734 1.1171C9.97075 0.521457 9.47854 0.0292498 8.88291 0.0626607L5.39562 0.258271C5.15016 0.27204 4.91836 0.375751 4.74452 0.549595L0.707107 4.58701C0.316582 4.97753 0.316583 5.6107 0.707107 6.00122L3.99878 9.29289C4.3893 9.68342 5.02247 9.68342 5.41299 9.29289L9.4504 5.25548C9.62425 5.08163 9.72796 4.84984 9.74173 4.60438L9.93734 1.1171ZM7.05882 2.94118C7.3837 3.26605 7.91042 3.26605 8.23529 2.94118C8.56017 2.6163 8.56017 2.08958 8.23529 1.76471C7.91042 1.43983 7.3837 1.43983 7.05882 1.76471C6.73395 2.08958 6.73395 2.6163 7.05882 2.94118Z"
-                                          fill="currentColor"></path>
-                                    </svg>
-                                    {{ settings.discount_code_text }}</span>
-                                {%- endif -%}
-                              {% endif %}
-                            </li>
-
-                            <li>
-                              {% if settings.display_special_instructions and settings.go_to_checkout %}
-                                <textarea
-                                  id="note"
-                                  name="note"
-                                  rows="2"
-                                  placeholder="{{ 'layout.general.cart_note' | t }}">{{ cart.note }}</textarea>
-                              {% endif %}
-
-                              {% if settings.display_tos_checkbox and settings.go_to_checkout %}
-                                <p class="tos">
-                                  <input
-                                    type="checkbox"
-                                    class="tos_agree"
-                                    id="sliding_agree"
-                                    required />
-
-                                  <label class="tos_label">
-                                    {{ 'cart.general.agree_to_terms_html' | t }}
-                                  </label>
-
-                                  {% if settings.tos_page != blank %}
-                                    <a
-                                      href="{{ settings.tos_page }}"
-                                      target="_blank"
-                                      class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
                                   {% endif %}
-                                </p>
-                              {% endif %}
+                                {% endif %} 
 
-                              {% if settings.cart_message != blank %}
-                                <div class="cart_text">
-                                  {{ settings.cart_message }}
-                                </div>
-                              {% endif %}
+                              
+                            {% else %}
+                              {{ settings.free_price_text }}
+                            {% endif %}
+                          </div>
 
-                              <a href="/checkout" class="global-button global-button--primary add_to_cart">CHECKOUT</a>
+                          {%
+                            render 'unit-price',
+                            item: item,
+                            variant: item.variant,
+                            product: item.product,
+                            class: 'mini-cart__unit-price'
+                          %}
 
-                            </li>
-                            <li class="cart-bottom-note">
-                              <span>Items in your cart will remain for 1 hour but they are not reserved</span>
-                              <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/7/assets/card-logo.jpeg">
-                            </li>
-                          </ul>
+                          {% if item.line_level_discount_allocations.size > 0 %}
+                            {% for discount_allocation in item.line_level_discount_allocations %}
+                              <p class="notification-discount meta">
+                                {{ discount_allocation.discount_application.title }}
+                              </p>
+                            {% endfor %}
+                          {% endif %}
+
+                          <div class="product-quantity-box">
+                            <span class="ss-icon product-minus js-change-quantity" data-func="minus">
+                              <span class="icon-minus"></span>
+                            </span>
+
+                            <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-cart-quantity-input="mini-cart" {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %}/>
+
+                            <span class="ss-icon product-plus js-change-quantity" data-func="plus">
+                              <span class="icon-plus"></span>
+                            </span>
+                          </div>
                         </div>
-                        <!-- sticky cart bottom -->
-                        <!-- </form> -->
-                      </div>
-                    {% endunless %}
+
+                        <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="cart__remove-btn" data-line-id="{{ forloop.index }}" data-remove-item="mini-cart"><span class="remove-icon"></span></a>
+                      </li>
+                      {% if curr_pro == '' %}
+                    	 {% assign curr_pro = item.product.type %}
+                    	 {% assign curr_pro_title = item.variant.title %}
+                      {% endif; %}
+                    {% endfor %}
+                  </ul>
+
+                  <div class="mix-match-wrap">
+  <div class="add-match-item"><a href="javascript:void(0);" class="active">Mix &amp; Match</a></div>
+                     
+{% assign cho_cnt = 0 %}
+{% assign cw_cnt = 0 %}
+{% assign pc_cnt = 0 %}
+<div class="full-width-desktop-padding mix-match-products">
+  <ul>
+{% for product in collections.all.products %}
+  {% if curr_pro != 'Card Holders' %}
+  	{% if product.type == 'Card Holders' %}
+      
+      {% for v in product.variants %}
+      {% if cho_cnt==0 and v.title==curr_pro_title %}
+           <li class="product card-holders">
+      <div class="product-slide-inner">     <a href="{{ product.url | within: collection }}">
+        	{% assign cho_cnt = 1 %}
+             <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{curr_pro_intial}}</span>
+               <div class="tc-logo">
+                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                  </div></div>
+          	</a>
+           <div class="mix-pro-price" >
+           <div><h4>{{product.type}}</h4>
+           <p>Sleek designed card holders which slide into any sized pocket and bag.</p></div>
+
+          {%- if settings.show_sales_label -%}
+          {% assign perc = 100 | minus: settings.sale_amount %}
+          {% assign perc = perc | divided_by: 100.0 %}
+          {% assign cmp_price = product.price_min | times: perc %}
+          <h5>
+            <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+            <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+          </h5>
+          {%- else -%}
+            <h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
+          {% endif %} 
+
+           <form method="post" action="/cart/add">
+          <input type="hidden" name="properties[Letters]" value="{{curr_pro_intial}}">
+          <input type="hidden" name="properties[Letter Color]" value="{{curr_pro_color}}">
+          <input type="hidden" name="id" value="{{ v.id }}" />
+          <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+          <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+        </form></div>
+        </div></li>
+          {% endif %}
+        {% endfor %}
+        
+     {% endif %}
+  {% endif %}
+  {% if curr_pro != 'Phone Cases' %}
+  {% if product.type == 'Phone Cases' %}
+  
+      {% for v in product.variants %}
+      {% if pc_cnt==0 and v.title==curr_pro_title %}
+          <li class="product phone-cases">
+      <div class="product-slide-inner">     <a href="{{ product.url | within: collection }}">
+        	{% assign pc_cnt = 1 %}
+             <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{curr_pro_intial}}</span>
+             <div class="tc-logo {{ v.title | downcase | replace: ' ', '-' }}">
+                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
                   </div>
-                {% endif %}
+             </div>
+          	</a>
+          <div class="mix-pro-price" >
+        <div><h4>{{product.type}}</h4>
+        <p>You deserve a phone case made just for you.</p></div>
+        {%- if settings.show_sales_label -%}
+        {% assign perc = 100 | minus: settings.sale_amount %}
+        {% assign perc = perc | divided_by: 100.0 %}
+        {% assign cmp_price = product.price_min | times: perc %}
+        <h5>
+        <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+        <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+        </h5>
+        {%- else -%}
+        <h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
+        {% endif %} 
+        	
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="properties[Letters]" value="{{curr_pro_intial}}">
+          <input type="hidden" name="properties[Letter Color]" value="{{curr_pro_color}}">
+          <input type="hidden" name="id" value="{{ v.id }}" />
+          <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+          <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+        </form></div>
+         </div></li>
+          {% endif %}
+        {% endfor %}
+
+  {% endif %}
+  {% endif %}
+  {% if curr_pro != 'Card Wallets' %}
+  {% if product.type == 'Card Wallets' %}
+      
+      {% for v in product.variants %}
+      {% if cw_cnt==0 and v.title==curr_pro_title %}
+      <li class="product card-wallets">
+      <div class="product-slide-inner">     <a href="{{ product.url | within: collection }}">
+        	{% assign cw_cnt = 1 %}
+             <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{curr_pro_intial}}</span>
+               <div class="tc-logo">
+                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                  </div></div>
+          	
+          </a>
+           <div class="mix-pro-price" >
+           <div><h4>{{product.type}}</h4>
+           <p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p></div>
+        	 
+            {%- if settings.show_sales_label -%}
+            {% assign perc = 100 | minus: settings.sale_amount %}
+            {% assign perc = perc | divided_by: 100.0 %}
+            {% assign cmp_price = product.price_min | times: perc %}
+            <h5><span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+            <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+            </h5>
+            {%- else -%}
+            <h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
+            {% endif %} 
+  
+           <form method="post" action="/cart/add">
+          <input type="hidden" name="properties[Letters]" value="{{curr_pro_intial}}">
+          <input type="hidden" name="properties[Letter Color]" value="{{curr_pro_color}}">
+          <input type="hidden" name="id" value="{{ v.id }}" />
+          <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+          <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+        </form></div>
+         </div></li>
+          {% endif %}
+		{% endfor %}
+     
+  {% endif %}
+  {% endif %}
+{% endfor %}
+  </ul>
+  </div>
+</div>
+</div>
+                      
+
+                  <ul class="cart-foot">
+                    <li class="cart_discounts js-cart_discounts sale">
+                      {% if cart.cart_level_discount_applications != blank %}
+                        {% for discount_application in cart.cart_level_discount_applications %}
+                          <span class="cart_discounts--title">{{ discount_application.title }}</span>
+
+                          <span class="cart_discounts--price">
+                            -<span class="money">
+                              {%
+                                render 'price-element',
+                                price: discount_application.total_allocated_amount
+                              %}
+                            </span>
+                          </span>
+                        {% endfor %}
+                      {% endif %}
+                    </li>
+                    
+                    <li>
+                      
+                    </li>
+
+                    <li class="cart_subtotal js-cart_subtotal">
+                      <span class="right">
+                        <span class="money">
+                          {{ cart.total_price | money_without_trailing_zeros }}
+                        </span>
+                      </span>
+
+                      <span>{{ 'layout.general.subtotal' | t }}</span>
+                    </li>
+
+                    <li class="cart_savings sale js-cart_savings">
+                      {% if settings.display_savings and total_saving > 0 or settings.display_savings and cart.total_discount > 0 %}
+                        <span class="right">
+                          -<span class="money">
+                            {% assign total_savings = total_saving | plus: cart.total_discount %}
+                            {{ total_savings | money_without_trailing_zeros }}
+                          </span>
+                        </span>
+
+                        <span>{{ 'layout.general.savings' | t }}
+                          {%- if settings.show_sales_label -%}
+                            <span id="cart-sale-tag" style="color: #fff !important; background-color: #000 !important;">
+                              <svg focusable="false" width="10" height="10" class="icon icon--discount-badge" viewBox="0 0 10 10" 
+                              style="margin-right: 6px;">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.93734 1.1171C9.97075 0.521457 9.47854 0.0292498 8.88291 0.0626607L5.39562 0.258271C5.15016 0.27204 4.91836 0.375751 4.74452 0.549595L0.707107 4.58701C0.316582 4.97753 0.316583 5.6107 0.707107 6.00122L3.99878 9.29289C4.3893 9.68342 5.02247 9.68342 5.41299 9.29289L9.4504 5.25548C9.62425 5.08163 9.72796 4.84984 9.74173 4.60438L9.93734 1.1171ZM7.05882 2.94118C7.3837 3.26605 7.91042 3.26605 8.23529 2.94118C8.56017 2.6163 8.56017 2.08958 8.23529 1.76471C7.91042 1.43983 7.3837 1.43983 7.05882 1.76471C6.73395 2.08958 6.73395 2.6163 7.05882 2.94118Z" fill="currentColor"></path>
+                              </svg>{{ settings.discount_code_text }}</span>
+                          {%- endif -%}
+                      {% endif %}
+                    </li>
+
+                    <li>
+                      {% if settings.display_special_instructions and settings.go_to_checkout %}
+                        <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}">{{ cart.note }}</textarea>
+                      {% endif %}
+
+                      {% if settings.display_tos_checkbox and settings.go_to_checkout %}
+                        <p class="tos">
+                          <input type="checkbox" class="tos_agree" id="sliding_agree" required />
+
+                          <label class="tos_label">
+                            {{ 'cart.general.agree_to_terms_html' | t }}
+                          </label>
+
+                          {% if settings.tos_page != blank %}
+                            <a href="{{ settings.tos_page }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                          {% endif %}
+                        </p>
+                      {% endif %}
+
+                      {% if settings.cart_message != blank %}
+                        <div class="cart_text">
+                          {{ settings.cart_message }}
+                        </div>
+                      {% endif %}
+
+                      <a href="/checkout" class="global-button global-button--primary add_to_cart">CHECKOUT</a>
+                      
+                    </li>
+				<li class="cart-bottom-note">
+              <span >Items in your cart will remain for 1 hour but they are not reserved</span>
+              <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/7/assets/card-logo.jpeg">
+              </li>
+                  </ul>
+                <!-- </form> -->
               </div>
+            {% endunless %}
+          </div>
+        {% endif %}
+      </div>
             </div>
 
             {{ search }}
@@ -1008,260 +820,275 @@
         <div class="dropdown_container" data-dropdown="search">
           <div class="dropdown" data-autocomplete-{{ settings.enable_autocomplete }}>
             <form action="{{ routes.search_url }}" class="header_search_form">
-              <input
-                type="hidden"
-                name="type"
-                value="{{ settings.search_option }}" />
+              <input type="hidden" name="type" value="{{ settings.search_option }}" />
               <span class="icon-search search-submit"></span>
-              <input
-                type="text"
-                name="q"
-                placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                class="search-terms" />
+              <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
             </form>
           </div>
         </div>
 
         {%
-           render 'sub-menu',
-           linklist: section.settings.main_linklist %}
+          render 'sub-menu',
+          linklist: section.settings.main_linklist
+        %}
         {%
-           render 'sub-menu',
-           linklist: section.settings.main_linklist2 %}
+          render 'sub-menu',
+          linklist: section.settings.main_linklist2
+        %}
       </div>
     </div>
   </div>
 </header>
 
-<div class="top-notify-bar-2">
-  <span>FREE SHIPPING INCLUDED</span>
-  <span>SHIPPED OUT IN 24 HOURS</span>
-  <span>GUARANTEED SATISFACTION</span>
-</div>
+   <div class="top-notify-bar-2">
+      <span>FREE SHIPPING INCLUDED</span>
+      <span>SHIPPED OUT IN 24 HOURS</span>
+      <span>GUARANTEED SATISFACTION</span>
+    </div>
 
 <style>
   div.header__logo,
   div.header__logo img,
   div.header__logo span,
   .sticky_nav .menu-position--block .header__logo {
-    max-width: {{ section.settings.logo_display_width | append: 'px' }}
-    ;
+    max-width: {{ section.settings.logo_display_width | append: 'px' }};
   }
-</style>
-<script>
-  document.addEventListener("startasyncloading", function() {
-    document.querySelectorAll("iframe[data-src], script[data-src]").forEach(a => {
-      datasrc = a.dataset.src,
-      null != datasrc && (a.src = datasrc),
-      delete a.dataset.src
-    })
-  });
-</script>
-
+</style><script>document.addEventListener("startasyncloading",function(){document.querySelectorAll("iframe[data-src], script[data-src]").forEach(a=>{datasrc=a.dataset.src,null!=datasrc&&(a.src=datasrc), delete a.dataset.src})});</script>
+ 
 
 {% schema %}
 
+  
+  
+{
+  "name": "Header",
+  "class": "shopify-section--header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "richtext",
+      "id": "promo_text",
+      "label": "Text",
+      "info": "Maximum character limit is 170"
+    },
+    {
+      "type": "header",
+      "content": "Top bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_icons_header",
+      "label": "Show social media header icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone number",
+      "info": "1-800-555-5555"
+    },
+    {
+      "type": "link_list",
+      "id": "top_bar_menu",
+      "label": "Menu",
+      "info": "This menu won't show drop-down items"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "cart_icon",
+      "label": "Cart icon",
+      "default": "cart",
+      "options": [
+        {
+          "value": "cart",
+          "label": "Cart"
+        },
+        {
+          "value": "bag",
+          "label": "Bag"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Language selector",
+      "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_locale_selector",
+      "label": "Show language selector",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Currency selector",
+      "info": "To add a payment, go to your [currency settings.](/admin/settings/payments)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "Show currency selector",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Logos"
+    },
+    {
+      "type": "range",
+      "id": "logo_display_width",
+      "label": "Logo display width",
+      "step": 5,
+      "min": 105,
+      "max": 205,
+      "default": 205,
+      "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "400 x 200px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_home",
+      "label": "Secondary logo over content (optional)",
+      "info": "400 x 200px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_mobile",
+      "label": "Mobile logo",
+      "info": "100 x 50px recommended"
+    },
+    {
+      "type": "header",
+      "content": "Menus"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": "Main menu"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist2",
+      "label": "Secondary menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "vertical_menu",
+      "label": "Enable vertical menus",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "dropdown_click",
+      "label": "Open dropdowns on click instead of hover",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "search_enabled",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "fixed_header",
+      "label": "Fixed ('sticky') header",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Logo position",
+      "info": "Applies when menu position has been set to 'Inline with logo'",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "logo_alignment",
+      "label": "Logo alignment",
+      "info": "Applies when menu position has been set to 'Under logo'",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "menu_position",
+      "label": "Menu position",
+      "default": "inline",
+      "options": [
+        {
+          "value": "inline",
+          "label": "Inline with logo"
+        },
+        {
+          "value": "block",
+          "label": "Under logo"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "menu_alignment",
+      "label": "Menu alignment",
+      "default": "align_left",
+      "options": [
+        {
+          "value": "align_left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "align_right",
+          "label": "Right"
+        }
+      ]
+    }
+  ]
+}
 
-
-  {
-    "name": "Header",
-    "class": "shopify-section--header",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Announcement bar"
-      },
-      {
-        "type": "richtext",
-        "id": "promo_text",
-        "label": "Text",
-        "info": "Maximum character limit is 170"
-      },
-      {
-        "type": "header",
-        "content": "Top bar"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_icons_header",
-        "label": "Show social media header icons",
-        "default": true
-      }, {
-        "type": "text",
-        "id": "phone_number",
-        "label": "Phone number",
-        "info": "1-800-555-5555"
-      }, {
-        "type": "link_list",
-        "id": "top_bar_menu",
-        "label": "Menu",
-        "info": "This menu won't show drop-down items"
-      }, {
-        "type": "checkbox",
-        "id": "show_cart",
-        "label": "Show cart",
-        "default": true
-      }, {
-        "type": "select",
-        "id": "cart_icon",
-        "label": "Cart icon",
-        "default": "cart",
-        "options": [
-          {
-            "value": "cart",
-            "label": "Cart"
-          }, {
-            "value": "bag",
-            "label": "Bag"
-          }
-        ]
-      }, {
-        "type": "header",
-        "content": "Language selector",
-        "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
-      }, {
-        "type": "checkbox",
-        "id": "show_locale_selector",
-        "label": "Show language selector",
-        "default": true
-      }, {
-        "type": "header",
-        "content": "Currency selector",
-        "info": "To add a payment, go to your [currency settings.](/admin/settings/payments)"
-      }, {
-        "type": "checkbox",
-        "id": "show_currency_selector",
-        "label": "Show currency selector",
-        "default": true
-      }, {
-        "type": "header",
-        "content": "Logos"
-      }, {
-        "type": "range",
-        "id": "logo_display_width",
-        "label": "Logo display width",
-        "step": 5,
-        "min": 105,
-        "max": 205,
-        "default": 205,
-        "unit": "px"
-      }, {
-        "type": "image_picker",
-        "id": "logo",
-        "label": "Logo",
-        "info": "400 x 200px recommended"
-      }, {
-        "type": "image_picker",
-        "id": "logo_home",
-        "label": "Secondary logo over content (optional)",
-        "info": "400 x 200px recommended"
-      }, {
-        "type": "image_picker",
-        "id": "logo_mobile",
-        "label": "Mobile logo",
-        "info": "100 x 50px recommended"
-      }, {
-        "type": "header",
-        "content": "Menus"
-      }, {
-        "type": "link_list",
-        "id": "main_linklist",
-        "label": "Main menu"
-      }, {
-        "type": "link_list",
-        "id": "main_linklist2",
-        "label": "Secondary menu"
-      }, {
-        "type": "checkbox",
-        "id": "vertical_menu",
-        "label": "Enable vertical menus",
-        "default": false
-      }, {
-        "type": "checkbox",
-        "id": "dropdown_click",
-        "label": "Open dropdowns on click instead of hover",
-        "default": false
-      }, {
-        "type": "header",
-        "content": "Search"
-      }, {
-        "type": "checkbox",
-        "id": "search_enabled",
-        "label": "Show search",
-        "default": true
-      }, {
-        "type": "header",
-        "content": "Layout"
-      }, {
-        "type": "checkbox",
-        "id": "fixed_header",
-        "label": "Fixed ('sticky') header",
-        "default": true
-      }, {
-        "type": "select",
-        "id": "logo_position",
-        "label": "Logo position",
-        "info": "Applies when menu position has been set to 'Inline with logo'",
-        "default": "center",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          }, {
-            "value": "center",
-            "label": "Center"
-          }
-        ]
-      }, {
-        "type": "select",
-        "id": "logo_alignment",
-        "label": "Logo alignment",
-        "info": "Applies when menu position has been set to 'Under logo'",
-        "default": "center",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          }, {
-            "value": "center",
-            "label": "Center"
-          }
-        ]
-      }, {
-        "type": "select",
-        "id": "menu_position",
-        "label": "Menu position",
-        "default": "inline",
-        "options": [
-          {
-            "value": "inline",
-            "label": "Inline with logo"
-          }, {
-            "value": "block",
-            "label": "Under logo"
-          }
-        ]
-      }, {
-        "type": "select",
-        "id": "menu_alignment",
-        "label": "Menu alignment",
-        "default": "align_left",
-        "options": [
-          {
-            "value": "align_left",
-            "label": "Left"
-          }, {
-            "value": "center",
-            "label": "Center"
-          }, {
-            "value": "align_right",
-            "label": "Right"
-          }
-        ]
-      }
-    ]
-  }
 {% endschema %}
