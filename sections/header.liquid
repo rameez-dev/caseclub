@@ -655,330 +655,333 @@
                             {% endfor %}
                           </ul>
                         </div>
+                        <!-- sticky cart bottom -->
+                        <div class="new-checkout-wrap">
+                          <div class="mix-match-wrap">
+                            <div class="add-match-item">
+                              <a href="javascript:void(0);" class="active">Mix &amp; Match</a>
+                            </div>
 
-                        <div class="mix-match-wrap">
-                          <div class="add-match-item">
-                            <a href="javascript:void(0);" class="active">Mix &amp; Match</a>
+                            {% assign cho_cnt = 0 %}
+                            {% assign cw_cnt = 0 %}
+                            {% assign pc_cnt = 0 %}
+                            <div class="full-width-desktop-padding mix-match-products">
+                              <ul>
+                                {% for product in collections.all.products %}
+                                  {% if curr_pro != 'Card Holders' %}
+                                    {% if product.type == 'Card Holders' %}
+
+                                      {% for v in product.variants %}
+                                        {% if cho_cnt == 0 and v.title == curr_pro_title %}
+                                          <li class="product card-holders">
+                                            <div class="product-slide-inner">
+                                              <a href="{{ product.url | within: collection }}">
+                                                {% assign cho_cnt = 1 %}
+                                                <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
+                                                  <div class="tc-logo">
+                                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                                                  </div>
+                                                </div>
+                                              </a>
+                                              <div class="mix-pro-price">
+                                                <div>
+                                                  <h4>{{ product.type }}</h4>
+                                                  <p>Sleek designed card holders which slide into any sized pocket and bag.</p>
+                                                </div>
+
+                                                {%- if settings.show_sales_label -%}
+                                                  {% assign perc = 100 | minus: settings.sale_amount %}
+                                                  {% assign perc = perc | divided_by: 100.0 %}
+                                                  {% assign cmp_price = product.price_min | times: perc %}
+                                                  <h5>
+                                                    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+                                                  </h5>
+                                                {%- else -%}
+                                                  <h5>
+                                                    <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                  </h5>
+                                                {% endif %}
+
+                                                <form method="post" action="/cart/add">
+                                                  <input
+                                                    type="hidden"
+                                                    name="properties[Letters]"
+                                                    value="{{curr_pro_intial}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="properties[Letter Color]"
+                                                    value="{{curr_pro_color}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="id"
+                                                    value="{{ v.id }}" />
+                                                  <input
+                                                    min="1"
+                                                    type="hidden"
+                                                    id="quantity"
+                                                    name="quantity"
+                                                    value="1" />
+                                                  <input
+                                                    type="submit"
+                                                    value="+ ADD"
+                                                    class="btn add_to_cart ajax-submit" />
+                                                </form>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        {% endif %}
+                                      {% endfor %}
+
+                                    {% endif %}
+                                  {% endif %}
+                                  {% if curr_pro != 'Phone Cases' %}
+                                    {% if product.type == 'Phone Cases' %}
+
+                                      {% for v in product.variants %}
+                                        {% if pc_cnt == 0 and v.title == curr_pro_title %}
+                                          <li class="product phone-cases">
+                                            <div class="product-slide-inner">
+                                              <a href="{{ product.url | within: collection }}">
+                                                {% assign pc_cnt = 1 %}
+                                                <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
+                                                  <div class="tc-logo {{ v.title | downcase | replace: ' ', '-' }}">
+                                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                                                  </div>
+                                                </div>
+                                              </a>
+                                              <div class="mix-pro-price">
+                                                <div>
+                                                  <h4>{{ product.type }}</h4>
+                                                  <p>You deserve a phone case made just for you.</p>
+                                                </div>
+                                                {%- if settings.show_sales_label -%}
+                                                  {% assign perc = 100 | minus: settings.sale_amount %}
+                                                  {% assign perc = perc | divided_by: 100.0 %}
+                                                  {% assign cmp_price = product.price_min | times: perc %}
+                                                  <h5>
+                                                    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+                                                  </h5>
+                                                {%- else -%}
+                                                  <h5>
+                                                    <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                  </h5>
+                                                {% endif %}
+
+                                                <form method="post" action="/cart/add">
+                                                  <input
+                                                    type="hidden"
+                                                    name="properties[Letters]"
+                                                    value="{{curr_pro_intial}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="properties[Letter Color]"
+                                                    value="{{curr_pro_color}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="id"
+                                                    value="{{ v.id }}" />
+                                                  <input
+                                                    min="1"
+                                                    type="hidden"
+                                                    id="quantity"
+                                                    name="quantity"
+                                                    value="1" />
+                                                  <input
+                                                    type="submit"
+                                                    value="+ ADD"
+                                                    class="btn add_to_cart ajax-submit" />
+                                                </form>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        {% endif %}
+                                      {% endfor %}
+
+                                    {% endif %}
+                                  {% endif %}
+                                  {% if curr_pro != 'Card Wallets' %}
+                                    {% if product.type == 'Card Wallets' %}
+
+                                      {% for v in product.variants %}
+                                        {% if cw_cnt == 0 and v.title == curr_pro_title %}
+                                          <li class="product card-wallets">
+                                            <div class="product-slide-inner">
+                                              <a href="{{ product.url | within: collection }}">
+                                                {% assign cw_cnt = 1 %}
+                                                <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
+                                                  <div class="tc-logo">
+                                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                                                  </div>
+                                                </div>
+
+                                              </a>
+                                              <div class="mix-pro-price">
+                                                <div>
+                                                  <h4>{{ product.type }}</h4>
+                                                  <p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p>
+                                                </div>
+
+                                                {%- if settings.show_sales_label -%}
+                                                  {% assign perc = 100 | minus: settings.sale_amount %}
+                                                  {% assign perc = perc | divided_by: 100.0 %}
+                                                  {% assign cmp_price = product.price_min | times: perc %}
+                                                  <h5>
+                                                    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+                                                  </h5>
+                                                {%- else -%}
+                                                  <h5>
+                                                    <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                  </h5>
+                                                {% endif %}
+
+                                                <form method="post" action="/cart/add">
+                                                  <input
+                                                    type="hidden"
+                                                    name="properties[Letters]"
+                                                    value="{{curr_pro_intial}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="properties[Letter Color]"
+                                                    value="{{curr_pro_color}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="id"
+                                                    value="{{ v.id }}" />
+                                                  <input
+                                                    min="1"
+                                                    type="hidden"
+                                                    id="quantity"
+                                                    name="quantity"
+                                                    value="1" />
+                                                  <input
+                                                    type="submit"
+                                                    value="+ ADD"
+                                                    class="btn add_to_cart ajax-submit" />
+                                                </form>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        {% endif %}
+                                      {% endfor %}
+
+                                    {% endif %}
+                                  {% endif %}
+                                {% endfor %}
+                              </ul>
+                            </div>
                           </div>
 
-                          {% assign cho_cnt = 0 %}
-                          {% assign cw_cnt = 0 %}
-                          {% assign pc_cnt = 0 %}
-                          <div class="full-width-desktop-padding mix-match-products">
-                            <ul>
-                              {% for product in collections.all.products %}
-                                {% if curr_pro != 'Card Holders' %}
-                                  {% if product.type == 'Card Holders' %}
+                          <ul class="cart-foot">
+                            <li class="cart_discounts js-cart_discounts sale">
+                              {% if cart.cart_level_discount_applications != blank %}
+                                {% for discount_application in cart.cart_level_discount_applications %}
+                                  <span class="cart_discounts--title">{{ discount_application.title }}</span>
 
-                                    {% for v in product.variants %}
-                                      {% if cho_cnt == 0 and v.title == curr_pro_title %}
-                                        <li class="product card-holders">
-                                          <div class="product-slide-inner">
-                                            <a href="{{ product.url | within: collection }}">
-                                              {% assign cho_cnt = 1 %}
-                                              <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
-                                                <div class="tc-logo">
-                                                  <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-                                                  <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-                                                </div>
-                                              </div>
-                                            </a>
-                                            <div class="mix-pro-price">
-                                              <div>
-                                                <h4>{{ product.type }}</h4>
-                                                <p>Sleek designed card holders which slide into any sized pocket and bag.</p>
-                                              </div>
+                                  <span class="cart_discounts--price">
+                                    -<span class="money">
+                                      {%
+                                        render 'price-element',
+                                        price: discount_application.total_allocated_amount %}
+                                    </span>
+                                  </span>
+                                {% endfor %}
+                              {% endif %}
+                            </li>
 
-                                              {%- if settings.show_sales_label -%}
-                                                {% assign perc = 100 | minus: settings.sale_amount %}
-                                                {% assign perc = perc | divided_by: 100.0 %}
-                                                {% assign cmp_price = product.price_min | times: perc %}
-                                                <h5>
-                                                  <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                  <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-                                                </h5>
-                                              {%- else -%}
-                                                <h5>
-                                                  <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                </h5>
-                                              {% endif %}
+                            <li></li>
 
-                                              <form method="post" action="/cart/add">
-                                                <input
-                                                  type="hidden"
-                                                  name="properties[Letters]"
-                                                  value="{{curr_pro_intial}}">
-                                                <input
-                                                  type="hidden"
-                                                  name="properties[Letter Color]"
-                                                  value="{{curr_pro_color}}">
-                                                <input
-                                                  type="hidden"
-                                                  name="id"
-                                                  value="{{ v.id }}" />
-                                                <input
-                                                  min="1"
-                                                  type="hidden"
-                                                  id="quantity"
-                                                  name="quantity"
-                                                  value="1" />
-                                                <input
-                                                  type="submit"
-                                                  value="+ ADD"
-                                                  class="btn add_to_cart ajax-submit" />
-                                              </form>
-                                            </div>
-                                          </div>
-                                        </li>
-                                      {% endif %}
-                                    {% endfor %}
+                            <li class="cart_subtotal js-cart_subtotal">
+                              <span class="right">
+                                <span class="money">
+                                  {{ cart.total_price | money_without_trailing_zeros }}
+                                </span>
+                              </span>
 
-                                  {% endif %}
-                                {% endif %}
-                                {% if curr_pro != 'Phone Cases' %}
-                                  {% if product.type == 'Phone Cases' %}
+                              <span>{{ 'layout.general.subtotal' | t }}</span>
+                            </li>
 
-                                    {% for v in product.variants %}
-                                      {% if pc_cnt == 0 and v.title == curr_pro_title %}
-                                        <li class="product phone-cases">
-                                          <div class="product-slide-inner">
-                                            <a href="{{ product.url | within: collection }}">
-                                              {% assign pc_cnt = 1 %}
-                                              <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
-                                                <div class="tc-logo {{ v.title | downcase | replace: ' ', '-' }}">
-                                                  <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-                                                  <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-                                                </div>
-                                              </div>
-                                            </a>
-                                            <div class="mix-pro-price">
-                                              <div>
-                                                <h4>{{ product.type }}</h4>
-                                                <p>You deserve a phone case made just for you.</p>
-                                              </div>
-                                              {%- if settings.show_sales_label -%}
-                                                {% assign perc = 100 | minus: settings.sale_amount %}
-                                                {% assign perc = perc | divided_by: 100.0 %}
-                                                {% assign cmp_price = product.price_min | times: perc %}
-                                                <h5>
-                                                  <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                  <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-                                                </h5>
-                                              {%- else -%}
-                                                <h5>
-                                                  <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                </h5>
-                                              {% endif %}
-
-                                              <form method="post" action="/cart/add">
-                                                <input
-                                                  type="hidden"
-                                                  name="properties[Letters]"
-                                                  value="{{curr_pro_intial}}">
-                                                <input
-                                                  type="hidden"
-                                                  name="properties[Letter Color]"
-                                                  value="{{curr_pro_color}}">
-                                                <input
-                                                  type="hidden"
-                                                  name="id"
-                                                  value="{{ v.id }}" />
-                                                <input
-                                                  min="1"
-                                                  type="hidden"
-                                                  id="quantity"
-                                                  name="quantity"
-                                                  value="1" />
-                                                <input
-                                                  type="submit"
-                                                  value="+ ADD"
-                                                  class="btn add_to_cart ajax-submit" />
-                                              </form>
-                                            </div>
-                                          </div>
-                                        </li>
-                                      {% endif %}
-                                    {% endfor %}
-
-                                  {% endif %}
-                                {% endif %}
-                                {% if curr_pro != 'Card Wallets' %}
-                                  {% if product.type == 'Card Wallets' %}
-
-                                    {% for v in product.variants %}
-                                      {% if cw_cnt == 0 and v.title == curr_pro_title %}
-                                        <li class="product card-wallets">
-                                          <div class="product-slide-inner">
-                                            <a href="{{ product.url | within: collection }}">
-                                              {% assign cw_cnt = 1 %}
-                                              <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
-                                                <div class="tc-logo">
-                                                  <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-                                                  <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-                                                </div>
-                                              </div>
-
-                                            </a>
-                                            <div class="mix-pro-price">
-                                              <div>
-                                                <h4>{{ product.type }}</h4>
-                                                <p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p>
-                                              </div>
-
-                                              {%- if settings.show_sales_label -%}
-                                                {% assign perc = 100 | minus: settings.sale_amount %}
-                                                {% assign perc = perc | divided_by: 100.0 %}
-                                                {% assign cmp_price = product.price_min | times: perc %}
-                                                <h5>
-                                                  <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                  <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-                                                </h5>
-                                              {%- else -%}
-                                                <h5>
-                                                  <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                </h5>
-                                              {% endif %}
-
-                                              <form method="post" action="/cart/add">
-                                                <input
-                                                  type="hidden"
-                                                  name="properties[Letters]"
-                                                  value="{{curr_pro_intial}}">
-                                                <input
-                                                  type="hidden"
-                                                  name="properties[Letter Color]"
-                                                  value="{{curr_pro_color}}">
-                                                <input
-                                                  type="hidden"
-                                                  name="id"
-                                                  value="{{ v.id }}" />
-                                                <input
-                                                  min="1"
-                                                  type="hidden"
-                                                  id="quantity"
-                                                  name="quantity"
-                                                  value="1" />
-                                                <input
-                                                  type="submit"
-                                                  value="+ ADD"
-                                                  class="btn add_to_cart ajax-submit" />
-                                              </form>
-                                            </div>
-                                          </div>
-                                        </li>
-                                      {% endif %}
-                                    {% endfor %}
-
-                                  {% endif %}
-                                {% endif %}
-                              {% endfor %}
-                            </ul>
-                          </div>
-                        </div>
-
-                        <ul class="cart-foot">
-                          <li class="cart_discounts js-cart_discounts sale">
-                            {% if cart.cart_level_discount_applications != blank %}
-                              {% for discount_application in cart.cart_level_discount_applications %}
-                                <span class="cart_discounts--title">{{ discount_application.title }}</span>
-
-                                <span class="cart_discounts--price">
+                            <li class="cart_savings sale js-cart_savings">
+                              {% if settings.display_savings and total_saving > 0 or settings.display_savings and cart.total_discount > 0 %}
+                                <span class="right">
                                   -<span class="money">
-                                    {%
-                                       render 'price-element',
-                                       price: discount_application.total_allocated_amount %}
+                                    {% assign total_savings = total_saving | plus: cart.total_discount %}
+                                    {{ total_savings | money_without_trailing_zeros }}
                                   </span>
                                 </span>
-                              {% endfor %}
-                            {% endif %}
-                          </li>
 
-                          <li></li>
+                                <span>{{ 'layout.general.savings' | t }}
+                                  {%- if settings.show_sales_label -%}
+                                    <span id="cart-sale-tag" style="color: #fff !important; background-color: #000 !important;">
+                                      <svg
+                                        focusable="false"
+                                        width="10"
+                                        height="10"
+                                        class="icon icon--discount-badge"
+                                        viewBox="0 0 10 10"
+                                        style="margin-right: 6px;">
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M9.93734 1.1171C9.97075 0.521457 9.47854 0.0292498 8.88291 0.0626607L5.39562 0.258271C5.15016 0.27204 4.91836 0.375751 4.74452 0.549595L0.707107 4.58701C0.316582 4.97753 0.316583 5.6107 0.707107 6.00122L3.99878 9.29289C4.3893 9.68342 5.02247 9.68342 5.41299 9.29289L9.4504 5.25548C9.62425 5.08163 9.72796 4.84984 9.74173 4.60438L9.93734 1.1171ZM7.05882 2.94118C7.3837 3.26605 7.91042 3.26605 8.23529 2.94118C8.56017 2.6163 8.56017 2.08958 8.23529 1.76471C7.91042 1.43983 7.3837 1.43983 7.05882 1.76471C6.73395 2.08958 6.73395 2.6163 7.05882 2.94118Z"
+                                          fill="currentColor"></path>
+                                    </svg>
+                                    {{ settings.discount_code_text }}</span>
+                                {%- endif -%}
+                              {% endif %}
+                            </li>
 
-                          <li class="cart_subtotal js-cart_subtotal">
-                            <span class="right">
-                              <span class="money">
-                                {{ cart.total_price | money_without_trailing_zeros }}
-                              </span>
-                            </span>
+                            <li>
+                              {% if settings.display_special_instructions and settings.go_to_checkout %}
+                                <textarea
+                                  id="note"
+                                  name="note"
+                                  rows="2"
+                                  placeholder="{{ 'layout.general.cart_note' | t }}">{{ cart.note }}</textarea>
+                              {% endif %}
 
-                            <span>{{ 'layout.general.subtotal' | t }}</span>
-                          </li>
+                              {% if settings.display_tos_checkbox and settings.go_to_checkout %}
+                                <p class="tos">
+                                  <input
+                                    type="checkbox"
+                                    class="tos_agree"
+                                    id="sliding_agree"
+                                    required />
 
-                          <li class="cart_savings sale js-cart_savings">
-                            {% if settings.display_savings and total_saving > 0 or settings.display_savings and cart.total_discount > 0 %}
-                              <span class="right">
-                                -<span class="money">
-                                  {% assign total_savings = total_saving | plus: cart.total_discount %}
-                                  {{ total_savings | money_without_trailing_zeros }}
-                                </span>
-                              </span>
+                                  <label class="tos_label">
+                                    {{ 'cart.general.agree_to_terms_html' | t }}
+                                  </label>
 
-                              <span>{{ 'layout.general.savings' | t }}
-                                {%- if settings.show_sales_label -%}
-                                  <span id="cart-sale-tag" style="color: #fff !important; background-color: #000 !important;">
-                                    <svg
-                                      focusable="false"
-                                      width="10"
-                                      height="10"
-                                      class="icon icon--discount-badge"
-                                      viewBox="0 0 10 10"
-                                      style="margin-right: 6px;">
-                                      <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M9.93734 1.1171C9.97075 0.521457 9.47854 0.0292498 8.88291 0.0626607L5.39562 0.258271C5.15016 0.27204 4.91836 0.375751 4.74452 0.549595L0.707107 4.58701C0.316582 4.97753 0.316583 5.6107 0.707107 6.00122L3.99878 9.29289C4.3893 9.68342 5.02247 9.68342 5.41299 9.29289L9.4504 5.25548C9.62425 5.08163 9.72796 4.84984 9.74173 4.60438L9.93734 1.1171ZM7.05882 2.94118C7.3837 3.26605 7.91042 3.26605 8.23529 2.94118C8.56017 2.6163 8.56017 2.08958 8.23529 1.76471C7.91042 1.43983 7.3837 1.43983 7.05882 1.76471C6.73395 2.08958 6.73395 2.6163 7.05882 2.94118Z"
-                                        fill="currentColor"></path>
-                                  </svg>
-                                  {{ settings.discount_code_text }}</span>
-                              {%- endif -%}
-                            {% endif %}
-                          </li>
+                                  {% if settings.tos_page != blank %}
+                                    <a
+                                      href="{{ settings.tos_page }}"
+                                      target="_blank"
+                                      class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                                  {% endif %}
+                                </p>
+                              {% endif %}
 
-                          <li>
-                            {% if settings.display_special_instructions and settings.go_to_checkout %}
-                              <textarea
-                                id="note"
-                                name="note"
-                                rows="2"
-                                placeholder="{{ 'layout.general.cart_note' | t }}">{{ cart.note }}</textarea>
-                            {% endif %}
+                              {% if settings.cart_message != blank %}
+                                <div class="cart_text">
+                                  {{ settings.cart_message }}
+                                </div>
+                              {% endif %}
 
-                            {% if settings.display_tos_checkbox and settings.go_to_checkout %}
-                              <p class="tos">
-                                <input
-                                  type="checkbox"
-                                  class="tos_agree"
-                                  id="sliding_agree"
-                                  required />
+                              <a href="/checkout" class="global-button global-button--primary add_to_cart">CHECKOUT</a>
 
-                                <label class="tos_label">
-                                  {{ 'cart.general.agree_to_terms_html' | t }}
-                                </label>
-
-                                {% if settings.tos_page != blank %}
-                                  <a
-                                    href="{{ settings.tos_page }}"
-                                    target="_blank"
-                                    class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
-                                {% endif %}
-                              </p>
-                            {% endif %}
-
-                            {% if settings.cart_message != blank %}
-                              <div class="cart_text">
-                                {{ settings.cart_message }}
-                              </div>
-                            {% endif %}
-
-                            <a href="/checkout" class="global-button global-button--primary add_to_cart">CHECKOUT</a>
-
-                          </li>
-                          <li class="cart-bottom-note">
-                            <span>Items in your cart will remain for 1 hour but they are not reserved</span>
-                            <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/7/assets/card-logo.jpeg">
-                          </li>
-                        </ul>
+                            </li>
+                            <li class="cart-bottom-note">
+                              <span>Items in your cart will remain for 1 hour but they are not reserved</span>
+                              <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/7/assets/card-logo.jpeg">
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- sticky cart bottom -->
                         <!-- </form> -->
                       </div>
                     {% endunless %}
