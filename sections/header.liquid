@@ -482,6 +482,9 @@ var x = setInterval(function() {
 							{% if item.product.type=='Card Holders' %}
 							<h4 class="product_name">The Personalized Card Holder</h4>
 							{% endif %}
+              {% if item.product.type=='Strap' %}
+							<h4 class="product_name">Strap</h4>
+							{% endif %}
                             <a href="{{ item.url }}" >
                               {{ item.product.title }}
 

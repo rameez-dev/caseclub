@@ -643,6 +643,9 @@ $(() => {
 		if ( item.product_type=='Card Holders' ) {
 			cartItemsHTML += `<h4 class="product_name">The Personalized Card Holder</h4>`;
 		}
+    if ( item.product_type=='Strap' ) {
+			cartItemsHTML += `<h4 class="product_name">Strap</h4>`;
+		}
 		
 		cartItemsHTML += `<a href="${item.url}">${item.title}`;	
         if (item.properties) {
