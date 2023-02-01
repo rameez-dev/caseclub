@@ -752,7 +752,7 @@ $(() => {
             jQuery('.mix-match-wrap').show();
             var ph_pro = caw_pro = cah_pro = 0;
             $.each( data.products, function( key, value ) {
-              if( value.product_type != curr_pro && value.product_type=='Phone Cases' || value.product_type == 'Strap' ){
+              if( value.product_type != curr_pro && value.product_type=='Phone Cases'  ){
                 $.each( value.variants, function( key2, value2 ) {
                   if( value2.title == curr_pro_title && ph_pro==0 ){
                     match_html += '<li class="product phone-cases"><div class="product-slide-inner">';
@@ -774,7 +774,7 @@ $(() => {
                   }
                 });
               }
-              if( value.product_type != curr_pro && value.product_type=='Card Wallets' || value.product_type == 'Strap' ){
+              if( value.product_type != curr_pro && value.product_type=='Card Wallets'  ){
                 $.each( value.variants, function( key2, value2 ) {
                   if( value2.title == curr_pro_title && caw_pro==0 ){
                     match_html += '<li class="product card-wallets"><div class="product-slide-inner">';
@@ -796,7 +796,7 @@ $(() => {
                   }
                 });
               }
-              if( value.product_type != curr_pro && value.product_type=='Card Holders' || value.product_type == 'Strap' ){
+              if( value.product_type != curr_pro && value.product_type=='Card Holders'  ){
                 $.each( value.variants, function( key2, value2 ) {
                   if( value2.title == curr_pro_title && cah_pro==0 ){
                     match_html += '<li class="product card-holders"><div class="product-slide-inner">';
