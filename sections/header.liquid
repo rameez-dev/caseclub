@@ -710,11 +710,9 @@ var x = setInterval(function() {
 {% if product.type == 'Strap' %}
 <li class="product strap">
 <div class="product-slide-inner">     <a href="{{ product.url | within: collection }}">
-       <div class="img-wrap"><img src="{{ product.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{curr_pro_intial}}</span>
-         <div class="tc-logo">
-              <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-              <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-            </div></div>
+      <div class="img-wrap">
+        <img src="{{ product.featured_media | product_img_url: '400x' }}">
+      </div>
       
     </a>
      <div class="mix-pro-price" >
