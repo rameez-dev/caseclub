@@ -452,6 +452,7 @@ var x = setInterval(function() {
                               <img src="{{ item.image | img_url: '320x' }}" alt="{{ item.title | escape }}" class="lazyload" />
                             </div>
                           {% endif %}
+                          {% if  item.product.type != 'Strap' %}
                           <span class="initials
                      {% for p in item.properties %}
                         {% unless p.last == blank %}
@@ -467,6 +468,7 @@ var x = setInterval(function() {
                     <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
                     <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
                   </div>
+                    {% endif %}
                         </a>
 
                         <div class="mini-cart__item-content">
