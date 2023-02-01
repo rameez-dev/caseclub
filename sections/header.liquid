@@ -564,8 +564,8 @@ var x = setInterval(function() {
                     {% endfor %}
                   </ul>
 
-                  <div class="mix-match-wrap">
-  <div class="add-match-item"><a href="javascript:void(0);" class="active">Mix &amp; Match</a></div>
+                  <div class="mix-match-wrap" {% if cart.item_count == 0 %}style='display: none'{% endif %}>
+  <div class="add-match-item"><a href="javascript:void(0);" class="active" >Mix &amp; Match</a></div>
                      
 {% assign cho_cnt = 0 %}
 {% assign cw_cnt = 0 %}
@@ -702,6 +702,45 @@ var x = setInterval(function() {
      
   {% endif %}
   {% endif %}
+{% endfor %}
+
+{% comment %} straps {% endcomment %}
+
+{% for product in collections.all.products %}
+{% if product.type == 'Strap' %}
+<li class="product strap">
+<div class="product-slide-inner">     <a href="{{ product.url | within: collection }}">
+       <div class="img-wrap"><img src="{{ product.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{curr_pro_intial}}</span>
+         <div class="tc-logo">
+              <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+              <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+            </div></div>
+      
+    </a>
+     <div class="mix-pro-price" >
+     <div><h4>{{product.type}}</h4>
+     <p>{{product.title}}</p></div>
+     
+      {%- if settings.show_sales_label -%}
+      {% assign perc = 100 | minus: settings.sale_amount %}
+      {% assign perc = perc | divided_by: 100.0 %}
+      {% assign cmp_price = product.price_min | times: perc %}
+      <h5><span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+      <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+      </h5>
+      {%- else -%}
+      <h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
+      {% endif %} 
+
+     <form method="post" action="/cart/add">
+    <input type="hidden" name="properties[Letters]" value="{{curr_pro_intial}}">
+    <input type="hidden" name="properties[Letter Color]" value="{{curr_pro_color}}">
+    <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+    <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+    <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+  </form></div>
+   </div></li>
+{% endif %}
 {% endfor %}
   </ul>
   </div>

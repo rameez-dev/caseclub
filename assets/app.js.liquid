@@ -569,7 +569,7 @@ $(() => {
     jQuery('.gift-bar span').css('width',giftcnt+'%');
     
      setTimeout(function(){
-      if( jQuery('ul.cart_items.js-cart_items').eq(0).find('li.mini-cart__item').length>2 ){
+      if( jQuery('ul.cart_items.js-cart_items').eq(0).find('li.mini-cart__item').length>3 ){
         jQuery('.mix-match-products').hide();
       }else{
         jQuery('.mix-match-products').show();
@@ -748,9 +748,11 @@ $(() => {
           cache: false,
           url: `/products.json`,
           success(data) {
+            console.log('testing data after ajax call....', curr_pro);
+            jQuery('.mix-match-wrap').show();
             var ph_pro = caw_pro = cah_pro = 0;
             $.each( data.products, function( key, value ) {
-              if( value.product_type != curr_pro && value.product_type=='Phone Cases' ){
+              if( value.product_type != curr_pro && value.product_type=='Phone Cases' || value.product_type == 'Strap' ){
                 $.each( value.variants, function( key2, value2 ) {
                   if( value2.title == curr_pro_title && ph_pro==0 ){
                     match_html += '<li class="product phone-cases"><div class="product-slide-inner">';
@@ -772,7 +774,7 @@ $(() => {
                   }
                 });
               }
-              if( value.product_type != curr_pro && value.product_type=='Card Wallets' ){
+              if( value.product_type != curr_pro && value.product_type=='Card Wallets' || value.product_type == 'Strap' ){
                 $.each( value.variants, function( key2, value2 ) {
                   if( value2.title == curr_pro_title && caw_pro==0 ){
                     match_html += '<li class="product card-wallets"><div class="product-slide-inner">';
@@ -794,7 +796,7 @@ $(() => {
                   }
                 });
               }
-              if( value.product_type != curr_pro && value.product_type=='Card Holders' ){
+              if( value.product_type != curr_pro && value.product_type=='Card Holders' || value.product_type == 'Strap' ){
                 $.each( value.variants, function( key2, value2 ) {
                   if( value2.title == curr_pro_title && cah_pro==0 ){
                     match_html += '<li class="product card-holders"><div class="product-slide-inner">';
