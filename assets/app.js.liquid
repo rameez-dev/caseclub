@@ -625,7 +625,9 @@ $(() => {
         const lineID = index + 1;
 
         cartItemsHTML += `<li class="mini-cart__item ${item.product_type.replace(' ', '-').toLowerCase()}" data-cart-item data-line-id="${lineID}" data-variant-id="${item.id}">`
-        + `<a href="${item.url}" class="mini-cart__item-a"><span class="initials ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
+        + `<a href="${item.url}" class="mini-cart__item-a">` ;
+        if (item.product_type!='Strap')
+        cartItemsHTML += `<span class="initials ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
         if (item.image) {
           cartItemsHTML += `${'<div class="cart_image">'
               + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />`
