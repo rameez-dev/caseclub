@@ -570,9 +570,9 @@ $(() => {
     
      setTimeout(function(){
       if( jQuery('ul.cart_items.js-cart_items').eq(0).find('li.mini-cart__item').length>3 ){
-        jQuery('.mix-match-products').hide();
+        jQuery('.mix-match-wrap').hide();
       }else{
-        jQuery('.mix-match-products').show();
+        jQuery('.mix-match-wrap').show();
       }
      },100);
     
@@ -650,7 +650,7 @@ $(() => {
 		}
 		
 		cartItemsHTML += `<a href="${item.url}">${item.title}`;	
-        if (item.properties) {
+        if (item.properties && item.product_type!='Strap') {
           $.each(item.properties, (title, value) => {
             if (value) {
               cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
