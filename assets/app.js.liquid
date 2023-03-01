@@ -603,12 +603,14 @@ $(() => {
       let curr_pro_intial = '';
       let curr_pro_color = '';
       let curr_pro_title = '';
+      let curr_pro_id = '';
       
       var curr_symbol = Shopify.currency.active;
 
       $.each(cart.items, (index, item) => {
         if( curr_pro=='' ){
           curr_pro_title = item.variant_title;
+          curr_pro_id = item.product_id;
           curr_pro = item.product_type;
           $.each( item.properties, function( key, value ) {
             if( key=='Letters' ) curr_pro_intial = value; 
@@ -756,7 +758,39 @@ $(() => {
             console.log('testing data after ajax call....', curr_pro);
             jQuery('.mix-match-wrap').show();
             var ph_pro = caw_pro = cah_pro = 0;
-            if ( curr_pro != 'Strap'){
+              
+            if ( curr_pro != 'Strap'){ 
+              //discounted product
+              $.each( data.products, function( key, value ) {
+                if( value.product_type == 'Phone Cases' && value.id == curr_pro_id) {
+                  match_html += '<li class="product phone-cases"><div class="product-slide-inner">';
+                  match_html += '<a href="/products/'+value.handle+'">';
+                  match_html += '<div class="img-wrap"><img class="cart-color-swatch-product-image" src="'+value.variants[0].featured_image.src+'"><span class="initials '+curr_pro_color+'">'+curr_pro_intial+'</span>';
+                  match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
+                  match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
+                  match_html += '</div></a>';
+                  match_html += '<div class="mix-pro-price" ><div><div><h4>'+value.product_type+'</h4><p>'+value.title+'</p><p>BUY 2, SAVE 15%</p></div>';
+                  match_html += '<div class="cart-color-swatch-option">';
+                  $.each( value.variants, function( key2, value2 ) {
+                    match_html += '<div class="color-swatch cart-color-swatch '; 
+                     if ( value2.title == value.variants[0].title)
+                      match_html += 'active';
+                    match_html += '" vid="'+ value2.id +'" title="'+ value2.title +'" img="'+ value2.featured_image.src +'" >';
+                    match_html += '<span style="background-image:url('+ value2.featured_image.src + ')"></span></div>';
+                  });
+                  match_html += '</div></div>';
+                  match_html += '<h5>'+'<span class="compare-at-price">'+window.Shopify.formatMoney(value.variants[0].price, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+
+                      '<br><span>'+window.Shopify.formatMoney(value.variants[0].price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
+                  match_html += '<form method="post" action="/cart/add">';
+                  match_html += '<input type="hidden" name="properties[Letters]" value="'+curr_pro_intial+'">';
+                  match_html += '<input type="hidden" name="properties[Letter Color]" value="'+curr_pro_color+'">';
+                  match_html += '<input class="variant_id" type="hidden" name="id" value="'+value.variants[0].id+'" />';
+                  match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" /></form>';
+                  match_html += '</div></div></li>';
+
+                }
+              });
+              //discounted product
               $.each( data.products, function( key, value ) {
                 if( value.product_type != curr_pro && value.product_type=='Phone Cases'  ){
                   $.each( value.variants, function( key2, value2 ) {
@@ -826,9 +860,9 @@ $(() => {
                 }
               
               });
+              //strap
               $.each( data.products, function( key, value ) {
                 if( value.product_type == 'Strap') {
-                  console.log('feautured image....', value);
                   match_html += '<li class="product strap"><div class="product-slide-inner">';
                   match_html += '<a href="/products/'+value.handle+'">';
                   match_html += '<div class="img-wrap"><img src="'+value.variants[0].featured_image.src+'">';

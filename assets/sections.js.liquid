@@ -2818,6 +2818,24 @@ jQuery(document).on('click', '.color-swatch-option .color-swatch', function(){
   },500);
 });
 
+//cart color swatches on change
+jQuery(document).on('click', '.cart-color-swatch-option .cart-color-swatch', function(){
+  var color = jQuery(this).attr('title');
+  var img_url = jQuery(this).attr('img');
+  var cart_variant_id = jQuery(this).attr('vid');
+  jQuery('.cart-color-swatch').removeClass('active');
+  jQuery(this).addClass('active');
+  jQuery('.cart-color-swatch-product-image').attr('src', img_url);
+  jQuery('.variant_id').val(cart_variant_id);
+  
+  // setTimeout(function(){
+  // var html ='<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
+  // jQuery('#quickshop .flickity-slider .gallery-cell.is-selected').append('<span class="initials"></span>'+html);
+  // jQuery('.product .flickity-slider .gallery-cell.is-selected').append('<span class="initials"></span>'+html);
+  // jQuery('.tcc-initial-input').keyup();
+  // },500);
+});
+
 jQuery(document).on('click', '.store-change-color', function(){
   var src = jQuery(this).attr('data-href');
   jQuery(this).closest('.store-color-option').find('.store-change-color').removeClass('active');
