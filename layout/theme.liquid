@@ -2,6 +2,18 @@
 <!DOCTYPE html>
 <html lang="{{ shop.locale }}">
   <head>
+<link rel='preconnect dns-prefetch' href='https://triplewhale-pixel.web.app/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+defer="defer"
+></script>
+ 
+<script>
+/* >> TriplePixel :: start*/
+~function(W,H,A,L,E,_,B,N){function O(U,T,H,R){void 0===R&&(R=!1),H=new XMLHttpRequest,H.open("GET",U,!0),H.send(null),H.onreadystatechange=function(){4===H.readyState&&200===H.status?(R=H.responseText,U.includes(".txt")?eval(R):N[B]=R):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(U,T-1))}}if(N=window,!N[H+"sn"]){N[H+"sn"]=1;try{A.setItem(H,1+(0|A.getItem(H)||0)),(E=JSON.parse(A.getItem(H+"U")||"[]")).push(location.href),A.setItem(H+"U",JSON.stringify(E))}catch(e){}A.getItem('"!nC`')||(A=N,A[H]||(L=function(){return Date.now().toString(36)+"_"+Math.random().toString(36)},E=A[H]=function(t,e){return W=L(),(E._q=E._q||[]).push([W,t,e]),W},E.ch=W,B="configSecurityConfModel",N[B]=1,O("//conf.config-security.com/model",0),O("//triplewhale-pixel.web.app/triplefw.txt?",5)))}}("","TriplePixel",localStorage);
+/* << TriplePixel :: end*/
+</script>
   <script async data-src="https://www.googleoptimize.com/optimize.js?id=OPT-NF4LGHQ"></script>
 	<!-- Added by AVADA SEO Suite -->
 	{% include 'avada-seo' %}
@@ -91,9 +103,9 @@
       <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer></script>
     {% endif %}{%capture apps%}
 
-    <script src="{{ 'jquery.min.js' | asset_url }}" defer></script> 
-	<script src="{{ 'slick.js' | asset_url }}" defer></script>   {{ 'styles.css' | asset_url | stylesheet_tag }} 
-    <script src="{{ 'jquery-simple-mobilemenu.min.js' | asset_url }}" defer></script>
+	<script src="{{ 'slick.js' | asset_url }}" ></script>   
+      {{ 'styles.css' | asset_url | stylesheet_tag }} 
+    <script src="{{ 'jquery-simple-mobilemenu.min.js' | asset_url }}" ></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
   	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/jquery-simple-mobilemenu.css"/>
@@ -146,10 +158,10 @@
       {% render 'js-variables' %}
     </script>
 
-    <script src="{{ 'vendors.js' | asset_url }}" defer></script>
-    <script src="{{ 'sections.js' | asset_url }}" defer></script>
-    <script src="{{ 'utilities.js' | asset_url }}" defer></script>
-    <script src="{{ 'app.js' | asset_url }}" defer></script>
+    <script src="{{ 'vendors.js' | asset_url }}" ></script>
+    <script src="{{ 'sections.js' | asset_url }}" ></script>
+    <script src="{{ 'utilities.js' | asset_url }}" ></script>
+    <script src="{{ 'app.js' | asset_url }}" ></script>
 
     {% if settings.disqus_enabled %}
       {% if template contains "blog" or template contains "article" or template contains "index" %}
@@ -475,6 +487,8 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
     };
 </script>
 <script src="https://t.cometlytrack.com?uid=d7f426-6990-1c5dfa-s"></script>
+
+  
 </body>
 </html>
 {% endcapture %}

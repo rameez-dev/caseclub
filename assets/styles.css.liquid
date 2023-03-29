@@ -17728,6 +17728,22 @@ footer .social_icons a:hover {
 */
 /* #Custom Styles
 ================================================== */
+
+ @font-face {
+      font-family: 'Arbesco DT';
+      src: url({{ 'ArbescoDT-Book.ttf' | asset_url }}) format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap; 
+    }
+
+    @font-face {
+      font-family: 'fontello';
+      src: url({{ 'fontello.ttf' | asset_url }}) format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap; 
+    }
   
  /* #Custom Homepage
 ================================================== */ 
@@ -18763,7 +18779,10 @@ h1.product_name {
     /* #Custom Styles side cart
 ================================================== */
 .mix-match-products {
-    border-top: 1px solid #ddd;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 5px 1px #dddddd;
 }
 .cart-head-top {
     text-align: center;
@@ -18819,6 +18838,45 @@ span.cart-head-text {
   list-style: none;
   clear: both;
 }
+
+.add-match-item {
+      display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-match-item .active {
+      text-align: center;
+    padding: 0px 4px 10px;
+  position: relative;
+  display: inline-block;
+  cursor:pointer;
+}
+
+.add-match-item .active:before {
+  content: "-";
+  display: inline-block;
+  font-size: 1.3rem;
+  line-height: 1;
+  /* margin-bottom: 0.15rem; */
+  margin-left: 1rem;
+  position: absolute;
+  top: 0;
+  right: -8px;
+  bottom: 0;
+  margin: auto;
+  height: 27px;
+}
+
+.add-match-item .active.minimize:before{
+  content: "+";
+  position: absolute;
+  top: -3px;
+  right: -15px;
+  bottom: 0;
+  margin: auto;
+  height: 27px;
+}
+
 .add-match-item a {
     color: #000 !important;
     font-size: 14px;
@@ -18828,10 +18886,11 @@ span.cart-head-text {
     display: block;
   text-transform: uppercase;
 }
+
 .mix-match-wrap {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin: 20px 20px 0px 20px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin: 20px 20px 20px 20px;
 }
   .mix-match-products span.initials {
     display: block;
@@ -18847,7 +18906,7 @@ span.cart-head-text {
 }
 .mix-match-products ul li img {
     width: 100%;
-    padding: 5px;
+    padding:0px;
 }
   .mix-match-products ul li h4 {
     font-size: 14px;
@@ -18855,9 +18914,11 @@ span.cart-head-text {
     text-transform: inherit;
     color: #000;
     padding: 0;
-    margin: 0;
+    margin: 0 0px 3px;
     font-family: lato, sans-serif;
     font-weight: 700;
+    line-height:16px;
+    
 }
 .mix-match-products ul li h5 {
     font-size: 14px;
@@ -18867,8 +18928,24 @@ span.cart-head-text {
     padding: 0;
     margin: 0;
   text-align: right;
-  padding: 5px;
+  padding-bottom: 5px;
   font-family: lato, sans-serif;
+}
+
+.mix-match-products .slick-dots li button{
+    width: 18px;
+    height: 18px;
+    padding: 3px;
+}
+
+.slick-dots li button:before{
+    width: 15px;
+    height: 15px;
+}
+
+.mix-match-products .mix-pro-price span.compare-at-price{
+    margin-top:0px;
+    display:block;
 }
   div.cart_content form input.btn {
     background-color: #000;
@@ -18886,7 +18963,7 @@ div.cart_content form {
 }
   .mix-match-products .card-holders span.initials {
     font-size: 8px;
-    top: 58px;
+    top: 51px;
 }
 .mix-match-products .tc-logo , .mini-cart__item .tc-logo>span {
     display: none !important;
@@ -19264,8 +19341,9 @@ span.free-shipping-txt, .gift-bar > span {
 span.initials {
     color: #bf9b30;
     text-shadow: 0 1px 0 rgba(0,0,0,0)!important;
-    background: -webkit-linear-gradient(transparent,transparent),url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/gold.jpg) repeat;
-    font-family: "Arbesco-DT",serif;
+    background: #d9c277;
+    /* background: -webkit-linear-gradient(transparent,transparent),url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/gold.jpg) repeat; */
+    font-family: 'Arbesco DT';
     text-transform: uppercase;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -19285,7 +19363,11 @@ span.initials {
     display:none;
   	line-height: 1;
 }
-  .initials.card-holders {
+
+span.five_plus_characters {
+  font-size: 38px;
+}
+.initials.card-holders {
     font-size: 54px;
     right: 50%;
     transform: translateX(50%);
@@ -19323,7 +19405,7 @@ span.initials {
     transform: inherit;
 }
 .initials.silver {
-    background: #fff;
+    background: #f4f4f4;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
@@ -19785,7 +19867,7 @@ span.initials {
     border: 1px solid #ddd;
 }
 .mix-match-wrap ul {
-    padding: 5px 20px 15px 0px;
+    padding: 20px 25px 20px 5px;
     margin-bottom: 0 !important;
 }
 a.mini-cart__item-a {
@@ -19949,6 +20031,9 @@ a.mini-cart__item-a {
     font-size: 30px;
     top: 35%;
 }
+    span.five_plus_characters {
+      font-size: 26px;
+}
     .card-wallets+.tc-logo>span {
     bottom: 80px;
     height: 15px;
@@ -20016,9 +20101,12 @@ a.mini-cart__item-a {
   .product .gallery-wrap .image__container , .product .pwzrswiper-container {
     max-width: 380px !important;
 }
-     span.initials {
+    span.initials {
     font-size: 34px;
     top: 36%;
+}
+    span.five_plus_characters {
+    font-size: 30px;
 }
    .phone-cases+.tc-logo>span {
     height: 16px;
@@ -20117,6 +20205,9 @@ a.mini-cart__item-a {
     font-size: 24px;
     top: 35%;
 }
+    span.five_plus_characters {
+      font-size: 20px;
+    }
      .phone-cases+.tc-logo>span {
     height: 12px;
     bottom: 12px;
@@ -20475,8 +20566,8 @@ ul.cart-foot {
 }
 .product-slide-inner {
     display: grid;
-    grid-template-columns: 100px 1fr;
-    align-items: center;
+    grid-template-columns: 90px 1fr;
+    align-items: start;
     margin: 0;
 }
 
@@ -20485,14 +20576,15 @@ ul.cart-foot {
     grid-template-columns: 1fr 60px;
     column-gap: 10px;
       text-align: left;
-      margin-left: 20px;
+      margin-left: 5px;
+      align-items: start;
 }
 .mix-pro-price form {
     grid-column: 2;
 }
 .mix-pro-price div {
     grid-row: 1 / 3;
-    align-self: center;
+    align-self: flex-start;
 }
 div.cart_content .mix-match-wrap form input.btn {
     background-color: #fff;
@@ -20524,7 +20616,7 @@ div.cart_content .mix-match-wrap form {
     bottom: 8px;
 }
 .mix-match-wrap .slick-dots li button:before {
-    font-size: 10px;
+    font-size: 14px;
 }
 .mix-match-wrap .slick-dots li {
     margin: 0;
