@@ -652,8 +652,10 @@ $(() => {
 		cartItemsHTML += `<a href="${item.url}">${item.title}`;	
         if (item.properties && item.product_type!='Strap') {
           $.each(item.properties, (title, value) => {
-            if (value) {
-              cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
+            if ( title != 'Image') {
+              if (value) {
+                cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
+              }
             }
           });
         }
@@ -740,10 +742,10 @@ $(() => {
         cartItemsHTML += '</div></div></div>';
         cartItemsHTML += `<a href="/cart/change?line=${lineID}&amp;quantity=0" class="js-cart-remove-btn cart__remove-btn" data-line-id="${lineID}" data-remove-item="mini-cart"><span class="remove-icon"></span></a>`;
       });
+         
       
       //console.log({curr_pro,curr_pro_intial,curr_pro_color,curr_pro_title});
       var per_dis = 100 -  window.Shopify.theme_settings.sale_amount;
-
       
       var procolor = curr_pro_color;
       var match_html = '';
@@ -942,9 +944,14 @@ $(() => {
   });
 
   if (window.Shopify.theme_settings.cart_action === 'ajax') {
-    $(document).on('click', '.ajax-submit', function (e) {
+    $(document).on('click', '.ajax-submit', async function (e) {
       e.preventDefault();
+      const custom_image = await takeScreenshot();
+      console.log ('custom image ...', custom_image)
       const $addToCartForm = $(this).closest('form');
+      const formData = $(this).closest('form');
+      formData.append('<input type="hidden" name="properties[Image]" value= ' + custom_image + '>');
+      console.log('form data ..', formData.serialize());
       const $addToCartBtn = $addToCartForm.find('.add_to_cart');
 
       // Refresh page on quick shop add to cart if on cart page
@@ -1489,3 +1496,44 @@ $(document).ready(function(){
       },1000);
     }
 });
+
+//s3 upload ....
+function takeScreenshot() {
+  const response = new Promise (function (resolve, reject) {
+  var bucketName = "caseclubhtmlcanvas";
+  var bucketRegion = "us-east-1";
+  var IdentityPoolId = "us-east-1:5d9945a8-60d4-4bf4-bf59-64b79445bb80";
+  var image_url = "";
+
+  AWS.config.update({
+    region: bucketRegion,
+    credentials: new AWS.CognitoIdentityCredentials({ IdentityPoolId: IdentityPoolId })
+  });
+  var s3 = new AWS.S3({
+    apiVersion: '2012-10-17',
+    params: {Bucket: bucketName}
+  });
+  html2canvas(document.querySelector("#pwzrswiper-slide-0"), {allowTaint: true, useCORS: true}).then(canvas => {
+    
+    canvas.toBlob((blob) => {
+      if (blob != null) {
+      var params = {
+          Key: Date.now() + "." + blob.type.split("/")[1],
+          Body: blob,
+          ContentType: blob.type,
+          ACL: 'public-read'
+      }
+      s3.upload(params, function(err, data) {
+            if(err) {
+              reject(err);
+            } else {
+              image_url = data.Location;
+              resolve(image_url);
+            }
+        });
+      }
+    });
+  });
+});
+    return response;
+}
