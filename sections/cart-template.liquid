@@ -84,7 +84,7 @@
                   {% if item.properties %}
                     <p>
                       {% for p in item.properties %}
-                        {% unless p.last == blank %}
+                        {% unless p.last == blank or p.first == 'Image' %}
                           {% if p.last contains '/uploads/' %}
                             <div>
                               {{ p.first }}: <a class="lightbox" href="{{ p.last }}">{{ 'cart.general.uploaded_file' | t }}</a>
