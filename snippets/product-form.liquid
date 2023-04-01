@@ -168,7 +168,23 @@
       </div>
     {% endif %}
   {% endif %}
+
+  <label class="form-label"><span class="label-badge">{{count}}</span>Select your design</label>
   
+  <div class="select"> 
+    <label>Design</label> 
+    <div style="display: block;">
+      <div class="selector-wrapper"> 
+        <select id="design" name="design" > 
+            <option value="null" ></option>
+          {% for design in product.metafields.custom.design.value %}  
+            <option value="{{ design | img_url }}" >Design {{forloop.index0 | plus: 1 }}</option> 
+          {% endfor %}
+        </select>
+      </div>
+    </div> 
+  </div>
+    
   {% if product.type!="Simple Product" and product.type!="Gift Cards" and template.suffix != "customily-products" %}
      {% if product.type == 'Phone Cases' %}
       <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your case</label>

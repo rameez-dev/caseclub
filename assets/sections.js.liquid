@@ -2551,7 +2551,7 @@ function inti_call(){
       //if( pagenm == "/collections/all" ){
       jQuery('#quickshop .flickity-slider .gallery-cell.is-selected').append('<span class="initials"></span>'+html);
       jQuery('.product .flickity-slider .gallery-cell.is-selected').append('<span class="initials"></span>'+html); 
-      jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span>'+html); 
+      jQuery('.product #pwzrswiper-slide-0').append('<div id="snap-shot"><span class="initials"></span></div>'+html); 
       
       jQuery('.matching-products ul li.product a .img-wrap').append(html);
       if( getCookie("tccinitials")!='' ){
@@ -2635,7 +2635,7 @@ jQuery(document).ready(function(){
       setTimeout(function(){
         if( jQuery('.product #pwzrswiper-slide-0 .initials').length==0 ){
       		var html ='<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
-      		jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span>'+html); 
+      		jQuery('.product #pwzrswiper-slide-0').append('<div id="snap-shot"><span class="initials"></div></span>'+html); 
             initial_fun();
         }
       },500);
@@ -2816,6 +2816,19 @@ jQuery(document).on('click', '.color-swatch-option .color-swatch', function(){
   jQuery('.product .flickity-slider .gallery-cell.is-selected').append('<span class="initials"></span>'+html);
   jQuery('.tcc-initial-input').keyup();
   },500);
+});
+
+//on design change
+$('#design').on('change' , function (e) {
+  var val = $(e.target).val();
+  // var text = $(e.target).find("option:selected").text(); //only time the find is required
+  // var name = $(e.target).attr('name');
+  $('.product #pwzrswiper-slide-0 #snap-shot #pwzrswiper-img-design').remove();
+  if (val != 'null'){
+      $('.product #pwzrswiper-slide-0 #snap-shot').append('<img id="pwzrswiper-img-design" class="pwzrswiper-lazy pwzrjss112 pwzrswiper-lazy-loaded" src="' + val + '" alt="iPhone 13 Pro Max (7136412795035)" data-zoom="' + val + '" style="max-width: 49%;position: relative;left: 161px;top: 74px;">');
+  }
+
+  console.log('design value', val)
 });
 
 jQuery(document).on('click', '.store-change-color', function(){

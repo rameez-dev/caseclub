@@ -652,7 +652,7 @@ $(() => {
 		cartItemsHTML += `<a href="${item.url}">${item.title}`;	
         if (item.properties && item.product_type!='Strap') {
           $.each(item.properties, (title, value) => {
-            if ( title != 'Image') {
+            if ( title != 'Design') {
               if (value) {
                 cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
               }
@@ -950,7 +950,7 @@ $(() => {
       console.log ('custom image ...', custom_image)
       const $addToCartForm = $(this).closest('form');
       const formData = $(this).closest('form');
-      formData.append('<input type="hidden" name="properties[Image]" value= ' + custom_image + '>');
+      formData.append('<input type="hidden" name="properties[Design]" value= ' + custom_image + '>');
       console.log('form data ..', formData.serialize());
       const $addToCartBtn = $addToCartForm.find('.add_to_cart');
 
@@ -1513,7 +1513,7 @@ function takeScreenshot() {
     apiVersion: '2012-10-17',
     params: {Bucket: bucketName}
   });
-  html2canvas(document.querySelector("#pwzrswiper-slide-0"), {allowTaint: true, useCORS: true}).then(canvas => {
+  html2canvas(document.querySelector("#snap-shot"), {backgroundColor:null, allowTaint: true, useCORS: true}).then(canvas => {
     
     canvas.toBlob((blob) => {
       if (blob != null) {
