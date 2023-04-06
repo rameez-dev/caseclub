@@ -1,3 +1,32 @@
+<style>
+  .text-color-swatches {
+    display: flex;
+  }
+  .text-color-input {
+    clip: rect(0,0,0,0);
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+  }  
+  .text-color-label {
+    border: 1px transparent solid;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+    overflow: hidden;
+    border-radius: 25px;
+    margin: 5px;
+    text-indent: 100%;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  input[ type= 'radio'].text-color-input:checked + label {
+    border-color: rgb(255, 100, 145);
+    border-width: 2px;
+}
+
+</style>
 {% if show_payment_button == false or product.selling_plan_groups.size > 0 %}
   {% assign show_payment_button = false %}
 {% else %}
@@ -168,25 +197,9 @@
       </div>
     {% endif %}
   {% endif %}
-
-  <label class="form-label"><span class="label-badge">{{count}}</span>Select your design</label>
-  
-  <div class="select"> 
-    <label>Design</label> 
-    <div style="display: block;">
-      <div class="selector-wrapper"> 
-        <select id="design" name="design" > 
-            <option value="null" ></option>
-          {% for design in product.metafields.custom.design.value %}  
-            <option value="{{ design | img_url }}" >Design {{forloop.index0 | plus: 1 }}</option> 
-          {% endfor %}
-        </select>
-      </div>
-    </div> 
-  </div>
     
   {% if product.type!="Simple Product" and product.type!="Gift Cards" and template.suffix != "customily-products" %}
-     {% if product.type == 'Phone Cases' %}
+     {% if product.type == 'Phone Cases' or product.type=="Personalized Phone Cases" %}
       <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your case</label>
     {% elsif product.type == 'Card Holders' %}
       <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card holder</label>
@@ -194,6 +207,34 @@
       <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card wallet</label>
     {% endif %}
       <div class="new-tcc-design">
+        {% if product.type=="Personalized Phone Cases" %}
+        <div class="tcc-initial-wrap">
+          <input type="text" name='properties[Letters]' class="tcc-initial-input" autocomplete="off" maxlength="8" placeholder="Type your text">
+          <span class="max-words">0/8</span>
+        </div>
+        <label>color 1</label>
+        <div class="text-color-swatches">
+          <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="#000000" id="color1-#000000" checked>
+          <label for="color1-#000000" class="text-color-label" style="background-color:#000000;"></label>
+          <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="#F8C1B8" id="color1-#F8C1B8">
+          <label for="color1-#F8C1B8" class="text-color-label" style="background-color:#F8C1B8;"></label>
+          <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="#9D2235" id="color1-#9D2235">
+          <label for="color1-#9D2235" class="text-color-label" style="background-color:#9D2235;"></label>
+          <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="#FFFFFF" id="color1-#FFFFFF">
+          <label for="color1-#FFFFFF" class="text-color-label" style="background-color:#FFFFFF;"></label>
+        </div>
+        <label>color 2</label>
+        <div class="text-color-swatches">
+          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#000000" id="color2-#000000" checked>
+          <label for="color2-#000000" class="text-color-label" style="background-color:#000000;"></label>
+          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#F8C1B8" id="color2-#F8C1B8">
+          <label for="color2-#F8C1B8" class="text-color-label" style="background-color:#F8C1B8;"></label>
+          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#9D2235" id="color2-#9D2235">
+          <label for="color2-#9D2235" class="text-color-label" style="background-color:#9D2235;"></label>
+          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#FFFFFF" id="color2-#FFFFFF">
+          <label for="color2-#FFFFFF" class="text-color-label" style="background-color:#FFFFFF;"></label>
+        </div>
+        {%  else %}
         <div class="tcc-left-section">
           <div class="tcc-initial-wrap">
             <input type="text" name='properties[Letters]' class="tcc-initial-input" autocomplete="off" maxlength="8" placeholder="Type your text">
@@ -212,10 +253,12 @@
               </label>
               <label class="container"> 
                 <input type="radio" name="properties[Letter Color]" class="tcc-color-select" value="silver"><span class="checkmark">
-                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Silver-color.png"></span> </label>
+                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Silver-color.png"></span> 
+              </label>
             </div>
           </div>
         </div>
+        {% endif %}
       </div> 
   {% endif %}
   

@@ -946,12 +946,16 @@ $(() => {
   if (window.Shopify.theme_settings.cart_action === 'ajax') {
     $(document).on('click', '.ajax-submit', async function (e) {
       e.preventDefault();
-      const custom_image = await takeScreenshot();
-      console.log ('custom image ...', custom_image)
+      
+      if(document.getElementById("snapshot") !== null) {
+        const custom_image = await takeScreenshot();
+        console.log ('custom image ...', custom_image);
+        const formData = $(this).closest('form');
+        formData.append('<input type="hidden" name="properties[Design]" value= ' + custom_image + '>');
+        console.log('form data ..', formData.serialize());
+      }
+      
       const $addToCartForm = $(this).closest('form');
-      const formData = $(this).closest('form');
-      formData.append('<input type="hidden" name="properties[Design]" value= ' + custom_image + '>');
-      console.log('form data ..', formData.serialize());
       const $addToCartBtn = $addToCartForm.find('.add_to_cart');
 
       // Refresh page on quick shop add to cart if on cart page
@@ -1513,7 +1517,9 @@ function takeScreenshot() {
     apiVersion: '2012-10-17',
     params: {Bucket: bucketName}
   });
-  html2canvas(document.querySelector("#snap-shot"), {backgroundColor:null, allowTaint: true, useCORS: true}).then(canvas => {
+  html2canvas(document.querySelector("#snapshot"), { onclone: function (clonedDoc) {
+    clonedDoc.getElementById('snapshot').style.display = 'block';
+    }, backgroundColor: null , allowTaint: true, useCORS: true}).then(canvas => {
     
     canvas.toBlob((blob) => {
       if (blob != null) {
