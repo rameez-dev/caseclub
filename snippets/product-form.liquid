@@ -25,6 +25,17 @@
     border-color: rgb(255, 100, 145);
     border-width: 2px;
 }
+.initials-color1-text {
+    text-shadow: 0 1px 0 rgba(0,0,0,0)!important;
+    font-family: "Arbesco-DT",serif;
+    text-transform: uppercase;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    position: absolute;
+    letter-spacing: 1px;
+    width: 100%;
+    z-index: 999;
+}
 
 </style>
 {% if show_payment_button == false or product.selling_plan_groups.size > 0 %}

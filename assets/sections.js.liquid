@@ -289,12 +289,9 @@ window.gallery = {
 
         $(wrapper).css('flex-basis', imgWidth * 200 / imgHeight);
         $(wrapper).css('flex-grow', imgWidth * 200 / imgHeight);
-        $(wrapper).find('i').css(
-          'padding-bottom',
-          `${
-            imgHeight / imgWidth * 100
-          }%`
-        );
+        $(wrapper).find('i').css('padding-bottom', `${
+          imgHeight / imgWidth * 100
+        }%`);
       });
     });
 
@@ -829,7 +826,9 @@ window.productPage = {
             $instanceGallery.fadeIn(100);
             $('.js-product-gallery').find('.is-selected a').focus();
           }, 1) 
+
           
+
         }
       }
     );
@@ -1175,17 +1174,17 @@ window.productPage = {
                       videoPlayer.loop = loopingEnabled;
                     });
                   }) 
-                  
 
-                  $productGallery.on('change.flickity', () => {
-                    $slides.each((index, slide) => {
+
+                    $productGallery.on('change.flickity', () => {
+                      $slides.each((index, slide) => {
 
 // Determine media type of current slide
-                      const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
+                        const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
 
-                      if ($(slide).hasClass('is-selected')) { // When active slide
-                        switch (mediaType) {
-                          case 'model':
+                        if ($(slide).hasClass('is-selected')) { // When active slide
+                          switch (mediaType) {
+                            case 'model':
 
 /* On slide change, if active slide contains 3d model
               * If on desktop, on hover, unbind flickity, after hover bind flickity
@@ -1194,55 +1193,56 @@ window.productPage = {
               * Pause all model slides when hidden
               */
 
-                            if (window.isScreenSizeLarge()) { // On mouseenter event, unbind flickity
-                              $(slide).on('mouseenter', () => {
+                              if (window.isScreenSizeLarge()) { // On mouseenter event, unbind flickity
+                                $(slide).on('mouseenter', () => {
+                                  $productGallery.flickity('unbindDrag');
+                                });
+
+// On mouseleave event, bind flickity
+                                $(slide).on('mouseleave', () => {
+                                  $productGallery.flickity('bindDrag');
+                                });
+                              }
+
+// Listen for model pause/play events
+                              $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_play', () => {
                                 $productGallery.flickity('unbindDrag');
                               });
 
-// On mouseleave event, bind flickity
-                              $(slide).on('mouseleave', () => {
+                              $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_pause', () => {
                                 $productGallery.flickity('bindDrag');
                               });
-                            }
-
-// Listen for model pause/play events
-                            $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_play', () => {
-                              $productGallery.flickity('unbindDrag');
-                            });
-
-                            $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_pause', () => {
+                              break;
+                            default:
                               $productGallery.flickity('bindDrag');
-                            });
-                            break;
-                          default:
-                            $productGallery.flickity('bindDrag');
-                            break;
-                        }
-                      } else { // When inactive slide
-                        switch (mediaType) {
-                          case 'external_video':
+                              break;
+                          }
+                        } else { // When inactive slide
+                          switch (mediaType) {
+                            case 'external_video':
 
 // Youtube video pausing
-                            $.each(window.videoPlayers, (_index, player) => {
-                              player.pause();
-                            });
-                            break;
-                          case 'video':
+                              $.each(window.videoPlayers, (_index, player) => {
+                                player.pause();
+                              });
+                              break;
+                            case 'video':
 
 // HTML5 video pausing
-                            $.each(window.videoPlayers, (_index, player) => {
-                              player.pause();
-                            });
-                            break;
-                          default:
-                            break;
+                              $.each(window.videoPlayers, (_index, player) => {
+                                player.pause();
+                              });
+                              break;
+                            default:
+                              break;
+                          }
                         }
-                      }
-                    });
+                      });
 
 // Restore 3d model icons
-                    window.productMedia.showModelIcon($productGallery);
-                  });
+                      window.productMedia.showModelIcon($productGallery);
+                    });
+                  
 
                   $productGallery.flickity({
                     wrapAround: true,
@@ -1789,10 +1789,12 @@ window.productPage = {
                       if (val < valMax) 
                         $input.val(val + 1);
                       
+
                     } else {
                       if (val > valMin) 
                         $input.val(val - 1);
                       
+
                       if ($this.parents('.cart_item').length) {
                         if (val - 1 === 0) {
                           $this.closest('.cart_item').addClass('animated fadeOutUp');
@@ -3174,6 +3176,7 @@ window.productPage = {
                     if (flg) 
                       return false;
                     
+
                     flg = 1;
                     const state = $(this).attr('aria-expanded') === 'false'
                       ? true
@@ -3302,7 +3305,7 @@ window.productPage = {
                     data_product = jQuery.parseJSON(data_product);
                     ptype = data_product.type.toLowerCase().replace(/ /g, "-");
                   }
-                  
+
                   var html = '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
 
 // if( pagenm == "/collections/all" ){
@@ -3381,12 +3384,12 @@ window.productPage = {
                 });
 
                 jQuery(document).on('change', "input[type=radio][name='properties[Letter Color1]']", function() {
-                  var color1 = $("input[type=radio][name='properties[Letter Color1]']:checked").val();
-                  console.log('here ...', color1);
-                  jQuery('#design-text').css('color', color1 )
+                  var tcccolor = $("input[type=radio][name='properties[Letter Color1]']:checked").val();
+                  console.log('here ...', tcccolor);
+                  jQuery('#design-text').css('color', tcccolor)
 
-// setCookie("color1", tcccolor, 30);
-// initial_fun();
+                  setCookie("tcccolor", tcccolor, 30);
+                  initial_fun();
                 });
 
                 jQuery('.add-cart-btn').on('click', function() {
@@ -3416,9 +3419,11 @@ window.productPage = {
                     if (cnm != '') 
                       jQuery(this).find('img').attr('src', cnm);
                     
+
                     if (cid != '') 
                       jQuery(this).closest('li').find('[name="id"]').val(cid);
                     
+
                   });
                   $('[data-thumb-color]').hide();
                   $('[data-thumb-color="' + color_nm + '"]').show();
@@ -3478,16 +3483,26 @@ window.productPage = {
               function initial_fun() {
                 var tccinitials = jQuery('.tcc-initial-input').val();
                 var tcccolor = jQuery('.tcc-color-select:checked').val();
-
-                if (tcccolor == 'gold') {
-                  jQuery('.tc-logo span').removeClass('active');
-                  jQuery('.tc-logo .gold-logo').addClass('active');
+                let flag = false;
+                console.log('tcc color ...', tcccolor);
+                if (tcccolor != undefined) {
+                  if (tcccolor == 'gold') {
+                    jQuery('.tc-logo span').removeClass('active');
+                    jQuery('.tc-logo .gold-logo').addClass('active');
+                  } else {
+                    jQuery('.tc-logo span').removeClass('active');
+                    jQuery('.tc-logo .silver-logo').addClass('active');
+                  }
                 } else {
-                  jQuery('.tc-logo span').removeClass('active');
-                  jQuery('.tc-logo .silver-logo').addClass('active');
-                }
+                  flag = true;
+                  tcccolor = $("input[type=radio][name='properties[Letter Color1]']:checked").val();
+                  console.log('new tcc color ...', tcccolor);
+                  jQuery('.tc-logo').remove();
 
-                if (tccinitials == '') {
+// $this.removeClass('initials');
+// jQuery('#pwzrswiper-slide-0 span').text(tccinitials);
+
+                }if (tccinitials == '') {
                   jQuery('.tcc-mobile-buttons .tcc-pre-1').show();
                   jQuery('.add-cart-btn').hide();
                 } else {
@@ -3532,6 +3547,12 @@ window.productPage = {
                   jQuery('.product #pwzrswiper-slide-0 .initials').removeClass('five_plus_characters');
                   jQuery('.product #pwzrswiper-slide-0 .initials').text(tccinitials);
                   jQuery('#design-text').text(tccinitials);
+                }
+
+                if (flag){
+                  jQuery('.product #pwzrswiper-slide-0 .initials').addClass('initials-color1-text');
+                  jQuery('.product #pwzrswiper-slide-0 .initials').css("background", "-webkit-gradient(linear,transparent,transparent),#6DB3F2 repeat !important");
+
                 }
 
               }
