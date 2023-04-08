@@ -41,9 +41,9 @@
 
 {% comment %} new personalized phone cases design{% endcomment %}
 {% if product.type=="Personalized Phone Cases" %}
-  <div id="snapshot" style="display: block; text-align: center; padding-bottom: 40px">
-    <img id="sanpshot-design" style="vertical-align: middle;" class="" src="{{product.metafields.custom.design.value | img_url: '540x540' }}" alt="Personalized Leather iPhone Case" >
-    <span id="design-text" style="position: relative;right: 170px;"></span>
+  <div id="snapshot">
+    <img id="sanpshot-design" class="" src="{{product.metafields.custom.design.value | img_url: '540x540' }}" alt="Personalized Leather iPhone Case" >
+    <span id="design-text"></span>
   </div>
 {% endif %}
 

@@ -588,6 +588,41 @@ Description: Shopify Theme (https://www.shopify.com/&ref=out-of-the-sandbox)
   max-width: none;
 }
 
+#snapshot{
+    width: 540px;
+    height: 540px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#snapshot img{
+/*     position: absolute; */
+    z-index: 1;
+    right:0;
+    left:0;
+    margin:0px auto;
+}  
+
+#design-text{
+    position: absolute;
+    color: #f7c1b7;
+    text-shadow: 1px 8px 0px #f14e97;
+    font-size: 130px;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    display: inline-flex;
+    text-transform: uppercase;
+    z-index:11;
+    width:540px;
+}
+
 /* Parent container for column elements - uses flexbox, so this container can be made smaller and the columns will shrink in relation */
 .container {
   position: relative;
