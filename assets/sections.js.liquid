@@ -3392,6 +3392,15 @@ window.productPage = {
                   initial_fun();
                 });
 
+                jQuery(document).on('change', "input[type=radio][name='properties[Shade Color]']", function() {
+                  var shadeColor = $("input[type=radio][name='properties[Shade Color]']:checked").val();
+                  console.log('shade color ...', shadeColor);
+                  jQuery('#design-text').css('text-shadow', '1px 8px 0px' + shadeColor )
+                  jQuery('.product #pwzrswiper-slide-0 .initials-color1-text').css('text-shadow', '1px 8px 0px' + shadeColor )
+                  setCookie("shadeColor", shadeColor, 30);
+                  // initial_fun();
+                });
+
                 jQuery('.add-cart-btn').on('click', function() {
                   jQuery('.add_to_cart.ajax-submit').trigger('click');
                   return false;
@@ -3497,6 +3506,9 @@ window.productPage = {
                   flag = true;
                   tcccolor = $("input[type=radio][name='properties[Letter Color1]']:checked").val();
                   console.log('new tcc color ...', tcccolor);
+                  var shadeColor = $("input[type=radio][name='properties[Shade Color]']:checked").val();
+                  console.log('shade color ...', shadeColor);
+                  jQuery('#design-text').css('text-shadow', '1px 8px 0px' + shadeColor )
                   jQuery('.tc-logo').remove();
 
 // $this.removeClass('initials');
@@ -3550,8 +3562,16 @@ window.productPage = {
                 }
 
                 if (flag){
-                  jQuery('.product #pwzrswiper-slide-0 .initials').addClass('initials-color1-text');
-                  jQuery('.product #pwzrswiper-slide-0 .initials').css("background", "-webkit-gradient(linear,transparent,transparent),#6DB3F2 repeat !important");
+                  jQuery('.product #pwzrswiper-slide-0 .initials').remove();
+                  console.log('//...',jQuery('.product #pwzrswiper-slide-0').length);
+                  if (jQuery('.product #pwzrswiper-slide-0 span').length === 0)
+                  jQuery('.product #pwzrswiper-slide-0').append('<span class="initials-color1-text">SAM</span');
+
+                  jQuery('.product #pwzrswiper-slide-0 .initials-color1-text').text(tccinitials);
+                  jQuery('.product #pwzrswiper-slide-0 .initials-color1-text').css("color", tcccolor);
+                  var shadeColor = $("input[type=radio][name='properties[Shade Color]']:checked").val();
+                  console.log('shade color ...', shadeColor);
+                  jQuery('.product #pwzrswiper-slide-0 .initials-color1-text').css('text-shadow', '1px 8px 0px' + shadeColor )
 
                 }
 

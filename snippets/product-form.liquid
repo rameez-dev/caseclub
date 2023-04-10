@@ -26,15 +26,14 @@
     border-width: 2px;
 }
 .initials-color1-text {
-    text-shadow: 0 1px 0 rgba(0,0,0,0)!important;
-    font-family: "Arbesco-DT",serif;
+    display: flex;
     text-transform: uppercase;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    position: absolute;
-    letter-spacing: 1px;
-    width: 100%;
-    z-index: 999;
+    font-size: 130px;
+    z-index:11;
+    transform: rotate(270deg);
+    height: 540px;
+    align-items: center;
+    justify-content: center;
 }
 
 </style>
@@ -236,14 +235,14 @@
         </div>
         <label>color 2</label>
         <div class="text-color-swatches">
-          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#000000" id="color2-#000000" checked>
+          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#FFFFFF" id="color2-#FFFFFF" checked>
+          <label for="color2-#FFFFFF" class="text-color-label" style="background-color:#FFFFFF;"></label>
+          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#000000" id="color2-#000000">
           <label for="color2-#000000" class="text-color-label" style="background-color:#000000;"></label>
           <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#F8C1B8" id="color2-#F8C1B8">
           <label for="color2-#F8C1B8" class="text-color-label" style="background-color:#F8C1B8;"></label>
           <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#9D2235" id="color2-#9D2235">
           <label for="color2-#9D2235" class="text-color-label" style="background-color:#9D2235;"></label>
-          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#FFFFFF" id="color2-#FFFFFF">
-          <label for="color2-#FFFFFF" class="text-color-label" style="background-color:#FFFFFF;"></label>
         </div>
         {%  else %}
         <div class="tcc-left-section">
