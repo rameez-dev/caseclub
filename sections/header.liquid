@@ -477,7 +477,7 @@ var x = setInterval(function() {
                                 {% if p.first=='Shade Color' %}{% assign curr_pro_text_shade = p.last %}{% endif %}
                               {% endunless %}
                             {% endfor %}
-                            <span class="cart-initials-color1-text" style="color: {{curr_pro_text_color}}; text-shadow: {{curr_pro_text_shade}} 1px 4px 0px">{{curr_pro_intial}}</span>
+                            <span class="cart-initials-color1-text" style="color: {{curr_pro_text_color}} !important; text-shadow: {{curr_pro_text_shade}} 1px 2px 0px">{{curr_pro_intial}}</span>
                           {% endif %}
                         </a>
 

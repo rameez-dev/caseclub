@@ -626,14 +626,24 @@ $(() => {
 
         cartItemsHTML += `<li class="mini-cart__item ${item.product_type.replace(' ', '-').toLowerCase()}" data-cart-item data-line-id="${lineID}" data-variant-id="${item.id}">`
         + `<a href="${item.url}" class="mini-cart__item-a">` ;
-        if (item.product_type!='Strap')
+        if (item.product_type!='Strap' && item.product_type!='Personalized Phone Cases')
         cartItemsHTML += `<span class="initials ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
-        if (item.image) {
+       
+        if (item.image && item.product_type!='Personalized Phone Cases') {
           cartItemsHTML += `${'<div class="cart_image">'
               + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />`
             + '</div><div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div></a>';
         }
-
+        else if (item.image && item.product_type ==='Personalized Phone Cases'){
+          cartItemsHTML += `${'<div class="cart_image" style="position: absolute;">'
+          + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" /></div>`
+          + `<span class="cart-initials-color1-text" style="color: ${item.properties['Letter Color1']} !important; text-shadow: ${item.properties['Shade Color']} 1px 2px 0px" >${item.properties['Letters']}</span>`;
+          + '</a>';
+    
+        }
+        if (item.product_type ==='Personalized Phone Cases')
+        cartItemsHTML += `<div class="mini-cart__item-content custom_design_cart_item"><div class="mini-cart__item-title">`;
+        else
         cartItemsHTML += `<div class="mini-cart__item-content"><div class="mini-cart__item-title">`;
 		
 		if ( item.product_type=='Phone Cases' ) {
