@@ -17744,6 +17744,14 @@ footer .social_icons a:hover {
       font-style: normal;
       font-display: swap; 
     }
+
+    @font-face {
+      font-family: 'LibreBaskerville-Bold';
+      src: url({{ 'LibreBaskerville-Bold.ttf' | asset_url }}) format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap; 
+    }
   
  /* #Custom Homepage
 ================================================== */ 
@@ -20742,4 +20750,24 @@ font-size: 12px ;
  .sticky #header.mobile_nav-fixed--true .top-bar .cart-container .cart_savings span {
   color: #037b04 !important;
  }
+}
+
+#snapshot{
+  display: none;
+  margin-bottom: 50px;
+  width: 440px;
+  height: 540px;
+  background-size: cover;
+}
+
+.snapshot-design-text{
+  font-family: 'LibreBaskerville-Bold';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-transform: uppercase;
+  font-size: 130px;
+  z-index:11;
+  transform: rotate(270deg);
 }

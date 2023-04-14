@@ -588,25 +588,6 @@ Description: Shopify Theme (https://www.shopify.com/&ref=out-of-the-sandbox)
   max-width: none;
 }
 
-#snapshot{
-    display: none;
-    margin-bottom: 50px;
-    width: 440px;
-    height: 540px;
-    background-size: cover;
-}
-
-.snapshot-design-text{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  text-transform: uppercase;
-  font-size: 130px;
-  z-index:11;
-  transform: rotate(270deg);
-}
-
 /* Parent container for column elements - uses flexbox, so this container can be made smaller and the columns will shrink in relation */
 .container {
   position: relative;
