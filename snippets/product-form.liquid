@@ -36,6 +36,16 @@
     align-items: center;
     justify-content: center;
 }
+@media only screen and (max-width: 481px) {
+    .initials-color1-text {
+      font-size: 80px;
+      height: 310px;
+      
+  }
+  #pwzrswiper-slide-0{
+    height: 310px;
+  }
+}
 
 </style>
 {% if show_payment_button == false or product.selling_plan_groups.size > 0 %}
@@ -225,25 +235,17 @@
         </div>
         <label>color 1</label>
         <div class="text-color-swatches">
-          <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="#000000" id="color1-#000000" checked>
-          <label for="color1-#000000" class="text-color-label" style="background-color:#000000;"></label>
-          <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="#F8C1B8" id="color1-#F8C1B8">
-          <label for="color1-#F8C1B8" class="text-color-label" style="background-color:#F8C1B8;"></label>
-          <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="#9D2235" id="color1-#9D2235">
-          <label for="color1-#9D2235" class="text-color-label" style="background-color:#9D2235;"></label>
-          <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="#FFFFFF" id="color1-#FFFFFF">
-          <label for="color1-#FFFFFF" class="text-color-label" style="background-color:#FFFFFF;"></label>
-        </div>
+          {% for color1 in product.metafields.custom.color1.value %}
+            <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="{{color1}}" id="color1-{{color1}}" {% if forloop.index0 == 0 %}checked{% endif %} >
+            <label for="color1-{{color1}}" class="text-color-label" style="background-color:{{color1}};"></label>
+          {% endfor %}
+          </div>
         <label>color 2</label>
         <div class="text-color-swatches">
-          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#FFFFFF" id="color2-#FFFFFF" checked>
-          <label for="color2-#FFFFFF" class="text-color-label" style="background-color:#FFFFFF;"></label>
-          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#000000" id="color2-#000000">
-          <label for="color2-#000000" class="text-color-label" style="background-color:#000000;"></label>
-          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#F8C1B8" id="color2-#F8C1B8">
-          <label for="color2-#F8C1B8" class="text-color-label" style="background-color:#F8C1B8;"></label>
-          <input type="radio" name="properties[Shade Color]" class="text-color-input" value="#9D2235" id="color2-#9D2235">
-          <label for="color2-#9D2235" class="text-color-label" style="background-color:#9D2235;"></label>
+          {% for color2 in product.metafields.custom.color2.value %}
+            <input type="radio" name="properties[Shade Color]" class="text-color-input" value="{{color2}}" id="color2-{{color2}}" {% if forloop.index0 == 0 %}checked{% endif %}>
+            <label for="color2-{{color2}}" class="text-color-label" style="background-color:{{color2}};"></label>
+          {% endfor %}
         </div>
         {%  else %}
         <div class="tcc-left-section">
