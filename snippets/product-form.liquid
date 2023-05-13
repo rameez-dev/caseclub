@@ -139,7 +139,35 @@
     </select>-->
   </div>
 {% endif %}
-{% if product.type != 'Phone Cases' and product.type!="Simple Product" and product.type!="Gift Cards" %}
+
+{% comment %} new personalised phone cases {% endcomment %}
+{% if product.type == 'Personalized Phone Cases' %}
+  <ul class="phone-case-info"><li><i class="icon-check"></i> Protect your phone in style</li>
+<li><i class="icon-check"></i> Express your personality</li>
+<li><i class="icon-check"></i> Say no to bulky plastic cases</li></ul>
+  {% for tag in product.tags %}
+    {% if tag contains "related:" %}
+      {% capture related_tag %}{{tag}}{% endcapture %}
+      {% capture related_tag_type %}{{tag | split: ':' | last | strip}}{% endcapture %}
+    {% endif %}
+  {% endfor %}
+  
+  <div class="select-model">
+    <label class="form-label"><span class="label-badge">{{count}}</span>Select your device</label>
+    {% if related_tag %}
+    <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+      {% for p in collections.all.products %}  
+      {% if p.tags contains related_tag and p.type == 'Personalized Phone Cases'%} 
+        <option value="{{ p.url }}" {% if product.title == p.title %}selected{% endif %}>{{p.title}}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+  {% endif %}
+  </div>
+{% endif %}
+{% comment %} new personalised phone cases {% endcomment %}
+
+{% if product.type != 'Phone Cases' and product.type != 'Personalized Phone Cases' and product.type!="Simple Product" and product.type!="Gift Cards" %}
 <ul class="phone-case-info">
 <li><i class="icon-check"></i> Never lose your cards again</li>
 <li><i class="icon-check"></i> Fits in any pocket without bulk</li>
