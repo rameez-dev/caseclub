@@ -13,7 +13,7 @@
     </li>
   {% endfor %}
 {% else %}
-  {% for link in linklists.mobile-navbar.links %}
+  {% for link in linklists.new-main-menu-phone.links %}
     {% if linklists[link.handle] == empty %}
       <li data-link data-mobile-dropdown-rel="{{ link.handle }}">
         {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}

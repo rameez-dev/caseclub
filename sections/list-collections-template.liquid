@@ -34,7 +34,7 @@
     {% paginate collections by section.settings.pagination_limit %}
       {%- assign collections_per_row = section.settings.collections_per_row -%}
 
-      <div class="one-whole column">
+      {% comment %} <div class="one-whole column">
         <div class="breadcrumb-collection">
           {% if section.settings.collection_breadcrumb %}
             <script type="application/ld+json">
@@ -79,7 +79,7 @@
             </div>
           {% endif %}
         </div>
-      </div>
+      </div> {% endcomment %}
 
       {% if display_collection_title and image == blank %}
         <div class="one-whole column">
