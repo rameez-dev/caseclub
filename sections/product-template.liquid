@@ -69,8 +69,8 @@
 <div class="product-desp-content container">
 {% for block in section.blocks %}
   {% if block.settings.title != blank %}
-  <div class="one-whole column {{ block.settings.cssclass }}">
-  <div class="is-flex is-flex-wrap equal-columns--outside-trim">
+  <div class="one-whole column product-desp-main">
+  <div class="is-flex is-flex-wrap equal-columns--outside-trim {{ block.settings.cssclass }}">
   <div class="one-half column medium-down--one-whole">
   <h3>{{ block.settings.title }}</h3>
   <div>{{ block.settings.text }}</div>
@@ -109,83 +109,81 @@
 <div class="judgeme-reviews">
   <h4>Customer Reviews</h4>
   {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
-
 </div>
 
-<div class="personalize-bottom-section">
-  <h3>Become one of our happy customers today! A statement piece. Bold, personal and uniquely yours.</h3>
-<img src="//cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Payment-Seals-trim.png">
-
-</div> 
-
-<div class="faq-container">
-  <div class="faq-block open">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Does this case protect my phone?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-          <p>Yes, our phone cases were designed while keeping both style and protection in mind. All cases have raised edges to make sure it protects your screen when faced down, while it protects the camera when faced up. Your phone is protected during those heart-aching drops.</p>
+<div class="faq-wrap">
+  <div class="faq-container">
+    <div class="one-half column medium-down--one-whole">
+      <h3>Frquently Asked Questions</h3>
+      <div class="faq-block open">
+        <div class="faq-heading custom-faq-heading">
+          <h4>
+              <span class="faq-title-text">Does this case protect my phone?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+              <p>Yes, our phone cases were designed while keeping both style and protection in mind. All cases have raised edges to make sure it protects your screen when faced down, while it protects the camera when faced up. Your phone is protected during those heart-aching drops.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Is it made out of real leather?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-          <p>Yes, we use premium bovine pebble leather for all of our products. You're receiving a quality product that will last.          </p>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+              <span class="faq-title-text">Is it made out of real leather?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+              <p>Yes, we use premium bovine pebble leather for all of our products. You're receiving a quality product that will last.          </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Does personalization cost extra?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-        <p>No, personalization is free of charge on all of our products.</p>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+              <span class="faq-title-text">Does personalization cost extra?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+            <p>No, personalization is free of charge on all of our products.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Will the letters fade?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-      <p>It is very uncommon for the letters to fade. We use the finest foils to prevent that from happening and will resolve any issues within a reasonable time frame if fading does occur.</p>
-    </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">How to properly care for my leather case?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-          <p>A natural side effect of leather is that over time, colors may transfer and fade. In order to keep your leather case beautiful overtime, we recommend to keep your leather product out of the sun and prevent contact with oil substances.</p>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+              <span class="faq-title-text">Will the letters fade?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+          <p>It is very uncommon for the letters to fade. We use the finest foils to prevent that from happening and will resolve any issues within a reasonable time frame if fading does occur.</p>
+        </div>
+        </div>
+      </div>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+              <span class="faq-title-text">How to properly care for my leather case?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+              <p>A natural side effect of leather is that over time, colors may transfer and fade. In order to keep your leather case beautiful overtime, we recommend to keep your leather product out of the sun and prevent contact with oil substances.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

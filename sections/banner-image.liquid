@@ -1,0 +1,36 @@
+<section class="banner-image">
+   <div class="banner-image-main">
+      <div class="image-section">
+         <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/2-Card-Phone-Case-v2_48251853-5347-4753-b8c0-7e57aeaa9991_1_1500x.jpg?v=1681879016">
+      </div>
+      <div class="sales-section">
+         <div class="sales-section-main">
+            <h1>Spring Sale</h1>
+            <p>20% Off Everything</p>
+            <a href="#">
+              SHOP NOW
+            </a>
+         </div>
+      </div>
+   </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Banner image",
+    "class": "shopify-section--banner-image",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "custom_html",
+        "label": "Custom html"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner image",
+        "category": "Content"
+      }
+    ]
+  }
+{% endschema %}
