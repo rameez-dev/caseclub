@@ -1,6 +1,6 @@
 {% if context == 'top_bar_menu' %}
   {% for link in linklists[menu].links %}
-    <li>
+    <li> 
       {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
         <a data-no-instant href="{{ link.url }}" class="parent-link--false">
           {{ link.title }}
