@@ -1,99 +1,33 @@
 <section class="section quality-home">
   <h2>Quality</h2>
   <div class="container quality-home-desktop">
+    {% for block in section.blocks %}
     <div class="one-fourth column medium-down--one-whole">
       <div class="quality-main">
-        <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/custom_resized_04384a6e-6609-476d-8aaf-7e01f1d1e2b7_1420x.png?v=1681346404">
+        <img src={{ block.settings.slide_image | image_url }}>
         <div class="description">
-          <h1>premium bowine leather</h1>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
+          <h1>{{ block.settings.slide_heading }}</h1>
+          <p>{{ block.settings.slide_text }}
           </p>
         </div>
       </div>
     </div>
-    <div class="one-fourth column medium-down--one-whole">
-      <div class="quality-main">
-        <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/custom_resized_04384a6e-6609-476d-8aaf-7e01f1d1e2b7_1420x.png?v=1681346404">
-        <div class="description">
-          <h1>premium bowine leather</h1>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="one-fourth column medium-down--one-whole">
-      <div class="quality-main">
-        <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/custom_resized_04384a6e-6609-476d-8aaf-7e01f1d1e2b7_1420x.png?v=1681346404">
-        <div class="description">
-          <h1>premium bowine leather</h1>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="one-fourth column medium-down--one-whole">
-      <div class="quality-main">
-        <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/custom_resized_04384a6e-6609-476d-8aaf-7e01f1d1e2b7_1420x.png?v=1681346404">
-        <div class="description">
-          <h1>premium bowine leather</h1>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
-          </p>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
   <div class="g-scrolling-carousel carousel container quality-home-mobile">
     <div class="items">
+      {% for block in section.blocks %}
       <div class="one-fourth column medium-down--one-whole">
         <div class="quality-main">
-          <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/custom_resized_04384a6e-6609-476d-8aaf-7e01f1d1e2b7_1420x.png?v=1681346404">
+          <img src={{ block.settings.slide_image | image_url }}>
           <div class="description">
-            <h1>premium bowine leather</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
+            <h1>{{ block.settings.slide_heading }}</h1>
+            <p>{{ block.settings.slide_text }}
             </p>
           </div>
         </div>
       </div>
-      <div class="one-fourth column medium-down--one-whole">
-        <div class="quality-main">
-          <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/custom_resized_04384a6e-6609-476d-8aaf-7e01f1d1e2b7_1420x.png?v=1681346404">
-          <div class="description">
-            <h1>premium bowine leather</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="one-fourth column medium-down--one-whole">
-        <div class="quality-main">
-          <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/custom_resized_04384a6e-6609-476d-8aaf-7e01f1d1e2b7_1420x.png?v=1681346404">
-          <div class="description">
-            <h1>premium bowine leather</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="one-fourth column medium-down--one-whole">
-        <div class="quality-main">
-          <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/custom_resized_04384a6e-6609-476d-8aaf-7e01f1d1e2b7_1420x.png?v=1681346404">
-          <div class="description">
-            <h1>premium bowine leather</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="one-fourth column medium-down--one-whole">
-        <div class="quality-main">
-          <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/custom_resized_04384a6e-6609-476d-8aaf-7e01f1d1e2b7_1420x.png?v=1681346404">
-          <div class="description">
-            <h1>premium bowine leather</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
-            </p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -107,6 +41,30 @@
         "type": "textarea",
         "id": "custom_html",
         "label": "Custom html"
+      }
+    ],
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide_image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "slide_heading",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "slide_text",
+            "label": "Text"
+          }
+        ]
       }
     ],
     "presets": [

@@ -15,7 +15,7 @@
 {% else %}
   {% for link in linklists.new-main-menu-phone.links %}
     {% if linklists[link.handle] == empty %}
-      <li data-link data-mobile-dropdown-rel="{{ link.handle }}">
+  <li data-link data-mobile-dropdown-rel="{{ link.handle }}" {% if forloop.index >= 5 %} class="bottom-links" {% endif %}>
         {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
           <a data-no-instant href="{{ link.url }}" class="parent-link--false">
             {{ link.title }}

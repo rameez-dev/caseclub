@@ -97,11 +97,26 @@
   </div>
   {% endif %}
   
-  {% if block.settings.html_title != blank %}
-  <div class="{{ block.settings.html_cssclass }}">
-    <div class="heading">{{block.settings.html_title}}</div>
-    <div class="block-content">{{block.settings.pro_html_content}}</div>
+  {% if block.type == "html-1" %}
+  <div class="premium-wrap">
+    <div class="block-content">
+      <div class="is-flex is-flex-wrap equal-columns--outside-trim meet-case">
+          <div class="one-half column medium-down--one-whole is-relative">
+            <img src={{ block.settings.premium_image | image_url }}>
+          </div>
+          <div class="one-half column medium-down--one-whole">
+            <div class="content-main">
+              <h3>{{ block.settings.premium_heading }}</h3>
+              <p>{{ block.settings.premium_text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
+  {% endif %}
+
+  {% if block.type == "image" %}
+    <img src={{ block.settings.customer_image | image_url}}>
   {% endif %}
 {% endfor %}
 </div>
@@ -194,7 +209,7 @@
 {% assign cw_cnt = 0 %}
 {% assign pc_cnt = 0 %}
 <div class="full-width-desktop-padding matching-products">
-  <h2>Matching Products</h2>
+  <h2>Mix and Match</h2>
   <ul>
 {% for product in collections.all.products %}
   {% if curr_pro != 'Card Holders' %}
@@ -586,23 +601,35 @@
     }
   ],
   "blocks": [
+    {
+      "type": "image",
+      "name": "Customer Review Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "customer_image",
+          "label": "Image"
+        }
+      ]
+    },
 	{
 	"type": "html-1",
-    "name": "Html Content",
+    "name": "Premium Banner",
     "settings": [
       {
           "type": "text",
-          "id": "html_title",
+          "id": "premium_heading",
           "label": "Heading",
-          "default": "Heading"
+          "default": "Premium bovine leather"
         },{
-      "type": "html",
-      "id": "pro_html_content",
-      "label": "Html Content"
-      },{
           "type": "text",
-          "id": "html_cssclass",
-          "label": "CSS Class"
+          "id": "premium_text",
+          "label": "Text",
+          "default": "Basic of our products is also the most important. We work with a European leather tannery to ensure only the highest quality premium bovine leather for our products"
+        },{
+          "type": "image_picker",
+          "id": "premium_image",
+          "label": "Image"
         }
     ]
   },{

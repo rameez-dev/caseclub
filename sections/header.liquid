@@ -206,15 +206,15 @@
 
         {% if shop.customer_accounts_enabled %}
           {% if customer %}
-            <li>
+            <li class="bottom-links">
               <a href="{{ routes.account_url }}" data-no-instant>{{ customer.name }}</a>
             </li>
 
-            <li data-no-instant>
+            <li data-no-instant class="bottom-links">
               <a href="{{ routes.account_logout_url }}" id="customer_logout_link">{{ 'layout.customer.log_out' | t }}</a>
             </li>
           {% else %}
-            <li data-no-instant>
+            <li data-no-instant class="bottom-links">
               <a href="{{ routes.account_login_url }}" id="customer_login_link">{{ 'layout.customer.log_in' | t }}</a>
             </li>
           {% endif %}
@@ -1103,11 +1103,11 @@
   </div>
 </header>
 
-<div class="top-notify-bar-2">
+{% comment %} <div class="top-notify-bar-2">
   <span>FREE SHIPPING INCLUDED</span>
   <span>SHIPPED OUT IN 24 HOURS</span>
   <span>GUARANTEED SATISFACTION</span>
-</div>
+</div> {% endcomment %}
 
 <style>
   div.header__logo,
