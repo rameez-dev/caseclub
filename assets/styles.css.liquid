@@ -17910,6 +17910,7 @@ footer .social_icons a:hover {
     color: #000;
     letter-spacing: 0px;
     margin-bottom: 0;
+    text-transform: capitalize;
 }
   .join-club-home p {
     text-align: center;
@@ -18228,6 +18229,7 @@ footer .social_icons a:hover {
     color: #282828;
     letter-spacing: 0;
     text-align: center;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
 }
   .footer .footer_menu p {
     text-align: center;
@@ -18518,6 +18520,7 @@ a.top_menu_link_right {
   display: flex;
   align-items: center;
   margin: 0 20px;
+  color: white;
 }
   .sm_menu_outer.active {
     z-index: 99999 !important;
@@ -19019,6 +19022,7 @@ h1.product_name {
     background-color: #f2eae1;
     margin-bottom: 5px;
     color:#000;
+    border: 1px solid #000;
 }
   .tcc-mobile-buttons {
     position: fixed;
@@ -19801,6 +19805,9 @@ span.five_plus_characters {
 .jdgm-rev-widg.jdgm-rev-widg {
   border: none;
 }
+.jdgm-rev__body>p:last-of-type {
+  color: #2b2a2a;
+}
 .jdgm-divider-top {
   border-top: none !important;
 }
@@ -20258,6 +20265,11 @@ a.mini-cart__item-a {
 .line-item.color-silver , .line-item.color-gold {
     text-transform: capitalize;
 }
+.customer_review_image {
+  display: none;
+  max-width: 100%;
+  height: auto;
+}
   @media (min-width: 799px) {
   
     .matching-products ul li.product {
@@ -20316,6 +20328,12 @@ a.mini-cart__item-a {
   }
   .list-collections-wrapper .product-image-section .personalisation {
     display: none;
+  }
+  body.product .judgeme-reviews {
+    margin: 0 auto;
+  }
+  .customer_review_image {
+    display: block;
   }
 }
 @media (max-width: 480px) {

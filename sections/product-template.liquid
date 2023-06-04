@@ -116,7 +116,7 @@
   {% endif %}
 
   {% if block.type == "image" %}
-    <img src={{ block.settings.customer_image | image_url}}>
+    <img class="customer_review_image" src={{ block.settings.customer_image | image_url}}>
   {% endif %}
 {% endfor %}
 </div>
