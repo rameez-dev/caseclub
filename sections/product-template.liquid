@@ -68,33 +68,63 @@
 
 <div class="product-desp-content container">
 {% for block in section.blocks %}
-  {% if block.settings.title != blank %}
-  <div class="one-whole column product-desp-main">
-  <div class="is-flex is-flex-wrap equal-columns--outside-trim {{ block.settings.cssclass }}">
-  <div class="one-half column medium-down--one-whole">
-  <h3>{{ block.settings.title }}</h3>
-  <div>{{ block.settings.text }}</div>
-  </div>
-    
-  <div class="one-half column medium-down--one-whole">
-  {% if block.settings.image != blank %}
-  {% render 'image-element', image: block.settings.image, alt: link_title %}
+
+  {% if block.type == "slide" %}
+    <div class="one-whole column product-desp-main">
+    <div class="is-flex is-flex-wrap equal-columns--outside-trim {{ block.settings.cssclass }}">
+    <div class="one-half column medium-down--one-whole">
+    <h3>{{ block.settings.title }}</h3>
+    <div>{{ block.settings.text }}</div>
+    </div>
+      
+    <div class="one-half column medium-down--one-whole">
+    {% if block.settings.image != blank %}
+    {% render 'image-element', image: block.settings.image, alt: link_title %}
+    {% endif %}
+    {% if block.settings.iframe_video != blank %}
+    {% if block.settings.iframe_video contains 'vimeo' %}
+    <div class="plyr__video-embed" id="video-{{ object.id }}" data-video-element data-external-video>
+      <iframe src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
+    </div>
+    {% else %}
+    <div class="plyr__video-embed" data-video-element data-external-video>
+      <iframe src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+    </div>
+    {% endif %}
+    {% endif %}
+    </div>
+    </div>
+    </div>
   {% endif %}
+
   
-  {% if block.settings.iframe_video != blank %}
-  {% if block.settings.iframe_video contains 'vimeo' %}
-  <div class="plyr__video-embed" id="video-{{ object.id }}" data-video-element data-external-video>
-    <iframe src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
-  </div>
-  {% else %}
-  <div class="plyr__video-embed" data-video-element data-external-video>
-    <iframe src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
-  </div>
-  {% endif %}
-  {% endif %}
-  </div>
-  </div>
-  </div>
+  {% if block.settings.title != blank and block.type != "slide"%}
+    <div class="one-whole column product-desp-main">
+    <div class="is-flex is-flex-wrap equal-columns--outside-trim {{ block.settings.cssclass }}">
+    <div class="one-half column medium-down--one-whole">
+    <h3>{{ block.settings.title }}</h3>
+    <div>{{ block.settings.text }}</div>
+    </div>
+      
+    <div class="one-half column medium-down--one-whole">
+    {% if block.settings.image != blank %}
+    {% render 'image-element', image: block.settings.image, alt: link_title %}
+    {% endif %}
+    
+    {% if block.settings.iframe_video != blank %}
+    {% if block.settings.iframe_video contains 'vimeo' %}
+    <div class="plyr__video-embed" id="video-{{ object.id }}" data-video-element data-external-video>
+      <iframe src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
+    </div>
+    {% else %}
+    <div class="plyr__video-embed" data-video-element data-external-video>
+      <iframe src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+    </div>
+    {% endif %}
+    {% endif %}
+    </div>
+    </div>
+    </div>
   {% endif %}
   
   {% if block.type == "html-1" %}
@@ -635,6 +665,41 @@
   },{
       "type": "text",
       "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Text area can be used for special announcements or general information.</p>"
+        },
+        {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Select Image."
+        },
+		{
+          "type": "video_url",
+          "id": "iframe_video",
+          "label": "Video link",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },{
+          "type": "text",
+          "id": "cssclass",
+          "label": "CSS Class"
+        }
+      ]
+    },
+    {
+      "type": "slide",
+      "name": "No Image in mobile",
       "settings": [
         {
           "type": "text",
