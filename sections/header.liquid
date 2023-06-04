@@ -8,8 +8,8 @@
 <script type="application/ld+json">
   {
   "@context": "http://schema.org",
-      "@type": "Organization",
-      "name": "{{ shop.name }}",
+        "@type": "Organization",
+        "name": "{{ shop.name }}",
   {% if section.settings.logo %}
     {% assign image_size = section.settings.logo.width | append: 'x' %}
     "logo": "https:{{ section.settings.logo | img_url: image_size }}",
@@ -24,7 +24,7 @@
   "{{ settings.youtube_link }}",
   "{{ settings.vimeo_link }}"
   ],
-      "url": "{{ shop.url }}{{ page.url }}"
+        "url": "{{ shop.url }}{{ page.url }}"
   }
 </script>
 
@@ -32,14 +32,14 @@
   <script type="application/ld+json">
     {
     "@context": "http://schema.org",
-          "@type": "WebSite",
-          "name": "{{ shop.name }}",
+              "@type": "WebSite",
+              "name": "{{ shop.name }}",
     "potentialAction": {
-            "@type": "SearchAction",
-            "target": "{{ routes.search_url }}?q={search_term_string}",
+                "@type": "SearchAction",
+                "target": "{{ routes.search_url }}?q={search_term_string}",
     "query-input": "required name=search_term_string"
-          },
-          "url": "{{ shop.url }}{{ page.url }}"
+              },
+              "url": "{{ shop.url }}{{ page.url }}"
     }
   </script>
 {% endif %}
@@ -192,11 +192,11 @@
       <ul class="mobile_menu" id="mobile_menu2">
         {%
            render 'mobile-menu',
-           menu: section.settings.main_linklist %}
+         menu: section.settings.main_linklist %}
         {%
            render 'mobile-menu',
-           menu: section.settings.top_bar_menu,
-           context: 'top_bar_menu' %}
+         menu: section.settings.top_bar_menu,
+         context: 'top_bar_menu' %}
 
         {% if section.settings.phone_number != blank %}
           <li>
@@ -223,12 +223,13 @@
         {% if locale_selector or currency_selector or settings.show_multiple_currencies == true %}
           {%
              render 'localization-switcher-mobile',
-             additional_classes: 'mobile-menu__disclosure',
-             currency_selector: currency_selector,
-             locale_selector: locale_selector,
-             show_currency: section.settings.show_currency_selector %}
+           additional_classes: 'mobile-menu__disclosure',
+           currency_selector: currency_selector,
+           locale_selector: locale_selector,
+           show_currency: section.settings.show_currency_selector %}
         {% endif %}
       </ul>
+      dfdsffsdfsd
     </div>
   </div>
 </header>
@@ -310,11 +311,11 @@
           {% if vertical_menu %}
             {%
                render 'vertical-menu',
-               linklist: section.settings.main_linklist %}
+             linklist: section.settings.main_linklist %}
           {% else %}
             {%
                render 'menu',
-               linklist: section.settings.main_linklist %}
+             linklist: section.settings.main_linklist %}
           {% endif %}
         {% endcapture %}
 
@@ -322,11 +323,11 @@
           {% if vertical_menu %}
             {%
                render 'vertical-menu',
-               linklist: section.settings.main_linklist2 %}
+             linklist: section.settings.main_linklist2 %}
           {% else %}
             {%
                render 'menu',
-               linklist: section.settings.main_linklist2 %}
+             linklist: section.settings.main_linklist2 %}
           {% endif %}
         {% endcapture %}
 
@@ -411,11 +412,11 @@
                     <li class="localization-wrap">
                       {%
                          render 'localization-switcher',
-                         additional_classes: 'header-menu__disclosure',
-                         id: 'header__selector-form',
-                         currency_selector: currency_selector,
-                         locale_selector: locale_selector,
-                         show_currency: section.settings.show_currency_selector %}
+                       additional_classes: 'header-menu__disclosure',
+                       id: 'header__selector-form',
+                       currency_selector: currency_selector,
+                       locale_selector: locale_selector,
+                       show_currency: section.settings.show_currency_selector %}
                     </li>
                   {% endif %}
 
@@ -612,10 +613,10 @@
 
                                   {%
                                      render 'unit-price',
-                                     item: item,
-                                     variant: item.variant,
-                                     product: item.product,
-                                     class: 'mini-cart__unit-price' %}
+                                   item: item,
+                                   variant: item.variant,
+                                   product: item.product,
+                                   class: 'mini-cart__unit-price' %}
 
                                   {% if item.line_level_discount_allocations.size > 0 %}
                                     {% for discount_allocation in item.line_level_discount_allocations %}
@@ -954,7 +955,7 @@
                                     -<span class="money">
                                       {%
                                          render 'price-element',
-                                         price: discount_application.total_allocated_amount %}
+                                       price: discount_application.total_allocated_amount %}
                                     </span>
                                   </span>
                                 {% endfor %}
@@ -1093,10 +1094,10 @@
 
         {%
            render 'sub-menu',
-           linklist: section.settings.main_linklist %}
+         linklist: section.settings.main_linklist %}
         {%
            render 'sub-menu',
-           linklist: section.settings.main_linklist2 %}
+         linklist: section.settings.main_linklist2 %}
       </div>
     </div>
   </div>
