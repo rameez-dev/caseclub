@@ -190,13 +190,13 @@
   <div class="dropdown_container" data-dropdown="mobile_menu">
     <div class="dropdown">
       <ul class="mobile_menu" id="mobile_menu2">
-        <span>
+        <div class="top-menu">
         {%
            render 'mobile-menu',
          menu: section.settings.main_linklist,
          context: 'mobile-first-4' %}
-        </span>
-        <span>
+        </div>
+        <div class="bottom-menu">
         {%
            render 'mobile-menu',
          menu: section.settings.main_linklist %}
@@ -235,7 +235,7 @@
            locale_selector: locale_selector,
            show_currency: section.settings.show_currency_selector %}
         {% endif %}
-        </span>
+        </div>
       </ul>
     </div>
   </div>

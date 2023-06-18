@@ -18414,6 +18414,14 @@ div#sm_menu_ham {
   ul#mobile_menu2 {
     padding: 0;
 }
+ul#mobile_menu2 .top-menu {
+  padding: 10px;
+  background: #ecdfd1;
+}
+ul#mobile_menu2 .bottom-menu {
+  padding: 10px 25px 25px 25px;
+  background-color: {{ settings.banner_mustard_background_color}};
+}
   .sm_menu_outer .mobile_menu li {
     border-bottom: none !important;
     border-image: none !important;
@@ -18432,6 +18440,11 @@ div#sm_menu_ham {
     text-transform: inherit !important;
     padding: 10px 15px !important;
 }
+.sm_menu_outer .mobile_menu .bottom-menu a { 
+  color: #fff !important;
+  border-bottom: 1px solid white;
+  padding: 10px 0 !important;
+}
   .sm_menu_outer.slide .mobile_menu .submenu {
     background-color: #ecdfd1 !important;
 }
@@ -18443,8 +18456,6 @@ div#sm_menu_ham {
 }
   ul#mobile_menu2 {
     border-top: 1px solid #999;
-    padding: 0 10px;
-    background: #ecdfd1;
 }
   .mm-navbar__title {
     text-align: center;
@@ -18951,6 +18962,9 @@ h1.product_name {
     background-color: #037b04;
     border: none;
 }
+  .product-custom-details {
+    background: white;
+  }
   .section.product-banner , body.product > section.section.has-padding-top{
       max-width: 100%;
       width: 100%;
