@@ -1,0 +1,86 @@
+<section class="section quality-home">
+  <h2>Quality</h2>
+  <div class="container quality-home-desktop">
+    {% for block in section.blocks %}
+    <div class="one-fourth column medium-down--one-whole">
+      <div class="quality-main">
+        <img src={{ block.settings.slide_image | image_url }}>
+        <div class="description">
+          <h1>{{ block.settings.slide_heading }}</h1>
+          <p>{{ block.settings.slide_text }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="g-scrolling-carousel carousel container quality-home-mobile">
+    <div class="items">
+      {% for block in section.blocks %}
+      <div class="one-fourth column medium-down--one-whole">
+        <div class="quality-main">
+          <div class="qulaity-img-main">
+            <img src={{ block.settings.slide_image | image_url }}>
+          </div>
+          <div class="description">
+            <h1>{{ block.settings.slide_heading }}</h1>
+            <p>{{ block.settings.slide_text }}
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Quality",
+    "class": "shopify-section--quality",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "custom_html",
+        "label": "Custom html"
+      }
+    ],
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide_image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "slide_heading",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "slide_text",
+            "label": "Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Quality",
+        "category": "Content"
+      }
+    ]
+  }
+{% endschema %}
+
+<script src="{{ 'jquery.gScrollingCarousel.js' | asset_url }}" defer></script>
+<script>
+  $(document).ready(function() {
+    $(".carousel .items").gScrollingCarousel({scrollAmount: 'single', mobileNative: true});
+  });
+</script>

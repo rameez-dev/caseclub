@@ -62,46 +62,93 @@
   <div class="one-whole column">
     <div class="shopify-reviews reviewsVisibility--{{ settings.enable_shopify_review_comments }}">
       <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
-    </div>
+    </div> 
   </div>
 {% endif %}
 
 <div class="product-desp-content container">
 {% for block in section.blocks %}
-  {% if block.settings.title != blank %}
-  <div class="one-whole column {{ block.settings.cssclass }}">
-  <div class="is-flex is-flex-wrap equal-columns--outside-trim">
-  <div class="one-half column medium-down--one-whole">
-  <h3>{{ block.settings.title }}</h3>
-  <div>{{ block.settings.text }}</div>
-  </div>
+
+  {% if block.type == "slide" %}
+    <div class="one-whole column product-desp-main">
+    <div class="is-flex is-flex-wrap equal-columns--outside-trim {{ block.settings.cssclass }}">
+    <div class="one-half column medium-down--one-whole">
+    <h3>{{ block.settings.title }}</h3>
+    <div>{{ block.settings.text }}</div>
+    </div>
+      
+    <div class="one-half column medium-down--one-whole">
+    {% if block.settings.image != blank %}
+    {% render 'image-element', image: block.settings.image, alt: link_title %}
+    {% endif %}
+    {% if block.settings.iframe_video != blank %}
+    {% if block.settings.iframe_video contains 'vimeo' %}
+    <div class="plyr__video-embed" id="video-{{ object.id }}" data-video-element data-external-video>
+      <iframe src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
+    </div>
+    {% else %}
+    <div class="plyr__video-embed" data-video-element data-external-video>
+      <iframe src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+    </div>
+    {% endif %}
+    {% endif %}
+    </div>
+    </div>
+    </div>
+  {% endif %}
+
+  
+  {% if block.settings.title != blank and block.type != "slide"%}
+    <div class="one-whole column product-desp-main {{ block.settings.rv_products_custom_styles }}">
+    <div class="is-flex is-flex-wrap equal-columns--outside-trim {{ block.settings.cssclass }}">
+    <div class="one-half column medium-down--one-whole">
+    <h3>{{ block.settings.title }}</h3>
+    <div>{{ block.settings.text }}</div>
+    </div>
+      
+    <div class="one-half column medium-down--one-whole product-desp">
+    {% if block.settings.image != blank %}
+    {% render 'image-element', image: block.settings.image, alt: link_title %}
+    {% endif %}
     
-  <div class="one-half column medium-down--one-whole">
-  {% if block.settings.image != blank %}
-  {% render 'image-element', image: block.settings.image, alt: link_title %}
+    <div class="video-section">
+      {% if block.settings.iframe_video != blank %}
+      {% if block.settings.iframe_video contains 'vimeo' %}
+      <div class="plyr__video-embed" id="video-{{ object.id }}" data-video-element data-external-video>
+        <iframe src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
+      </div>
+      {% else %}
+      <div class="plyr__video-embed" data-video-element data-external-video>
+        <iframe src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+      </div>
+      {% endif %}
+      {% endif %}
+    </div>
+    </div>
+    </div>
+    </div>
   {% endif %}
   
-  {% if block.settings.iframe_video != blank %}
-  {% if block.settings.iframe_video contains 'vimeo' %}
-  <div class="plyr__video-embed" id="video-{{ object.id }}" data-video-element data-external-video>
-    <iframe src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
-  </div>
-  {% else %}
-  <div class="plyr__video-embed" data-video-element data-external-video>
-    <iframe src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+  {% if block.type == "html-1" %}
+  <div class="premium-wrap">
+    <div class="block-content">
+      <div class="is-flex is-flex-wrap equal-columns--outside-trim meet-case">
+          <div class="one-half column medium-down--one-whole is-relative premium-custom-height">
+            <img src={{ block.settings.premium_image | image_url }}>
+          </div>
+          <div class="one-half column medium-down--one-whole">
+            <div class="content-main">
+              <h3>{{ block.settings.premium_heading }}</h3>
+              <p>{{ block.settings.premium_text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
   {% endif %}
-  {% endif %}
-  </div>
-  </div>
-  </div>
-  {% endif %}
-  
-  {% if block.settings.html_title != blank %}
-  <div class="{{ block.settings.html_cssclass }}">
-    <div class="heading">{{block.settings.html_title}}</div>
-    <div class="block-content">{{block.settings.pro_html_content}}</div>
-  </div>
+
+  {% if block.type == "image" %}
+    <img class="customer_review_image" src={{ block.settings.customer_image | image_url}}>
   {% endif %}
 {% endfor %}
 </div>
@@ -109,83 +156,81 @@
 <div class="judgeme-reviews">
   <h4>Customer Reviews</h4>
   {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
-
 </div>
 
-<div class="personalize-bottom-section">
-  <h3>Become one of our happy customers today! A statement piece. Bold, personal and uniquely yours.</h3>
-<img src="//cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Payment-Seals-trim.png">
-
-</div> 
-
-<div class="faq-container">
-  <div class="faq-block open">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Does this case protect my phone?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-          <p>Yes, our phone cases were designed while keeping both style and protection in mind. All cases have raised edges to make sure it protects your screen when faced down, while it protects the camera when faced up. Your phone is protected during those heart-aching drops.</p>
+<div class="faq-wrap">
+  <div class="faq-container">
+    <div class="one-half column medium-down--one-whole phonecase-faq">
+      <h3>Frquently Asked Questions</h3>
+      <div class="faq-block open">
+        <div class="faq-heading custom-faq-heading">
+          <h4>
+              <span class="faq-title-text">Does this case protect my phone?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+              <p>Yes, our phone cases were designed while keeping both style and protection in mind. All cases have raised edges to make sure it protects your screen when faced down, while it protects the camera when faced up. Your phone is protected during those heart-aching drops.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Is it made out of real leather?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-          <p>Yes, we use premium bovine pebble leather for all of our products. You're receiving a quality product that will last.          </p>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+              <span class="faq-title-text">Is it made out of real leather?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+              <p>Yes, we use premium bovine pebble leather for all of our products. You're receiving a quality product that will last.          </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Does personalization cost extra?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-        <p>No, personalization is free of charge on all of our products.</p>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+              <span class="faq-title-text">Does personalization cost extra?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+            <p>No, personalization is free of charge on all of our products.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Will the letters fade?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-      <p>It is very uncommon for the letters to fade. We use the finest foils to prevent that from happening and will resolve any issues within a reasonable time frame if fading does occur.</p>
-    </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">How to properly care for my leather case?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-          <p>A natural side effect of leather is that over time, colors may transfer and fade. In order to keep your leather case beautiful overtime, we recommend to keep your leather product out of the sun and prevent contact with oil substances.</p>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+              <span class="faq-title-text">Will the letters fade?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+          <p>It is very uncommon for the letters to fade. We use the finest foils to prevent that from happening and will resolve any issues within a reasonable time frame if fading does occur.</p>
+        </div>
+        </div>
+      </div>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+              <span class="faq-title-text">How to properly care for my leather case?</span>
+              <i class="icon-down-arrow"></i>
+              <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+              <p>A natural side effect of leather is that over time, colors may transfer and fade. In order to keep your leather case beautiful overtime, we recommend to keep your leather product out of the sun and prevent contact with oil substances.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -196,7 +241,7 @@
 {% assign cw_cnt = 0 %}
 {% assign pc_cnt = 0 %}
 <div class="full-width-desktop-padding matching-products">
-  <h2>Matching Products</h2>
+  <h2>Mix and Match</h2>
   <ul>
 {% for product in collections.all.products %}
   {% if curr_pro != 'Card Holders' %}
@@ -588,28 +633,91 @@
     }
   ],
   "blocks": [
+    {
+      "type": "image",
+      "name": "Customer Review Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "customer_image",
+          "label": "Image"
+        }
+      ]
+    },
 	{
 	"type": "html-1",
-    "name": "Html Content",
+    "name": "Premium Banner",
     "settings": [
       {
           "type": "text",
-          "id": "html_title",
+          "id": "premium_heading",
           "label": "Heading",
-          "default": "Heading"
+          "default": "Premium bovine leather"
         },{
-      "type": "html",
-      "id": "pro_html_content",
-      "label": "Html Content"
-      },{
           "type": "text",
-          "id": "html_cssclass",
-          "label": "CSS Class"
+          "id": "premium_text",
+          "label": "Text",
+          "default": "Basic of our products is also the most important. We work with a European leather tannery to ensure only the highest quality premium bovine leather for our products"
+        },{
+          "type": "image_picker",
+          "id": "premium_image",
+          "label": "Image"
         }
     ]
   },{
       "type": "text",
       "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "radio",
+          "id": "rv_products_custom_styles",
+          "label": "Class",
+          "default": "product-section-one",
+          "options": [
+            {
+              "value": "product-section-one",
+              "label": "product-section-one"
+            },
+            {
+              "value": "product-section-two",
+              "label": "product-section-two"
+            }
+          ]
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Text area can be used for special announcements or general information.</p>"
+        },
+        {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Select Image."
+        },
+		{
+          "type": "video_url",
+          "id": "iframe_video",
+          "label": "Video link",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },{
+          "type": "text",
+          "id": "cssclass",
+          "label": "CSS Class"
+        }
+      ]
+    },
+    {
+      "type": "slide",
+      "name": "No Image in mobile",
       "settings": [
         {
           "type": "text",
