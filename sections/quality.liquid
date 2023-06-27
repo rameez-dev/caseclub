@@ -19,7 +19,9 @@
       {% for block in section.blocks %}
       <div class="one-fourth column medium-down--one-whole">
         <div class="quality-main">
-          <img src={{ block.settings.slide_image | image_url }}>
+          <div class="qulaity-img-main">
+            <img src={{ block.settings.slide_image | image_url }}>
+          </div>
           <div class="description">
             <h1>{{ block.settings.slide_heading }}</h1>
             <p>{{ block.settings.slide_text }}

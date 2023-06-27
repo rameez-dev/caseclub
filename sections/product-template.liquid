@@ -111,17 +111,19 @@
     {% render 'image-element', image: block.settings.image, alt: link_title %}
     {% endif %}
     
-    {% if block.settings.iframe_video != blank %}
-    {% if block.settings.iframe_video contains 'vimeo' %}
-    <div class="plyr__video-embed" id="video-{{ object.id }}" data-video-element data-external-video>
-      <iframe src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
+    <div class="video-section">
+      {% if block.settings.iframe_video != blank %}
+      {% if block.settings.iframe_video contains 'vimeo' %}
+      <div class="plyr__video-embed" id="video-{{ object.id }}" data-video-element data-external-video>
+        <iframe src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
+      </div>
+      {% else %}
+      <div class="plyr__video-embed" data-video-element data-external-video>
+        <iframe src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+      </div>
+      {% endif %}
+      {% endif %}
     </div>
-    {% else %}
-    <div class="plyr__video-embed" data-video-element data-external-video>
-      <iframe src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
-    </div>
-    {% endif %}
-    {% endif %}
     </div>
     </div>
     </div>

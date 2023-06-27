@@ -6189,6 +6189,9 @@ div.breadcrumb-collection.breadcrumb-collection--product {
   background-color: {{ settings.shop_bg_color }};
   /* Allows users to click embedded iframe ui when video paused */
 }
+.video-section {
+  display: block;
+}
 .video-wrapper .video__overlay {
   position: absolute;
   top: 0;
@@ -6236,6 +6239,9 @@ div.breadcrumb-collection.breadcrumb-collection--product {
   .video-wrapper {
     display: flex;
     flex-direction: column;
+  }
+  .video-section {
+    display: none;
   }
 }
 
@@ -17992,6 +17998,9 @@ footer .social_icons a:hover {
  display: flex;
  flex-direction: column;
 }
+.qulaity-img-main {
+  width: 220px;
+}
 .quality-home {
   margin-top: 60px;
 }
@@ -18011,6 +18020,7 @@ footer .social_icons a:hover {
   font-size: 20px;
   letter-spacing: 0;
   margin: 10px 0 20px 0;
+  white-space: pre-line;
 }
 .quality-home h2 {
   margin-left: calc(20px / 2);
@@ -18439,6 +18449,7 @@ ul#mobile_menu2 .bottom-menu {
     font-size: 14px !important;
     text-transform: inherit !important;
     padding: 10px 15px !important;
+    font-weight: 400 !important;
 }
 .sm_menu_outer .mobile_menu .bottom-menu a { 
   color: #fff !important;
@@ -18450,12 +18461,13 @@ ul#mobile_menu2 .bottom-menu {
 }
   .sm_menu_outer .tc-mobile-logo img {
     width: 100%;
-    max-width: 70px;
+    max-width: 60px;
     margin: 10px auto;
     display: block;
 }
   ul#mobile_menu2 {
     border-top: 1px solid #999;
+    margin-top: 0;
 }
   .mm-navbar__title {
     text-align: center;
@@ -20348,6 +20360,9 @@ a.mini-cart__item-a {
   }
   .customer_review_image {
     display: block;
+  }
+  .premium-wrap .content-main {
+    margin: 30px 0;
   }
 }
 @media (max-width: 480px) {
