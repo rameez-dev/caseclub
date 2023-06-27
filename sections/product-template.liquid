@@ -99,14 +99,14 @@
 
   
   {% if block.settings.title != blank and block.type != "slide"%}
-    <div class="one-whole column product-desp-main">
+    <div class="one-whole column product-desp-main {{ block.settings.rv_products_custom_styles }}">
     <div class="is-flex is-flex-wrap equal-columns--outside-trim {{ block.settings.cssclass }}">
     <div class="one-half column medium-down--one-whole">
     <h3>{{ block.settings.title }}</h3>
     <div>{{ block.settings.text }}</div>
     </div>
       
-    <div class="one-half column medium-down--one-whole">
+    <div class="one-half column medium-down--one-whole product-desp">
     {% if block.settings.image != blank %}
     {% render 'image-element', image: block.settings.image, alt: link_title %}
     {% endif %}
@@ -133,7 +133,7 @@
   <div class="premium-wrap">
     <div class="block-content">
       <div class="is-flex is-flex-wrap equal-columns--outside-trim meet-case">
-          <div class="one-half column medium-down--one-whole is-relative">
+          <div class="one-half column medium-down--one-whole is-relative premium-custom-height">
             <img src={{ block.settings.premium_image | image_url }}>
           </div>
           <div class="one-half column medium-down--one-whole">
@@ -160,7 +160,7 @@
 
 <div class="faq-wrap">
   <div class="faq-container">
-    <div class="one-half column medium-down--one-whole">
+    <div class="one-half column medium-down--one-whole phonecase-faq">
       <h3>Frquently Asked Questions</h3>
       <div class="faq-block open">
         <div class="faq-heading custom-faq-heading">
@@ -673,6 +673,22 @@
           "id": "title",
           "label": "Heading",
           "default": "Heading"
+        },
+        {
+          "type": "radio",
+          "id": "rv_products_custom_styles",
+          "label": "Class",
+          "default": "product-section-one",
+          "options": [
+            {
+              "value": "product-section-one",
+              "label": "product-section-one"
+            },
+            {
+              "value": "product-section-two",
+              "label": "product-section-two"
+            }
+          ]
         },
         {
           "type": "richtext",

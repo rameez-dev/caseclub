@@ -859,6 +859,7 @@ Description: Shopify Theme (https://www.shopify.com/&ref=out-of-the-sandbox)
 .section.is-width-wide {
   width: 100%;
   max-width: none;
+  margin-bottom: 45px;
 }
 
 #design-text{
@@ -4442,6 +4443,7 @@ li > a.url-deadlink {
   display: flex;
   flex-wrap: nowrap;
   flex: 0 0 auto;
+  font-size: 14px;
 }
 
 .main-nav,
@@ -4739,7 +4741,7 @@ select.currencies,
 .menu li {
   position: relative;
   vertical-align: top;
-  padding-right: 10px;
+  padding-right: 20px;
 }
 
 .shopify-currency-form {
@@ -16966,7 +16968,7 @@ footer .social_icons a:hover {
 /* #Home page - image with text
 ================================================== */
 .button-grid-container {
-  margin-top: 10px;
+  margin-top: 25px;
   display: inline-grid;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -17991,8 +17993,14 @@ footer .social_icons a:hover {
   text-align: center;
   display: block
 }
+.go3176171171 p {
+  color: #000000;
+}
 .bottom-caption-content h1, p {
   color: white;
+}
+.product-dog-text p {
+  color: #2b2a2a;
 }
 .quality-main {
  display: flex;
@@ -18017,10 +18025,10 @@ footer .social_icons a:hover {
 }
 .quality-home h1{
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: 0;
   margin: 10px 0 20px 0;
-  white-space: pre-line;
+  font-family: "EB_Garamond variant0";
 }
 .quality-home h2 {
   margin-left: calc(20px / 2);
@@ -18721,6 +18729,9 @@ a.top_menu_link_right {
     letter-spacing: 0;
     color: #ffffff;
 }
+  .product-dog-heading {
+    color: #000 !important;
+  }
   .free-ship .heading , .protective-wap .heading{
     display: none;
 }
@@ -18767,18 +18778,24 @@ a.top_menu_link_right {
     width: 50%;
     padding: 15px;
 }
+.protective-block h3 {
+  color: #000;
+}
+.protective-block p {
+  color: #2b2a2a;
+}
 .premium-wrap {
   background-color: {{ settings.banner_mustard_background_color}};
   width: 100%;
   margin: 0 0 50px;
-  height: 390px;
+  height: 350px;
 }
 .premium-wrap .heading {
   display: none;
 }
 .premium-wrap img {
   position: absolute;
-  top: -24px;
+  top: -22px;
 }
 .premium-wrap .content-main {
   margin: 70px 0;
@@ -18879,7 +18896,7 @@ a.top_menu_link_right {
     transition: 0.1s;
     height: 0px;
 }
-  .open .faq-body {
+.phonecase-faq .open .faq-body {
     transform: scaleY(1);
     font-size: 14px;
     padding: 15px 0;
@@ -18887,6 +18904,10 @@ a.top_menu_link_right {
 }
   .faq-heading h4, .faq-content p {
     margin: 0;
+    color: #777;
+}
+.phonecase-faq p {
+  color: white;
 }
   .faq-heading {
     border-top: 1px solid #ccc;
@@ -18906,12 +18927,18 @@ a.top_menu_link_right {
   .faq-heading:hover span.faq-title-text {
     color: #fff;
 }
+.phonecase-faq h4 {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0;
+  align-items: center;
+  color: #ffffff;
+}
   .faq-heading h4 {
     display: flex;
     justify-content: space-between;
     padding-right: 0;
     align-items: center;
-    color: #ffffff;
 }
   .faq-heading i.icon-up-arrow, .open .faq-heading i.icon-down-arrow {
     display: none;
@@ -20364,6 +20391,9 @@ a.mini-cart__item-a {
   .premium-wrap .content-main {
     margin: 30px 0;
   }
+  .section.is-width-wide {
+    margin-bottom: 0;
+  }
 }
 @media (max-width: 480px) {
   .list-collections-wrapper .product-image-section {
@@ -21217,4 +21247,40 @@ font-size: 12px ;
  .sticky #header.mobile_nav-fixed--true .top-bar .cart-container .cart_savings span {
   color: #037b04 !important;
  }
+ .product-section-one img {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .premium-wrap {
+    margin-top: 180px;
+  }
+  .premium-wrap img {
+    position: absolute;
+    height: auto;
+    transform: translate(-50%, -90%);
+    left: 50%;
+    top: 50%;
+  }
+  .premium-custom-height {
+    height: 30px;
+  }
+  .product-section-one {
+    margin: 0;
+  }
+  .product-section-one img {
+    display: none;
+  }
+  .product-section-two {
+    margin: 280px 0 0 0 !important;
+    position: relative;
+  }
+  .product-desp .image-element__wrap img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -128%);
+    padding: 0 30px;
+  }
 }
