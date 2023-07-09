@@ -2,7 +2,7 @@
 $(() => {
   window.utils.enableDisclosure();
   const oldFlickityCreate = window.Flickity.prototype._create;
-
+ 
   window.Flickity.prototype._create = function () {
     const that = this;
     if (this.element.addEventListener) {
@@ -626,14 +626,24 @@ $(() => {
 
         cartItemsHTML += `<li class="mini-cart__item ${item.product_type.replace(' ', '-').toLowerCase()}" data-cart-item data-line-id="${lineID}" data-variant-id="${item.id}">`
         + `<a href="${item.url}" class="mini-cart__item-a">` ;
-        if (item.product_type!='Strap')
+        if (item.product_type!='Strap' && item.product_type!='Personalized Phone Cases')
         cartItemsHTML += `<span class="initials ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
-        if (item.image) {
+       
+        if (item.image && item.product_type!='Personalized Phone Cases') {
           cartItemsHTML += `${'<div class="cart_image">'
               + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />`
             + '</div><div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div></a>';
         }
-
+        else if (item.image && item.product_type ==='Personalized Phone Cases'){
+          cartItemsHTML += `${'<div class="cart_image" style="position: absolute;">'
+          + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" /></div>`
+          + `<span class="cart-initials-color1-text" style="color: ${item.properties['Letter Color1']} !important; text-shadow: ${item.properties['Shade Color']} 1px 2px 0px" >${item.properties['Letters']}</span>`;
+          + '</a>';
+    
+        }
+        if (item.product_type ==='Personalized Phone Cases')
+        cartItemsHTML += `<div class="mini-cart__item-content custom_design_cart_item"><div class="mini-cart__item-title">`;
+        else
         cartItemsHTML += `<div class="mini-cart__item-content"><div class="mini-cart__item-title">`;
 		
 		if ( item.product_type=='Phone Cases' ) {
@@ -652,8 +662,10 @@ $(() => {
 		cartItemsHTML += `<a href="${item.url}">${item.title}`;	
         if (item.properties && item.product_type!='Strap') {
           $.each(item.properties, (title, value) => {
-            if (value) {
-              cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
+            if ( title != 'Design') {
+              if (value) {
+                cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
+              }
             }
           });
         }
@@ -740,10 +752,10 @@ $(() => {
         cartItemsHTML += '</div></div></div>';
         cartItemsHTML += `<a href="/cart/change?line=${lineID}&amp;quantity=0" class="js-cart-remove-btn cart__remove-btn" data-line-id="${lineID}" data-remove-item="mini-cart"><span class="remove-icon"></span></a>`;
       });
+         
       
       //console.log({curr_pro,curr_pro_intial,curr_pro_color,curr_pro_title});
       var per_dis = 100 -  window.Shopify.theme_settings.sale_amount;
-
       
       var procolor = curr_pro_color;
       var match_html = '';
@@ -942,8 +954,17 @@ $(() => {
   });
 
   if (window.Shopify.theme_settings.cart_action === 'ajax') {
-    $(document).on('click', '.ajax-submit', function (e) {
+    $(document).on('click', '.ajax-submit', async function (e) {
       e.preventDefault();
+      
+      if(document.getElementById("snapshot") !== null) {
+        const custom_image = await takeScreenshot();
+        console.log ('custom image ...', custom_image);
+        const formData = $(this).closest('form');
+        formData.append('<input type="hidden" name="properties[Design]" value= ' + custom_image + '>');
+        console.log('form data ..', formData.serialize());
+      }
+      
       const $addToCartForm = $(this).closest('form');
       const $addToCartBtn = $addToCartForm.find('.add_to_cart');
 
@@ -1489,3 +1510,46 @@ $(document).ready(function(){
       },1000);
     }
 });
+
+//s3 upload ....
+function takeScreenshot() {
+  const response = new Promise (function (resolve, reject) {
+  var bucketName = "caseclubhtmlcanvas";
+  var bucketRegion = "us-east-1";
+  var IdentityPoolId = "us-east-1:5d9945a8-60d4-4bf4-bf59-64b79445bb80";
+  var image_url = "";
+
+  AWS.config.update({
+    region: bucketRegion,
+    credentials: new AWS.CognitoIdentityCredentials({ IdentityPoolId: IdentityPoolId })
+  });
+  var s3 = new AWS.S3({
+    apiVersion: '2012-10-17',
+    params: {Bucket: bucketName}
+  });
+  html2canvas(document.querySelector("#snapshot"), { onclone: function (clonedDoc) {
+    clonedDoc.getElementById('snapshot').style.display = 'block';
+    }, backgroundColor: null , allowTaint: true, useCORS: true}).then(canvas => {
+    
+    canvas.toBlob((blob) => {
+      if (blob != null) {
+      var params = {
+          Key: Date.now() + "." + blob.type.split("/")[1],
+          Body: blob,
+          ContentType: blob.type,
+          ACL: 'public-read'
+      }
+      s3.upload(params, function(err, data) {
+            if(err) {
+              reject(err);
+            } else {
+              image_url = data.Location;
+              resolve(image_url);
+            }
+        });
+      }
+    });
+  });
+});
+    return response;
+}

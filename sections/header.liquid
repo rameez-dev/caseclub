@@ -2,7 +2,7 @@
   type="application/json"
   data-section-type="header"
   data-section-id="{{ section.id }}"></script>
-
+ 
 {% comment %} Structured data {% endcomment %}
 
 <script type="application/ld+json">
@@ -515,64 +515,63 @@
                           <ul class="cart_items js-cart_items">
                             {%- assign total_saving = 0 -%}
 
-                            {% for item in cart.items %}
-                              {% if item.variant.compare_at_price > item.variant.price %}
-                                {%- assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
-                                {%- assign total_saving = saving | plus: total_saving -%}
-                              {% endif %}
-                              <li
-                                class="mini-cart__item {{ item.product.type | downcase | replace: ' ', '-' }}"
-                                data-cart-item
-                                data-line-id="{{ forloop.index }}"
-                                data-variant-id="{{ item.id }}">
-                                <a href="{{ item.url }}" class="mini-cart__item-a">
-                                  {% if item.image %}
-                                    <div class="cart_image mini-cart__item-image">
-                                      <img
-                                        src="{{ item.image | img_url: '320x' }}"
-                                        alt="{{ item.title | escape }}"
-                                        class="lazyload" />
-                                    </div>
-                                  {% endif %}
-                                  {% if item.product.type != 'Strap' %}
-                                    <span
-                                      class='initials
-                                      {% for p in item.properties %}
-                                        {% unless p.last == blank %}
-                                          {% if p.first == 'Letter Color' %}
-                                            {% assign curr_pro_color = p.last %}{{ p.last }}{% endif %}
-                                        {% endunless %}
-                                      {% endfor %}'>
-                                      {% for p in item.properties %}
-                                        {% unless p.last == blank %}
-                                          {% if p.first == 'Letters' %}
-                                            {% assign curr_pro_intial = p.last %}{{ p.last }}{% endif %}
-                                        {% endunless %}
-                                      {% endfor %}
-                                    </span>
-                                    <div class="tc-logo {{ item.variant.title | downcase | replace: ' ', '-' }}">
-                                      <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-                                      <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-                                    </div>
-                                  {% endif %}
-                                </a>
+                    {% for item in cart.items %}
+                      {% if item.variant.compare_at_price > item.variant.price %}
+                        {%- assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
+                        {%- assign total_saving = saving | plus: total_saving -%}
+                      {% endif %}
+                      <li class="mini-cart__item {{ item.product.type | downcase | replace: ' ', '-' }}" data-cart-item data-line-id="{{ forloop.index }}" data-variant-id="{{ item.id }}">
+                        <a href="{{ item.url }}" class="mini-cart__item-a" >
+                          {% if item.image %}
+                            <div class="cart_image mini-cart__item-image"  {% if item.product.type == 'Personalized Phone Cases' %} style="position: absolute;" {% endif %}>
+                              <img src="{{ item.image | img_url: '320x' }}" alt="{{ item.title | escape }}" class="lazyload" />
+                            </div>
+                          {% endif %}
+                          {% if  item.product.type != 'Strap' and  item.product.type != 'Personalized Phone Cases'%}
+                          <span class="initials 
+                     {%- for p in item.properties -%}
+                        {% unless p.last == blank %}
+                    	    {%- if p.first=='Letter Color' -%}{%- assign  curr_pro_color = p.last -%}{{ p.last }}{%- endif -%}
+                        {% endunless %}
+                    {%- endfor -%}">
+                    {% for p in item.properties %}
+                        {% unless p.last == blank %}
+                          {% if p.first=='Letters' %}{% assign curr_pro_intial = p.last %}{{ p.last }}{% endif %}
+                      {% endunless %}
+                      {% endfor %}
+                          </span>
+                          <div class="tc-logo {{ item.variant.title | downcase | replace: ' ', '-' }}">
+                            <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                            <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                          </div>
+                          {%  elsif item.product.type == 'Personalized Phone Cases' %}
+                            {% for p in item.properties %}
+                              {% unless p.last == blank %}
+                                {% if p.first=='Letters' %}{% assign curr_pro_intial = p.last %}{% endif %}
+                                {% if p.first=='Letter Color1' %}{% assign curr_pro_text_color = p.last %}{% endif %}
+                                {% if p.first=='Shade Color' %}{% assign curr_pro_text_shade = p.last %}{% endif %}
+                              {% endunless %}
+                            {% endfor %}
+                            <span class="cart-initials-color1-text" style="color: {{curr_pro_text_color}} !important; text-shadow: {{curr_pro_text_shade}} 1px 2px 0px">{{curr_pro_intial}}</span>
+                          {% endif %}
+                        </a>
 
-                                <div class="mini-cart__item-content">
-                                  <div class="mini-cart__item-title">
-                                    {% if item.product.type == 'Phone Cases' %}
-                                      <h4 class="product_name">The Personalized Case</h4>
-                                    {% endif %}
-                                    {% if item.product.type == 'Card Wallets' %}
-                                      <h4 class="product_name">The Personalized Card Wallet</h4>
-                                    {% endif %}
-                                    {% if item.product.type == 'Card Holders' %}
-                                      <h4 class="product_name">The Personalized Card Holder</h4>
-                                    {% endif %}
-                                    {% if item.product.type == 'Strap' %}
-                                      <h4 class="product_name">Strap</h4>
-                                    {% endif %}
-                                    <a href="{{ item.url }}">
-                                      {{ item.product.title }}
+                        <div class="mini-cart__item-content {% if item.product.type == 'Personalized Phone Cases' %} custom_design_cart_item {% endif %}">
+                          <div class="mini-cart__item-title">
+                            {% if item.product.type=='Phone Cases' %}
+							<h4 class="product_name">The Personalized Case</h4>
+							{% endif %}
+							{% if item.product.type=='Card Wallets' %}
+							<h4 class="product_name">The Personalized Card Wallet</h4>
+							{% endif %}
+							{% if item.product.type=='Card Holders' %}
+							<h4 class="product_name">The Personalized Card Holder</h4>
+							{% endif %}
+              {% if item.product.type=='Strap' %}
+							<h4 class="product_name">Strap</h4>
+							{% endif %}
+                            <a href="{{ item.url }}" >
+                              {{ item.product.title }}
 
                                       {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
                                         -
@@ -582,17 +581,19 @@
                                         {% endfor %}
                                       {% endunless %}
 
-                                      {% if item.properties and item.product.type != 'Strap' %}
-                                        {% for p in item.properties %}
-                                          {% if p.last != blank %}
-                                            <div class="line-item color-{{ p.last }}">
-                                              {{ p.first }}: {{ p.last }}
-                                            </div>
-                                          {% endif %}
-                                        {% endfor %}
-                                      {% endif %}
-                                    </a>
-                                  </div>
+                              {% if item.properties and item.product.type!='Strap' %}
+                                {% for p in item.properties %}
+                                  {%  unless p.first == 'Design' %}  
+                                  {% if p.last != blank %}
+                                    <div class="line-item color-{{ p.last }}">
+                                      {{ p.first }}: {{ p.last }}
+                                    </div>
+                                  {% endif %}
+                                {% endunless %}
+                                {% endfor %}
+                              {% endif %}
+                            </a>
+                          </div>
 
                                   <div class="mini-cart__item-price">
                                     {% if item.price > 0 %}
