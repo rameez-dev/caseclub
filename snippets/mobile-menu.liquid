@@ -1,6 +1,6 @@
 {% if context == 'top_bar_menu' %}
   {% for link in linklists[menu].links %}
-    <li>
+    <li> 
       {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
         <a data-no-instant href="{{ link.url }}" class="parent-link--false">
           {{ link.title }}
@@ -12,10 +12,67 @@
       {% endif %}
     </li>
   {% endfor %}
+
+{%  elsif context == 'mobile-first-4' %}
+   {% for link in linklists.new-main-menu-phone.links %}
+      {% if forloop.index < 5 %}
+      {% if linklists[link.handle] == empty %}
+        <li data-link data-mobile-dropdown-rel="{{ link.handle }}">
+          {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
+            <a data-no-instant href="{{ link.url }}" class="parent-link--false">
+              {{ link.title }}
+            </a>
+          {% else %}
+            <a data-no-instant href="{{ link.url }}" class="parent-link--true">
+              {{ link.title }}
+            </a>
+          {% endif %}
+        </li>
+      {% else %}
+        <li data-val data-mobile-dropdown-rel="{{ link.handle }}">
+          {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
+            <a data-no-instant href="{{ link.url }}" class="parent-link--false">
+              {{ link.title }} <span class="right icon-down-arrow"></span>
+            </a>
+          {% else %}
+            <a data-no-instant href="{{ link.url }}" class="parent-link--true">
+              {{ link.title }} <span class="right icon-down-arrow"></span>
+            </a>
+          {% endif %}
+          <ul class="submenu">
+            {% for link in linklists[link.handle].links %}
+              {% if linklists[link.handle] == empty %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% else %}
+                <li>
+                  {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
+                    <a data-no-instant href="{{ link.url }}" class="parent-link--false">
+                      {{ link.title }} <span class="right icon-down-arrow"></span>
+                    </a>
+                  {% else %}
+                    <a data-no-instant href="{{ link.url }}" class="parent-link--true">
+                      {{ link.title }} <span class="right icon-down-arrow"></span>
+                    </a>
+                  {% endif %}
+                  <ul>
+                    {% for link in linklists[link.handle].links %}
+                      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+      {% endif %}
+      {% endif %}
+    {% endfor %}
+
 {% else %}
-  {% for link in linklists.mobile-navbar.links %}
+  {% for link in linklists.new-main-menu-phone.links %}
+    {% if forloop.index >= 5 %}
     {% if linklists[link.handle] == empty %}
-      <li data-link data-mobile-dropdown-rel="{{ link.handle }}">
+      <li data-link data-mobile-dropdown-rel="{{ link.handle }}"  class="bottom-links">
         {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
           <a data-no-instant href="{{ link.url }}" class="parent-link--false">
             {{ link.title }}
@@ -62,6 +119,7 @@
           {% endfor %}
         </ul>
       </li>
+    {% endif %}
     {% endif %}
   {% endfor %}
 {% endif %}

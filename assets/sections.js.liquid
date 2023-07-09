@@ -2665,8 +2665,8 @@ jQuery(document).ready(function(){
         stickyNav();
       });
   	jQuery('.faq-heading').click(function(){
-        jQuery('.faq-block').removeClass('open');
-        jQuery(this).parent('.faq-block').addClass('open');
+        jQuery('.faq-block:not(.open)').removeClass('open');
+        jQuery(this).parent('.faq-block').toggleClass('open');
     });
   
   	jQuery('.insta-carousel').slick({
@@ -2805,6 +2805,7 @@ jQuery('#text-to-print').on('input propertychange paste', function(){
 
 jQuery(document).on('click', '.color-swatch-option .color-swatch', function(){
   var color = jQuery(this).attr('title');
+  jQuery('#color-name-display').text(color);
   jQuery('.color-swatch').removeClass('active');
   jQuery(this).addClass('active');
   jQuery('.single-option-selector').val(color);

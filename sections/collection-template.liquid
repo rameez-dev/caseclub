@@ -40,7 +40,7 @@
   <div class="container">
     {% paginate collection.products by section.settings.pagination_limit %}
 
-    <div class="one-whole column">
+    {% comment %} <div class="one-whole column">
 
       <div class="breadcrumb-collection">
         {% if section.settings.collection_breadcrumb %}
@@ -117,7 +117,7 @@
           </div>
         {% endif %}
       </div>
-    </div>
+    </div> {% endcomment %}
 
     {% if display_collection_title and section.settings.featured_collection_image == false %}
       <div class="one-half column medium-down--one-whole">
@@ -125,7 +125,7 @@
       </div>
     {% endif %}
 
-    <div class="{% if display_collection_title and section.settings.featured_collection_image == false %}one-half column medium-down--one-whole{% else %}one-whole column{% endif %} section_select">
+    {% comment %} <div class="{% if display_collection_title and section.settings.featured_collection_image == false %}one-half column medium-down--one-whole{% else %}one-whole column{% endif %} section_select">
       {% if collection.handle != blank and collection.products_count > 0 %}
         {% if section.settings.collection_tags %}
           {% for tag in collection.all_tags %}
@@ -157,7 +157,7 @@
           </select>
         {% endif %}
       {% endif %}
-    </div>
+    </div> {% endcomment %}
 
     <div class="one-whole column">
       <div class="feature_divider"></div>
@@ -173,7 +173,7 @@
     <div class="content-wrapper is-flex is-flex-wrap">
       <!--{% render 'sidebar' %}-->
       <div class="has-sidebar-option sidebar-enabled--{{ sidebar }}">
-        <div class="text-to-print-div">
+        <div>
           {% if collection.url == '/collections/all' %} 
           <label>Personalize it for free</label>
             <span class="tooltip"><span class=info-icon><svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M95.4,50C95.4,24.9,75.1,4.6,50,4.6C24.9,4.6,4.6,24.9,4.6,50c0,25.1,20.3,45.4,45.4,45.4C75.1,95.4,95.4,75.1,95.4,50z   M49.3,26.5c3.1,0,5.6,2.5,5.6,5.6s-2.5,5.6-5.6,5.6s-5.6-2.5-5.6-5.6S46.2,26.5,49.3,26.5z M42.2,73.5v-7.5h2.9V50.6h-2.8v-7.5h2.8  h8.4h1.4v22.8h2.9v7.5h-2.9h-9.8H42.2z"/></svg></span>
@@ -272,10 +272,11 @@
         {% endif %}
 
         <div class="container">
+          <h2 class="collection-heading">{{ collection.title }}</h2>
           <div class="one-whole column">
             {% if collection.products.size == 0 %}
               <div class="collection-matrix">
-                <p class="quote">{{ 'collections.general.no_matches' | t }}</p>
+                <p text-to-print-div="quote">{{ 'collections.general.no_matches' | t }}</p>
               </div>
             {% else %}
               {%- assign products_per_row = section.settings.products_per_row -%}

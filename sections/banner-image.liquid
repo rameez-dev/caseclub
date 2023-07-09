@@ -1,0 +1,68 @@
+<section class="banner-image">
+   <div class="banner-image-main">
+      <div class="image-section">
+         <img src={{ section.settings.banner_image | image_url }}>
+      </div>
+      <div class="sales-section">
+         <div class="sales-section-main">
+            <h1>{{ section.settings.banner_heading }}</h1>
+            <p>{{ section.settings.banner_subheading }}</p>
+            <a href="{{ section.settings.banner_button_link }}">
+              {{ section.settings.banner_button_text }}
+            </a>
+         </div>
+      </div>
+   </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Banner image",
+    "class": "shopify-section--banner-image",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "custom_html",
+        "label": "Custom html"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Image"
+      }
+      ,
+      {
+        "type": "text",
+        "id": "banner_heading",
+        "label": "Heading",
+        "default": "Spring Sale"
+      }
+      ,
+      {
+        "type": "text",
+        "id": "banner_subheading",
+        "label": "Sub Heading",
+        "default": "20% Off Everything"
+      }
+      ,
+      {
+        "type": "text",
+        "id": "banner_button_text",
+        "label": "Button Text",
+        "default": "SHOP NOW"
+      }
+      ,
+      {
+        "type": "url",
+        "id": "banner_button_link",
+        "label": "Button Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner image",
+        "category": "Content"
+      }
+    ]
+  }
+{% endschema %}

@@ -55,50 +55,22 @@
 
 {% assign  count = 1 %}
   
-{% if product.type == 'Phone Cases' %}
-  <ul class="phone-case-info"><li><i class="icon-check"></i> Protect your phone in style</li>
-<li><i class="icon-check"></i> Express your personality</li>
-<li><i class="icon-check"></i> Say no to bulky plastic cases</li></ul>
-  
-  <div class="select-model">
-    <label class="form-label"><span class="label-badge">{{count}}</span>Select your device</label>
-    {% assign  count = count | plus:1 %}
-    <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
-            <option value="/products/iphone-14-pro-max" {% if product.title == "iPhone 14 Pro Max" %}selected{% endif %}>iPhone 14 Pro Max</option>
-            <option value="/products/iphone-14-pro" {% if product.title == "iPhone 14 Pro" %}selected{% endif %}>iPhone 14 Pro</option>
-            <option value="/products/iphone-14-plus" {% if product.title == "iPhone 14 Plus" %}selected{% endif %}>iPhone 14 Plus</option>
-            <option value="/products/iphone-14" {% if product.title == "iPhone 14" %}selected{% endif %}>iPhone 14</option>
-			<option value="/products/iphone-13-pro-max" {% if product.title == "iPhone 13 Pro Max" %}selected{% endif %}>iPhone 13 Pro Max</option>
-      		<option value="/products/iphone-13-pro" {% if product.title == "iPhone 13 Pro" %}selected{% endif %}>iPhone 13 Pro</option>
-      		<option value="/products/iphone-13" {% if product.title == "iPhone 13" %}selected{% endif %}>iPhone 13</option>
-      		<option value="/products/iphone-12-pro-max" {% if product.title == "iPhone 12 Pro Max" %}selected{% endif %}>iPhone 12 Pro Max</option>
-      		<option value="/products/iphone-12-pro" {% if product.title == "iPhone 12 Pro" %}selected{% endif %}>iPhone 12 Pro</option>
-      		<option value="/products/iphone-12" {% if product.title == "iPhone 12" %}selected{% endif %}>iPhone 12</option>
-      		<option value="/products/iphone-11-pro-max" {% if product.title == "iPhone 11 Pro Max" %}selected{% endif %}>iPhone 11 Pro Max</option>  
-      		<option value="/products/iphone-11-pro" {% if product.title == "iPhone 11 Pro" %}selected{% endif %}>iPhone 11 Pro</option>
-      		<option value="/products/iphone-11" {% if product.title == "iPhone 11" %}selected{% endif %}>iPhone 11</option>
-      		<option value="/products/iphone-xs" {% if product.title == "iPhone X(S)" %}selected{% endif %}>iPhone X(S)</option>
-      		<option value="/products/iphone-xr" {% if product.title == "iPhone XR" %}selected{% endif %}>iPhone XR</option>
-    </select>
-    <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
-      {% for product1 in collections.all.products %}
-  		{% if product1.type == 'Phone Cases' %}
-      		<option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
-        {% endif %}
-      	{% endfor %}
-    </select>-->
-  </div>
-{% endif %}
-{% if product.type != 'Phone Cases' and product.type!="Simple Product" and product.type!="Gift Cards" %}
-<ul class="phone-case-info">
-<li><i class="icon-check"></i> Never lose your cards again</li>
-<li><i class="icon-check"></i> Fits in any pocket without bulk</li>
-<li><i class="icon-check"></i> Holds all your essentials</li></ul>
-{% endif %}
+  {% if product.type == 'Phone Cases' %}
+    <ul class="phone-case-info"><li><span class="square-icon"></span> Protect your phone in style</li>
+    <li><span class="square-icon"></span> Express your personality</li>
+    <li><span class="square-icon"></span> Say no to bulky plastic cases</li></ul>
+    {% endif %}
+    {% if product.type != 'Phone Cases' and product.type!="Simple Product" and product.type!="Gift Cards" %}
+    <ul class="phone-case-info">
+      <li><span class="square-icon"></span>Never lose your cards again</li>
+      <li><span class="square-icon"></span>Fits in any pocket without bulk</li>
+      <li><span class="square-icon"></span>Holds all your essentials</li>
+    </ul>
+  {% endif %}
   {% form 'product', product %}
 
   {% if product.options.size == 1 and settings.product_form_style == 'dropdown' and product.options[0] == 'Color' %}
-    <label class="form-label"><span class="label-badge">{{count}}</span>Select your color</label>
+  <label class="form-label"><span class="label-text">Color</span><span id="color-name-display">{% if product.selected_variant.title %} {{ product.selected_variant.title }} {% else %} Caviar Black {% endif %}</span></label>
     {% assign  count = count | plus:1 %}
   {% elsif product.options.size == 1 and settings.product_form_style == 'dropdown' and product.options[0] == 'Size' %}
     <label class="form-label"><span class="label-badge">{{count}}</span>Select your size</label>
@@ -111,9 +83,9 @@
     "
   >
 
-    {% if product.options.size == 1 and settings.product_form_style == 'dropdown' %}
+    <!-- {% if product.options.size == 1 and settings.product_form_style == 'dropdown' %}
       <label>{{ product.options[0] }}</label>
-    {% endif %}
+    {% endif %} -->
 
     <div class="selection-product-variation">
      {% if template.suffix != "customily-products" %}
@@ -150,6 +122,38 @@
     </div>
   {% endif %}
 
+  {% if product.type == 'Phone Cases' %}
+  
+  <div class="select-model">
+    <label class="form-label">Select your device</label>
+    {% assign  count = count | plus:1 %}
+    <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+            <option value="/products/iphone-14-pro-max" {% if product.title == "iPhone 14 Pro Max" %}selected{% endif %}>iPhone 14 Pro Max</option>
+            <option value="/products/iphone-14-pro" {% if product.title == "iPhone 14 Pro" %}selected{% endif %}>iPhone 14 Pro</option>
+            <option value="/products/iphone-14-plus" {% if product.title == "iPhone 14 Plus" %}selected{% endif %}>iPhone 14 Plus</option>
+            <option value="/products/iphone-14" {% if product.title == "iPhone 14" %}selected{% endif %}>iPhone 14</option>
+			<option value="/products/iphone-13-pro-max" {% if product.title == "iPhone 13 Pro Max" %}selected{% endif %}>iPhone 13 Pro Max</option>
+      		<option value="/products/iphone-13-pro" {% if product.title == "iPhone 13 Pro" %}selected{% endif %}>iPhone 13 Pro</option>
+      		<option value="/products/iphone-13" {% if product.title == "iPhone 13" %}selected{% endif %}>iPhone 13</option>
+      		<option value="/products/iphone-12-pro-max" {% if product.title == "iPhone 12 Pro Max" %}selected{% endif %}>iPhone 12 Pro Max</option>
+      		<option value="/products/iphone-12-pro" {% if product.title == "iPhone 12 Pro" %}selected{% endif %}>iPhone 12 Pro</option>
+      		<option value="/products/iphone-12" {% if product.title == "iPhone 12" %}selected{% endif %}>iPhone 12</option>
+      		<option value="/products/iphone-11-pro-max" {% if product.title == "iPhone 11 Pro Max" %}selected{% endif %}>iPhone 11 Pro Max</option>  
+      		<option value="/products/iphone-11-pro" {% if product.title == "iPhone 11 Pro" %}selected{% endif %}>iPhone 11 Pro</option>
+      		<option value="/products/iphone-11" {% if product.title == "iPhone 11" %}selected{% endif %}>iPhone 11</option>
+      		<option value="/products/iphone-xs" {% if product.title == "iPhone X(S)" %}selected{% endif %}>iPhone X(S)</option>
+      		<option value="/products/iphone-xr" {% if product.title == "iPhone XR" %}selected{% endif %}>iPhone XR</option>
+    </select>
+    <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+      {% for product1 in collections.all.products %}
+  		{% if product1.type == 'Phone Cases' %}
+      		<option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
+        {% endif %}
+      	{% endfor %}
+    </select>-->
+  </div>
+{% endif %}
+
   {% if product.available %}
     {% if settings.display_inventory_left %}
       <div class="items_left">
@@ -170,13 +174,7 @@
   {% endif %}
   
   {% if product.type!="Simple Product" and product.type!="Gift Cards" and template.suffix != "customily-products" %}
-     {% if product.type == 'Phone Cases' %}
-      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your case</label>
-    {% elsif product.type == 'Card Holders' %}
-      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card holder</label>
-    {% elsif product.type == 'Card Wallets' %}
-      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card wallet</label>
-    {% endif %}
+      <label class="form-label">Personalise for free</label>
       <div class="new-tcc-design">
         <div class="tcc-left-section">
           <div class="tcc-initial-wrap">
@@ -263,10 +261,10 @@
   {% assign seconds12 = 4 | times: 24 | times: 60 | times: 60 %}
   <div class="new-design-block">
     <ul>
-      <li><b>Free shipping</b> to <span class="country-info"></span></li>
-      <li>Order today, <b>estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</li></b>
+      <li><span class="circle-icon"></span><b>Free shipping</b> to <span class="country-info"></span></li>
+      <li><span class="circle-icon"></span>Order today, <b>estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</li></b>
       {% if product.type == 'Phone Cases' %}
-      <li><b>Buy 2</b> items, get <b>extra 10% off</b> with code <b>XM2</b></li>
+      <li><span class="circle-icon"></span><b>Buy 2</b> items, get <b>extra 10% off</b> with code <b>XM2</b></li>
       {% endif %}
     </ul>
     <quote>
