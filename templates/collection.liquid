@@ -2,6 +2,17 @@
   The contents of the collection.liquid template can be found in /sections/collection-template.liquid
 {% endcomment %}
 <style>
+  #header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    border-top: 1px solid #93564b;
+    border-bottom: 1px solid #93564b;
+  }
+  #header .top-bar > a{
+    transform: scale(0.7);
+  }
+
   .collection-heading + .column{
     margin:0px !important;
     width:100% !important;
@@ -13,6 +24,7 @@
   .available_colr{
     font-weight: normal;
     font-size: 12px;
+    color: black !important;
   }
   @media(max-width:768px){
     .product-list.collection-matrix{

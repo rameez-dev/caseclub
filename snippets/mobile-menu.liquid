@@ -31,11 +31,11 @@
       {% else %}
         <li data-val data-mobile-dropdown-rel="{{ link.handle }}">
           {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
-            <a data-no-instant href="{{ link.url }}" class="parent-link--false">
+            <a data-no-instant href="{{ link.url }}" class="parent-link--false"><span><img src="{{ 'rating.svg' | asset_url}}" alt=""></span>
               {{ link.title }} <span class="right icon-down-arrow"></span>
             </a>
           {% else %}
-            <a data-no-instant href="{{ link.url }}" class="parent-link--true">
+            <a data-no-instant class="parent-link--true"><span><img src="{{ 'rating.svg' | asset_url}}" alt=""></span>
               {{ link.title }} <span class="right icon-down-arrow"></span>
             </a>
           {% endif %}

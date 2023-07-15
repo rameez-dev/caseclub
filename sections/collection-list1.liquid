@@ -1,9 +1,20 @@
 <script
   type="application/json"
   data-section-type="collection-list"
-  data-section-id="{{ section.id }}"
->
-</script>
+  data-section-id="{{ section.id }}"></script>
+
+<style>
+  #header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    border-top: 1px solid #93564b;
+    border-bottom: 1px solid #93564b;
+  }
+  #header .top-bar > a{
+    transform: scale(0.7);
+  }
+</style>
 
 {%- assign id = section.id -%}
 
@@ -17,20 +28,25 @@
 {%- assign custom_css = section.settings.custom_css -%}
 
 {% comment %} Section specific CSS {% endcomment %}
-{% style %}
-  {%
-    render 'css-loop',
+  {% style %}
+{% render 'css-loop',
     css: custom_css,
-    id: id
-  %}
+    id: id %}
 {% endstyle %}
 
-{% if blocks.size > 0 %}
-  <section class="section {{ css_class }}">
+  {% if blocks.size > 0 %}
+    <section class="section {{ css_class }}"> <style>
+      .container h2.title.iphone-page-title {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 40px;
+      }
+    </style>
     <div class="container">
       {% if title != blank %}
         <div class="one-whole column center">
-          <h2 class="title">{{ title }}</h2>
+          <h2 class="title iphone-page-title">{{ title }}</h2>
           <div class="feature_divider"></div>
         </div>
       {% endif %}
@@ -60,15 +76,15 @@
                   {% if collection_image != blank %}
                     <div class="image__container">
                       {%
-                        render 'image-element',
-                        image: collection_image.src,
-                        alt: collection_image_alt,
-                        object_fit: section.settings.align_height,
-                        max_height: section.settings.collection_height
-                      %}
+                         render 'image-element',
+                       image: collection_image.src,
+                       alt: collection_image_alt,
+                       object_fit: section.settings.align_height,
+                       max_height: section.settings.collection_height %}
                     </div>
                   {% else %}
-                    {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {% capture num %}
+                      {% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
                     {{ 'collection-' | append: num | placeholder_svg_tag: 'placeholder-svg' }}
                   {% endif %}
 
@@ -103,8 +119,7 @@
                         <a
                           href="{{ collection.url }}"
                           title="{{ collection_title }}"
-                          class="thumbnail-overlay__button global-button global-button--product-grid-text-hover"
-                        >
+                          class="thumbnail-overlay__button global-button global-button--product-grid-text-hover">
                           {{ 'collections.general.view_all' | t }}
                         </a>
                       </div>
@@ -120,6 +135,12 @@
                       {% endif %}
                     </span>
                   </a>
+                  <div class="collection_swatches">
+                    <a href="" class="available_colr">Available in 8 colors</a>
+                    <h5 style="padding-top: 0;font-size:12px;">
+                      <span class="money">{{ 4900 | money_without_trailing_zeros }}</span>
+                    </h5>
+                  </div>
                 </div>
               </div>
             {% endfor %}
@@ -127,91 +148,87 @@
         </div>
       </div>
     </div>
+    <br><br>
   </section>
 {% endif %}
 
 {% if section.settings.align_height == true %}
   <style>
-    #shopify-section-{{ section.id }} .list-collections .thumbnail img {
-      max-height: {{ section.settings.collection_height }}px;
+    #shopify-section-{{ section.id }}.list-collections .thumbnail img {
+      max-height: {{ section.settings.collection_height }}
+      px;
     }
   </style>
 {% endif %}
 
 {% schema %}
-{
-  "name": "Collection list",
-  "class": "shopify-section--collection-list",
-  "max_blocks": 8,
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Collection list"
-    },
-    {
-      "type": "checkbox",
-      "id": "align_height",
-      "label": "Align height of collection images",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "collection_height",
-      "label": "Collection image height",
-      "min": 150,
-      "max": 400,
-      "step": 10,
-      "default": 200,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "frontpage_collections_per_row",
-      "label": "Collections per row",
-      "min": 2,
-      "max": 5,
-      "step": 1,
-      "default": 3
-    },
-    {
-      "type": "header",
-      "content": "Advanced"
-    },
-    {
-      "type": "paragraph",
-      "content": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
-    },
-    {
-      "type": "text",
-      "id": "css_class",
-      "label": "CSS Class"
-    },
-    {
-      "type": "textarea",
-      "id": "custom_css",
-      "label": "Custom CSS"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "collection",
-      "name": "Collection",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "feature_collection",
-          "label": "Collection"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        }
-      ]
-    }
-  ]
-}
-
+  {
+    "name": "Collection list",
+    "class": "shopify-section--collection-list",
+    "max_blocks": 8,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "checkbox",
+        "id": "align_height",
+        "label": "Align height of collection images",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "collection_height",
+        "label": "Collection image height",
+        "min": 150,
+        "max": 400,
+        "step": 10,
+        "default": 200,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "frontpage_collections_per_row",
+        "label": "Collections per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 3
+      }, {
+        "type": "header",
+        "content": "Advanced"
+      }, {
+        "type": "paragraph",
+        "content": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      }, {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      }, {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "feature_collection",
+            "label": "Collection"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}

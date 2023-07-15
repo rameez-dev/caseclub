@@ -635,18 +635,15 @@ $(() => {
             + '</div><div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div></a>';
         }
         else if (item.image && item.product_type ==='Personalized Phone Cases'){
-          cartItemsHTML += `${'<div class="cart_image" style="position: absolute;">'
-          + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" /></div>`
-          + `<span class="cart-initials-color1-text" style="color: ${item.properties['Letter Color1']} !important; text-shadow: ${item.properties['Shade Color']} 1px 2px 0px" >${item.properties['Letters']}</span>`;
+          cartItemsHTML += `${'<div class="cart_image mini-cart__item-image" style="position: relative;">'
+          + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />`
+          + `<span class="cart-initials-color1-text" style="color: ${item.properties['Letter Color1']} !important; text-shadow: ${item.properties['Shade Color']} 1px 2px 0px" >${item.properties['Letters']}</span></div>`;
           + '</a>';
     
         }
-        if (item.product_type ==='Personalized Phone Cases')
-        cartItemsHTML += `<div class="mini-cart__item-content custom_design_cart_item"><div class="mini-cart__item-title">`;
-        else
         cartItemsHTML += `<div class="mini-cart__item-content"><div class="mini-cart__item-title">`;
 		
-		if ( item.product_type=='Phone Cases' ) {
+		if ( item.product_type=='Phone Cases' || item.product_type ==='Personalized Phone Cases') {
 			cartItemsHTML += `<h4 class="product_name">The Personalized Case</h4>`;
 		}
 		if ( item.product_type=='Card Wallets' ) {
@@ -955,6 +952,12 @@ $(() => {
 
   if (window.Shopify.theme_settings.cart_action === 'ajax') {
     $(document).on('click', '.ajax-submit', async function (e) {
+      const $addToCartForm = $(this).closest('form');
+      const $addToCartBtn = $addToCartForm.find('.add_to_cart');
+      $addToCartBtn.attr('disabled', 'disabled').addClass('disabled');
+
+      $addToCartBtn.find('span').addClass('hidden');
+      $addToCartBtn.find('div.loading-overlay__spinner').removeClass('hidden');
       e.preventDefault();
       
       if(document.getElementById("snapshot") !== null) {
@@ -964,9 +967,6 @@ $(() => {
         formData.append('<input type="hidden" name="properties[Design]" value= ' + custom_image + '>');
         console.log('form data ..', formData.serialize());
       }
-      
-      const $addToCartForm = $(this).closest('form');
-      const $addToCartBtn = $addToCartForm.find('.add_to_cart');
 
       // Refresh page on quick shop add to cart if on cart page
       if ($('body').hasClass('cart')) {
@@ -980,10 +980,11 @@ $(() => {
         type: 'post',
         data: $addToCartForm.serialize(),
         beforeSend() {
-          $addToCartBtn.attr('disabled', 'disabled').addClass('disabled');
           $addToCartBtn.find('span').removeClass('fadeInDown').addClass('animated zoomOut');
         },
         success() {
+          $addToCartBtn.find('div.loading-overlay__spinner').addClass('hidden');
+          $addToCartBtn.find('span').removeClass('hidden');
           $addToCartBtn.find('.checkmark').addClass('checkmark-active');
 
           window.setTimeout(() => {
@@ -1035,6 +1036,8 @@ $(() => {
           $addToCartForm.after(warning);
           $addToCartBtn.removeAttr('disabled').removeClass('disabled');
           $addToCartBtn.find('span').text(window.Shopify.translation.add_to_cart).removeClass('zoomOut').addClass('zoomIn');
+          $addToCartBtn.find('div.loading-overlay__spinner').addClass('hidden');
+          $addToCartBtn.find('span').removeClass('hidden');
         },
       });
 
@@ -1513,6 +1516,7 @@ $(document).ready(function(){
 
 //s3 upload ....
 function takeScreenshot() {
+  console.log('screeeeeeeeeeeeeeeeeeeeeeeeeeeeen');
   const response = new Promise (function (resolve, reject) {
   var bucketName = "caseclubhtmlcanvas";
   var bucketRegion = "us-east-1";
@@ -1541,6 +1545,7 @@ function takeScreenshot() {
       }
       s3.upload(params, function(err, data) {
             if(err) {
+              console.log('hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
               reject(err);
             } else {
               image_url = data.Location;
