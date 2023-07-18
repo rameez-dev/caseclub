@@ -1,8 +1,11 @@
 <section class="banner-image">
    <div class="banner-image-main">
-      <div class="image-section">
-         <img src={{ section.settings.banner_image | image_url }}>
+      <div class="image-section desktop-img">
+        <img src={{ section.settings.banner_image | image_url }}>
       </div>
+      <div class="image-section mobile-img">
+        <img src="{{ 'headerimage.JPG' | asset_url }}" alt="">
+     </div>
       <div class="sales-section">
          <div class="sales-section-main">
             <h1>{{ section.settings.banner_heading }}</h1>
