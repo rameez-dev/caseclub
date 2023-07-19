@@ -157,7 +157,7 @@
             href="{{ routes.cart_url }}"
             class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link"
             title="{{ 'layout.general.cart' | t | escape }}"
-            data-no-instant>
+            data-no-instant> 
             <span class="cart_count">{{ cart.item_count }}</span>
           </a>
         </div>
@@ -411,8 +411,8 @@
               </ul>
 
               <div class="top-bar--right-menu">
-                <a href="/" class="top_menu_link_right">Our Story</a>
-                <a href="/" class="top_menu_link_right">Materials</a>
+                <a href="/pages/about" class="top_menu_link_right">Our Story</a>
+                <a href="/pages/about" class="top_menu_link_right">Materials</a>
                 <a href="/apps/help-center" class="top_menu_link_right">Help Center</a>
                 <ul class="menu">
                   {% if locale_selector or currency_selector or settings.show_multiple_currencies == true %}

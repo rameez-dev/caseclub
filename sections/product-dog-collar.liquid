@@ -4,7 +4,14 @@
   data-section-id="{{ section.id }}"
 >
 </script>
+<style> 
 
+@media (max-width:798px) {
+  .sticky #header.mobile_nav-fixed--true .top-bar .cart-container a, .sticky #header.mobile_nav-fixed--true .top-bar .cart-container span {
+    color: black !important;
+  } 
+}
+</style>
 {% if section.settings.product_breadcrumb == false %}
   {% style %}
     .breadcrumb__wrapper {
