@@ -29,14 +29,26 @@
           {% endif %}
         </li>
       {% else %}
+      <style>
+        .mobile-menu-link-center-aligned {
+          display: flex !important;
+          justify-content: start;
+        }
+        .mobile-menu-img-left {
+          height: 25px; width: 25px; margin-right: 10px;
+        }
+      </style>
         <li data-val data-mobile-dropdown-rel="{{ link.handle }}">
+          {%  assign img_name = link.title | downcase | replace: ' ', '-' | remove: "&" | append: '-mobile.png'  %}
           {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
-            <a data-no-instant href="{{ link.url }}" class="parent-link--false"><span><img src="{{ 'rating.svg' | asset_url}}" alt=""></span>
-              {{ link.title }} <span class="right icon-down-arrow"></span>
+            <a data-no-instant href="{{ link.url }}" class="parent-link--false mobile-menu-link-center-aligned"><span>
+              <img src="{{ img_name | asset_url}}" alt="" class="mobile-menu-img-left"></span>
+              <span style="margin-right: auto;">{{ link.title }}</span> <span class="right icon-down-arrow"></span>
             </a>
           {% else %}
-            <a data-no-instant class="parent-link--true"><span><img src="{{ 'rating.svg' | asset_url}}" alt=""></span>
-              {{ link.title }} <span class="right icon-down-arrow"></span>
+            <a data-no-instant class="parent-link--true mobile-menu-link-center-aligned"><span>
+              <img src="{{ img_name | asset_url}}" alt="" class="mobile-menu-img-left"></span>
+              <span style="margin-right: auto;">{{ link.title }}</span> <span class="right icon-down-arrow"></span>
             </a>
           {% endif %}
           <ul class="submenu">

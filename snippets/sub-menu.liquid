@@ -1,10 +1,31 @@
+<style>
+  /* width */
+.menu-links::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.menu-links::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.menu-links::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.menu-links::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+</style>
 {% for link in linklists[linklist].links %}
   {% if linklists[link.handle] != empty %}
     {% assign link_count = linklists[link.handle].links | size %}
     <div class="dropdown_container" data-dropdown="{{ link.handle }}">
       <div class="dropdown menu custom">
         <div class="dropdown_content">
-          <div class="menu-links">
+          <div class="menu-links" style="overflow: auto;">
             {% for sublink in linklists[link.handle].links %}
               <div class="">
                 <ul class="{% if linklists[sublink.handle] != empty %}dropdown_title{% else %}dropdown_item{% endif %}">
@@ -27,7 +48,8 @@
             {% endfor %}
           </div>
           <div class="menu-image">
-            <img src="https://cdn.shopify.com/s/files/1/0277/2212/1295/files/ezgif-1-063765527bbackpack.jpg?v=1681292081" alt="mega-menu-img">
+            {%  assign img_name = link.title | downcase | replace: ' ', '-' | remove: "&" | append: '.jpg'  %}
+            <img src="{{ img_name | asset_url }}" alt="mega-menu-img" style="object-fit: cover;">
           </div>
         </div>
       </div>
