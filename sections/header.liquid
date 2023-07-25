@@ -460,7 +460,7 @@
                             <span class="remove-icon"></span>
                           </a>
                           <span class="cart-head-text">Your Cart</span>
-                          <span class="cart-count-num">1 Item</span>
+                          <span class="cart-count-num">{{ cart.item_count }} Item</span>
                         </div>
                         <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
                           <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
