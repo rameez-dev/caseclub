@@ -1531,12 +1531,17 @@ function takeScreenshot() {
     apiVersion: '2012-10-17',
     params: {Bucket: bucketName}
   });
+  console.log(s3);
+  console.log("snapshot");
+  console.log(document.querySelector("#snapshot"));
+
   html2canvas(document.querySelector("#snapshot"), { onclone: function (clonedDoc) {
     clonedDoc.getElementById('snapshot').style.display = 'block';
-    }, backgroundColor: null , allowTaint: true, useCORS: true}).then(canvas => {
+    }, backgroundColor: null , allowTaint: true, useCORS: true, scale: 1}).then(canvas => {
     
     canvas.toBlob((blob) => {
       if (blob != null) {
+        console.log(blob);
       var params = {
           Key: Date.now() + "." + blob.type.split("/")[1],
           Body: blob,
