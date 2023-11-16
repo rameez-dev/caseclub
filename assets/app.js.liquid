@@ -626,7 +626,11 @@ $(() => {
 
         cartItemsHTML += `<li class="mini-cart__item ${item.product_type.replace(' ', '-').toLowerCase()}" data-cart-item data-line-id="${lineID}" data-variant-id="${item.id}">`
         + `<a href="${item.url}" class="mini-cart__item-a">` ;
-        if (item.product_type!='Strap' && item.product_type!='Personalized Phone Cases')
+        if (item.product_title.toLowerCase().includes('bundle')) {
+          cartItemsHTML += `<span class="initials bundle-phone-cart ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
+          cartItemsHTML += `<span class="initials bundle-case-cart ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
+        }
+        else if (item.product_type!='Strap' && item.product_type!='Personalized Phone Cases')
         cartItemsHTML += `<span class="initials ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
        
         if (item.image && item.product_type!='Personalized Phone Cases') {
