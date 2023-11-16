@@ -3312,6 +3312,10 @@ window.productPage = {
 // if( pagenm == "/collections/all" ){
                   jQuery('#quickshop .flickity-slider .gallery-cell.is-selected').append('<span class="initials"></span>' + html);
                   jQuery('.product .flickity-slider .gallery-cell.is-selected').append('<span class="initials"></span>' + html);
+                  if(jQuery('#isBundle') && jQuery('#isBundle').val() == 'true') {
+                    jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span><span class="initials"></span>' + html);
+                  }
+                  else
                   jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span>' + html);
 
                   jQuery('.matching-products ul li.product a .img-wrap').append(html);
@@ -3633,6 +3637,10 @@ window.productPage = {
                 jQuery('.matching-products .initials').addClass(tcccolor);
 
                 jQuery('.product #pwzrswiper-slide-0 .initials').attr('class', '').addClass(curinitial + ' ' + ptype);
+                if (jQuery('.product #pwzrswiper-slide-0 .initials').length == 2) {
+                  jQuery('.product #pwzrswiper-slide-0 .initials').eq(0).addClass('bundle-phone');
+                  jQuery('.product #pwzrswiper-slide-0 .initials').eq(1).addClass('bundle-case');
+                }
                 jQuery('.product #pwzrswiper-slide-0 .initials').addClass(tcccolor);
                 if (tccinitials.length > 5) {
                   jQuery('.product #pwzrswiper-slide-0 .initials').addClass('five_plus_characters');

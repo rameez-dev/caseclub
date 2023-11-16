@@ -39,6 +39,12 @@
  
 {% comment %} HTML markup {% endcomment %}
 
+{% if product.handle contains 'bundle' %}
+  <input type="hidden" value="true" id="isBundle">
+{% else %}
+  <input type="hidden" value="false" id="isBundle">
+{% endif %}
+
 {% comment %} new personalized phone cases design{% endcomment %}
 {% if product.type=="Personalized Phone Cases" %}
   <div id="snapshot" style="background-image: url('{{product.metafields.custom.design.value | img_url: '2300x2300' }}');background-repeat: no-repeat;">
