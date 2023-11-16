@@ -4,6 +4,21 @@
   data-section-id="{{ section.id }}"
 >
 </script>
+<style>
+  .bottom-caption-content h1, p {
+  color: black !important;   
+}
+..meet-case h3, .express-block h3, .protective-wap h3 {
+  color: black !important;  
+}
+ 
+
+@media (max-width:798px) {
+  .sticky #header.mobile_nav-fixed--true .top-bar .cart-container a, .sticky #header.mobile_nav-fixed--true .top-bar .cart-container span {
+    color: black !important;
+  } 
+}
+</style>
 
 {% if section.settings.product_breadcrumb == false %}
   {% style %}
@@ -118,7 +133,7 @@
 </div> 
 
 <div class="faq-container">
-  <div class="faq-block open">
+  <div class="faq-block">
     <div class="faq-heading">
       <h4>
           <span class="faq-title-text">How many cards does the Card Holder fit?</span>

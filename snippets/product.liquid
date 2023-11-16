@@ -36,8 +36,15 @@
     @param video_looping
     @param template
   {% endcomment %}
-
+ 
 {% comment %} HTML markup {% endcomment %}
+
+{% comment %} new personalized phone cases design{% endcomment %}
+{% if product.type=="Personalized Phone Cases" %}
+  <div id="snapshot" style="background-image: url('{{product.metafields.custom.design.value | img_url: '2300x2300' }}');background-repeat: no-repeat;">
+    <span id="design-text" class="snapshot-design-text"><span></span></span>
+  </div>
+{% endif %}
 
 <div class="product-{{ product.id }}">
  {% if product.type=="Phone Cases" %}
@@ -85,7 +92,7 @@
       class="
         {% if template == 'product' %}two-fifths columns medium-down--one-whole{% else %}one-half column{% endif %}
         product__details
-        product__details--product-page
+        product__details--product-page 
       "
     >
       {%- assign collection_handles = product.collections | map: 'handle' -%}

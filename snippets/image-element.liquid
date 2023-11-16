@@ -14,6 +14,12 @@ max_height: <number>
 {% endcomment %}
 
 {% comment %}Check if image is progressive (does not support transparent pngs){% endcomment %}
+<style>
+  .cut_height{
+    height: 400px !important;
+    object-fit: cover;
+  }
+</style>
 {% if progressive %}
   {%- capture srcset -%}
     {{ image | img_url: '5000x', format: 'pjpg' }} 5000w,
@@ -98,7 +104,7 @@ max_height: <number>
         height="{{ image.height }}"
         width="{{ image.width }}"
         style="{{ inline_style }};"
-        class="lazyload transition--{{ settings.image_loading_style }} {{ additional_classes }}"
+      class="lazyload transition--{{ settings.image_loading_style }} {{ additional_classes }} {% if cut_height == 'true' %}cut_height{% endif %}"
         srcset="data:image/svg+xml;utf8,<svg%20xmlns='http://www.w3.org/2000/svg'%20width='{{ image.width }}'%20height='{{ image.height }}'></svg>"
   />
 </div>

@@ -4,7 +4,14 @@
   data-section-id="{{ section.id }}"
 >
 </script>
+<style> 
 
+@media (max-width:798px) {
+  .sticky #header.mobile_nav-fixed--true .top-bar .cart-container a, .sticky #header.mobile_nav-fixed--true .top-bar .cart-container span {
+    color: black !important;
+  } 
+}
+</style>
 {% if section.settings.product_breadcrumb == false %}
   {% style %}
     .breadcrumb__wrapper {
@@ -72,8 +79,8 @@
   <div class="one-whole column {{ block.settings.cssclass }}">
   <div class="is-flex is-flex-wrap equal-columns--outside-trim">
   <div class="one-half column medium-down--one-whole">
-  <h3>{{ block.settings.title }}</h3>
-  <div>{{ block.settings.text }}</div>
+  <h3 class="product-dog-heading">{{ block.settings.title }}</h3>
+  <div class="product-dog-text">{{ block.settings.text }}</div>
   </div>
     
   <div class="one-half column medium-down--one-whole">
@@ -118,7 +125,7 @@
 </div> 
 
 <div class="faq-container">
-  <div class="faq-block open">
+  <div class="faq-block">
     <div class="faq-heading">
       <h4>
           <span class="faq-title-text">What comes with the set?</span>

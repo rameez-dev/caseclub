@@ -1,4 +1,4 @@
-
+{% if shop.metafields.productwiz.rio-legacy-disabled.value == blank %}
 {% if product %}
 <script>
   var __productWizRioProduct = {{product | json}};
@@ -592,6 +592,7 @@ const options = () => {
     
   })();
 </script>  
-<link rel="stylesheet" href="{{ 'productwiz-rio.css' | asset_url }}">
-<script async src="{{ 'productwiz-rio.js' | asset_url }}"></script>   
-{% endif %} 
+<link rel="stylesheet" {% if shop.metafields.productwiz.rio-css.value != blank %}href="{{ shop.metafields.productwiz.rio-css.value }}"{% else %}href="{{ 'productwiz-rio.css' | asset_url }}"{% endif %}>
+<script async {% if shop.metafields.productwiz.rio-js.value != blank %}src="{{ shop.metafields.productwiz.rio-js.value }}"{% else %}src="{{ 'productwiz-rio.js' | asset_url }}"{% endif %}></script>   
+{% endif %}
+{% endif %}
