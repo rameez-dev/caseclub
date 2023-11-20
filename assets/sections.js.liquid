@@ -3376,7 +3376,8 @@ window.productPage = {
                   // jQuery('.rio-hide-scrollbar').scrollTop(0);
                   // jQuery('.pwzrjss6').css('border-color', 'transparent');
                   // jQuery('.pwzrjss6').first().css('border-color', 'black');
-                jQuery('.PwzrGrid-container > div[tabindex=1]').click();  
+                  if(jQuery('#isBundle').val() != 'true')
+                  jQuery('.PwzrGrid-container > div[tabindex=1]').click();  
                 // jQuery(this).val( jQuery(this).val().replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-') );
                 var tccinitials = jQuery('.tcc-initial-input').val();
                 var ckp = jQuery('.tcc-initial-input').closest('.product_form').hasClass('small-leather-goods');
