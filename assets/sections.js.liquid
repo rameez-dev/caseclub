@@ -3730,14 +3730,23 @@ window.productPage = {
 
 jQuery(document).on('click', '.color-swatch-option .color-swatch', function(){
   var color = jQuery(this).attr('title');
-  if(color.includes(' / ')){
-    color = color.split(' / ')[0];
-  }
+
   jQuery('#color-name-display').text(color);
   jQuery('.color-swatch').removeClass('active');
   jQuery(this).addClass('active');
-  jQuery('.single-option-selector').val(color);
-  jQuery('.single-option-selector').change();
+
+  if(color.includes(' / ')){
+    color = color.split(' / ');
+    for(var i=0; i<color.length; i++){
+      jQuery(`.single-option-selector:eq(${i})`).val(color[i]);
+      jQuery(`.single-option-selector:eq(${i})`).change();
+    }
+  }
+  else {
+    jQuery('.single-option-selector').val(color);
+    jQuery('.single-option-selector').change();
+  }
+
   
   setTimeout(function(){
   var html ='<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
