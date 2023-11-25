@@ -3730,6 +3730,9 @@ window.productPage = {
 
 jQuery(document).on('click', '.color-swatch-option .color-swatch', function(){
   var color = jQuery(this).attr('title');
+  if(color.includes(' / ')){
+    color = color.split(' / ')[0];
+  }
   jQuery('#color-name-display').text(color);
   jQuery('.color-swatch').removeClass('active');
   jQuery(this).addClass('active');
