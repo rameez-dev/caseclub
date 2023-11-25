@@ -158,6 +158,13 @@
       </select>
     {% endif %}
     </div>
+    {% if product.handle contains 'bundle' %}
+      <style>
+        .color-swatch-option .color-swatch span {
+          background-position-x: -20px;
+        }
+      </style>
+    {% endif %}
     <div class="color-swatch-option">
     {% for v in product.variants %}
     	<div class="color-swatch {% if v == variant %}active{% endif %}" data-value="{{ v.id }}" title="{{ v.title }}">
