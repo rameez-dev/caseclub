@@ -21444,3 +21444,25 @@ font-size: 12px ;
   right: auto;
   transform: translate(-50%, -50%);
 }
+
+.noshade {
+  display: none;
+}
+.noshade+label {
+  width: 72px;
+  display: inline-block;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  margin: 0px;
+  margin-left: 12px;
+  font-weight: 400;
+  border-radius: 20px;
+  border: 1px solid black;
+  line-height: 1.8;
+  font-size: 11px;
+}
+.noshade:checked+label {
+  border: 1px solid rgb(255, 100, 145);
+}

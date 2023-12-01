@@ -3515,7 +3515,9 @@ window.productPage = {
                 //const originalFontSize = parseFloat(window.getComputedStyle(element).fontSize);
                 const containerWidth = parentElement.offsetWidth;
                 const containerHeight = parentElement.offsetHeight;
-                const maxfontheight = containerHeight * 0.5;
+                var maxfontheight = containerHeight * 0.5;
+                if(jQuery('#isTravel').val() == 'true')
+                  maxfontheight = containerHeight * 0.6;
 
                 var fontSize = 10;
 
@@ -3530,6 +3532,10 @@ window.productPage = {
                   if (tempSpan.offsetHeight >= maxfontheight || tempSpan.offsetWidth >= containerWidth) {
                     shift_x = tempSpan.offsetHeight * -0.04;
                     shift_y = tempSpan.offsetHeight * 0.01;
+                    if(jQuery('#isTravel').val() == 'true') {
+                      shift_x = tempSpan.offsetHeight * -0.015;
+                      shift_y = tempSpan.offsetHeight * 0;
+                    }
                     element.style.fontSize = fontSize + 'px';
                     parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px var(--shadow-color)'
                     maincont.removeChild(tempSpan);
@@ -3548,7 +3554,9 @@ window.productPage = {
                   //const originalFontSize = parseFloat(window.getComputedStyle(element).fontSize);
                   const containerWidth = parentElement.offsetWidth;
                   const containerHeight = parentElement.offsetHeight;
-                  const maxfontheight = containerHeight * 0.45;
+                  var maxfontheight = containerHeight * 0.45;
+                  if(jQuery('#isTravel').val() == 'true')
+                    maxfontheight = containerHeight * 0.6;
   
                   var fontSize = 200;
   
@@ -3563,6 +3571,10 @@ window.productPage = {
                     if (tempSpan.offsetHeight >= maxfontheight || tempSpan.offsetWidth >= containerWidth) {
                       shift_x = tempSpan.offsetHeight * 0.005;
                       shift_y = tempSpan.offsetHeight * 0.03;
+                      if(jQuery('#isTravel').val() == 'true') {
+                        shift_x = tempSpan.offsetHeight * -0.015;
+                        shift_y = tempSpan.offsetHeight * 0;
+                      }
                       element.style.fontSize = fontSize + 'px';
                       parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px var(--shadow-color)'
                       maincont.removeChild(tempSpan);
