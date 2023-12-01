@@ -1002,7 +1002,7 @@ window.productPage = {
                   return fragment;
                 }
 
-// Displays sold out text beside price
+                // Displays sold out text beside price
                 if (window.Shopify.theme_settings.display_sold_out_price) {
                   const span = document.createElement('span');
 
@@ -1111,134 +1111,132 @@ window.productPage = {
     }
 
     $productGallery.on('ready.flickity', () => {
-                    $slides.each((index, slide) => {
+        $slides.each((index, slide) => {
 
-// Determine media type
-                      const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
-                      let videoID;
+        // Determine media type
+        const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
+        let videoID;
 
-                      switch (mediaType) {
-                        case 'external_video': videoID = $(slide).find('[data-plyr-video-id]').data('plyr-video-id');
+        switch (mediaType) {
+          case 'external_video': videoID = $(slide).find('[data-plyr-video-id]').data('plyr-video-id');
 
-                          if (window.videoPlayers) {
-                            window.videoPlayers.forEach(player => {
-                              const currentPlayer = player;
-                              if (player.id === videoID || player.media.id === videoID) {
-                                if (!$(slide).hasClass('is-selected')) {
-                                  currentPlayer.keyboard = {
-                                    focused: false,
-                                    global: false
-                                  };
-                                }
-                              }
-                            });
-                          }
-                          break;
-                        case 'video': videoID = $(slide).find('[data-plyr-video-id]').data('plyr-video-id');
+            if (window.videoPlayers) {
+              window.videoPlayers.forEach(player => {
+                const currentPlayer = player;
+                if (player.id === videoID || player.media.id === videoID) {
+                  if (!$(slide).hasClass('is-selected')) {
+                    currentPlayer.keyboard = {
+                      focused: false,
+                      global: false
+                    };
+                  }
+                }
+              });
+            }
+            break;
+          case 'video': videoID = $(slide).find('[data-plyr-video-id]').data('plyr-video-id');
 
-                          if (window.videoPlayers) {
-                            window.videoPlayers.forEach(player => {
-                              const currentPlayer = player;
-                              if (player.id === videoID || player.media.id === videoID) {
-                                if (!$(slide).hasClass('is-selected')) {
-                                  currentPlayer.keyboard = {
-                                    focused: false,
-                                    global: false
-                                  };
-                                }
-                              }
-                            });
-                          }
-                          break;
-                        case 'model':
-                          if ($(slide).hasClass('is-selected')) { // When active slide
-                            if (mediaType === 'model' && window.isScreenSizeLarge()) {
-                              $(slide).on('mouseenter', () => {
-                                $productGallery.flickity('unbindDrag');
-                              });
-                              $(slide).on('mouseleave', () => {
-                                $productGallery.flickity('bindDrag');
-                              });
-                            }
-                          }
-                          break;
-                        default:
-                          break;
-                      }
-                    });
+            if (window.videoPlayers) {
+              window.videoPlayers.forEach(player => {
+                const currentPlayer = player;
+                if (player.id === videoID || player.media.id === videoID) {
+                  if (!$(slide).hasClass('is-selected')) {
+                    currentPlayer.keyboard = {
+                      focused: false,
+                      global: false
+                    };
+                  }
+                }
+              });
+            }
+            break;
+          case 'model':
+            if ($(slide).hasClass('is-selected')) { // When active slide
+              if (mediaType === 'model' && window.isScreenSizeLarge()) {
+                $(slide).on('mouseenter', () => {
+                  $productGallery.flickity('unbindDrag');
+                });
+                $(slide).on('mouseleave', () => {
+                  $productGallery.flickity('bindDrag');
+                });
+              }
+            }
+            break;
+          default:
+            break;
+        }
+      });
 
-// Video looping
-                    const loopingEnabled = $productGallery.data('video-loop');
+      // Video looping
+      const loopingEnabled = $productGallery.data('video-loop');
 
-                    $.each(window.videoPlayers, (index, player) => {
-                      const videoPlayer = player;
-                      videoPlayer.loop = loopingEnabled;
-                    });
-                  }) 
+      $.each(window.videoPlayers, (index, player) => {
+        const videoPlayer = player;
+        videoPlayer.loop = loopingEnabled;
+      });
+    }) 
 
 
-                    $productGallery.on('change.flickity', () => {
-                      $slides.each((index, slide) => {
+    $productGallery.on('change.flickity', () => {
+      $slides.each((index, slide) => {
 
-// Determine media type of current slide
-                        const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
+        // Determine media type of current slide
+        const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
 
-                        if ($(slide).hasClass('is-selected')) { // When active slide
-                          switch (mediaType) {
-                            case 'model':
+        if ($(slide).hasClass('is-selected')) { // When active slide
+          switch (mediaType) {
+            case 'model':
 
-/* On slide change, if active slide contains 3d model
+              /* On slide change, if active slide contains 3d model
               * If on desktop, on hover, unbind flickity, after hover bind flickity
               * On model play event, unbind flickity to ensure model can be interacted with
               * On model pause event, bind flickity so that slide can be swiped
               * Pause all model slides when hidden
               */
 
-                              if (window.isScreenSizeLarge()) { // On mouseenter event, unbind flickity
-                                $(slide).on('mouseenter', () => {
-                                  $productGallery.flickity('unbindDrag');
-                                });
+              if (window.isScreenSizeLarge()) { // On mouseenter event, unbind flickity
+                $(slide).on('mouseenter', () => {
+                  $productGallery.flickity('unbindDrag');
+                });
 
-// On mouseleave event, bind flickity
-                                $(slide).on('mouseleave', () => {
-                                  $productGallery.flickity('bindDrag');
-                                });
-                              }
+                // On mouseleave event, bind flickity
+                $(slide).on('mouseleave', () => {
+                  $productGallery.flickity('bindDrag');
+                });
+              }
 
-// Listen for model pause/play events
-                              $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_play', () => {
-                                $productGallery.flickity('unbindDrag');
-                              });
+            // Listen for model pause/play events
+            $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_play', () => {
+              $productGallery.flickity('unbindDrag');
+            });
 
-                              $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_pause', () => {
-                                $productGallery.flickity('bindDrag');
-                              });
-                              break;
-                            default:
-                              $productGallery.flickity('bindDrag');
-                              break;
-                          }
-                        } else { // When inactive slide
-                          switch (mediaType) {
-                            case 'external_video':
-
-// Youtube video pausing
-                              $.each(window.videoPlayers, (_index, player) => {
-                                player.pause();
-                              });
-                              break;
-                            case 'video':
-
-// HTML5 video pausing
-                              $.each(window.videoPlayers, (_index, player) => {
-                                player.pause();
-                              });
-                              break;
-                            default:
-                              break;
-                          }
-                        }
-                      });
+            $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_pause', () => {
+              $productGallery.flickity('bindDrag');
+            });
+            break;
+          default:
+            $productGallery.flickity('bindDrag');
+            break;
+        }
+      } else { // When inactive slide
+        switch (mediaType) {
+          case 'external_video':
+          // Youtube video pausing
+            $.each(window.videoPlayers, (_index, player) => {
+              player.pause();
+            });
+            break;
+          case 'video':
+            // HTML5 video pausing
+            $.each(window.videoPlayers, (_index, player) => {
+              player.pause();
+            });
+            break;
+          default:
+            break;
+            }
+          }
+        });
 
 // Restore 3d model icons
                       window.productMedia.showModelIcon($productGallery);
@@ -3376,7 +3374,7 @@ window.productPage = {
                   // jQuery('.rio-hide-scrollbar').scrollTop(0);
                   // jQuery('.pwzrjss6').css('border-color', 'transparent');
                   // jQuery('.pwzrjss6').first().css('border-color', 'black');
-                  if(jQuery('#isBundle').val() != 'true')
+                  if(jQuery('#isBundle').val() != 'true' && jQuery('#isTravel').val() != 'true')
                   jQuery('.PwzrGrid-container > div[tabindex=1]').click();  
                 // jQuery(this).val( jQuery(this).val().replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-') );
                 var tccinitials = jQuery('.tcc-initial-input').val();
