@@ -164,6 +164,13 @@
           background-position-x: -20px;
         }
       </style>
+    {% elsif product.handle contains 'travel' %}
+      <style>
+        .color-swatch-option .color-swatch span {
+          background-position-x: 90px;
+          background-position-y: -10px;
+        }
+      </style>
     {% endif %}
     <div class="color-swatch-option">
     {% for v in product.variants %}
