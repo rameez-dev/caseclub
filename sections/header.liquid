@@ -538,18 +538,22 @@
                             </div>
                           {% endif %}
                           {% if  item.product.type != 'Strap' and  item.product.type != 'Personalized Phone Cases'%}
-                            <span class="initials 
-                              {%- for p in item.properties -%}
-                                  {% unless p.last == blank %}
-                                    {%- if p.first=='Letter Color' -%}{%- assign  curr_pro_color = p.last -%}{{ p.last }}{%- endif -%}
-                                  {% endunless %}
-                              {%- endfor -%}">
-                              {% for p in item.properties %}
-                                  {% unless p.last == blank %}
-                                    {% if p.first=='Letters' %}{% assign curr_pro_intial = p.last %}{{ p.last }}{% endif %}
-                                {% endunless %}
-                              {% endfor %}
-                            </span>
+                            {%- for p in item.properties -%}
+                              {% unless p.last == blank %}
+                                {%- if p.first=='Letter Color' -%}{%- assign  curr_pro_color = p.last -%}{%- endif -%}
+                              {% endunless %}
+                            {%- endfor -%}
+                            {% for p in item.properties %}
+                              {% unless p.last == blank %}
+                                {% if p.first=='Letters' %}{% assign curr_pro_intial = p.last %}{% endif %}
+                              {% endunless %}
+                            {% endfor %}
+                            {% if item.product.handle contains 'bundle' %}
+                              <span class="initials bundle-phone-cart {{curr_pro_color}}">{{ curr_pro_intial }}</span>
+                              <span class="initials bundle-case-cart {{curr_pro_color}}">{{ curr_pro_intial }}</span>
+                            {% else %}
+                              <span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
+                            {% endif %}
                             <div class="tc-logo {{ item.variant.title | downcase | replace: ' ', '-' }}">
                               <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
                               <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
@@ -584,7 +588,7 @@
 
                               {% if item.properties and item.product.type!='Strap' %}
                                 {% for p in item.properties %}
-                                  {%  unless p.first == 'Design' %}  
+                                  {%  unless p.first == '_Design' %}  
                                   {% if p.last != blank %}
                                     <div class="line-item color-{{ p.last }}">
                                       {{ p.first }}: {{ p.last }}

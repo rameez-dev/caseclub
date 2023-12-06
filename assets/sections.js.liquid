@@ -1002,7 +1002,7 @@ window.productPage = {
                   return fragment;
                 }
 
-// Displays sold out text beside price
+                // Displays sold out text beside price
                 if (window.Shopify.theme_settings.display_sold_out_price) {
                   const span = document.createElement('span');
 
@@ -1111,134 +1111,132 @@ window.productPage = {
     }
 
     $productGallery.on('ready.flickity', () => {
-                    $slides.each((index, slide) => {
+        $slides.each((index, slide) => {
 
-// Determine media type
-                      const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
-                      let videoID;
+        // Determine media type
+        const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
+        let videoID;
 
-                      switch (mediaType) {
-                        case 'external_video': videoID = $(slide).find('[data-plyr-video-id]').data('plyr-video-id');
+        switch (mediaType) {
+          case 'external_video': videoID = $(slide).find('[data-plyr-video-id]').data('plyr-video-id');
 
-                          if (window.videoPlayers) {
-                            window.videoPlayers.forEach(player => {
-                              const currentPlayer = player;
-                              if (player.id === videoID || player.media.id === videoID) {
-                                if (!$(slide).hasClass('is-selected')) {
-                                  currentPlayer.keyboard = {
-                                    focused: false,
-                                    global: false
-                                  };
-                                }
-                              }
-                            });
-                          }
-                          break;
-                        case 'video': videoID = $(slide).find('[data-plyr-video-id]').data('plyr-video-id');
+            if (window.videoPlayers) {
+              window.videoPlayers.forEach(player => {
+                const currentPlayer = player;
+                if (player.id === videoID || player.media.id === videoID) {
+                  if (!$(slide).hasClass('is-selected')) {
+                    currentPlayer.keyboard = {
+                      focused: false,
+                      global: false
+                    };
+                  }
+                }
+              });
+            }
+            break;
+          case 'video': videoID = $(slide).find('[data-plyr-video-id]').data('plyr-video-id');
 
-                          if (window.videoPlayers) {
-                            window.videoPlayers.forEach(player => {
-                              const currentPlayer = player;
-                              if (player.id === videoID || player.media.id === videoID) {
-                                if (!$(slide).hasClass('is-selected')) {
-                                  currentPlayer.keyboard = {
-                                    focused: false,
-                                    global: false
-                                  };
-                                }
-                              }
-                            });
-                          }
-                          break;
-                        case 'model':
-                          if ($(slide).hasClass('is-selected')) { // When active slide
-                            if (mediaType === 'model' && window.isScreenSizeLarge()) {
-                              $(slide).on('mouseenter', () => {
-                                $productGallery.flickity('unbindDrag');
-                              });
-                              $(slide).on('mouseleave', () => {
-                                $productGallery.flickity('bindDrag');
-                              });
-                            }
-                          }
-                          break;
-                        default:
-                          break;
-                      }
-                    });
+            if (window.videoPlayers) {
+              window.videoPlayers.forEach(player => {
+                const currentPlayer = player;
+                if (player.id === videoID || player.media.id === videoID) {
+                  if (!$(slide).hasClass('is-selected')) {
+                    currentPlayer.keyboard = {
+                      focused: false,
+                      global: false
+                    };
+                  }
+                }
+              });
+            }
+            break;
+          case 'model':
+            if ($(slide).hasClass('is-selected')) { // When active slide
+              if (mediaType === 'model' && window.isScreenSizeLarge()) {
+                $(slide).on('mouseenter', () => {
+                  $productGallery.flickity('unbindDrag');
+                });
+                $(slide).on('mouseleave', () => {
+                  $productGallery.flickity('bindDrag');
+                });
+              }
+            }
+            break;
+          default:
+            break;
+        }
+      });
 
-// Video looping
-                    const loopingEnabled = $productGallery.data('video-loop');
+      // Video looping
+      const loopingEnabled = $productGallery.data('video-loop');
 
-                    $.each(window.videoPlayers, (index, player) => {
-                      const videoPlayer = player;
-                      videoPlayer.loop = loopingEnabled;
-                    });
-                  }) 
+      $.each(window.videoPlayers, (index, player) => {
+        const videoPlayer = player;
+        videoPlayer.loop = loopingEnabled;
+      });
+    }) 
 
 
-                    $productGallery.on('change.flickity', () => {
-                      $slides.each((index, slide) => {
+    $productGallery.on('change.flickity', () => {
+      $slides.each((index, slide) => {
 
-// Determine media type of current slide
-                        const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
+        // Determine media type of current slide
+        const mediaType = $(slide).data('media-type') || $(slide).find('[data-media-type]').data('media-type');
 
-                        if ($(slide).hasClass('is-selected')) { // When active slide
-                          switch (mediaType) {
-                            case 'model':
+        if ($(slide).hasClass('is-selected')) { // When active slide
+          switch (mediaType) {
+            case 'model':
 
-/* On slide change, if active slide contains 3d model
+              /* On slide change, if active slide contains 3d model
               * If on desktop, on hover, unbind flickity, after hover bind flickity
               * On model play event, unbind flickity to ensure model can be interacted with
               * On model pause event, bind flickity so that slide can be swiped
               * Pause all model slides when hidden
               */
 
-                              if (window.isScreenSizeLarge()) { // On mouseenter event, unbind flickity
-                                $(slide).on('mouseenter', () => {
-                                  $productGallery.flickity('unbindDrag');
-                                });
+              if (window.isScreenSizeLarge()) { // On mouseenter event, unbind flickity
+                $(slide).on('mouseenter', () => {
+                  $productGallery.flickity('unbindDrag');
+                });
 
-// On mouseleave event, bind flickity
-                                $(slide).on('mouseleave', () => {
-                                  $productGallery.flickity('bindDrag');
-                                });
-                              }
+                // On mouseleave event, bind flickity
+                $(slide).on('mouseleave', () => {
+                  $productGallery.flickity('bindDrag');
+                });
+              }
 
-// Listen for model pause/play events
-                              $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_play', () => {
-                                $productGallery.flickity('unbindDrag');
-                              });
+            // Listen for model pause/play events
+            $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_play', () => {
+              $productGallery.flickity('unbindDrag');
+            });
 
-                              $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_pause', () => {
-                                $productGallery.flickity('bindDrag');
-                              });
-                              break;
-                            default:
-                              $productGallery.flickity('bindDrag');
-                              break;
-                          }
-                        } else { // When inactive slide
-                          switch (mediaType) {
-                            case 'external_video':
-
-// Youtube video pausing
-                              $.each(window.videoPlayers, (_index, player) => {
-                                player.pause();
-                              });
-                              break;
-                            case 'video':
-
-// HTML5 video pausing
-                              $.each(window.videoPlayers, (_index, player) => {
-                                player.pause();
-                              });
-                              break;
-                            default:
-                              break;
-                          }
-                        }
-                      });
+            $(slide).find('model-viewer').on('shopify_model_viewer_ui_toggle_pause', () => {
+              $productGallery.flickity('bindDrag');
+            });
+            break;
+          default:
+            $productGallery.flickity('bindDrag');
+            break;
+        }
+      } else { // When inactive slide
+        switch (mediaType) {
+          case 'external_video':
+          // Youtube video pausing
+            $.each(window.videoPlayers, (_index, player) => {
+              player.pause();
+            });
+            break;
+          case 'video':
+            // HTML5 video pausing
+            $.each(window.videoPlayers, (_index, player) => {
+              player.pause();
+            });
+            break;
+          default:
+            break;
+            }
+          }
+        });
 
 // Restore 3d model icons
                       window.productMedia.showModelIcon($productGallery);
@@ -3312,6 +3310,10 @@ window.productPage = {
 // if( pagenm == "/collections/all" ){
                   jQuery('#quickshop .flickity-slider .gallery-cell.is-selected').append('<span class="initials"></span>' + html);
                   jQuery('.product .flickity-slider .gallery-cell.is-selected').append('<span class="initials"></span>' + html);
+                  if(jQuery('#isBundle') && jQuery('#isBundle').val() == 'true') {
+                    jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span><span class="initials"></span>' + html);
+                  }
+                  else
                   jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span>' + html);
 
                   jQuery('.matching-products ul li.product a .img-wrap').append(html);
@@ -3372,7 +3374,8 @@ window.productPage = {
                   // jQuery('.rio-hide-scrollbar').scrollTop(0);
                   // jQuery('.pwzrjss6').css('border-color', 'transparent');
                   // jQuery('.pwzrjss6').first().css('border-color', 'black');
-                jQuery('.PwzrGrid-container > div[tabindex=1]').click();  
+                  if(jQuery('#isBundle').val() != 'true' && jQuery('#isTravel').val() != 'true')
+                  jQuery('.PwzrGrid-container > div[tabindex=1]').click();  
                 // jQuery(this).val( jQuery(this).val().replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-') );
                 var tccinitials = jQuery('.tcc-initial-input').val();
                 var ckp = jQuery('.tcc-initial-input').closest('.product_form').hasClass('small-leather-goods');
@@ -3512,7 +3515,9 @@ window.productPage = {
                 //const originalFontSize = parseFloat(window.getComputedStyle(element).fontSize);
                 const containerWidth = parentElement.offsetWidth;
                 const containerHeight = parentElement.offsetHeight;
-                const maxfontheight = containerHeight * 0.5;
+                var maxfontheight = containerHeight * 0.5;
+                if(jQuery('#isTravel').val() == 'true')
+                  maxfontheight = containerHeight * 0.6;
 
                 var fontSize = 10;
 
@@ -3527,6 +3532,10 @@ window.productPage = {
                   if (tempSpan.offsetHeight >= maxfontheight || tempSpan.offsetWidth >= containerWidth) {
                     shift_x = tempSpan.offsetHeight * -0.04;
                     shift_y = tempSpan.offsetHeight * 0.01;
+                    if(jQuery('#isTravel').val() == 'true') {
+                      shift_x = tempSpan.offsetHeight * -0.015;
+                      shift_y = tempSpan.offsetHeight * 0;
+                    }
                     element.style.fontSize = fontSize + 'px';
                     parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px var(--shadow-color)'
                     maincont.removeChild(tempSpan);
@@ -3545,7 +3554,9 @@ window.productPage = {
                   //const originalFontSize = parseFloat(window.getComputedStyle(element).fontSize);
                   const containerWidth = parentElement.offsetWidth;
                   const containerHeight = parentElement.offsetHeight;
-                  const maxfontheight = containerHeight * 0.45;
+                  var maxfontheight = containerHeight * 0.45;
+                  if(jQuery('#isTravel').val() == 'true')
+                    maxfontheight = containerHeight * 0.6;
   
                   var fontSize = 200;
   
@@ -3560,6 +3571,10 @@ window.productPage = {
                     if (tempSpan.offsetHeight >= maxfontheight || tempSpan.offsetWidth >= containerWidth) {
                       shift_x = tempSpan.offsetHeight * 0.005;
                       shift_y = tempSpan.offsetHeight * 0.03;
+                      if(jQuery('#isTravel').val() == 'true') {
+                        shift_x = tempSpan.offsetHeight * -0.015;
+                        shift_y = tempSpan.offsetHeight * 0;
+                      }
                       element.style.fontSize = fontSize + 'px';
                       parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px var(--shadow-color)'
                       maincont.removeChild(tempSpan);
@@ -3633,6 +3648,10 @@ window.productPage = {
                 jQuery('.matching-products .initials').addClass(tcccolor);
 
                 jQuery('.product #pwzrswiper-slide-0 .initials').attr('class', '').addClass(curinitial + ' ' + ptype);
+                if (jQuery('.product #pwzrswiper-slide-0 .initials').length == 2) {
+                  jQuery('.product #pwzrswiper-slide-0 .initials').eq(0).addClass('bundle-phone');
+                  jQuery('.product #pwzrswiper-slide-0 .initials').eq(1).addClass('bundle-case');
+                }
                 jQuery('.product #pwzrswiper-slide-0 .initials').addClass(tcccolor);
                 if (tccinitials.length > 5) {
                   jQuery('.product #pwzrswiper-slide-0 .initials').addClass('five_plus_characters');
@@ -3722,11 +3741,23 @@ window.productPage = {
 
 jQuery(document).on('click', '.color-swatch-option .color-swatch', function(){
   var color = jQuery(this).attr('title');
+
   jQuery('#color-name-display').text(color);
   jQuery('.color-swatch').removeClass('active');
   jQuery(this).addClass('active');
-  jQuery('.single-option-selector').val(color);
-  jQuery('.single-option-selector').change();
+
+  if(color.includes(' / ')){
+    color = color.split(' / ');
+    for(var i=0; i<color.length; i++){
+      jQuery(`.single-option-selector:eq(${i})`).val(color[i]);
+      jQuery(`.single-option-selector:eq(${i})`).change();
+    }
+  }
+  else {
+    jQuery('.single-option-selector').val(color);
+    jQuery('.single-option-selector').change();
+  }
+
   
   setTimeout(function(){
   var html ='<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';

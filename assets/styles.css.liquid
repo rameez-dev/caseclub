@@ -19783,6 +19783,9 @@ span.initials {
 span.five_plus_characters {
   font-size: 38px;
 }
+span.five_plus_characters.bundle-phone, span.five_plus_characters.bundle-case {
+  font-size: 34px;
+}
 .initials.card-holders {
     font-size: 54px;
     right: 50%;
@@ -20577,6 +20580,9 @@ a.mini-cart__item-a {
     span.five_plus_characters {
       font-size: 26px;
 }
+span.five_plus_characters.bundle-phone,span.five_plus_characters.bundle-case {
+  font-size: 22px;
+}
     .card-wallets+.tc-logo>span {
     bottom: 80px;
     height: 15px;
@@ -20650,6 +20656,9 @@ a.mini-cart__item-a {
 }
     span.five_plus_characters {
     font-size: 30px;
+}
+span.five_plus_characters.bundle-phone, span.five_plus_characters.bundle-case {
+  font-size: 26px;
 }
    .phone-cases+.tc-logo>span {
     height: 16px;
@@ -20750,6 +20759,9 @@ a.mini-cart__item-a {
 }
     span.five_plus_characters {
       font-size: 20px;
+    }
+    span.five_plus_characters.bundle-phone, span.five_plus_characters.bundle-case{
+      font-size: 16px;
     }
      .phone-cases+.tc-logo>span {
     height: 12px;
@@ -21400,3 +21412,57 @@ font-size: 12px ;
   }
 }
 
+
+.initials.bundle-phone {
+  width: auto;
+  top: 38%;
+  left: 28.5%;
+  right: auto;
+  transform: translate(-50%, -50%);
+}
+.initials.bundle-case {
+  width: auto;
+  top: 78%;
+  left: 68%;
+  right: auto;
+  transform: translate(-50%, -50%);
+}
+
+.initials.bundle-phone-cart {
+  font-size: 5.5px;
+  width: auto;
+  top: 40px;
+  left: 31%;
+  right: auto;
+  transform: translate(-50%, -50%);
+}
+.initials.bundle-case-cart {
+  font-size: 5.5px;
+  width: auto;
+  top: 75px;
+  left: 66%;
+  right: auto;
+  transform: translate(-50%, -50%);
+}
+
+.noshade {
+  display: none;
+}
+.noshade+label {
+  width: 72px;
+  display: inline-block;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  margin: 0px;
+  margin-left: 12px;
+  font-weight: 400;
+  border-radius: 20px;
+  border: 1px solid black;
+  line-height: 1.8;
+  font-size: 11px;
+}
+.noshade:checked+label {
+  border: 1px solid rgb(255, 100, 145);
+}
