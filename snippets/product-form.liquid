@@ -264,19 +264,16 @@
       <label class="form-label">Select your device</label>
       {% assign  count = count | plus:1 %}
       <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
-          {% comment %} <option value="/products/iphone-15-pro-max-bundle" {% if product.title == "iPhone 15 Pro Max Bundle" %}selected{% endif %}>iPhone 15 Pro Max</option>
-          <option value="/products/iphone-15-pro-bundle" {% if product.title == "iPhone 15 Pro Bundle" %}selected{% endif %}>iPhone 15 Pro</option>
-          <option value="/products/iphone-15-plus-bundle" {% if product.title == "iPhone 15 Plus Bundle" %}selected{% endif %}>iPhone 15 Plus</option>
-          <option value="/products/iphone-15-bundle" {% if product.title == "iPhone 15 Bundle" %}selected{% endif %}>iPhone 15</option>
-          <option value="/products/iphone-14-pro-max-bundle" {% if product.title == "iPhone 14 Pro Max Bundle" %}selected{% endif %}>iPhone 14 Pro Max</option>
-          <option value="/products/iphone-14-pro-bundle" {% if product.title == "iPhone 14 Pro Bundle" %}selected{% endif %}>iPhone 14 Pro</option>
-          <option value="/products/iphone-14-plus-bundle" {% if product.title == "iPhone 14 Plus Bundle" %}selected{% endif %}>iPhone 14 Plus</option>
-          <option value="/products/iphone-14-bundle" {% if product.title == "iPhone 14 Bundle" %}selected{% endif %}>iPhone 14</option>
-          <option value="/products/iphone-13-pro-max-bundle" {% if product.title == "iPhone 13 Pro Max Bundle" %}selected{% endif %}>iPhone 13 Pro Max</option> {% endcomment %}
-          <option value="/products/the-travel-case-iphone-13-pro" {% if product.title == "Travel Case - iPhone 13 Pro" %}selected{% endif %}>iPhone 13 Pro</option>
-          {% comment %} <option value="/products/iphone-13-bundle" {% if product.title == "iPhone 13 Bundle" %}selected{% endif %}>iPhone 13</option>
-          <option value="/products/iphone-12-pro-max-bundle" {% if product.title == "iPhone 12 Pro Max Bundle" %}selected{% endif %}>iPhone 12 Pro Max</option>
-          <option value="/products/iphone-12-bundle" {% if product.title == "iPhone 12 (Pro) Bundle" %}selected{% endif %}>iPhone 12 Pro</option> {% endcomment %}
+          <option value="/products/travel-case-iphone-15-pro-max" {% if product.title == "Travel Case - iPhone 15 Pro Max" %}selected{% endif %}>iPhone 15 Pro Max</option>
+          <option value="/products/travel-case-iphone-15-pro" {% if product.title == "Travel Case - iPhone 15 Pro" %}selected{% endif %}>iPhone 15 Pro</option>
+          <option value="/products/travel-case-iphone-15-plus" {% if product.title == "Travel Case - iPhone 15 Plus" %}selected{% endif %}>iPhone 15 Plus</option>
+          <option value="/products/travel-case-iphone-15" {% if product.title == "Travel Case - iPhone 15" %}selected{% endif %}>iPhone 15</option>
+          <option value="/products/travel-case-iphone-14-pro-max" {% if product.title == "Travel Case - iPhone 14 Pro Max" %}selected{% endif %}>iPhone 14 Pro Max</option>
+          <option value="/products/travel-case-iphone-14-pro" {% if product.title == "Travel Case - iPhone 14 Pro" %}selected{% endif %}>iPhone 14 Pro</option>
+          <option value="/products/travel-case-iphone-14-plus" {% if product.title == "Travel Case - iPhone 14 Plus" %}selected{% endif %}>iPhone 14 Plus</option>
+          <option value="/products/travel-case-iphone-14" {% if product.title == "Travel Case - iPhone 14" %}selected{% endif %}>iPhone 14</option>
+          <option value="/products/travel-case-iphone-13-pro-max" {% if product.title == "Travel Case - iPhone 13 Pro Max" %}selected{% endif %}>iPhone 13 Pro Max</option>
+          <option value="/products/travel-case-iphone-13-pro" {% if product.title == "Travel Case - iPhone 13 Pro" %}selected{% endif %}>iPhone 13 Pro</option>
       </select>
       <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
         {% for product1 in collections.all.products %}
