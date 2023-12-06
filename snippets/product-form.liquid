@@ -2,7 +2,7 @@
   .text-color-swatches {
     display: flex;
   }
-  .text-color-input {
+  .text-color-input { 
     clip: rect(0,0,0,0);
     overflow: hidden;
     position: absolute;
@@ -185,6 +185,10 @@
     <label class="form-label">Select your device</label>
     {% assign  count = count | plus:1 %}
     <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+            <option value="/products/iphone-15-pro-max" {% if product.title == "iPhone 15 Pro Max" %}selected{% endif %}>iPhone 15 Pro Max</option>
+            <option value="/products/iphone-15-pro" {% if product.title == "iPhone 15 Pro" %}selected{% endif %}>iPhone 15 Pro</option>
+            <option value="/products/iphone-15-plus" {% if product.title == "iPhone 15 Plus" %}selected{% endif %}>iPhone 15 Plus</option>
+            <option value="/products/iphone-15" {% if product.title == "iPhone 15" %}selected{% endif %}>iPhone 15</option>
             <option value="/products/iphone-14-pro-max" {% if product.title == "iPhone 14 Pro Max" %}selected{% endif %}>iPhone 14 Pro Max</option>
             <option value="/products/iphone-14-pro" {% if product.title == "iPhone 14 Pro" %}selected{% endif %}>iPhone 14 Pro</option>
             <option value="/products/iphone-14-plus" {% if product.title == "iPhone 14 Plus" %}selected{% endif %}>iPhone 14 Plus</option>
@@ -198,8 +202,6 @@
       		<option value="/products/iphone-11-pro-max" {% if product.title == "iPhone 11 Pro Max" %}selected{% endif %}>iPhone 11 Pro Max</option>  
       		<option value="/products/iphone-11-pro" {% if product.title == "iPhone 11 Pro" %}selected{% endif %}>iPhone 11 Pro</option>
       		<option value="/products/iphone-11" {% if product.title == "iPhone 11" %}selected{% endif %}>iPhone 11</option>
-      		<option value="/products/iphone-xs" {% if product.title == "iPhone X(S)" %}selected{% endif %}>iPhone X(S)</option>
-      		<option value="/products/iphone-xr" {% if product.title == "iPhone XR" %}selected{% endif %}>iPhone XR</option>
     </select>
     <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
       {% for product1 in collections.all.products %}
@@ -259,8 +261,8 @@
       <div class="new-tcc-design">
         {% if product.type=="Personalized Phone Cases" %}
         <div class="tcc-initial-wrap">
-          <input type="text" name='properties[Letters]' class="tcc-initial-input" autocomplete="off" maxlength="4" placeholder="Type your text">
-          <span class="max-words">0/4</span>
+          <input type="text" name='properties[Letters]' class="tcc-initial-input" autocomplete="off" maxlength="3" placeholder="Type your text">
+          <span class="max-words">0/3</span>
         </div>
         <label>Color 1</label>
         <div class="text-color-swatches">
@@ -279,8 +281,8 @@
         {%  else %}
         <div class="tcc-left-section">
           <div class="tcc-initial-wrap">
-            <input type="text" name='properties[Letters]' class="tcc-initial-input" autocomplete="off" maxlength="4" placeholder="Type your text">
-            <span class="max-words">0/4</span>
+            <input type="text" name='properties[Letters]' class="tcc-initial-input" autocomplete="off" maxlength="8" placeholder="Type your text">
+            <span class="max-words">0/8</span>
           </div>
           <div class="tcc-color-wrap">
             <div class="dis">

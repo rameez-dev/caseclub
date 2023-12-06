@@ -4,7 +4,7 @@
   --surface-pick-up-embed-theme-error-color: #b33a3a;
   --surface-pick-up-embed-theme-paragraph-font-size: 16px;
   --surface-pick-up-embed-theme-paragraph-smaller-font-size: calc(var(--surface-pick-up-embed-theme-paragraph-font-size) - 4px);
-  --surface-pick-up-embed-theme-body-font-weight-bold: 600;
+  --surface-pick-up-embed-theme-body-font-weight-bold: 600; 
   --surface-pick-up-embed-theme-body-text-color: #808080;
   --surface-pick-up-embed-theme-link-text-decoration: underline;
   --surface-pick-up-embed-row-gap: 10px;
@@ -21354,10 +21354,14 @@ font-size: 12px ;
 #snapshot{
   display: none;
   margin-bottom: 50px;
-  width: 1500px;
+  width: 1000px;
   height: 1500px;  
   background-size: cover;
   overflow:auto;
+}
+
+:root {
+  --shadow-color: white; /* Define a CSS variable */
 }
 
 .snapshot-design-text{
@@ -21365,8 +21369,8 @@ font-size: 12px ;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  margin: 30% 25% 20%;
+  width: 100%;
+  margin: 30% 0% 20%;
   aspect-ratio: 1;
   /* height: 100%; */
   text-transform: uppercase;

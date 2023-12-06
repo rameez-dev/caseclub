@@ -3,7 +3,7 @@
 #Featured promotions
 #Slideshow
 #Testimonials
-#Gallery
+#Gallery 
 #Video
 #Cart
 #Product
@@ -3408,8 +3408,9 @@ window.productPage = {
                 jQuery(document).on('change', "input[type=radio][name='properties[Shade Color]']", function() {
                   var shadeColor = $("input[type=radio][name='properties[Shade Color]']:checked").val();
                   console.log('shade color ...', shadeColor);
-                  jQuery('#design-text').css('text-shadow', '3px 24px 0px' + shadeColor )
-                  jQuery('.product #pwzrswiper-slide-0 .initials-color1-text').css('text-shadow', '1px 8px 0px' + shadeColor )
+                  document.documentElement.style.setProperty('--shadow-color', shadeColor);
+                  // jQuery('#design-text').css('text-shadow', '3px 24px 0px' + shadeColor )
+                  // jQuery('.product #pwzrswiper-slide-0 .initials-color1-text').css('text-shadow', '1px 8px 0px' + shadeColor )
                   setCookie("shadeColor", shadeColor, 30);
                   // initial_fun();
                 });
@@ -3524,10 +3525,10 @@ window.productPage = {
                   
                   fontSize += 1;
                   if (tempSpan.offsetHeight >= maxfontheight || tempSpan.offsetWidth >= containerWidth) {
-                    shift_x = tempSpan.offsetHeight * 0.01;
-                    shift_y = tempSpan.offsetHeight * 0.06;
+                    shift_x = tempSpan.offsetHeight * -0.04;
+                    shift_y = tempSpan.offsetHeight * 0.01;
                     element.style.fontSize = fontSize + 'px';
-                    parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px white'
+                    parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px var(--shadow-color)'
                     maincont.removeChild(tempSpan);
                     break;
                   }
@@ -3557,10 +3558,10 @@ window.productPage = {
                     
                     fontSize += 1;
                     if (tempSpan.offsetHeight >= maxfontheight || tempSpan.offsetWidth >= containerWidth) {
-                      shift_x = tempSpan.offsetHeight * 0.01;
-                      shift_y = tempSpan.offsetHeight * 0.06;
+                      shift_x = tempSpan.offsetHeight * 0.005;
+                      shift_y = tempSpan.offsetHeight * 0.03;
                       element.style.fontSize = fontSize + 'px';
-                      parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px white'
+                      parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px var(--shadow-color)'
                       maincont.removeChild(tempSpan);
                       maincont.style.display = "none";
                       break;
@@ -3588,7 +3589,8 @@ window.productPage = {
                   console.log('new tcc color ...', tcccolor);
                   var shadeColor = $("input[type=radio][name='properties[Shade Color]']:checked").val();
                   console.log('shade color ...', shadeColor);
-                  jQuery('#design-text').css('text-shadow', '3px 24px 0px' + shadeColor )
+                  document.documentElement.style.setProperty('--shadow-color', shadeColor);
+                  // jQuery('#design-text').css('text-shadow', '3px 24px 0px' + shadeColor )
                   jQuery('.tc-logo').remove();
 
 // $this.removeClass('initials');
@@ -3609,9 +3611,10 @@ window.productPage = {
                   jQuery('.tcc-initial-input').val(tccinitials);
                   jQuery('.max-words').text(tccinitials.length + '/2');
                 } else {
-                  var tccinitials = cu_val.substr(0, 8);
+                  var max = jQuery('.tcc-initial-input').attr('maxlength');
+                  var tccinitials = cu_val.substr(0, parseInt(max));
                   jQuery('.tcc-initial-input').val(tccinitials);
-                  jQuery('.max-words').text(tccinitials.length + '/4');
+                  jQuery('.max-words').text(tccinitials.length + '/' + max);
                 }
 
                 var ckp = jQuery('.tcc-initial-input').closest('.product_form').hasClass('small-leather-goods');
@@ -3655,7 +3658,8 @@ window.productPage = {
                   jQuery('.product #pwzrswiper-slide-0 .initials-color1-text').css("color", tcccolor);
                   var shadeColor = $("input[type=radio][name='properties[Shade Color]']:checked").val();
                   console.log('shade color ...', shadeColor);
-                  jQuery('.product #pwzrswiper-slide-0 .initials-color1-text').css('text-shadow', '1px 8px 0px' + shadeColor )
+                  document.documentElement.style.setProperty('--shadow-color', shadeColor);
+                  // jQuery('.product #pwzrswiper-slide-0 .initials-color1-text').css('text-shadow', '1px 8px 0px' + shadeColor )
                   if (tccinitials.length)
                   adjustFontSizeRelative();
                 }
