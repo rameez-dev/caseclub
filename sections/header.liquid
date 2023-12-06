@@ -588,7 +588,7 @@
 
                               {% if item.properties and item.product.type!='Strap' %}
                                 {% for p in item.properties %}
-                                  {%  unless p.first == 'Design' %}  
+                                  {%  unless p.first == '_Design' %}  
                                   {% if p.last != blank %}
                                     <div class="line-item color-{{ p.last }}">
                                       {{ p.first }}: {{ p.last }}

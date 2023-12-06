@@ -663,7 +663,7 @@ $(() => {
 		cartItemsHTML += `<a href="${item.url}">${item.title}`;	
         if (item.properties && item.product_type!='Strap') {
           $.each(item.properties, (title, value) => {
-            if ( title != 'Design') {
+            if ( title != '_Design') {
               if (value) {
                 cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
               }
