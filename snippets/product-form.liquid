@@ -34,7 +34,8 @@
     transform: rotate(270deg);
     /*height: 540px;*/
     width: 60%;
-    margin: 25% 20% 15%;
+    margin: 29% 19% 11% 21%;
+    /* margin: 25% 20% 15%; */
     aspect-ratio: 1;
     align-items: center;
     justify-content: center;
@@ -43,7 +44,6 @@
     .initials-color1-text {
       /*height: 310px;*/
       width: 60%;
-      margin: 25% 20% 15%;
       aspect-ratio: 1;
   }
   #pwzrswiper-slide-0{
@@ -174,15 +174,17 @@
           background-position-x: 90px;
           background-position-y: -10px;
         }
-        .initials-color1-text {
-          margin: 29% 19% 11% 21%;
-        }
       </style>
     {% endif %}
     <div class="color-swatch-option">
     {% for v in product.variants %}
     	<div class="color-swatch {% if v == variant %}active{% endif %}" data-value="{{ v.id }}" title="{{ v.title }}">
-          <span style="background-image:url({{ v.featured_media | product_img_url: '200x' }});"></span>
+          {% if v.metafields.custom.swatch %}
+            {% assign swatch_url = v.metafields.custom.swatch | image_url: width: '200x' %}
+          {% else %}
+            {% assign swatch_url = v.featured_media | product_img_url: '200x' %}
+          {% endif %}
+          <span style="background-image:url({{ swatch_url }});"></span>
         </div>
     {% endfor %}
     </div>
