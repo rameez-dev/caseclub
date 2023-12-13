@@ -1,29 +1,56 @@
+<style>
+  /* width */
+.menu-links::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.menu-links::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.menu-links::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.menu-links::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+</style>
 {% for link in linklists[linklist].links %}
   {% if linklists[link.handle] != empty %}
     {% assign link_count = linklists[link.handle].links | size %}
     <div class="dropdown_container" data-dropdown="{{ link.handle }}">
-      <div class="dropdown menu">
-        <div class="dropdown_content {% if link_count < 4 %}dropdown_narrow{% endif %}">
-          {% for sublink in linklists[link.handle].links %}
-            <div class="dropdown_column">
-              <ul class="{% if linklists[sublink.handle] != empty %}dropdown_title{% else %}dropdown_item{% endif %}">
-                <li>
-                  <a href="{{ sublink.url }}" class="{% if sublink.url == '#' %}url-deadlink{% endif %}">{{ sublink.title }}</a>
-                </li>
-              </ul>
-
-              {% if linklists[sublink.handle] != empty %}
-                <ul>
-                  {% for subsublink in linklists[sublink.handle].links %}
-                    <li>
-                      <a href="{{ subsublink.url }}" class="{% if subsublink.url == '#' %}url-deadlink{% endif %}">{{ subsublink.title }}</a>
-                    </li>
-                  {% endfor %}
+      <div class="dropdown menu custom">
+        <div class="dropdown_content">
+          <div class="menu-links" style="overflow: auto;">
+            {% for sublink in linklists[link.handle].links %}
+              <div class="">
+                <ul class="{% if linklists[sublink.handle] != empty %}dropdown_title{% else %}dropdown_item{% endif %}">
+                  <li>
+                    <a href="{{ sublink.url }}" class="{% if sublink.url == '#' %}url-deadlink{% endif %}">{{ sublink.title }}</a>
+                  </li>
                 </ul>
-              {% endif %}
-            </div>
-            {% cycle link.handle: '', '', '', '', '<div class="dropdown_row"></div>' %}
-          {% endfor %}
+
+                {% if linklists[sublink.handle] != empty %}
+                  <ul>
+                    {% for subsublink in linklists[sublink.handle].links %}
+                      <li>
+                        <a href="{{ subsublink.url }}" class="{% if subsublink.url == '#' %}url-deadlink{% endif %}">{{ subsublink.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+              {% cycle link.handle: '', '', '', '', '<div class="dropdown_row"></div>' %}
+            {% endfor %}
+          </div>
+          <div class="menu-image">
+            {%  assign img_name = link.title | downcase | replace: ' ', '-' | remove: "&" | append: '.jpg'  %}
+            <img src="{{ img_name | asset_url }}" alt="mega-menu-img" style="object-fit: cover;">
+          </div>
         </div>
       </div>
     </div>

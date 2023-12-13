@@ -5,6 +5,19 @@
 >
 </script>
 
+<style>
+  #header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    border-top: 1px solid #93564b;
+    border-bottom: 1px solid #93564b;
+  }
+  #header .top-bar > a{
+    transform: scale(0.7);
+  }
+</style>
+
 {%- assign image = section.settings.image -%}
 {%- assign mobile_image = section.settings.mobile_image -%}
 {%- assign background_style = section.settings.caption_content_background -%}
@@ -34,7 +47,7 @@
     {% paginate collections by section.settings.pagination_limit %}
       {%- assign collections_per_row = section.settings.collections_per_row -%}
 
-      <div class="one-whole column">
+      {% comment %} <div class="one-whole column">
         <div class="breadcrumb-collection">
           {% if section.settings.collection_breadcrumb %}
             <script type="application/ld+json">
@@ -79,7 +92,7 @@
             </div>
           {% endif %}
         </div>
-      </div>
+      </div> {% endcomment %}
 
       {% if display_collection_title and image == blank %}
         <div class="one-whole column">
@@ -103,6 +116,7 @@
 
         <div class="has-sidebar-option sidebar-enabled--{{ sidebar }}">
           <div class="container">
+            <h2 class="collection-heading">Collections</h2>
             <div class="one-whole column list-collections-wrapper">
               <div class="list-collections collection-matrix equal-columns--outside-trim is-flex is-flex-wrap">
                 {% for collection in collections %}
@@ -111,46 +125,35 @@
 
                     <div class="{% render 'column-width', value: collections_per_row %} column thumbnail {% if settings.mobile_products_per_row == '1' %}medium-down--one-half small-down--one-whole{% else %}medium-down--one-half small-down--one-half{% endif %}">
                       <div class="product-wrap">
-                        <div class="image__container">
-                          {% if collection.image %}
-                            {%- assign collection_image = collection.image.src -%}
-                          {% else %}
-                            {%- assign collection_image = collection.products.first.featured_image -%}
-                          {% endif %}
+                        <a href="{{ collection.url }}">
+                          <div class="product-image-section">
+                            <div class="personalisation">
+                              Personalisation
+                            </div>
+                            <div class="image__container">
+                              {% if collection.image %}
+                                {%- assign collection_image = collection.image.src -%}
+                              {% else %}
+                                {%- assign collection_image = collection.products.first.featured_image -%}
+                              {% endif %}
 
-                          {%
-                            render 'image-element',
-                            image: collection_image,
-                            alt: collection.title,
-                            object_fit: section.settings.align_height,
-                            max_height: section.settings.collection_height
-                          %}
-                        </div>
-
-                        <a href="{{ collection.url }}" title="{{ collection_title }}" class="hidden-product-link">{{ collection_title }}</a>
-
-                        {% if settings.thumbnail_hover_enabled %}
-                          <div class="thumbnail-overlay">
-                            <a href="{{ collection.url }}" title="{{ collection_title }}" class="hidden-product-link">{{ collection_title }}</a>
-
-                            <div class="info">
-                              <div class="collection-details">
-                                <span class="title">{{ collection.title }}</span>
-                              </div>
-                              <a
-                                href="{{ collection.url }}"
-                                title="{{ collection_title }}"
-                                class="thumbnail-overlay__button global-button global-button--product-grid-text-hover"
-                              >
-                                {{ 'collections.general.view_all' | t }}
-                              </a>
+                              {%
+                                render 'image-element',
+                                image: collection_image,
+                                alt: collection.title,
+                                object_fit: section.settings.align_height,
+                                max_height: section.settings.collection_height
+                              %}
                             </div>
                           </div>
-                        {% endif %}
-
-                        <a class="collection-info__caption {% if settings.thumbnail_hover_enabled %}hidden{% endif %}" href="{{ collection.url }}">
-                          <span class="title">{{ collection.title }}</span>
                         </a>
+                        <div class="product-title">
+                          <div>
+                            <span>Shop</span>
+                            <a href="{{ collection.url }}" title="{{ collection_title }}" class="">{{ collection_title }}</a>
+                          </div>
+                          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
+                        </div>
                       </div>
                     </div>
                   {% endunless %}
@@ -183,8 +186,9 @@
     }
   </style>
 {% endif %}
-
-{% if sp_paginate_by %}{% render 'spurit_po2_collection_template_snippet', paginate_by: sp_paginate_by %}{% endif %}{% schema %}
+{% comment %} 
+{% if sp_paginate_by %}{% render 'spurit_po2_collection_template_snippet', paginate_by: sp_paginate_by %}{% endif %} {% endcomment %}
+{% schema %}
 {
   "name": "Collections",
   "class": "shopify-section--collection-template",

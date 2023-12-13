@@ -276,8 +276,9 @@
     </div>
   </section>
 {% assign sp_paginate_by = paginate.page_size %}{% endpaginate %}
-
-{% if sp_paginate_by %}{% render 'spurit_po2_collection_template_snippet', paginate_by: sp_paginate_by %}{% endif %}{% schema %}
+{% comment %} 
+{% if sp_paginate_by %}{% render 'spurit_po2_collection_template_snippet', paginate_by: sp_paginate_by %}{% endif %} {% endcomment %}
+{% schema %}
 {
   "name": "Search",
   "class": "shopify-section--search-template",
