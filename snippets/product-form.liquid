@@ -34,7 +34,8 @@
     transform: rotate(270deg);
     /*height: 540px;*/
     width: 60%;
-    margin: 25% 20% 15%;
+    margin: 29% 19% 11% 21%;
+    /* margin: 25% 20% 15%; */
     aspect-ratio: 1;
     align-items: center;
     justify-content: center;
@@ -43,7 +44,6 @@
     .initials-color1-text {
       /*height: 310px;*/
       width: 60%;
-      margin: 25% 20% 15%;
       aspect-ratio: 1;
   }
   #pwzrswiper-slide-0{
@@ -158,10 +158,33 @@
       </select>
     {% endif %}
     </div>
+    {% if product.handle contains 'bundle' %}
+      <style>
+        .color-swatch-option .color-swatch span {
+          background-position-x: -20px;
+        }
+      </style>
+    {% elsif product.handle contains 'travel' %}
+      <style>
+        .cart-initials-color1-text {
+          margin-top: 6px;
+          margin-left: 3px;
+        }
+        .color-swatch-option .color-swatch span {
+          background-position-x: 90px;
+          background-position-y: -10px;
+        }
+      </style>
+    {% endif %}
     <div class="color-swatch-option">
     {% for v in product.variants %}
     	<div class="color-swatch {% if v == variant %}active{% endif %}" data-value="{{ v.id }}" title="{{ v.title }}">
-          <span style="background-image:url({{ v.featured_media | product_img_url: '200x' }});"></span>
+          {% if v.metafields.custom.swatch %}
+            {% assign swatch_url = v.metafields.custom.swatch | image_url: width: '200x' %}
+          {% else %}
+            {% assign swatch_url = v.featured_media | product_img_url: '200x' %}
+          {% endif %}
+          <span style="background-image:url({{ swatch_url }});"></span>
         </div>
     {% endfor %}
     </div>
@@ -211,28 +234,82 @@
       	{% endfor %}
     </select>-->
   </div>
+{%  elsif product.handle contains 'bundle' %}
+  <div class="select-model">
+    <label class="form-label">Select your device</label>
+    {% assign  count = count | plus:1 %}
+    <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+        <option value="/products/iphone-15-pro-max-bundle" {% if product.title == "iPhone 15 Pro Max Bundle" %}selected{% endif %}>iPhone 15 Pro Max</option>
+        <option value="/products/iphone-15-pro-bundle" {% if product.title == "iPhone 15 Pro Bundle" %}selected{% endif %}>iPhone 15 Pro</option>
+        <option value="/products/iphone-15-plus-bundle" {% if product.title == "iPhone 15 Plus Bundle" %}selected{% endif %}>iPhone 15 Plus</option>
+        <option value="/products/iphone-15-bundle" {% if product.title == "iPhone 15 Bundle" %}selected{% endif %}>iPhone 15</option>
+        <option value="/products/iphone-14-pro-max-bundle" {% if product.title == "iPhone 14 Pro Max Bundle" %}selected{% endif %}>iPhone 14 Pro Max</option>
+        <option value="/products/iphone-14-pro-bundle" {% if product.title == "iPhone 14 Pro Bundle" %}selected{% endif %}>iPhone 14 Pro</option>
+        <option value="/products/iphone-14-plus-bundle" {% if product.title == "iPhone 14 Plus Bundle" %}selected{% endif %}>iPhone 14 Plus</option>
+        <option value="/products/iphone-14-bundle" {% if product.title == "iPhone 14 Bundle" %}selected{% endif %}>iPhone 14</option>
+			  <option value="/products/iphone-13-pro-max-bundle" {% if product.title == "iPhone 13 Pro Max Bundle" %}selected{% endif %}>iPhone 13 Pro Max</option>
+        <option value="/products/iphone-13-pro-bundle" {% if product.title == "iPhone 13 Pro Bundle" %}selected{% endif %}>iPhone 13 Pro</option>
+        <option value="/products/iphone-13-bundle" {% if product.title == "iPhone 13 Bundle" %}selected{% endif %}>iPhone 13</option>
+        <option value="/products/iphone-12-pro-max-bundle" {% if product.title == "iPhone 12 Pro Max Bundle" %}selected{% endif %}>iPhone 12 Pro Max</option>
+        <option value="/products/iphone-12-bundle" {% if product.title == "iPhone 12 (Pro) Bundle" %}selected{% endif %}>iPhone 12 Pro</option>
+    </select>
+    <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+      {% for product1 in collections.all.products %}
+  		{% if product1.type == 'Phone Cases' %}
+      		<option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
+        {% endif %}
+      	{% endfor %}
+    </select>-->
+  </div>
+  {%  else %}
+    {% assign iphone_selector_collection = blank %}
+    {% for col in product.collections %}
+      {% if col.metafields.custom.selector_collection %}
+        {% assign iphone_selector_collection = col %}     
+      {% endif %}
+    {% endfor %}
+
+
+    {% if iphone_selector_collection != blank %}
+      <div class="select-model">
+        <label class="form-label">Select your device</label>
+        <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+          {% for prod in iphone_selector_collection.products %}
+            <option value="{{ prod.url }}" {% if prod.title == product.title %}selected{% endif %}>{{ prod.title }}</option> 
+          {% endfor %}
+        </select>
+        <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+          {% for product1 in collections.all.products %}
+          {% if product1.type == 'Phone Cases' %}
+              <option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>-->
+      </div> 
+    {% endif %}
+    
 {% endif %}
 {% comment %} new personalised phone cases {% endcomment %}
 {% if product.type == 'Personalized Phone Cases' %}
-  {% for tag in product.tags %}
-    {% if tag contains "related:" %}
-      {% capture related_tag %}{{tag}}{% endcapture %}
-      {% capture related_tag_type %}{{tag | split: ':' | last | strip}}{% endcapture %}
-    {% endif %}
-  {% endfor %}
-  
-  <div class="select-model">
-    <label class="form-label">Select your device</label>
-    {% if related_tag %}
-    <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
-      {% for p in collections.all.products %}  
-      {% if p.tags contains related_tag and p.type == 'Personalized Phone Cases'%} 
-        <option value="{{ p.url }}" {% if product.title == p.title %}selected{% endif %}>{{p.title}}</option>
+    {% for tag in product.tags %}
+      {% if tag contains "related:" %}
+        {% capture related_tag %}{{tag}}{% endcapture %}
+        {% capture related_tag_type %}{{tag | split: ':' | last | strip}}{% endcapture %}
       {% endif %}
-      {% endfor %}
-    </select>
-  {% endif %}
-  </div>
+    {% endfor %}
+
+    {% if related_tag %}
+      <div class="select-model">
+        <label class="form-label">Select your device</label>
+        <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+          {% for p in collections.all.products %}  
+          {% if p.tags contains related_tag and p.type == 'Personalized Phone Cases'%} 
+            <option value="{{ p.url }}" {% if product.title == p.title %}selected{% endif %}>{{p.title}}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
 {% endif %}
 {% comment %} new personalised phone cases {% endcomment %}
 
@@ -271,7 +348,7 @@
             <label for="color1-{{color1}}" class="text-color-label" style="background-color:{{color1}};"></label>
           {% endfor %}
           </div>
-        <label>Color 2</label>
+        <label>Color 2 <input type="radio" name="properties[Shade Color]" class="noshade" id="noshade" value="No shade"><label for="noshade">No Shade</label></label>
         <div class="text-color-swatches">
           {% for color2 in product.metafields.custom.color2.value %}
             <input type="radio" name="properties[Shade Color]" class="text-color-input" value="{{color2}}" id="color2-{{color2}}" {% if forloop.index0 == 0 %}checked{% endif %}>
@@ -293,11 +370,11 @@
               </style>
               <label class="container"> 
                 <input type="radio" name="properties[Letter Color]" class="tcc-color-select" value="gold" checked><span class="checkmark">
-                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Gold-color.png"></span> 
+                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/files/goldgold-min.webp?v=1701871302"></span> 
               </label>
               <label class="container"> 
                 <input type="radio" name="properties[Letter Color]" class="tcc-color-select" value="silver"><span class="checkmark">
-                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Silver-color.png"></span> </label>
+                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/files/silversilver-min.webp?v=1701871307"></span> </label>
             </div>
           </div>
         </div>

@@ -626,7 +626,11 @@ $(() => {
 
         cartItemsHTML += `<li class="mini-cart__item ${item.product_type.replace(' ', '-').toLowerCase()}" data-cart-item data-line-id="${lineID}" data-variant-id="${item.id}">`
         + `<a href="${item.url}" class="mini-cart__item-a">` ;
-        if (item.product_type!='Strap' && item.product_type!='Personalized Phone Cases')
+        if (item.product_title.toLowerCase().includes('bundle')) {
+          cartItemsHTML += `<span class="initials bundle-phone-cart ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
+          cartItemsHTML += `<span class="initials bundle-case-cart ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
+        }
+        else if (item.product_type!='Strap' && item.product_type!='Personalized Phone Cases')
         cartItemsHTML += `<span class="initials ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
        
         if (item.image && item.product_type!='Personalized Phone Cases') {
@@ -659,7 +663,7 @@ $(() => {
 		cartItemsHTML += `<a href="${item.url}">${item.title}`;	
         if (item.properties && item.product_type!='Strap') {
           $.each(item.properties, (title, value) => {
-            if ( title != 'Design') {
+            if ( title != '_Design') {
               if (value) {
                 cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
               }
@@ -964,7 +968,7 @@ $(() => {
         const custom_image = await takeScreenshot();
         console.log ('custom image ...', custom_image);
         const formData = $(this).closest('form');
-        formData.append('<input type="hidden" name="properties[Design]" value= ' + custom_image + '>');
+        formData.append('<input type="hidden" name="properties[_Design]" value= ' + custom_image + '>');
         console.log('form data ..', formData.serialize());
       }
 
