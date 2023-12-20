@@ -764,7 +764,7 @@ $(() => {
           dataType: 'json',
           async: false,
           cache: false,
-          url: `/products.json`,
+          url: `/products.json?limit=200`,
           success(data) {
             console.log('testing data after ajax call....', curr_pro);
             jQuery('.mix-match-wrap').show();
