@@ -3433,6 +3433,10 @@ window.productPage = {
                   setTimeout(function() {
                     if (jQuery('.product #pwzrswiper-slide-0 .initials').length == 0) {
                       var html = '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
+                      if(jQuery('#isBundle') && jQuery('#isBundle').val() == 'true') {
+                        jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span><span class="initials"></span>' + html);
+                      }
+                      else
                       jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span>' + html);
                       initial_fun();
                     }
