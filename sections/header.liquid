@@ -84,7 +84,7 @@
   <div>FREE SHIPPING ON ALL ORDERS WORLDWIDE</div>
 </div> 
 
-<div style="display:none;">
+{% comment %} <div style="display:none;">
   {% form 'localization' %}
     <select name="country_code">
       {% for country in localization.available_countries %}
@@ -99,7 +99,7 @@
     </select>
     <input type="submit" value="Update">
   {% endform %}
-</div>
+</div> {% endcomment %}
 
 <header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
   {% if section.settings.promo_text != blank %}
