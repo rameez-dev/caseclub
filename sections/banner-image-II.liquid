@@ -1,0 +1,69 @@
+<section class="banner-image">
+<div class="banner-images_container"> 
+<div class="banner-images-main">
+       <div class="banner-images-all">
+        <img src={{ section.settings.First-image | image_url }}>
+        </div>
+        </div>
+        <div class="banner-images-main">
+            <a class="banner-images-II_link" href="{{ section.settings.banner-button-link }}">
+        {{ section.settings.banner-text-II }}
+      </a>
+        <div class="banner-images-all"> 
+        <img src={{ section.settings.Second-image | image_url }}>
+        </div>
+        </div>
+        <div class="banner-images-main">
+        <div class="banner-images-all">
+        <img src={{ section.settings.Third-image | image_url }}>
+        </div>
+</div>
+<div>
+</div>
+
+</section>
+
+
+{%  schema  %}  
+
+{
+    "name": "Banner image II",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "First-image",
+        "label": "First Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "Second-image",
+        "label": "Second Image"
+      }
+      ,
+      {
+        "type": "image_picker",
+        "id": "Third-image",
+        "label": "Third Image"
+      },
+      {
+        "type": "text",
+        "id": "banner-text-II",
+        "label": "Button Text",
+        "default": "SHOP NOW"
+      }
+      ,
+      {
+        "type": "url",
+        "id": "banner-button-link",
+        "label": "Button Link"
+      }
+      ],
+    "presets": [
+      {
+        "name": "Banner image II",
+        "category": "Content"
+      }
+    ]
+  }  
+
+{% endschema %} 

@@ -21465,3 +21465,52 @@ font-size: 12px ;
 .noshade:checked+label {
   border: 1px solid rgb(255, 100, 145);
 }
+
+
+/* Banner Images-II */
+
+.banner-images_container {
+  display : flex;
+  flex-direction : row;
+}
+
+.banner-images-main {
+   flex : 1;
+   position : relative;
+}
+
+.banner-images-II_link {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color : white !important;
+   font-family : emoji;
+   width : 200px;
+   padding : 10px;
+   background :  transparent;
+   text-align : center;
+   font-size : larger;
+}
+
+.banner-images-all img {
+   aspect-ratio : 1;
+   height : 400px;
+   width : 100%;
+   flex : 0 0 100%;
+   object-fit : cover;
+}
+
+@media only screen and (max-width: 768px) { 
+   .banner-images_container {
+        display : block;
+     }
+   
+  .banner-images-all {
+   display : flex; 
+  }   
+
+  .banner-images-all img {
+   height : unset !important;
+  }   
+}
