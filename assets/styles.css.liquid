@@ -17898,13 +17898,14 @@ footer .social_icons a:hover {
 .collections-home .featured-promotions .feature-details__button {
   background-color: #fff;
   color: #000;
-  width: 70%;
+  width: 70%; 
   border: none;
   letter-spacing: 0;
-  font-size: 14px;
+  font-family : serif;
+  font-size: 13px;
   font-weight: normal;
   /*border-radius: 12px; */
-  padding: 10px;
+  padding: 10px; 
 }
   .express-home {
     text-align: center;
@@ -18233,6 +18234,7 @@ footer .social_icons a:hover {
     width: 140px;
     border: none;
     letter-spacing: 0;
+    font-family : serif;
     font-size: 14px;
     font-weight: normal;
     /* border-radius: 12px; */
@@ -21479,7 +21481,7 @@ font-size: 12px ;
    position : relative;
 }
 
-.banner-images-II_link {
+.banner-images-II_link { 
    position: absolute;
    top: 50%;
    left: 50%;
@@ -21496,7 +21498,8 @@ font-size: 12px ;
 
 .banner-images-all img {
    aspect-ratio : 1;
-   height : 400px;
+   height : 100% !important;
+   max-height : 400px !important;   
    width : 100%;
    flex : 0 0 100%;
    object-fit : cover;
@@ -21514,4 +21517,8 @@ font-size: 12px ;
   .banner-images-all img {
    height : unset !important;
   }   
+
+  .banner-images-II-main {
+    height : unset !important; 
+  }
 }
