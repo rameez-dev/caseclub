@@ -21496,10 +21496,13 @@ font-size: 12px ;
    font-size : 18px;
 }
 
+.banner-images-all {
+  height : 100%;
+}
+
 .banner-images-all img {
    aspect-ratio : 1;
-   height : 100% !important;
-   max-height : 400px !important;   
+   height : 100%;
    width : 100%;
    flex : 0 0 100%;
    object-fit : cover;
@@ -21508,17 +21511,10 @@ font-size: 12px ;
 @media only screen and (max-width: 768px) { 
    .banner-images_container {
         display : block;
-     }
+     }  
    
   .banner-images-all {
-   display : flex; 
+   display : flex;
   }   
 
-  .banner-images-all img {
-   height : unset !important;
-  }   
-
-  .banner-images-II-main {
-    height : unset !important; 
-  }
 }
