@@ -6,9 +6,11 @@
         </div>   
         </div> 
         <div class="banner-images-II-main banner-images-main">
+          {% if section.settings.banner-text-II != blank %}
             <a class="banner-images-II_link" href="{{ section.settings.banner-button-link }}">
         {{ section.settings.banner-text-II }}
       </a>
+          {% endif %}
         <div class="banner-images-all"> 
         <img src={{ section.settings.Second-image | image_url }}>
         </div>
