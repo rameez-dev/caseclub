@@ -53,7 +53,7 @@
 
 {% comment %} new personalized phone cases design{% endcomment %}
 {% if product.type=="Personalized Phone Cases" %}
-  <div id="snapshot" style="background-image: url('{{product.metafields.custom.design.value | img_url: '2300x2300' }}');background-repeat: no-repeat;">
+  <div id="snapshot" style="background-image: url('{{ product.metafields.custom.design.value | img_url: 'master' }}');background-repeat: no-repeat; height:{{ product.metafields.custom.design.value.height }}px;width:{{ product.metafields.custom.design.value.width }}px">
     <span id="design-text" class="snapshot-design-text"><span></span></span>
   </div>
 {% endif %}

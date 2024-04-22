@@ -34,7 +34,8 @@
     transform: rotate(270deg);
     /*height: 540px;*/
     width: 60%;
-    margin: 25% 20% 15%;
+    margin: 29% 19% 11% 21%;
+    /* margin: 25% 20% 15%; */
     aspect-ratio: 1;
     align-items: center;
     justify-content: center;
@@ -43,7 +44,6 @@
     .initials-color1-text {
       /*height: 310px;*/
       width: 60%;
-      margin: 25% 20% 15%;
       aspect-ratio: 1;
   }
   #pwzrswiper-slide-0{
@@ -174,15 +174,17 @@
           background-position-x: 90px;
           background-position-y: -10px;
         }
-        .initials-color1-text {
-          margin: 29% 19% 11% 21%;
-        }
       </style>
     {% endif %}
     <div class="color-swatch-option">
     {% for v in product.variants %}
     	<div class="color-swatch {% if v == variant %}active{% endif %}" data-value="{{ v.id }}" title="{{ v.title }}">
-          <span style="background-image:url({{ v.featured_media | product_img_url: '200x' }});"></span>
+          {% if v.metafields.custom.swatch %}
+            {% assign swatch_url = v.metafields.custom.swatch | image_url: width: '200x' %}
+          {% else %}
+            {% assign swatch_url = v.featured_media | product_img_url: '200x' %}
+          {% endif %}
+          <span style="background-image:url({{ swatch_url }});"></span>
         </div>
     {% endfor %}
     </div>
@@ -259,34 +261,36 @@
       	{% endfor %}
     </select>-->
   </div>
-  {%  elsif product.handle contains 'travel' %}
-    <div class="select-model">
-      <label class="form-label">Select your device</label>
-      {% assign  count = count | plus:1 %}
-      <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
-          <option value="/products/travel-case-iphone-15-pro-max" {% if product.title == "Travel Case - iPhone 15 Pro Max" %}selected{% endif %}>iPhone 15 Pro Max</option>
-          <option value="/products/travel-case-iphone-15-pro" {% if product.title == "Travel Case - iPhone 15 Pro" %}selected{% endif %}>iPhone 15 Pro</option>
-          <option value="/products/travel-case-iphone-15-plus" {% if product.title == "Travel Case - iPhone 15 Plus" %}selected{% endif %}>iPhone 15 Plus</option>
-          <option value="/products/travel-case-iphone-15" {% if product.title == "Travel Case - iPhone 15" %}selected{% endif %}>iPhone 15</option>
-          <option value="/products/travel-case-iphone-14-pro-max" {% if product.title == "Travel Case - iPhone 14 Pro Max" %}selected{% endif %}>iPhone 14 Pro Max</option>
-          <option value="/products/travel-case-iphone-14-pro" {% if product.title == "Travel Case - iPhone 14 Pro" %}selected{% endif %}>iPhone 14 Pro</option>
-          <option value="/products/travel-case-iphone-14-plus" {% if product.title == "Travel Case - iPhone 14 Plus" %}selected{% endif %}>iPhone 14 Plus</option>
-          <option value="/products/travel-case-iphone-14" {% if product.title == "Travel Case - iPhone 14" %}selected{% endif %}>iPhone 14</option>
-          <option value="/products/travel-case-iphone-13-pro-max" {% if product.title == "Travel Case - iPhone 13 Pro Max" %}selected{% endif %}>iPhone 13 Pro Max</option>
-          <option value="/products/travel-case-iphone-13-pro" {% if product.title == "Travel Case - iPhone 13 Pro" %}selected{% endif %}>iPhone 13 Pro</option>
-      </select>
-      <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
-        {% for product1 in collections.all.products %}
-        {% if product1.type == 'Phone Cases' %}
-            <option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
-          {% endif %}
+  {%  else %}
+    {% assign iphone_selector_collection = blank %}
+    {% for col in product.collections %}
+      {% if col.metafields.custom.selector_collection %}
+        {% assign iphone_selector_collection = col %}     
+      {% endif %}
+    {% endfor %}
+
+
+    {% if iphone_selector_collection != blank %}
+      <div class="select-model">
+        <label class="form-label">Select your device</label>
+        <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+          {% for prod in iphone_selector_collection.products %}
+            <option value="{{ prod.url }}" {% if prod.title == product.title %}selected{% endif %}>{{ prod.title }}</option> 
           {% endfor %}
-      </select>-->
-    </div>
+        </select>
+        <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+          {% for product1 in collections.all.products %}
+          {% if product1.type == 'Phone Cases' %}
+              <option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>-->
+      </div> 
+    {% endif %}
+    
 {% endif %}
 {% comment %} new personalised phone cases {% endcomment %}
 {% if product.type == 'Personalized Phone Cases' %}
-  {% unless product.handle contains 'travel' %}
     {% for tag in product.tags %}
       {% if tag contains "related:" %}
         {% capture related_tag %}{{tag}}{% endcapture %}
@@ -294,9 +298,9 @@
       {% endif %}
     {% endfor %}
 
-    <div class="select-model">
-      <label class="form-label">Select your device</label>
-      {% if related_tag %}
+    {% if related_tag %}
+      <div class="select-model">
+        <label class="form-label">Select your device</label>
         <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
           {% for p in collections.all.products %}  
           {% if p.tags contains related_tag and p.type == 'Personalized Phone Cases'%} 
@@ -304,9 +308,8 @@
           {% endif %}
           {% endfor %}
         </select>
-      {% endif %}
-    </div>
-  {% endunless %}
+      </div>
+    {% endif %}
 {% endif %}
 {% comment %} new personalised phone cases {% endcomment %}
 

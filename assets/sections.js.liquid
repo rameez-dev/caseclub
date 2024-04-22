@@ -3433,6 +3433,10 @@ window.productPage = {
                   setTimeout(function() {
                     if (jQuery('.product #pwzrswiper-slide-0 .initials').length == 0) {
                       var html = '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
+                      if(jQuery('#isBundle') && jQuery('#isBundle').val() == 'true') {
+                        jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span><span class="initials"></span>' + html);
+                      }
+                      else
                       jQuery('.product #pwzrswiper-slide-0').append('<span class="initials"></span>' + html);
                       initial_fun();
                     }
@@ -3515,8 +3519,8 @@ window.productPage = {
                 //const originalFontSize = parseFloat(window.getComputedStyle(element).fontSize);
                 const containerWidth = parentElement.offsetWidth;
                 const containerHeight = parentElement.offsetHeight;
-                var maxfontheight = containerHeight * 0.5;
-                if(jQuery('#isTravel').val() == 'true')
+                // var maxfontheight = containerHeight * 0.5;
+                // if(jQuery('#isTravel').val() == 'true')
                   maxfontheight = containerHeight * 0.6;
 
                 var fontSize = 10;
@@ -3530,12 +3534,12 @@ window.productPage = {
                   
                   fontSize += 1;
                   if (tempSpan.offsetHeight >= maxfontheight || tempSpan.offsetWidth >= containerWidth) {
-                    shift_x = tempSpan.offsetHeight * -0.04;
-                    shift_y = tempSpan.offsetHeight * 0.01;
-                    if(jQuery('#isTravel').val() == 'true') {
+                    // shift_x = tempSpan.offsetHeight * -0.04;
+                    // shift_y = tempSpan.offsetHeight * 0.01;
+                    // if(jQuery('#isTravel').val() == 'true') {
                       shift_x = tempSpan.offsetHeight * -0.015;
                       shift_y = tempSpan.offsetHeight * 0;
-                    }
+                    // }
                     element.style.fontSize = fontSize + 'px';
                     parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px var(--shadow-color)'
                     maincont.removeChild(tempSpan);
@@ -3554,8 +3558,8 @@ window.productPage = {
                   //const originalFontSize = parseFloat(window.getComputedStyle(element).fontSize);
                   const containerWidth = parentElement.offsetWidth;
                   const containerHeight = parentElement.offsetHeight;
-                  var maxfontheight = containerHeight * 0.45;
-                  if(jQuery('#isTravel').val() == 'true')
+                  // var maxfontheight = containerHeight * 0.45;
+                  // if(jQuery('#isTravel').val() == 'true')
                     maxfontheight = containerHeight * 0.6;
   
                   var fontSize = 200;
@@ -3569,12 +3573,12 @@ window.productPage = {
                     
                     fontSize += 1;
                     if (tempSpan.offsetHeight >= maxfontheight || tempSpan.offsetWidth >= containerWidth) {
-                      shift_x = tempSpan.offsetHeight * 0.005;
-                      shift_y = tempSpan.offsetHeight * 0.03;
-                      if(jQuery('#isTravel').val() == 'true') {
+                      // shift_x = tempSpan.offsetHeight * 0.005;
+                      // shift_y = tempSpan.offsetHeight * 0.03;
+                      // if(jQuery('#isTravel').val() == 'true') {
                         shift_x = tempSpan.offsetHeight * -0.015;
                         shift_y = tempSpan.offsetHeight * 0;
-                      }
+                      // }
                       element.style.fontSize = fontSize + 'px';
                       parentElement.style.textShadow = shift_x + 'px ' + shift_y +'px 0px var(--shadow-color)'
                       maincont.removeChild(tempSpan);
