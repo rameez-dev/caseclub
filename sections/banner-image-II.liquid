@@ -1,28 +1,29 @@
 <section class="banner-image">
-<div class="banner-images_container"> 
-<div class="banner-images-main">
-       <div class="banner-images-all">
+  <div class="banner-images_container">
+    <div class="banner-images-main">
+      <div class="banner-images-all">
         <img src={{ section.settings.First-image | image_url }}>
-        </div>   
-        </div> 
-        <div class="banner-images-II-main banner-images-main">
-          {% if section.settings.banner-text-II != blank %}
-            <a class="banner-images-II_link" href="{{ section.settings.banner-button-link }}">
+      </div>
+    </div>
+    <div class="banner-images-II-main banner-images-main">
+      {% if section.settings.banner-text-II != blank %}
+      <a class="banner-images-II_link" href="{{ section.settings.banner-button-link }}" 
+      style="background: rgb({{ section.settings.banner-button-bg-color.rgb |  replace: ' ', ','  }}, {{ section.settings.bg_opacity }}) !important;color: {{ section.settings.banner-button-text-color }} !important; width: {{ section.settings.bg_width |  times: 200 }}px; max-width: 80%">
         {{ section.settings.banner-text-II }}
       </a>
-          {% endif %}
-        <div class="banner-images-all"> 
+      {% endif %}
+      <div class="banner-images-all">
         <img src={{ section.settings.Second-image | image_url }}>
-        </div>
-        </div>
-        <div class="banner-images-main">
-        <div class="banner-images-all">
+      </div>
+    </div>
+    <div class="banner-images-main">
+      <div class="banner-images-all">
         <img src={{ section.settings.Third-image | image_url }}>
-        </div>
-</div>
-<div>
-</div>
-
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
 </section>
 
 
@@ -58,6 +59,38 @@
         "type": "url",
         "id": "banner-button-link",
         "label": "Button Link"
+      }
+      ,
+      {
+        "type": "color",
+        "id": "banner-button-bg-color",
+        "label": "Button Background",
+        "default": "#000"
+      }
+      ,
+      {
+        "type": "color",
+        "id": "banner-button-text-color",
+        "label": "Button Text",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "bg_opacity",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "label": "Button Background Opacity",
+        "default": 0.8
+      },
+      {
+        "type": "range",
+        "id": "bg_width",
+        "min": 0.2,
+        "max": 2,
+        "step": 0.2,
+        "label": "Button Background Scale",
+        "default": 1
       }
       ],
     "presets": [

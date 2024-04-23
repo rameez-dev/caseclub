@@ -21488,10 +21488,8 @@ font-size: 12px ;
    transform: translate(-50%, -50%);
    color : white !important;
    font-family : emoji;
-   width : 200px;
    padding : 15px;
    font-weight : 600;
-   background-color: rgba(255,255,255,0.3);  
    text-align : center; 
    font-size : 18px;
 }
@@ -21518,7 +21516,6 @@ font-size: 12px ;
   }   
 
   .banner-images-II_link {
-    width : 220px;
     padding : 20px;
     font-size : 20px;
     line-height : 1.3;
@@ -21562,7 +21559,8 @@ font-size: 12px ;
 .error-page_subcontent {
   text-align : center;
   font-size : 16px;
-  width : 500px;
+  max-width : 500px;
+  padding: 0px 30px;
 }
 
 input::placeholder {
@@ -21598,4 +21596,14 @@ input::placeholder {
     overflow : hidden; 
     width : unset;
   }
+}
+
+.locale-selectors__content form {
+  max-width: 100%;
+}
+.locale-selectors__content .locale-selectors__selector {
+  width: 100% !important;
+}
+.locale-selectors__content {
+  width: 95%;
 }
