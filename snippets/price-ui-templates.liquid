@@ -125,6 +125,11 @@
   {% else %}
   <span class="price {% if compare_at_price != blank and compare_at_price != false -%}price--sale{%- endif -%}" data-price>{%- if price != blank -%}{{- price -}}{%- endif -%}</span>
   {%- if compare_at_price != false -%}<span class="compare-at-price" data-compare-at-price>{%- if compare_at_price != blank -%}{{- compare_at_price -}}{%- endif -%}</span>{%- endif -%}
+  
+    {% if product.compare_at_price > product.price %}
+      <span class="salelabel_inline" style="color: {{settings.sale_label_color}}; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>
+    {% endif %}
+  
   {%- if unit_pricing != false -%}<span class="unit-pricing" data-unit-pricing>{%- if unit_pricing != blank -%}{{- unit_pricing -}}{%- endif -%}</span>{%- endif -%}
   {%- endif -%}
 {%- elsif template == 'price-ui-badge' -%}

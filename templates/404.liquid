@@ -1,24 +1,102 @@
-<section class="section">
+<section class="error-page_section section">
   <a name="pagecontent" id="pagecontent"></a>
   <div class="container content">
-    <div class="one-whole column collection_nav">
-      <h1 class="collection_title">{{ 'general.404.title' | t }}</h1>
-    </div>
+    <div class="error-container--404 container content">
+      <div class="one-whole column collection_nav">
+        <div class="error-page_content">
+          <div class="error-page--title">
+            Coming Soon <br>
+          </div>
+          <div class="error-page_subcontent">
+            In the meantime, sign up for our newsletter to stay up to date on new product launches and promotions!</div>
+          <div style="width: 100%;padding: 0px 40px;">
+            <div class="klaviyo-form-VczB4x"></div>
+          </div>
+        </div>
 
-    <div class="one-whole column">
-      <p class="quote">{{ 'general.404.subtext' | t }}</p>
-    </div>
+        {% comment %}
+        <form class="needsclick klaviyo-form klaviyo-form-version-cid_1 kl-private-reset-css-Xuajs1"
+          data-testid="klaviyo-form-RZuKpe" novalidate="" tabindex="-1"
+          style="display: flex; flex-direction: row; box-sizing: border-box; width: 100%; overflow: visible; max-width: 320px; margin: 0px auto; border-radius: 0px; border-style: none; border-width: 0px; border-color: rgb(0, 0, 0); background-color: rgba(255, 255, 255, 0); background-repeat: no-repeat; background-position-y: 50%; padding: 20px 0px 15px; flex: 1 1 0%;">
+          <div class="needsclick  kl-private-reset-css-Xuajs1"
+            style="display: flex; flex-direction: row; width: 100%; margin: 0px; padding: 0px; justify-content: center;">
+            <div data-testid="form-row" class="needsclick  kl-private-reset-css-Xuajs1"
+              style="display: flex; flex-direction: row; align-items: stretch; position: relative;">
+              <div component="[object Object]" data-testid="form-component"
+                class="needsclick  kl-private-reset-css-Xuajs1"
+                style="display: flex; justify-content: flex-start; padding: 5px 15px; position: relative; flex: 1 0 0px;">
+                <div class="needsclick  kl-private-reset-css-Xuajs1"
+                  style="display: flex; flex-grow: 1; flex-direction: column; align-self: flex-end;"><input
+                    id="email_50653970" class="error-pageinputfield needsclick go1685746780 kl-private-reset-css-Xuajs1"
+                    type="email" autocomplete="email" name="email" tabindex="0" placeholder="Email Address"
+                    aria-label="Enter your email" aria-invalid="true" options="[object Object]"
+                    style="box-sizing: border-box; border-radius: 20px; padding: 0px 0px 0px 16px; height: 40px; width : 225px; text-align: left; color: rgb(0, 0, 0); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 400; margin-left : -16px; letter-spacing: 0px; background-color: rgb(255, 255, 255); aria-describedby="
+                    klaviyo_ariaid_2">
+                  <div class="needsclick  kl-private-reset-css-Xuajs1" style="width: 100%; position: relative;">
+                    <div class="needsclick  kl-private-reset-css-Xuajs1"
+                      style="background-color: white; position: absolute; z-index: 1; right: 0px; border-radius: 4px; animation: 0.4s ease 0s 1 normal none running klaviyo-fadein; top: 9px;">
+                      <div class="needsclick go3298969293 kl-private-reset-css-Xuajs1"
+                        style="border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.26) 1px 1px 4px 0px; border: 1px solid rgb(208, 51, 31); background-color: rgb(255, 244, 240);">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-testid="form-row" class="needsclick  kl-private-reset-css-Xuajs1"
+              style="display: flex; flex-direction: row; align-items: stretch; position: relative;">
+              <div component="[object Object]" data-testid="form-component"
+                class="needsclick  kl-private-reset-css-Xuajs1"
+                style="display: flex; justify-content: flex-start; padding: 5px 15px 0px; position: relative; flex: 1 0 0px;">
+                <button class="needsclick go3894874857 kl-private-reset-css-Xuajs1" type="button" tabindex="0"
+                  style="background: rgb(0, 0, 0); border-radius: 20px; border-style: none; border-color: rgb(0, 0, 0); border-width: 20px; color: rgb(255, 255, 255); font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; line-height: 1; white-space: normal; text-align: center; word-break: break-word; cursor: pointer; height: 40px; width: 65px; padding-left :5px; padding-right : 5px;">Sign
+                  UP</button></div>
+            </div>
+          </div>
+          <input type="submit" tabindex="-1" value="Submit" style="display: none;">
+        </form>
 
-    <div class="one-whole column center">
-      <p class="extra_padding">{{ 'general.404.continue_shopping_html' | t }}</p>
-    </div>
+        <div class="one-whole column">
+          <p class="quote">{{ 'general.404.subtext' | t }}</p>
+        </div>
+        @ -15,10 +117,18 @@
 
-    <div class="three-eighths columns medium-down--one-whole offset-by-five is-hidden-offset-mobile-only" data-autocomplete-{{ settings.enable_autocomplete }}>
-      <form class="search search__form" action="{{ routes.search_url }}">
-        <input type="hidden" name="type" value="{{ settings.search_option }}" />
-        <span class="icon-search search-submit"></span>
-        <input type="text" name="q" class="search_box" placeholder="{{ 'general.search.placeholder' | t }}"  value="{{ search.terms }}" />
-      </form>
+        <div class="three-eighths columns medium-down--one-whole offset-by-five is-hidden-offset-mobile-only"
+          data-autocomplete-{{ settings.enable_autocomplete }}>
+          <form class="search search__form" action="{{ routes.search_url }}">
+            <h1>test</h1>
+            <input type="hidden" name="type" value="{{ settings.search_option }}" />
+            <span class="icon-search search-submit"></span>
+            <input type="text" name="q" class="search_box" placeholder="{{ 'general.search.placeholder' | t }}"
+              value="{{ search.terms }}" />
+          </form>
+        </div>
+        {% endcomment %}
+        <ul class="error-page_socialicons">
+          <li><a href="https://www.youtube.com/channel/UCH3qld1jzGWLusiIBR6gbZg/"><i class="icon-youtube"
+                aria-hidden="true"></i></a></li>
+          <li><a href="https://www.facebook.com/thecaseclub/"><i class="icon-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.instagram.com/thecaseclub/"><i class="icon-instagram" aria-hidden="true"></i></a>
+          </li>
+          <li><a href="https://wa.me/message/RDNNATKJYALXE1/"><svg xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" height="18px" width="18px" fill="#000000"
+                xml:space="preserve" version="1.1"
+                style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;"
+                viewBox="0 0 847 847" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd">
+                <defs>
+                  <style type="text/css"></style>
+                </defs>
+                <g>
+                  <path class="fil0"
+                    d="M560 111c10,3 20,6 30,10l0 0c10,4 20,8 29,13 9,4 19,9 27,15l0 0c10,6 18,12 27,18 8,6 16,13 24,21 8,7 15,14 22,22 7,8 13,17 20,25l0 0c6,9 12,18 17,27 5,9 10,18 14,28l0 0c5,10 9,20 12,30l0 0c3,10 6,20 9,30 2,11 4,21 5,31l0 0c2,11 3,22 3,32l0 0c0,11 0,21 -1,31 0,11 -2,21 -3,32l0 0c-2,11 -4,21 -7,31 -3,10 -6,20 -10,30l0 0c-3,10 -8,20 -12,29 -5,9 -10,19 -16,28l0 0c-5,9 -11,17 -18,26l0 0c-6,8 -13,16 -20,24 -7,8 -15,15 -23,22 -8,7 -16,14 -25,20l0 0c-9,6 -18,12 -26,17l-5 3 0 0c-8,4 -16,8 -24,12 -10,4 -20,8 -29,11l0 0c-10,4 -20,6 -31,9l0 0c-10,2 -20,4 -31,6l-2 0 -1 0c-9,1 -19,2 -29,2l0 0c-10,0 -21,0 -31,0 -10,-1 -21,-2 -32,-4l0 0c-10,-2 -21,-4 -31,-7 -6,-1 -12,-3 -19,-6l0 0c-6,-2 -13,-4 -19,-7 -7,-2 -13,-5 -19,-8 -6,-3 -12,-6 -18,-10 -6,-3 -11,-6 -15,-9l0 0c-5,-3 -9,-5 -13,-8l0 0 -2 -2c-4,-3 -9,-6 -13,-10 -3,-2 -6,-4 -9,-7l-156 7 -12 0 -16 1 -11 0 -22 1 11 -19 5 -10 0 0 7 -12 0 0 1 -1 6 -11 0 0 81 -140c-1,-4 -2,-8 -2,-11l-1 -8 0 0 -1 -5 0 -3 0 0c-1,-6 -1,-12 -2,-17l1 -1c-1,-5 -1,-11 -1,-17l0 0c0,-7 0,-14 1,-21l0 0c0,-6 1,-13 2,-20 1,-7 2,-14 3,-21 2,-7 3,-14 5,-20 3,-10 6,-20 10,-30l0 0c4,-11 8,-20 12,-29 5,-10 10,-19 16,-28l0 0c5,-9 11,-18 18,-26l0 0c6,-9 13,-17 20,-24 8,-8 15,-15 23,-22l0 0c8,-7 16,-14 25,-20 9,-7 18,-12 27,-17 9,-6 18,-10 28,-15l0 0c9,-4 19,-8 29,-11 10,-4 20,-7 31,-9 10,-3 21,-5 31,-6 10,-1 21,-2 32,-2l0 -1c10,0 21,0 31,1 11,1 21,2 32,4l0 0c10,1 21,4 31,6zm-293 489l12 0 4 0 0 0 2 0 5 -1 4 4 2 2 3 2c4,4 8,8 12,11 4,4 8,7 12,10l0 0c4,3 9,6 14,9 4,4 9,6 13,9 5,2 10,5 15,7l0 0c3,2 7,4 10,5l0 0 1 0 3 2c5,2 11,4 15,5 5,2 10,3 16,5 8,2 17,4 25,5 8,2 16,3 25,3 8,1 16,1 25,1l0 0c8,-1 16,-1 24,-2l0 0c9,-1 17,-3 25,-5 8,-2 16,-4 24,-7 8,-2 16,-5 23,-9 8,-3 15,-7 23,-11 7,-5 14,-9 21,-14 7,-5 13,-10 20,-16 6,-5 12,-11 18,-17 5,-6 11,-12 16,-19 5,-7 10,-14 14,-21 4,-7 8,-14 12,-22 4,-7 7,-15 10,-23 3,-7 5,-15 8,-24 2,-8 4,-16 5,-24 1,-8 2,-17 3,-25 1,-8 1,-17 0,-25 0,-8 0,-15 -1,-23l-1 -2c-1,-8 -2,-16 -4,-25 -2,-8 -4,-16 -7,-24 -3,-8 -6,-15 -9,-23 -3,-7 -7,-15 -12,-22 -8,-15 -18,-29 -29,-41 -10,-12 -22,-23 -34,-33l0 0 -2 -1c-7,-5 -14,-10 -21,-15 -7,-4 -14,-8 -22,-12 -7,-3 -15,-7 -23,-10 -7,-2 -15,-5 -24,-7 -8,-3 -17,-4 -24,-6 -9,-1 -17,-2 -25,-3 -9,0 -17,0 -25,0 -9,0 -17,1 -25,2 -9,1 -17,3 -25,4 -8,2 -16,5 -24,7 -8,3 -16,6 -23,10 -8,3 -15,7 -23,11l0 0 0 0c-7,4 -14,9 -21,14 -7,5 -13,10 -20,15 -6,6 -12,12 -17,18 -6,6 -12,12 -17,19l-2 3c-4,5 -8,11 -12,17 -4,7 -8,15 -12,22 -4,8 -7,16 -10,23 -3,8 -5,16 -8,24 -1,6 -2,11 -3,16 -1,5 -2,10 -3,16 -1,6 -1,11 -2,16 0,5 0,11 0,16l0 0c-1,5 0,11 0,16 0,5 1,11 1,16 1,5 2,10 3,16 1,5 2,10 3,15l1 3 0 1 0 0 0 2 1 5 -2 4 -1 2 0 0 -1 2 0 0 -1 1 -9 17 -8 13 -11 20 0 0 -30 51 94 -4 5 -1 0 0 1 0 0 0 0 0z">
+                  </path>
+                  <path class="fil1"
+                    d="M375 227c-54,23 -71,72 -61,127 6,33 18,66 39,106 21,40 48,78 77,108 78,80 204,66 162,-4 -21,-33 -33,-60 -33,-60 0,0 -9,-19 -27,-8 -19,12 -37,25 -46,23 -14,-2 -124,-143 -82,-165 19,-9 52,-20 38,-43 -10,-17 -46,-78 -46,-78 0,0 -7,-13 -21,-6z">
+                  </path>
+                </g>
+              </svg></a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

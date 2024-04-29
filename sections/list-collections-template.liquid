@@ -44,6 +44,12 @@
     <a name="pagecontent" id="pagecontent"></a>
   {% endif %}
   <div class="container">
+    {% if section.settings.collections_menu != blank %}
+      {% assign my_collections = section.settings.collections_menu.links | map: 'object' %}
+    {% else %}
+      {% assign my_collections = collections %}      
+    {% endif %}
+
     {% paginate collections by section.settings.pagination_limit %}
       {%- assign collections_per_row = section.settings.collections_per_row -%}
 
@@ -119,7 +125,7 @@
             <h2 class="collection-heading">Collections</h2>
             <div class="one-whole column list-collections-wrapper">
               <div class="list-collections collection-matrix equal-columns--outside-trim is-flex is-flex-wrap">
-                {% for collection in collections %}
+                {% for collection in my_collections %}
                   {% unless collection.handle == 'frontpage' %}
                     {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
 
@@ -128,7 +134,7 @@
                         <a href="{{ collection.url }}">
                           <div class="product-image-section">
                             <div class="personalisation">
-                              Personalisation
+                              Personalization
                             </div>
                             <div class="image__container">
                               {% if collection.image %}
@@ -325,6 +331,11 @@
       "id": "toggle",
       "label": "Toggle sidebar content",
       "default": false
+    }, 
+    {
+      "type": "link_list",
+      "id": "collections_menu",
+      "label": "Menu"
     }
   ],
   "blocks": [
