@@ -720,7 +720,12 @@
                                                   </h5>
                                                 {%- else -%}
                                                   <h5>
-                                                    <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    {% if product.compare_at_price > product.price %}
+                                                      <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                                      <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+                                                    {% else %}
+                                                      <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    {% endif %}
                                                   </h5>
                                                 {% endif %}
 
@@ -787,7 +792,12 @@
                                                   </h5>
                                                 {%- else -%}
                                                   <h5>
-                                                    <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    {% if product.compare_at_price > product.price %}
+                                                      <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                                      <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+                                                    {% else %}
+                                                      <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    {% endif %}
                                                   </h5>
                                                 {% endif %}
 
@@ -856,7 +866,12 @@
                                                   </h5>
                                                 {%- else -%}
                                                   <h5>
-                                                    <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    {% if product.compare_at_price > product.price %}
+                                                      <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                                      <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+                                                    {% else %}
+                                                      <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    {% endif %}
                                                   </h5>
                                                 {% endif %}
 
@@ -922,7 +937,12 @@
                                             </h5>
                                           {%- else -%}
                                             <h5>
-                                              <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                              {% if product.compare_at_price > product.price %}
+                                                <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                                <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+                                              {% else %}
+                                                <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                              {% endif %}
                                             </h5>
                                           {% endif %}
 
@@ -1058,7 +1078,7 @@
                             </li>
                             <li class="cart-bottom-note">
                               <span>Items in your cart will remain for 1 hour but they are not reserved</span>
-                              <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/7/assets/card-logo.jpeg">
+                              <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/files/cartpayments.png?v=1713810392">
                             </li>
                           </ul>
                         </div>
