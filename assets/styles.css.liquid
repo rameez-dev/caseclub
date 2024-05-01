@@ -5938,11 +5938,13 @@ ul.toggle_list li ul.active {
   align-items: center;
   gap: 10px;
   font-size: 16px;
+  justify-content: center;
+  line-height: 1.8;
 }
 .list-collections-wrapper .product-image-section {
   background: #dedede;
   height: 400px;
-  padding: 20px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19629,6 +19631,7 @@ li.cart-bottom-note span {
   background: #dedede;
   height: 450px;
   padding: 20px;
+  padding-top: 30px;
   margin-bottom: 10px;
 }
 .collections-types .product-wrap .product-image-custom {
@@ -20429,16 +20432,24 @@ a.mini-cart__item-a {
     display: none;
   }
   .list-collections-wrapper .product-image-section {
-    height: 300px; 
+    height: 340px; 
   }
   .list-collections-wrapper .product-wrap .product-title {
     font-size: 14px;
   }
   .collections-types .product-wrap .personalisation {
-    display: none;
+    top: 8px;
+    right: 8px;
+    padding: 0 12px;
+    font-size: 8px;
+    line-height: 15px;
   }
   .list-collections-wrapper .product-image-section .personalisation {
-    display: none;
+    top: 8px;
+    right: 8px;
+    padding: 0 12px;
+    font-size: 8px;
+    line-height: 15px;
   }
   body.product .judgeme-reviews {
     margin: 0 auto;
@@ -20455,10 +20466,14 @@ a.mini-cart__item-a {
 }
 @media (max-width: 480px) {
   .list-collections-wrapper .product-image-section {
-    height: 100%; 
+    height: 200px; 
+    padding: 20px;
   }
   .list-collections-wrapper .product-wrap .product-title {
     font-size: 10px;
+  }
+  .list-collections-wrapper .product-wrap .product-title div{
+    max-width: 100px;
   }
   .collections-types .product-wrap {
     height: 200px;
@@ -21516,6 +21531,10 @@ font-size: 12px ;
    display : flex;
   }   
 
+  .banner-images-2nd {
+    display : none;
+  }
+
   .banner-images-II_link {
     padding : 20px;
     font-size : 18px;
@@ -21620,4 +21639,7 @@ input::placeholder {
 }
 .locale-selectors__content {
   width: 95%;
+}
+.cart__item--content .meta, .cart__item--content .price_total, .cart_subtotal {
+  color: black;
 }
