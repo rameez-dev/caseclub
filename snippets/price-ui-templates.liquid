@@ -77,7 +77,7 @@
       empty if used as a template
 {%- endcomment -%}
 
-{%- capture _price -%}<span class="money" data-price>{%- if value != blank -%}{{- value | money -}}{%- endif -%}</span>{%- endcapture -%}
+{%- capture _price -%}<span class="money" data-price>{%- if value != blank -%}{{- value | money_without_trailing_zeros -}}{%- endif -%}</span>{%- endcapture -%}
 
 {%- if template == 'price' -%}
   {{- _price -}}
