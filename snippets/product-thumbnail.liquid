@@ -36,7 +36,7 @@
     {% if settings.pagination_type == 'load_more_button' %}data-load-more--grid-item{% endif %}>
   <div class="product-wrap {% if settings.collection_secondary_image != blank and secondaryImage != blank %}has-secondary-media-swap{% endif %}">
     <div class="personalisation">
-      Personalisation
+      Personalization
     </div>
     <div class="relative product_image product-image-custom">
       <a href="{{ product.url | within: collection }}">
@@ -150,6 +150,13 @@
     <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
   </h5>
   {%- else -%}
-  <h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
+  <h5>
+    {% if product.compare_at_price > product.price %}
+      <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+      <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+    {% else %}
+      <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+    {% endif %}
+  </h5>
   {% endif %} 
 </div>

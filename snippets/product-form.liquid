@@ -431,6 +431,39 @@
           stroke: white;
           animation: dash 1.4s ease-in-out infinite;
         }
+  
+  .compare-at-price-custom .salelabel_inline {
+    display : none !important;
+  }
+
+  .price-frequently-bought_products .compare-at-price  {
+    margin-top : unset !important; 
+  }
+
+  .price-frequently-bought_products {
+    display: inline-flex;
+    float: inline-end; 
+    gap: 5px;  
+    margin-top: 15px;
+  }
+
+@media only screen and (max-width : 894px) {
+  .price-frequently-bought_products {
+      font-size : 12px; 
+    }
+}
+
+  @media only screen and (max-width : 494px) {
+    .price-frequently-bought_products {
+      font-size : 12px; 
+    }
+  }
+
+  @media only screen and (max-width : 290px){
+    .price-frequently-bought_products {
+      font-size : 10px; 
+    }
+  }
        .loading-overlay__spinner {
           width: 19.8px;
           height: 19.8px;
@@ -509,7 +542,14 @@
 <div class="full-width-desktop-padding matching-products">
   <ul>
  
-    
+  {%- capture compare_at_price -%}
+    {%-
+      render 'price-ui-templates',
+      template: 'price',
+      value: product.compare_at_price,
+    -%}
+  {%- endcapture -%}
+
 {% for product in collections.all.products %}
   {% if curr_pro != 'Card Holders' %}
   	{% if product.type == 'Card Holders' %}
@@ -547,9 +587,16 @@
               <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
             </h5>
             {%- else -%}
-              <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+              <div class="price-frequently-bought_products">
+                <span class="compare-at-price-custom money compare-at-price">{%  render 'price-ui-templates',
+                  template: 'price-ui',
+                  compare_at_price: compare_at_price,
+                   %} 
+                   </span>
+                <span class="money">{% render 'price-element', price: product.price_min %}</span>
+                </div>
             {% endif %} 
-          <form method="post" action="/cart/add">
+          <form method="post" action="/cart/add"> 
             <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
             <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
             <input type="hidden" name="id" value="{{ v.id }}" />
@@ -595,6 +642,13 @@
               {%- endfor -%}
             {%- endfor -%}
 
+            {%- capture compare_at_price -%}
+              {%-
+                render 'price-ui-templates',
+                template: 'price',
+                value: product.compare_at_price,
+              -%}
+            {%- endcapture -%}
             {%- if settings.show_sales_label and saleOn -%}
             {% assign perc = 100 | minus: settings.sale_amount %}
             {% assign perc = perc | divided_by: 100.0 %}
@@ -604,7 +658,14 @@
               <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
             </h5>
             {%- else -%}
-              <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+              <div class="price-frequently-bought_products">
+                <span class="compare-at-price-custom money compare-at-price">{%  render 'price-ui-templates',
+                  template: 'price-ui',
+                  compare_at_price: compare_at_price, 
+                   %}   
+                   </span>
+                <span class="money">{% render 'price-element', price: product.price_min %}</span>
+                </div>
             {% endif %} 
           <form method="post" action="/cart/add">
             <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
@@ -634,7 +695,7 @@
              <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
            </a>
         </div>
-        <div class="pro-body">
+        <div class="pro-body"> 
           <h4>{{product.type}}</h4>
           <p>{{product.description}}</p>
         </div>
