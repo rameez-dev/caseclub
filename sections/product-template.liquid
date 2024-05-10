@@ -140,7 +140,13 @@
           {% endif %}>
           <div class="one-half column medium-down--one-whole" style="display: flex; flex-direction: column; justify-content:center">
             <h3>{{ block.settings.title }}</h3>
-            <div class="section-content-text style_font_white" style="color: white !important;">{{ block.settings.text }}</div>
+            <div class="section-content-text style_font_white" style="color: white !important;">
+            {% if product.type == "Card Holders" %}
+              {{ block.settings.text_cardwallet }}
+            {% else %}
+              {{ block.settings.text }}
+            {% endif %}
+            </div>
           </div>
 
           <div class="one-half column medium-down--one-whole product-desp">
@@ -745,6 +751,11 @@
             "id": "text",
             "label": "Text",
             "default": "<p>Text area can be used for special announcements or general information.</p>"
+          },
+          {
+            "type": "richtext",
+            "id": "text_cardwallet",
+            "label": "Text (Card Wallet)"
           },
           {
             "type": "image_picker",
