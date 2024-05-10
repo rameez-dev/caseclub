@@ -1289,6 +1289,7 @@
               "title": "1",
               "rv_products_custom_styles": "product-section-one",
               "text": "",
+              "text_cardwallet": "",
               "image": "shopify:\/\/shop_images\/product_page_icons.png",
               "iframe_video": "",
               "cssclass": "mobiel-logos"
@@ -1310,6 +1311,7 @@
               "title": "Protection with style.",
               "rv_products_custom_styles": "product-section-one",
               "text": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>100% MagSafe compatible<\/li><li>Fully hand wrapped by our experienced craftsmen for snug, best-in-class protection<\/li><li>Raised camera bevel for differentiated, scratch-free lense security and style<\/li><li>Plush microfiber inner lining <\/li><li>Made from premium, sustainably crafted materials for increased uniformity in texture, appearance, durability, and ease of care <\/li><\/ul>",
+              "text_cardwallet": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>100% MagSafe compatible<\/li><li>Fully hand wrapped by our experienced craftsmen for snug, best-in-class protection<\/li><li>Raised camera bevel for differentiated, scratch-free lense security and style<\/li><li>Plush microfiber inner lining <\/li><li>Made from premium, sustainably crafted materials for increased uniformity in texture, appearance, durability, and ease of care <\/li><\/ul>",
               "image": "shopify:\/\/shop_images\/Product_page.webp",
               "iframe_video": "",
               "cssclass": "meet-case"
@@ -1318,9 +1320,9 @@
           "f30113e4-ecdd-4de7-844b-83d74ce6824a": {
             "type": "html-1",
             "settings": {
-              "premium_heading": "Handcrafted in Europe",
-              "premium_text": "The cornerstone of our products is craftsmanship. We work closely with our partners in the Netherlands to ensure only the highest quality artisanship for our products.",
-              "premium_image": "shopify:\/\/shop_images\/Leather.webp"
+              "premium_heading": "Designed with an eye for detail",
+              "premium_text": "All of our products are hand finished by craftsmen who have over 30 years of experience in the field. This ensures that you receive a quality product that will last for years to come.",
+              "premium_image": "shopify:\/\/shop_images\/leatherworks.webp"
             }
           },
           "3fbee6f9-c71b-4181-8ee6-be8a04d9ca57": {
@@ -1329,6 +1331,7 @@
               "title": "The most stylish case. Ever.",
               "rv_products_custom_styles": "product-section-two",
               "text": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
+              "text_cardwallet": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
               "image": "shopify:\/\/shop_images\/Product_page_images.webp",
               "iframe_video": "",
               "cssclass": "meet-case"
@@ -1347,6 +1350,7 @@
               "title": "Join The Club",
               "rv_products_custom_styles": "product-section-one",
               "text": "<p>Join our global community of more than 100,000+ and growing happy customers! Share your pics with #MyTCC or tag @thecaseclub to be featured.<\/p>",
+              "text_cardwallet": "",
               "image": "shopify:\/\/shop_images\/100K_HAPPY_CUSTOMERS-min-min.jpg",
               "iframe_video": "",
               "cssclass": "meet-case"
@@ -1375,6 +1379,7 @@
               "title": "Express Yourself",
               "rv_products_custom_styles": "product-section-one",
               "text": "<p>Your monogram is your power statement. We offer you the canvas for self expression. With free personalization services on our products, you’re set to impress the world. We only use the highest qualitymaterial and foils to ensure a quality, luxury product that lasts overtime.<\/p>",
+              "text_cardwallet": "",
               "iframe_video": "https:\/\/www.youtube.com\/watch?v=dst10Wn4eKs",
               "cssclass": "express-block"
             }
