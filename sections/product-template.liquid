@@ -138,14 +138,20 @@
           {% if block.settings.rv_products_custom_styles == 'product-section-two' %}
           style="padding: 0;"
           {% endif %}>
-          <div class="one-half column medium-down--one-whole" style="display: flex; flex-direction: column; justify-content:center">
+          <div class="one-half column medium-down--one-whole section-description" style="display: flex; flex-direction: column; justify-content:center">
             <h3>{{ block.settings.title }}</h3>
-            <div class="section-content-text style_font_white" style="color: white !important;">{{ block.settings.text }}</div>
+            <div class="section-content-text style_font_white" style="color: white !important;">
+            {% if product.type == "Card Holders" %}
+              {{ block.settings.text_cardwallet }}
+            {% else %}
+              {{ block.settings.text }}
+            {% endif %}
+            </div>
           </div>
 
           <div class="one-half column medium-down--one-whole product-desp">
             {% if block.settings.image != blank %}
-              {% assign cut_height = 'false' %}
+              {% assign cut_height = 'true' %}
               {% if block.settings.rv_products_custom_styles == 'product-section-two' %}
                 {% assign cut_height = 'true' %}
               {% endif %}
@@ -193,7 +199,7 @@
             <div class="one-half column medium-down--one-whole is-relative premium-custom-height">
               <img src={{ block.settings.premium_image | image_url }}>
             </div>
-            <div class="one-half column medium-down--one-whole">
+            <div class="one-half column medium-down--one-whole section-description">
               <div class="content-main style_font_white">
                 <h3>{{ block.settings.premium_heading }}</h3>
                 <p>{{ block.settings.premium_text }}</p>
@@ -279,14 +285,14 @@
       <div class="faq-block">
         <div class="faq-heading">
           <h4>
-            <span class="faq-title-text">How to properly care for my leather case?</span>
+            <span class="faq-title-text">How to properly care for my case?</span>
             <i class="icon-down-arrow"></i>
             <i class="icon-up-arrow"></i>
           </h4>
         </div>
         <div class="faq-body" style="">
           <div class="faq-content">
-            <p>A natural side effect of leather is that over time, colors may transfer and fade. In order to keep your leather case beautiful overtime, we recommend to keep your leather product out of the sun and prevent contact with oil substances.</p>
+            <p>A natural side effect of daily use is that over time, colors may transfer or fade slightly. In order to maintain your product's beauty, we recommend you avoid extended periods of sun exposure and prevent contact with harsh oil substances.</p>
           </div>
         </div>
       </div>
@@ -745,6 +751,11 @@
             "id": "text",
             "label": "Text",
             "default": "<p>Text area can be used for special announcements or general information.</p>"
+          },
+          {
+            "type": "richtext",
+            "id": "text_cardwallet",
+            "label": "Text (Card Wallet)"
           },
           {
             "type": "image_picker",
