@@ -519,8 +519,7 @@
   {% assign seconds12 = 4 | times: 24 | times: 60 | times: 60 %}
   <div class="new-design-block">
     <ul>
-      <li><span class="circle-icon"></span><b>Free shipping</b> to <span class="country-info"></span></li>
-      <li><span class="circle-icon"></span><b>100%</b> MagSafe Compatible</li>
+      <li><span class="circle-icon"></span><b>Free shipping</b> to <span class="country-info"></span></li> 
       <li><span class="circle-icon"></span>Order today, <b>estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</b></li>
       {% if product.type == 'Phone Cases' %}
       <li><span class="circle-icon"></span><b>Buy 2</b> items, get <b>extra 10% off</b> with code <b>XM2</b></li>
