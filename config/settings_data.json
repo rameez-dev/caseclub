@@ -1289,6 +1289,7 @@
               "title": "1",
               "rv_products_custom_styles": "product-section-one",
               "text": "",
+              "text_cardwallet": "",
               "image": "shopify:\/\/shop_images\/product_page_icons.png",
               "iframe_video": "",
               "cssclass": "mobiel-logos"
@@ -1309,7 +1310,8 @@
             "settings": {
               "title": "Protection with style.",
               "rv_products_custom_styles": "product-section-one",
-              "text": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>100% MagSafe compatible<\/li><li>Fully hand wrapped by our experienced craftsmen for snug, best-in-class protection<\/li><li>Raised camera bevel for differentiated, scratch-free lense security and style<\/li><li>Plush microfiber inner lining <\/li><li>Made from premium, sustainably crafted materials for increased uniformity in texture, appearance, durability, and ease of care <\/li><\/ul>",
+              "text": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>100% wireless charging compatible<\/li><li>Water resistant<\/li><li>Fully hand wrapped by our experienced craftsmen for snug, best-in-class protection<\/li><li>Raised camera bevel for differentiated, scratch-free lense security and style<\/li><li>Plush microfiber inner lining <\/li><li>Made from premium, sustainably crafted materials for increased uniformity in texture, appearance, durability, and ease of care <\/li><\/ul>",
+              "text_cardwallet": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>100% MagSafe compatible<\/li><li>Fully hand wrapped by our experienced craftsmen for snug, best-in-class protection<\/li><li>Raised camera bevel for differentiated, scratch-free lense security and style<\/li><li>Plush microfiber inner lining <\/li><li>Made from premium, sustainably crafted materials for increased uniformity in texture, appearance, durability, and ease of care <\/li><\/ul>",
               "image": "shopify:\/\/shop_images\/Product_page.webp",
               "iframe_video": "",
               "cssclass": "meet-case"
@@ -1318,9 +1320,9 @@
           "f30113e4-ecdd-4de7-844b-83d74ce6824a": {
             "type": "html-1",
             "settings": {
-              "premium_heading": "Handcrafted in Europe",
-              "premium_text": "The cornerstone of our products is craftsmanship. We work closely with our partners in the Netherlands to ensure only the highest quality artisanship for our products.",
-              "premium_image": "shopify:\/\/shop_images\/Leather.webp"
+              "premium_heading": "Designed with an eye for detail",
+              "premium_text": "All of our products are hand finished by craftsmen who have over 30 years of experience in the field. This ensures that you receive a quality product that will last for years to come.",
+              "premium_image": "shopify:\/\/shop_images\/leatherworks.webp"
             }
           },
           "3fbee6f9-c71b-4181-8ee6-be8a04d9ca57": {
@@ -1329,6 +1331,7 @@
               "title": "The most stylish case. Ever.",
               "rv_products_custom_styles": "product-section-two",
               "text": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
+              "text_cardwallet": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
               "image": "shopify:\/\/shop_images\/Product_page_images.webp",
               "iframe_video": "",
               "cssclass": "meet-case"
@@ -1347,6 +1350,7 @@
               "title": "Join The Club",
               "rv_products_custom_styles": "product-section-one",
               "text": "<p>Join our global community of more than 100,000+ and growing happy customers! Share your pics with #MyTCC or tag @thecaseclub to be featured.<\/p>",
+              "text_cardwallet": "",
               "image": "shopify:\/\/shop_images\/100K_HAPPY_CUSTOMERS-min-min.jpg",
               "iframe_video": "",
               "cssclass": "meet-case"
@@ -1375,6 +1379,7 @@
               "title": "Express Yourself",
               "rv_products_custom_styles": "product-section-one",
               "text": "<p>Your monogram is your power statement. We offer you the canvas for self expression. With free personalization services on our products, you’re set to impress the world. We only use the highest qualitymaterial and foils to ensure a quality, luxury product that lasts overtime.<\/p>",
+              "text_cardwallet": "",
               "iframe_video": "https:\/\/www.youtube.com\/watch?v=dst10Wn4eKs",
               "cssclass": "express-block"
             }
@@ -1791,7 +1796,7 @@
           "73323fa9-1963-41ae-9ff2-52897cd7617e": {
             "type": "custom_html",
             "settings": {
-              "custom_html": "<div class=\"about-wrap\">\n  <div class=\"about-content\">\n    <h2>Our Story<\/h2>\n    <p>\nThe Case Club was founded in 2017 by Sam Seegers through a passion for bespoke goods, bringing back traditional hot stamping and applying it to functional, modern day products. \n\nThe hand-crafted personalization of our products reflects a tradition of refinement and service.\n\nAs one of the few accessories that accompanies us everywhere, our phones merit a case that reflects their value. \n\nIn 2024, ownership transitioned to Julien Thurin & Samantha Berk.\n\nDedicated to propelling the business to new levels of success, we plan to carry the legacy of quality craftsmanship. We eagerly anticipate further diversifying our product range and introducing many exciting new products. \n<\/p>\n    <h2>Our Mission<\/h2>\n    <p>Our mission is to empower individuals through the significance of their personal monogram, recognizing it as a profound symbol of self-expression. We inspire you to incorporate your unique power statement into your most cherished products, ensuring they accompany you on every personal journey.<\/p>\n  <\/div>\n  <div class=\"about-video\">\n    <iframe width=\"560\" height=\"315\" src=\"https:\/\/www.youtube.com\/embed\/dst10Wn4eKs\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen><\/iframe>\n  <\/div>\n<\/div>"
+              "custom_html": "<div class=\"about-wrap\">\n  <div class=\"about-content\">\n    <h2>Our Story<\/h2>\n    <p>\nThe Case Club was founded in 2017 by Sam Seegers through a passion for bespoke goods, bringing back traditional hot stamping and applying it to functional, modern day products. \n\nThe hand-crafted personalization of our products reflects a tradition of refinement and service.\n\nAs one of the few accessories that accompanies us everywhere, our phones merit a case that reflects their value. \n\nIn 2024, we are dedicated to propelling the business to new levels of success. Our team plans to expand on our legacy of true quality craftsmanship and diversify our product range. \n<\/p>\n    <h2>Our Mission<\/h2>\n    <p>Our mission is to empower individuals through the significance of their personal monogram, recognizing it as a profound symbol of self-expression. We inspire you to incorporate your unique power statement into your most cherished products, ensuring they accompany you on every personal journey.<\/p>\n  <\/div>\n  <div class=\"about-video\">\n    <iframe width=\"560\" height=\"315\" src=\"https:\/\/www.youtube.com\/embed\/dst10Wn4eKs\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen><\/iframe>\n  <\/div>\n<\/div>"
             }
           }
         },
@@ -1806,7 +1811,7 @@
           "17f0ab5b-1882-407a-b488-d249a28626ea": {
             "type": "custom_html",
             "settings": {
-              "custom_html": "<div class=\"personalization-wrap\">\n  <div class=\"art-wrap personalization-title\">Art of Personalization<\/div>\n  <p>Each monogram is traditionally pressed by hand with the upmost care and eye for detail. Hot stamping is a traditional method for embossing first used in 1892. At The Case Club, we’ve revamped this by applying the technique to elegant, modern day products. From the leather to the foil, your product is made out of the highest quality materials available – ensuring a quality product that lasts overtime.  <\/p>\n  <div class=\"preperation personalization-title\"> Preperation<\/div>\n  <p>The correct letters and foil are collected to start the monogramming of your products.  <\/p>\n  <div class=\"stamping personalization-title\">Hot stamping<\/div>\n  <p>Your monogram is embossed onto your leather goods. We take pride in only using the highest quality foil from Germany to ensure your monogram doesn’t fade quickly. Before packing it, we thoroughly assess the finalized product on 5 different areas to make sure it conforms to our strict quality measurements.  <\/p>\n  <div class=\"packing personalization-title\">Packing your products <\/div>\n  <p>After assessing your product, it is ready to be packed in our signature gift boxes. We carefully wrap your newly personalized goods into their boxes, include a Care Manual, and prepare it for shipment to you.  <\/p>\n<\/div>"
+              "custom_html": "<div class=\"personalization-wrap\">\n  <div class=\"art-wrap personalization-title\">Art of Personalization<\/div>\n  <p>Each monogram is traditionally hand pressed with the upmost care and eye for detail. Our renowned hot foil stamping process is a traditional method for embossing first used in 1892. At The Case Club, we’ve revamped this by applying the technique to elegant, modern day products. Your product is made out of the highest quality materials available – ensuring a refined product that lasts overtime.  <\/p>\n  <div class=\"preperation personalization-title\"> Preperation<\/div>\n  <p>Your chosen letters and foil color are collected by our craftsmen to begin the monogramming process.  <\/p>\n  <div class=\"stamping personalization-title\">Hot stamping<\/div>\n  <p>Your monogram is embossed into your leather goods. We take pride in only using the highest quality foil from Germany to ensure your monogram doesn’t fade quickly. Before packing it, we thoroughly assess the finalized product in 5 different areas to make sure it conforms to our strict quality measurements.  <\/p>\n  <div class=\"packing personalization-title\">Packing your products <\/div>\n  <p>After assessing your product, it is ready to be dispatched in our signature packaging. We carefully wrap your newly personalized goods and prepare them for shipment directly to you.  <\/p>\n<\/div>"
             }
           }
         },
@@ -2776,7 +2781,7 @@
             "type": "slide",
             "settings": {
               "slide_image": "shopify:\/\/shop_images\/Laag_19.jpg",
-              "slide_heading": "Elegant, from A to Z",
+              "slide_heading": "Elegance, from A to Z",
               "slide_text": "From the materials we use, the attention to detail our craftsmen put into finishing the product, to the delivery in our signature packaging, shopping with us is an experience worth having."
             }
           }
