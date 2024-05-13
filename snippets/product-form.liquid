@@ -519,6 +519,9 @@
   {% assign seconds12 = 4 | times: 24 | times: 60 | times: 60 %}
   <div class="new-design-block">
     <ul>
+      {% if product.type == "Card Holders" %}
+        <li><span class="circle-icon"></span>Comfortably fits 10 cards with room for cash in the middle</li>
+      {% endif %}
       <li><span class="circle-icon"></span><b>Free shipping</b> to <span class="country-info"></span></li> 
       <li><span class="circle-icon"></span>Order today, <b>estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</b></li>
       {% if product.type == 'Phone Cases' %}
