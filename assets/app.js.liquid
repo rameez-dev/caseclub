@@ -710,7 +710,7 @@ $(() => {
 
         if (productHasSale === true) {
           // puts the slash through the old item price
-          const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format'))}</span>`;
+          const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format'))}</span><span class="salelabel_inline_cart" style="color: {{settings.sale_label_color}} !important; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>`;
           cartItemsHTML += `<span class="money sale">${itemPrice.replace('.00','').replace(',00','')}</strong>`;
 
           // Total savings

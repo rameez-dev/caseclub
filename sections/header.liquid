@@ -615,6 +615,7 @@
                                           <span class="money was_price">
                                             {{ item.variant.compare_at_price | money_without_trailing_zeros }}
                                           </span>
+                                          <span class="salelabel_inline_cart" style="color: {{settings.sale_label_color}} !important; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>
                                         {% endif %}
                                       {% endif %}
 
