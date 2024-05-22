@@ -544,6 +544,7 @@ $(() => {
     let cartItemsHTML = "";
     let cartDiscountsHTML = "";
     let cartActionHTML = "";
+    let cartTotalHTML = "";
     let cartSavingsHTML = "";
     const $cartForm = $('[data-cart-form]');
     let productHasSale = false;
@@ -910,8 +911,13 @@ $(() => {
         cartDiscountsHTML += `-<span class="money">${amount}</span></span>`;
       }
 
-      cartActionHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(cart.total_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>${Shopify.translation.cart_subtotal_text}</span>`;
       totalSaving += cart.total_discount;
+      let fulltotal = cart.total_price + totalSaving;
+      console.log('\n\n\n\n')
+      console.log(cart.total_price, totalSaving, fulltotal)
+      cartTotalHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(fulltotal, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>Total</span>`;
+      
+      cartActionHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(cart.total_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>${Shopify.translation.cart_subtotal_text}</span>`;
       if (window.Shopify.theme_settings.display_savings && totalSaving > 0) {
         cartSavingsHTML = `<span class="right"><span class="money">-${window.Shopify.formatMoney(totalSaving, $('body').data('money-format'))}</span></span>`
             + `<span>${window.Shopify.translation.cart_savings_text}
@@ -928,6 +934,7 @@ $(() => {
 
     $('.js-cart_items').html(cartItemsHTML);
     $('.js-cart_discounts').html(cartDiscountsHTML);
+    $('.js-cart_total').html(cartTotalHTML);
     $('.js-cart_subtotal').html(cartActionHTML);
     $('.js-cart_savings').html(cartSavingsHTML);
     jQuery('.tc-logo').addClass(procolor);

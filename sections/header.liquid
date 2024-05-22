@@ -1009,14 +1009,14 @@
 
                             <li></li>
 
-                            <li class="cart_subtotal js-cart_subtotal">
+                            <li class="cart_total js-cart_total">
                               <span class="right">
                                 <span class="money">
-                                  {{ cart.total_price | money_without_trailing_zeros }}
+                                  {{ cart.total_price | plus: total_saving | plus: cart.total_discount | money_without_trailing_zeros }}
                                 </span>
                               </span>
 
-                              <span>{{ 'layout.general.subtotal' | t }}</span>
+                              <span>Total</span>
                             </li>
 
                             <li class="cart_savings sale js-cart_savings">
@@ -1047,6 +1047,16 @@
                                     {{ settings.discount_code_text }}</span>
                                 {%- endif -%}
                               {% endif %}
+                            </li>
+
+                            <li class="cart_subtotal js-cart_subtotal">
+                              <span class="right">
+                                <span class="money">
+                                  {{ cart.total_price | money_without_trailing_zeros }}
+                                </span>
+                              </span>
+
+                              <span>{{ 'layout.general.subtotal' | t }}</span>
                             </li>
 
                             <li>
