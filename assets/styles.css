@@ -4862,7 +4862,7 @@ html.touchevents .cart .cart-container {
     position: fixed;
     width: calc(100% - 420px );
     min-width: 50px;
-    background-color: rgb(0 0 0 / 23%);
+    background-color: rgba(0,0,0,0);
     height: 100%;
     top: 0;
     left: 0;
@@ -16948,7 +16948,7 @@ footer .social_icons a:hover {
  /* #Custom Homepage
 ================================================== */ 
   .mini-cart__item-content .product-quantity-box {
-    display: none;
+    display: flex;
 }
   .delivery-wrap h2 {
     font-size: 28px;
@@ -19402,9 +19402,11 @@ a.mini-cart__item-a {
     .initials.handbags {
     font-size: 12px;
 }
-        .tos_warning.cart_content.animated.fadeIn {
+        .tos_warning.cart_content.animated.fadeIn { 
     height: 100%;
-    max-height: 100%;
+    max-height: 100%;  
+    width : 100%;
+    max-width: 100%;
 }
     .sticky #header.mobile_nav-fixed--true .top-bar .cart-container a, .sticky #header.mobile_nav-fixed--true .top-bar .cart-container span {
     color: #020f4c !important;
