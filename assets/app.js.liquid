@@ -544,6 +544,7 @@ $(() => {
     let cartItemsHTML = "";
     let cartDiscountsHTML = "";
     let cartActionHTML = "";
+    let cartTotalHTML = "";
     let cartSavingsHTML = "";
     const $cartForm = $('[data-cart-form]');
     let productHasSale = false;
@@ -709,7 +710,7 @@ $(() => {
 
         if (productHasSale === true) {
           // puts the slash through the old item price
-          const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format'))}</span>`;
+          const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format'))}</span><span class="salelabel_inline_cart" style="color: {{settings.sale_label_color}} !important; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>`;
           cartItemsHTML += `<span class="money sale">${itemPrice.replace('.00','').replace(',00','')}</strong>`;
 
           // Total savings
@@ -772,11 +773,22 @@ $(() => {
             if ( curr_pro != 'Strap'){
               $.each( data.products, function( key, value ) {
                 if( value.product_type != curr_pro && value.product_type=='Phone Cases'  ){
+                  let selector = '<select name="make-it-match-selector" class="make-it-match-select">'
+                  data.products.forEach ((item, index) => {
+                    if (item.product_type=='Phone Cases') {
+                      let available_variant = item.variants.find((variant) => variant.available);
+                      if (available_variant) {
+                        let option = `<option value="${available_variant.id}" data-image="${available_variant.featured_image.src}" ${(index == 0) ? 'selected' : ''}>${item.title}</option>`
+                        selector += option;
+                      }
+                    }
+                  });
+                  selector += `</select>`;
                   $.each( value.variants, function( key2, value2 ) {
                     if( value2.title == curr_pro_title && ph_pro==0 ){
                       match_html += '<li class="product phone-cases"><div class="product-slide-inner">';
                       match_html += '<a href="/products/'+value.handle+'">';
-                      match_html += '<div class="img-wrap"><img src="'+value2.featured_image.src+'"><span class="initials '+curr_pro_color+'">'+curr_pro_intial+'</span>';
+                      match_html += '<div class="img-wrap"><img class="make-it-match-img" src="'+value2.featured_image.src+'"><span class="initials '+curr_pro_color+'">'+curr_pro_intial+'</span>';
                       match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
                       match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
                       match_html += '</div></a>';
@@ -788,7 +800,9 @@ $(() => {
                       match_html += '<input type="hidden" name="properties[Letters]" value="'+curr_pro_intial+'">';
                       match_html += '<input type="hidden" name="properties[Letter Color]" value="'+curr_pro_color+'">';
                       match_html += '<input type="hidden" name="id" value="'+value2.id+'" />';
-                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" /></form>';
+                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />';
+                      match_html += selector;
+                      match_html += '</form>'
                       match_html += '</div></div></li>';
                       ph_pro++;
                     }
@@ -881,6 +895,11 @@ $(() => {
           }
       });
 
+      $('.make-it-match-select').change(function () {
+        $(this).closest('form').find('input[name="id"]').val($(this).val());
+        $(this).closest('li').find('img.make-it-match-img').first().attr('src', $(this).find(':selected').attr('data-image'));
+      });
+
       const cartDiscounts = cart.cart_level_discount_applications;
 
       for (let i = 0; i < cartDiscounts.length; i++) {
@@ -892,8 +911,13 @@ $(() => {
         cartDiscountsHTML += `-<span class="money">${amount}</span></span>`;
       }
 
-      cartActionHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(cart.total_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>${Shopify.translation.cart_subtotal_text}</span>`;
       totalSaving += cart.total_discount;
+      let fulltotal = cart.total_price + totalSaving;
+      console.log('\n\n\n\n')
+      console.log(cart.total_price, totalSaving, fulltotal)
+      cartTotalHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(fulltotal, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>Total</span>`;
+      
+      cartActionHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(cart.total_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>${Shopify.translation.cart_subtotal_text}</span>`;
       if (window.Shopify.theme_settings.display_savings && totalSaving > 0) {
         cartSavingsHTML = `<span class="right"><span class="money">-${window.Shopify.formatMoney(totalSaving, $('body').data('money-format'))}</span></span>`
             + `<span>${window.Shopify.translation.cart_savings_text}
@@ -910,6 +934,7 @@ $(() => {
 
     $('.js-cart_items').html(cartItemsHTML);
     $('.js-cart_discounts').html(cartDiscountsHTML);
+    $('.js-cart_total').html(cartTotalHTML);
     $('.js-cart_subtotal').html(cartActionHTML);
     $('.js-cart_savings').html(cartSavingsHTML);
     jQuery('.tc-logo').addClass(procolor);
