@@ -710,7 +710,7 @@ $(() => {
 
         if (productHasSale === true) {
           // puts the slash through the old item price
-          const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format'))}</span><span class="salelabel_inline_cart" style="color: {{settings.sale_label_color}} !important; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>`;
+          const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format')).replace('.00','').replace(',00','')}</span><span class="salelabel_inline_cart" style="color: {{settings.sale_label_color}} !important; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>`;
           cartItemsHTML += `<span class="money sale">${itemPrice.replace('.00','').replace(',00','')}</strong>`;
 
           // Total savings
@@ -718,7 +718,7 @@ $(() => {
           totalSaving = saving + totalSaving;
         } else if (item.price > item.final_price) {
           // puts the slash through the old item price
-          const itemPrice = `${window.Shopify.formatMoney(item.final_price, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(item.price, $('body').data('money-format'))}</span>`;
+          const itemPrice = `${window.Shopify.formatMoney(item.final_price, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(item.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`;
           cartItemsHTML += `<span class="money sale">${itemPrice.replace('.00','').replace(',00','')}</strong>`;
         } else {
           const itemPrice = window.Shopify.formatMoney(item.price, $('body').data('money-format'));
@@ -932,6 +932,7 @@ $(() => {
       }
     }
 
+    $('.cart-count-num').html(cart.item_count + '  ' + 'item');
     $('.js-cart_items').html(cartItemsHTML);
     $('.js-cart_discounts').html(cartDiscountsHTML);
     $('.js-cart_total').html(cartTotalHTML);
