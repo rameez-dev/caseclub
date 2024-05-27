@@ -19153,13 +19153,15 @@ h1.product_name {
 }
 
 .make-it-match-select {
-  border: 1px solid #000 !important;
-  margin-top: 10px;
-  font-size: 10px;
-  margin-bottom: 0px;
-  padding-inline: 10px 26px;
-  height: auto;
-  min-height: 35px;
+    border: 1px solid #000 !important;
+    margin-top: 10px;
+    font-size: 10px;
+    margin-bottom: 0;
+    padding-inline: 10px 26px;
+    padding-right: 26px;
+    height: auto;
+    min-width: 130px;
+    min-height: 35px;
 }
   .tcc-mobile-buttons {
     position: fixed;
@@ -19359,6 +19361,7 @@ span.cart-head-text {
 
 .mix-match-products ul li h5 {
   padding : 0 2px 5px !important;
+  grid-area : price;
 }
 
 .mix-match-products .slick-dots li button{
@@ -21183,19 +21186,48 @@ ul.cart-foot {
 }
 
 .mix-pro-price {
-    display: grid;
-    grid-template-columns: 1fr 60px;
-    column-gap: 10px;
-      text-align: left;
-      margin-left: 5px;
-      align-items: start;
+  display: grid !important;
+  grid-template-columns: 1fr 60px;
+  grid-template-areas:
+      'desc price'
+      'form form ' !important;
+  column-gap: 10px;
+  text-align: left !important;
+  margin-left: 5px;
+  align-items: start !important;
 }
+
 .mix-pro-price form {
     grid-column: 2;
+    display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: flex-end !important;
+  margin-right: 0px !important;
+  gap: 64px !important;
 }
+
+@media only screen and (max-width : 768px) {
+  .mix-pro-price form {
+    gap: 78px !important;
+}
+}
+
+@media only screen and (max-width : 420px) {
+  .mix-pro-price form {
+    gap: 62px !important;
+}
+}
+
+@media only screen and (max-width : 391px){
+  .mix-pro-price form {
+    gap: 40px !important;
+} 
+} 
+
 .mix-pro-price div {
     grid-row: 1 / 3;
     align-self: flex-start;
+    grid-area : desc;
 }
 div.cart_content .mix-match-wrap form input.btn {
     background-color: #fff;
