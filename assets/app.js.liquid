@@ -923,7 +923,7 @@ $(() => {
       
       cartActionHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(cart.total_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>${Shopify.translation.cart_subtotal_text}</span>`;
       if (window.Shopify.theme_settings.display_savings && totalSaving > 0) {
-        cartSavingsHTML = `<span class="right"><span class="money">-${window.Shopify.formatMoney(totalSaving, $('body').data('money-format'))}</span></span>`
+        cartSavingsHTML = `<span class="right"><span class="money">-${window.Shopify.formatMoney(totalSaving, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span>`
             + `<span>${window.Shopify.translation.cart_savings_text}
             <span id="cart-sale-tag" style="color: #fff !important; background-color: #000 !important;">
                               <svg focusable="false" width="10" height="10" class="icon icon--discount-badge" viewBox="0 0 10 10" 
