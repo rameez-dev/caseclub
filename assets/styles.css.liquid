@@ -5237,14 +5237,17 @@ html.touchevents .cart .cart-container {
   display: flex;
   align-items: flex-start;
   line-height: 1;
+  margin-bottom: 5px;
 }
 .cart_discounts .cart_discounts--title {
   width: 60%;
   margin-right: 20px;
+  line-height: 1.6em;
 }
 .cart_discounts .cart_discounts--price {
   width: calc(40% - 20px);
   text-align: right;
+  line-height: 1.6em;
 }
 
 .cart__remove-btn {
@@ -21761,4 +21764,20 @@ input::placeholder {
   width: 14px;
   height: 14px;
   display: inline-block;
+}
+.discount-ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.discount-li {
+  display: flex;
+  padding: 0 !important;
+  width: 100%;
+  margin-bottom: 5px !important;
+}
+.discount-li:last-of-type {
+  margin: 0 !important;
 }

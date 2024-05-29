@@ -908,13 +908,34 @@ $(() => {
         return item
       })
 
-      for (let i = 0; i < cartDiscounts.length; i++) {
-        const amount = window.Shopify.formatMoney(cartDiscounts[i].total_allocated_amount, $('body').data('money-format'));
-        const { title } = cartDiscounts[i];
+      let uniqueDiscounts = [];
+      cartDiscounts.forEach((item) => {
+        if(uniqueDiscounts.some((x) => x.title === item.title)){
+          let temp_index = uniqueDiscounts.findIndex((x) => x.title === item.title)
+          let new_amount = uniqueDiscounts[temp_index].total_allocated_amount + item.total_allocated_amount;
+          uniqueDiscounts[temp_index].total_allocated_amount = new_amount;
+        }
+        else {
+          let newobj = {...item}
+          uniqueDiscounts.push(newobj);
+        }
+      });
 
-        cartDiscountsHTML += `<span class="cart_discounts--title">${title}</span>`;
+      if(uniqueDiscounts.length) {
+        cartDiscountsHTML += '<ul class="discount-ul">'
+      }
+
+      for (let i = 0; i < uniqueDiscounts.length; i++) {
+        const amount = window.Shopify.formatMoney(uniqueDiscounts[i].total_allocated_amount, $('body').data('money-format'));
+        const { title } = uniqueDiscounts[i];
+
+        cartDiscountsHTML += `<li class="discount-li"><span class="cart_discounts--title">${title}</span>`;
         cartDiscountsHTML += '<span class="cart_discounts--price">';
-        cartDiscountsHTML += `-<span class="money">${amount}</span></span>`;
+        cartDiscountsHTML += `-<span class="money">${amount}</span></span></li>`;
+      }
+
+      if(cartDiscounts.length) {
+        cartDiscountsHTML += '</ul>'
       }
 
       totalSaving += cart.total_discount;

@@ -1020,17 +1020,21 @@
                           <ul class="cart-foot">
                             <li class="cart_discounts js-cart_discounts sale">
                               {% if cart.cart_level_discount_applications != blank %}
-                                {% for discount_application in cart.cart_level_discount_applications %}
-                                  <span class="cart_discounts--title">{{ discount_application.title }}</span>
+                                <ul class="discount-ul">
+                                  {% for discount_application in cart.cart_level_discount_applications %}
+                                    <li class="discount-li">
+                                      <span class="cart_discounts--title">{{ discount_application.title }}</span>
 
-                                  <span class="cart_discounts--price">
-                                    -<span class="money">
-                                      {%
-                                         render 'price-element',
-                                       price: discount_application.total_allocated_amount %}
-                                    </span>
-                                  </span>
-                                {% endfor %}
+                                      <span class="cart_discounts--price">
+                                        -<span class="money">
+                                          {%
+                                            render 'price-element',
+                                          price: discount_application.total_allocated_amount %}
+                                        </span>
+                                      </span>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
                               {% endif %}
                             </li>
 
