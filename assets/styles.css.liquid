@@ -19410,7 +19410,7 @@ span.cart-head-text {
     margin-top:0px;
     display:block;
 }
-  div.cart_content form input.btn {
+  div.cart_content form .btn {
     background-color: #000;
     color: #fff;
     border: 0;
@@ -21260,12 +21260,14 @@ ul.cart-foot {
     align-self: flex-start;
     grid-area : desc;
 }
-div.cart_content .mix-match-wrap form input.btn {
+div.cart_content .mix-match-wrap form .btn {
     background-color: #fff;
     border: 1px solid #000;
     color: #000;
     width: 100%;
     border-radius: 0;
+    white-space: nowrap;
+    min-width: 54px;
 }
 div.cart_content .mix-match-wrap form {
     width: 100%;
@@ -21753,4 +21755,10 @@ input::placeholder {
 
 .notify_form p {
   color: #000;
+}
+
+.mix-match-products .loading-overlay__spinner {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
 }
