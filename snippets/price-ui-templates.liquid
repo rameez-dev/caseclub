@@ -77,7 +77,7 @@
       empty if used as a template
 {%- endcomment -%}
 
-{%- capture _price -%}<span class="money" data-price>{%- if value != blank -%}{{- value | money -}}{%- endif -%}</span>{%- endcapture -%}
+{%- capture _price -%}<span class="money" data-price>{%- if value != blank -%}{{- value | money_without_trailing_zeros -}}{%- endif -%}</span>{%- endcapture -%}
 
 {%- if template == 'price' -%}
   {{- _price -}}
@@ -119,7 +119,7 @@
       color: black
     }
   </style>
-  <span class="price price--sale money" style="margin-left: 10px;">{%- if cmp_price != blank -%}{{- cmp_price | money_without_trailing_zeros -}}{%- endif -%}</span>
+  <span class="price price--sale money" style="margin-left: 10px;">{%- if cmp_price != blank -%}{{- cmp_price | money_without_trailing_zeros -}}{%- endif -%}</span> 
   <span class="compare-at-price for-pseudo-content" data-price>{%- if price != blank -%}{{- price -}}{%- endif -%}</span>
   <span class="salelabel_inline" style="color: {{settings.sale_label_color}}; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>
   {% else %}
