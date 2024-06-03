@@ -334,7 +334,7 @@
     
   {% if product.type!="Simple Product" and product.type!="Gift Cards" and template.suffix != "customily-products" %}
       
-      <label class="form-label">Personalise for free</label>
+      <label class="form-label">Personalize for free</label>
       <div class="new-tcc-design">
         {% if product.type=="Personalized Phone Cases" %}
         <div class="tcc-initial-wrap">
@@ -431,6 +431,39 @@
           stroke: white;
           animation: dash 1.4s ease-in-out infinite;
         }
+  
+  .compare-at-price-custom .salelabel_inline {
+    display : none !important;
+  }
+
+  .price-frequently-bought_products .compare-at-price  {
+    margin-top : unset !important; 
+  }
+
+  .price-frequently-bought_products {
+    display: inline-flex;
+    float: inline-end; 
+    gap: 5px;  
+    margin-top: 5px;
+  }
+
+@media only screen and (max-width : 894px) {
+  .price-frequently-bought_products {
+      font-size : 12px; 
+    }
+}
+
+  @media only screen and (max-width : 494px) {
+    .price-frequently-bought_products {
+      font-size : 12px; 
+    }
+  }
+
+  @media only screen and (max-width : 290px){
+    .price-frequently-bought_products {
+      font-size : 10px; 
+    }
+  }
        .loading-overlay__spinner {
           width: 19.8px;
           height: 19.8px;
@@ -486,8 +519,11 @@
   {% assign seconds12 = 4 | times: 24 | times: 60 | times: 60 %}
   <div class="new-design-block">
     <ul>
-      <li><span class="circle-icon"></span><b>Free shipping</b> to <span class="country-info"></span></li>
-      <li><span class="circle-icon"></span>Order today, <b>estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</li></b>
+      {% if product.type == "Card Holders" %}
+        <li><span class="circle-icon"></span>Comfortably fits 10 cards with room for cash in the middle</li>
+      {% endif %}
+      <li><span class="circle-icon"></span><b>Free shipping</b> to <span class="country-info"></span></li> 
+      <li><span class="circle-icon"></span>Order today, <b>estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</b></li>
       {% if product.type == 'Phone Cases' %}
       <li><span class="circle-icon"></span><b>Buy 2</b> items, get <b>extra 10% off</b> with code <b>XM2</b></li>
       {% endif %}
@@ -499,6 +535,7 @@
       ever and I'm ordering another color as we speak :)."
       <br><i>-Liza B.</i>
     </quote>
+    
     <div class="brought-product">
       <h2>Frequently Bought Products</h2>
       
@@ -509,7 +546,13 @@
 <div class="full-width-desktop-padding matching-products">
   <ul>
  
-    
+  {%- capture compare_at_price -%}
+    {%-
+      render 'price-ui-templates',
+      template: 'price',
+      value: product.compare_at_price,
+    -%}
+  {%- endcapture -%}
 {% for product in collections.all.products %}
   {% if curr_pro != 'Card Holders' %}
   	{% if product.type == 'Card Holders' %}
@@ -547,9 +590,16 @@
               <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
             </h5>
             {%- else -%}
-              <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+              <div class="price-frequently-bought_products">
+                <span class="compare-at-price-custom money compare-at-price">{%  render 'price-ui-templates',
+                  template: 'price-ui',
+                  compare_at_price: compare_at_price,
+                   %} 
+                   </span>
+                <span class="money">{% render 'price-element', price: product.price_min %}</span>
+                </div>
             {% endif %} 
-          <form method="post" action="/cart/add">
+          <form method="post" action="/cart/add"> 
             <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
             <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
             <input type="hidden" name="id" value="{{ v.id }}" />
@@ -566,62 +616,6 @@
      {% endif %}
   {% endif %}
   
-  {% if curr_pro != 'Phone Cases' %}
-  {% if product.type == 'Phone Cases' %}
-    {% if pc_cnt2==0 %}
-  {% assign pc_cnt2 = 1 %}
-      <li class="product phone-cases">
-      {% for v in product.variants %}
-      {% if pc_cnt==0 %}
-        <div class="pro-head">
-            <a href="{{ product.url | within: collection }}">
-        	{% assign pc_cnt = 1 %}
-             <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
-        	</a>
-        </div>
-        <div class="pro-body">
-          <h4>{{product.type}}</h4>
-          <p>{{product.description}}</p>
-        </div>
-        <div class="pro-foot">
-            {%- assign saleOn = false -%}
-            {%- for colprod in product.collections -%}
-              {%- for col in settings.sale_collection_list -%}
-                {%- if colprod.id == col.id -%}
-                  {%- assign saleOn = true -%}
-                  {% break %}
-                  {% break %}
-                {%- endif -%}  
-              {%- endfor -%}
-            {%- endfor -%}
-
-            {%- if settings.show_sales_label and saleOn -%}
-            {% assign perc = 100 | minus: settings.sale_amount %}
-            {% assign perc = perc | divided_by: 100.0 %}
-            {% assign cmp_price = product.price_min | times: perc %}
-            <h5>
-              <span class="money compare-at-price">{% render 'price-element', price: product.price_min %}</span>
-              <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-            </h5>
-            {%- else -%}
-              <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
-            {% endif %} 
-          <form method="post" action="/cart/add">
-            <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
-            <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
-            <input type="hidden" name="id" value="{{ v.id }}" />
-            <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
-            <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
-          </form>
-        </div>
-        {% endif %}
-        
-        <span class="match-colors" data-vid="{{ v.id }}" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
-          {% endfor %}
-      </li>
-  {% endif %}
-  {% endif %}
-  {% endif %}
     
   {% if curr_pro != 'Card Wallets' %}
   {% if product.type == 'Card Wallets' %}
@@ -634,7 +628,7 @@
              <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
            </a>
         </div>
-        <div class="pro-body">
+        <div class="pro-body"> 
           <h4>{{product.type}}</h4>
           <p>{{product.description}}</p>
         </div>
@@ -677,6 +671,88 @@
         <span class="match-colors" data-vid="{{ v.id }}" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
           {% endfor %}
       </li>
+  {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% for product in collections['phone-cases'].products %}
+  {% if curr_pro != 'Phone Cases' %}
+  {% if product.type == 'Phone Cases' %}
+    {% if pc_cnt2==0 %}
+  {% assign pc_cnt2 = 1 %}
+      <li class="product phone-cases">
+      {% for v in product.variants %}
+      {% if pc_cnt==0 %}
+        <div class="pro-head">
+            <a href="{{ product.url | within: collection }}">
+          {% assign pc_cnt = 1 %}
+             <div class="img-wrap"><img class="freq-asked-img" src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
+          </a>
+        </div>
+        <div class="pro-body">
+          <h4>{{product.type}}</h4>
+          <p>{{product.description}}</p>
+        </div>
+        <div class="pro-foot">
+            {%- assign saleOn = false -%}
+            {%- for colprod in product.collections -%}
+              {%- for col in settings.sale_collection_list -%}
+                {%- if colprod.id == col.id -%}
+                  {%- assign saleOn = true -%}
+                  {% break %}
+                  {% break %}
+                {%- endif -%}  
+              {%- endfor -%}
+            {%- endfor -%}
+
+            {%- capture compare_at_price -%}
+              {%-
+                render 'price-ui-templates',
+                template: 'price',
+                value: product.compare_at_price,
+              -%}
+            {%- endcapture -%}
+            {%- if settings.show_sales_label and saleOn -%}
+            {% assign perc = 100 | minus: settings.sale_amount %}
+            {% assign perc = perc | divided_by: 100.0 %}
+            {% assign cmp_price = product.price_min | times: perc %}
+            <h5>
+              <span class="money compare-at-price">{% render 'price-element', price: product.price_min %}</span>
+              <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+            </h5>
+            {%- else -%}
+              <div class="price-frequently-bought_products">
+                <span class="compare-at-price-custom money compare-at-price">{%  render 'price-ui-templates',
+                  template: 'price-ui',
+                  compare_at_price: compare_at_price, 
+                   %}   
+                   </span>
+                <span class="money">{% render 'price-element', price: product.price_min %}</span>
+                </div>
+            {% endif %} 
+          <form method="post" action="/cart/add">
+            <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
+            <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
+            <input type="hidden" name="id" value="{{ v.id }}" />
+            <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+            <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+            <select name="frequently-asked-products-selector" class="frequently-asked-select">
+              {% for prd in collections['phone-cases'].products %}
+                {% if prd.available %}  
+                  <option value="{{ prd.selected_or_first_available_variant.id }}" 
+                    data-image="{{ prd.selected_or_first_available_variant.featured_media | product_img_url: '400x' }}" 
+                    {% if forloop.index0 == 0 %}selected{% endif %}>{{ prd.title }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </form>
+        </div>
+        {% endif %}
+        
+        <span class="match-colors" data-vid="{{ v.id }}" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
+          {% endfor %}
+      </li>
+  {% endif %}
   {% endif %}
   {% endif %}
 {% endfor %}
@@ -729,3 +805,12 @@
   <a href="javascript:void(0);" class="personalize-btn button tcc-pre-1 hidden">PERSONALIZE<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="25px" width="25px" fill="#ffffff" xml:space="preserve" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;" viewBox="0 0 7.837 7.8377" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd"><defs><style type="text/css">.fil0 {fill:#ffffff;fill-rule:nonzero}</style></defs><g><path class="fil0" d="M2.89434 6.10358l-1.15421 -1.15421 -1.74012 2.88834 2.89434 -1.73412zm4.05405 -3.90685l0.165702 0.165602 -1.32612 1.32612 -0.165702 -0.165602 1.32612 -1.32612zm-3.95285 3.80565c1.31122,-1.31112 2.62433,-2.61983 3.93615,-3.93025l-1.16571 -1.16561c-1.30912,1.31302 -2.61403,2.63023 -3.92465,3.94175l1.15421 1.15411zm4.00935 -4.00325l0.104801 -0.105001 -1.16581 -1.16591 -0.104901 0.105101 1.16591 1.16581zm0.177902 -0.178002l0.109901 -0.109701 -1.16621 -1.16621 -0.109501 0.109901 1.16581 1.16601zm0.183102 -0.182702l0.108801 -0.108901 -1.16641 -1.16631 -0.108701 0.108901 1.16631 1.16631zm0.181902 -0.181902c0.0369005,-0.0370005 0.0734009,-0.0725009 0.106501,-0.113101l-1.15991 -1.15991c-0.0407005,0.0331004 -0.076001,0.0695009 -0.113001,0.106601l1.16641 1.16641zm0.167102 -0.198703c0.195602,-0.317704 0.155902,-0.741509 -0.118702,-1.01621 -0.276704,-0.276704 -0.699009,-0.314804 -1.01631,-0.118802l1.13501 1.13501z"></path></g></svg></a>
   <a href="javascript:void(0);" class="add-cart-btn button hidden">Grab Mine Now <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/hand.png" class="hand-add"></a>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('.frequently-asked-select').change(function () {
+      $(this).closest('form').find('input[name="id"]').val($(this).val());
+      $(this).closest('li').find('img.freq-asked-img').first().attr('src', $(this).find(':selected').attr('data-image'));
+    });
+  });
+</script>
