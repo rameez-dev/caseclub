@@ -643,18 +643,17 @@
                                   <div class="product-quantity-box">
                                     <span class="ss-icon product-minus js-change-quantity" data-func="minus">
                                       <span class="icon-minus"></span>
-                                    </span>
-
+                                    </span> 
                                     <input
                                       type="number"
                                       min="0"
                                       size="2"
                                       class="quantity"
-                                      name="updates[]"
+                                      name="updates[]"                   
                                       id="updates_{{ item.id }}"
                                       value="{{ item.quantity }}"
                                       data-cart-quantity-input="mini-cart"
-                                      {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %} />
+                                      {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %} disabled />
 
                                     <span class="ss-icon product-plus js-change-quantity" data-func="plus">
                                       <span class="icon-plus"></span>
