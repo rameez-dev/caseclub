@@ -2,6 +2,19 @@
   type="application/json"
   data-section-type="header"
   data-section-id="{{ section.id }}"></script>
+
+
+<script id="_allproducts">
+  let allProductsData = {}
+  $.ajax({
+        dataType: 'json',
+        async: false,
+        cache: false,
+        url: `/products.json?limit=200`,
+        success(data) {
+          allProductsData = data.products;
+  }});
+</script>
  
 {% comment %} Structured data {% endcomment %}
 

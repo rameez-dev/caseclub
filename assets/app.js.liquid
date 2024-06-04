@@ -674,39 +674,68 @@ $(() => {
         cartItemsHTML += `</a>`;
 
         cartItemsHTML += '</div><div class="mini-cart__item-price">';
-		
-        $.ajax({
-          dataType: 'json',
-          async: false,
-          cache: false,
-          url: `/products/${item.handle}.js`,
-          success(data) {
-            let productData = data;
-            // If item has more than one variant, need to make sure we are pulling data from the correct variant
-            if (productData.variants) {
-              const itemVariants = productData.variants;
-              if (itemVariants.length > 1) {
-                for (let v = 0; v < itemVariants.length; v++) {
-                  if (itemVariants[v].id === item.id) {
-                    productData = itemVariants[v];
-                  }
+
+        if(allProductsData) {
+          let myproductItem = allProductsData.find((element) => element.id == item.product_id)
+          let productData = myproductItem;
+          // If item has more than one variant, need to make sure we are pulling data from the correct variant
+          if (productData.variants) {
+            const itemVariants = productData.variants;
+            if (itemVariants.length > 1) {
+              for (let v = 0; v < itemVariants.length; v++) {
+                if (itemVariants[v].id === item.id) {
+                  productData = itemVariants[v];
                 }
               }
             }
+          }
 
-            // If compare at price exists then item is on sale
-            if (productData.compare_at_price) {
-              if (productData.compare_at_price > productData.price) {
-                productHasSale = true;
-                productCompareAtPrice = productData.compare_at_price;
-                productFinalPrice = productData.price;
-              }
-            } else {
-              // Check required for non-sale items
-              productHasSale = false;
+          // If compare at price exists then item is on sale
+          if (productData.compare_at_price) {
+            if (productData.compare_at_price > productData.price) {
+              productHasSale = true;
+              productCompareAtPrice = productData.compare_at_price;
+              productFinalPrice = productData.price;
             }
-          },
-        });
+          } else {
+            // Check required for non-sale items
+            productHasSale = false;
+          }
+        }
+        else {
+          $.ajax({
+            dataType: 'json',
+            async: false,
+            cache: false,
+            url: `/products/${item.handle}.js`,
+            success(data) {
+              let productData = data;
+              // If item has more than one variant, need to make sure we are pulling data from the correct variant
+              if (productData.variants) {
+                const itemVariants = productData.variants;
+                if (itemVariants.length > 1) {
+                  for (let v = 0; v < itemVariants.length; v++) {
+                    if (itemVariants[v].id === item.id) {
+                      productData = itemVariants[v];
+                    }
+                  }
+                }
+              }
+
+              // If compare at price exists then item is on sale
+              if (productData.compare_at_price) {
+                if (productData.compare_at_price > productData.price) {
+                  productHasSale = true;
+                  productCompareAtPrice = productData.compare_at_price;
+                  productFinalPrice = productData.price;
+                }
+              } else {
+                // Check required for non-sale items
+                productHasSale = false;
+              }
+            },
+          });
+        }
 
         if (productHasSale === true) {
           // puts the slash through the old item price
@@ -761,12 +790,22 @@ $(() => {
       
       var procolor = curr_pro_color;
       var match_html = '';
-      $.ajax({
-          dataType: 'json',
-          async: false,
-          cache: false,
-          url: `/products.json?limit=200`,
-          success(data) {
+      let data = {}
+
+      if(allProductsData) {
+        data = { 'products': allProductsData};
+      }
+      else {
+        $.ajax({
+            dataType: 'json',
+            async: false,
+            cache: false,
+            url: `/products.json?limit=200`,
+            success(newdata) {
+              data = newdata;
+        }});
+      }
+
             console.log('testing data after ajax call....', curr_pro);
             jQuery('.mix-match-wrap').show();
             var ph_pro = caw_pro = cah_pro = 0;
@@ -892,8 +931,8 @@ $(() => {
       autoplaySpeed: 5000,
     });
             jQuery('.tc-logo').addClass(procolor);
-          }
-      });
+          
+          // }}); //ajax ended here before
 
       $('.make-it-match-select').change(function () {
         $(this).closest('form').find('input[name="id"]').val($(this).val());
@@ -1050,7 +1089,7 @@ $(() => {
             $addToCartBtn.removeAttr('disabled').removeClass('disabled');
             $addToCartBtn.find('.checkmark').removeClass('checkmark-active');
             $addToCartBtn.find('span').removeClass('zoomOut').addClass('fadeInDown');
-          }, 1000);
+          }, 300);
 
           $.ajax({
             url: '/cart.js',
