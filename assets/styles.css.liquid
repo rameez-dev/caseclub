@@ -17831,8 +17831,11 @@ footer .social_icons a:hover {
   min-height: 24px;
   height: 24px;
   min-width: 40px;
-  background-color: #cfcfcf;
+  background-color: #bebebe !important;
   border: none;
+}
+.mini-cart__item-content .product-quantity-box input[type="number"]:disabled {
+  background-color: #bebebe !important;
 }
 .mini-cart__item-content .product-quantity-box .ss-icon {
   height: 24px;
@@ -19092,6 +19095,11 @@ h1.product_name {
   .shopify-product-form button.add_to_cart {
     background-color: #037b04;
     border: none;
+}
+@media only screen and (max-width: 768px) {
+  .shopify-product-form button.add_to_cart:hover {
+    background-color: #037b04;
+  }
 }
   .product-custom-details {
     background: white;

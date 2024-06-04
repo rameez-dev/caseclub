@@ -1088,8 +1088,8 @@ $(() => {
           window.setTimeout(() => {
             $addToCartBtn.removeAttr('disabled').removeClass('disabled');
             $addToCartBtn.find('.checkmark').removeClass('checkmark-active');
-            $addToCartBtn.find('span').removeClass('zoomOut').addClass('fadeInDown');
-          }, 300);
+            $addToCartBtn.find('span').removeClass('zoomOut');
+          }, 800);
 
           $.ajax({
             url: '/cart.js',
