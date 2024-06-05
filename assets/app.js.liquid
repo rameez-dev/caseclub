@@ -1088,7 +1088,9 @@ $(() => {
           window.setTimeout(() => {
             $addToCartBtn.removeAttr('disabled').removeClass('disabled');
             $addToCartBtn.find('.checkmark').removeClass('checkmark-active');
-            $addToCartBtn.find('span').removeClass('zoomOut');
+            setTimeout(() => {
+              $addToCartBtn.find('span').removeClass('zoomOut');
+            }, 800);
           }, 800);
 
           $.ajax({
