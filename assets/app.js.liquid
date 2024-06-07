@@ -691,11 +691,11 @@ $(() => {
           }
 
           // If compare at price exists then item is on sale
-          if (productData.compare_at_price) {
-            if (productData.compare_at_price > productData.price) {
+          if (parseFloat(productData.compare_at_price)) {
+            if (parseFloat(productData.compare_at_price) > parseFloat(productData.price)) {
               productHasSale = true;
-              productCompareAtPrice = productData.compare_at_price;
-              productFinalPrice = productData.price;
+              productCompareAtPrice = parseFloat(productData.compare_at_price) * 100;
+              productFinalPrice = parseFloat(productData.price) * 100;
             }
           } else {
             // Check required for non-sale items
