@@ -893,6 +893,9 @@ $(() => {
                     }
                   });
                 }
+              });
+              
+              $.each( data.products, function( key, value ) {
                 if(  value.product_type != curr_pro && value.product_type=='Passport Holder'  ){
                   $.each( value.variants, function( key2, value2 ) {
                     if( value2.title == curr_pro_title && passport_pro==0 ){
@@ -916,8 +919,8 @@ $(() => {
                     }
                   });
                 }
-              
               });
+
               $.each( data.products, function( key, value ) {
                 if( value.product_type == 'Strap') {
                   console.log('feautured image....', value);
