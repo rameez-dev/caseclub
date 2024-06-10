@@ -1522,10 +1522,10 @@
             "type": "image",
             "settings": {
               "image": "shopify:\/\/shop_images\/phonecaseshome.jpg",
-              "link": "shopify:\/\/products\/iphone-15-pro-max",
+              "link": "shopify:\/\/collections",
               "title": "",
               "text": "",
-              "button_label": "<b>MONOGRAM CASES<\/b>"
+              "button_label": "<b>PHONE CASES<\/b>"
             }
           },
           "1516141567792-0": {
@@ -1541,17 +1541,17 @@
           "8090767b-9e6f-4147-bb78-28c6a824bb79": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/designcases-min.jpg",
-              "link": "shopify:\/\/collections\/design-cases",
+              "image": "shopify:\/\/shop_images\/passport.webp",
+              "link": "shopify:\/\/products\/passport-holder",
               "title": "",
               "text": "",
-              "button_label": "<b>DESIGN CASES<\/b>"
+              "button_label": "<b>PASSPORT HOLDERS<\/b>"
             }
           },
           "1c33f8e9-3248-4861-852e-86c717c4b567": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/IMG_1156_2.jpg",
+              "image": "shopify:\/\/shop_images\/shopall.webp",
               "link": "shopify:\/\/collections",
               "title": "",
               "text": "",
