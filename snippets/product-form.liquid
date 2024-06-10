@@ -116,8 +116,15 @@
   
     {% endif %}
  
+{% if product.type=="Passport Holder" %}
+  <ul class="phone-case-info">
+    <li><span class="square-icon"></span>Protect your passport in style</li>
+    <li><span class="square-icon"></span>Express your personality</li>
+    <li><span class="square-icon"></span>Elevate your travel experience with timeless elegance</li>
+  </ul>
+  {% endif %}
 
-{% if product.type != 'Phone Cases' and product.type != 'Personalized Phone Cases' and product.type!="Simple Product" and product.type!="Gift Cards" %}
+{% if product.type != 'Phone Cases' and product.type != 'Personalized Phone Cases' and product.type!="Simple Product" and product.type!="Gift Cards" and product.type!="Passport Holder" %}
 <ul class="phone-case-info">
   <li><span class="square-icon"></span>Never lose your cards again</li>
   <li><span class="square-icon"></span>Fits in any pocket without bulk</li>
