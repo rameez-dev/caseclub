@@ -14,21 +14,6 @@
   {% endfor %}
 
 {%  elsif context == 'mobile-first-4' %}
-   {% for link in linklists.new-main-menu-phone.links %}
-      {% if forloop.index < 5 %}
-      {% if linklists[link.handle] == empty %}
-        <li data-link data-mobile-dropdown-rel="{{ link.handle }}">
-          {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
-            <a data-no-instant href="{{ link.url }}" class="parent-link--false">
-              {{ link.title }}
-            </a>
-          {% else %}
-            <a data-no-instant href="{{ link.url }}" class="parent-link--true">
-              {{ link.title }}
-            </a>
-          {% endif %}
-        </li>
-      {% else %}
       <style>
         .mobile-menu-link-center-aligned {
           display: flex !important;
@@ -38,6 +23,29 @@
           height: 25px; width: 25px; margin-right: 10px;
         }
       </style>
+   {% for link in linklists.new-main-menu-phone.links %}
+      {% if forloop.index < 5 %}
+      {% if linklists[link.handle] == empty %}
+        <li data-link data-mobile-dropdown-rel="{{ link.handle }}">
+          {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}
+            {% assign link_class = 'parent-link--false' %}
+          {% else %}
+            {% assign link_class = 'parent-link--true' %}
+          {% endif %}
+
+          {% if link.title contains 'Card Holders' or link.title contains 'Passport Holder' or link.title contains 'Shop All' %}
+            {%  assign img_name = link.title | downcase | replace: ' ', '-' | remove: "&" | append: '-mobile.png'  %}
+            <a data-no-instant href="{{ link.url }}" class="{{ link_class }} mobile-menu-link-center-aligned">
+              <span><img src="{{ img_name | asset_url}}" alt="" class="mobile-menu-img-left"></span>
+              {{ link.title }}
+            </a>
+          {% else %}
+            <a data-no-instant href="{{ link.url }}" class="{{ link_class }}">
+              {{ link.title }}
+            </a>
+          {% endif %}
+        </li>
+      {% else %}
         <li data-val data-mobile-dropdown-rel="{{ link.handle }}">
           {%  assign img_name = link.title | downcase | replace: ' ', '-' | remove: "&" | append: '-mobile.png'  %}
           {% if link.url == 'http://' or link.url == '' or link.url == '/' or link.url == 'https://' or link.url == '#' %}

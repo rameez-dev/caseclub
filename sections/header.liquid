@@ -2,6 +2,19 @@
   type="application/json"
   data-section-type="header"
   data-section-id="{{ section.id }}"></script>
+
+
+<script id="_allproducts">
+  let allProductsData = {}
+  $.ajax({
+        dataType: 'json',
+        async: false,
+        cache: false,
+        url: `/products.json?limit=200`,
+        success(data) {
+          allProductsData = data.products;
+  }});
+</script>
  
 {% comment %} Structured data {% endcomment %}
 
@@ -78,7 +91,7 @@
   }, 1000);
 </script>
 <div class="top-notify-bar">
-  <div>SPRING SALE: 30% OFF EVERYTHING WHEN YOU ORDER BEFORE
+  <div>FATHER'S DAY SALE: 30% OFF EVERYTHING WHEN YOU ORDER BEFORE
     <span class="countdown-view" style="color: gold;font-weight: bold;"></span>
   </div>
   <div>FREE SHIPPING ON ALL ORDERS WORLDWIDE</div>
@@ -412,7 +425,7 @@
 
               <div class="top-bar--right-menu">
                 <a href="/pages/about" class="top_menu_link_right">Our Story</a>
-                <a href="/pages/about" class="top_menu_link_right">Materials</a>
+                <a href="/pages/personalisation" class="top_menu_link_right">Personalization</a>
                 <a href="/apps/help-center" class="top_menu_link_right">Help Center</a>
                 <ul class="menu">
                   {% if locale_selector or currency_selector or settings.show_multiple_currencies == true %}
@@ -460,7 +473,7 @@
                             <span class="remove-icon"></span>
                           </a>
                           <span class="cart-head-text">Your Cart</span>
-                          <span class="cart-count-num">{{ cart.item_count }} Item</span>
+                          <span class="cart-count-num">{{ cart.item_count }} {{ cart.item_count | pluralize: 'Item', 'Items' }}</span>
                         </div>
                         <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
                           <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
@@ -575,6 +588,9 @@
               {% if item.product.type=='Strap' %}
 							<h4 class="product_name">Strap</h4>
 							{% endif %}
+              {% if item.product.type=='Passport Holder' %}
+                <h4 class="product_name">The Personalized Passport Holder</h4>
+                {% endif %}
                             <a href="{{ item.url }}" >
                               {{ item.product.title }}
 
@@ -615,6 +631,7 @@
                                           <span class="money was_price">
                                             {{ item.variant.compare_at_price | money_without_trailing_zeros }}
                                           </span>
+                                          <span class="salelabel_inline_cart" style="color: {{settings.sale_label_color}} !important; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>
                                         {% endif %}
                                       {% endif %}
 
@@ -642,18 +659,17 @@
                                   <div class="product-quantity-box">
                                     <span class="ss-icon product-minus js-change-quantity" data-func="minus">
                                       <span class="icon-minus"></span>
-                                    </span>
-
+                                    </span> 
                                     <input
                                       type="number"
                                       min="0"
                                       size="2"
                                       class="quantity"
-                                      name="updates[]"
+                                      name="updates[]"                   
                                       id="updates_{{ item.id }}"
                                       value="{{ item.quantity }}"
                                       data-cart-quantity-input="mini-cart"
-                                      {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %} />
+                                      {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %} disabled />
 
                                     <span class="ss-icon product-plus js-change-quantity" data-func="plus">
                                       <span class="icon-plus"></span>
@@ -683,10 +699,99 @@
                             </div>
 
                             {% assign cho_cnt = 0 %}
+                            {% assign ph_cnt = 0 %}
                             {% assign cw_cnt = 0 %}
                             {% assign pc_cnt = 0 %}
                             <div class="full-width-desktop-padding mix-match-products">
                               <ul>
+                                {% for product in collections['phone-cases'].products %}
+                                  {% if curr_pro != 'Phone Cases' %}
+                                    {% if product.type == 'Phone Cases' %}
+
+                                      {% for v in product.variants %}
+                                        {% if pc_cnt == 0 and v.title == curr_pro_title %}
+                                          <li class="product phone-cases">
+                                            <div class="product-slide-inner">
+                                              <a href="{{ product.url | within: collection }}">
+                                                {% assign pc_cnt = 1 %}
+                                                <div class="img-wrap"><img class="make-it-match-img" src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
+                                                  <div class="tc-logo {{ v.title | downcase | replace: ' ', '-' }}">
+                                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                                                  </div>
+                                                </div>
+                                              </a>
+                                              <div class="mix-pro-price">
+                                                <div>
+                                                  <h4>{{ product.type }}</h4>
+                                                  <p>You deserve a phone case made just for you.</p>
+                                                </div>
+                                                {%- if settings.show_sales_label -%}
+                                                  {% assign perc = 100 | minus: settings.sale_amount %}
+                                                  {% assign perc = perc | divided_by: 100.0 %}
+                                                  {% assign cmp_price = product.price_min | times: perc %}
+                                                  <h5>
+                                                    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+                                                  </h5>
+                                                {%- else -%}
+                                                  <h5>
+                                                    {% if product.compare_at_price > product.price %}
+                                                      <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                                      <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+                                                    {% else %}
+                                                      <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    {% endif %}
+                                                  </h5>
+                                                {% endif %}
+                                                <form method="post" action="/cart/add" class="phone-modelselector__addtocart-btn" style="gird-area: form !important;">
+                                                  <input
+                                                    type="hidden" 
+                                                    name="properties[Letters]"
+                                                    value="{{curr_pro_intial}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="properties[Letter Color]"
+                                                    value="{{curr_pro_color}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="id"
+                                                    value="{{ v.id }}" />
+                                                  <input
+                                                    min="1"
+                                                    type="hidden"
+                                                    id="quantity"
+                                                    name="quantity"
+                                                    value="1" />
+                                                  <button
+                                                    type="submit"
+                                                    class="btn add_to_cart ajax-submit" >
+                                                    <span class="make-it-match-btn-text">+ ADD</span>
+                                                    <div class="loading-overlay__spinner hidden">
+                                                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                                      </svg>
+                                                    </div>
+                                                    </button>
+                                                    <select name="make-it-match-selector" class="make-it-match-select">
+                                                    {% for prd in collections['phone-cases'].products %}
+                                                      {% if prd.available %}  
+                                                        <option value="{{ prd.selected_or_first_available_variant.id }}" 
+                                                          data-image="{{ prd.selected_or_first_available_variant.featured_media | product_img_url: '400x' }}" 
+                                                          {% if forloop.index0 == 0 %}selected{% endif %}>{{ prd.title }}</option>
+                                                      {% endif %}
+                                                    {% endfor %}
+                                                  </select>
+                                                </form>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        {% endif %}
+                                      {% endfor %}
+
+                                    {% endif %}
+                                  {% endif %}
+                                {% endfor %}
                                 {% for product in collections.all.products %}
                                   {% if curr_pro != 'Card Holders' %}
                                     {% if product.type == 'Card Holders' %}
@@ -748,10 +853,17 @@
                                                     id="quantity"
                                                     name="quantity"
                                                     value="1" />
-                                                  <input
+                                                  <button
                                                     type="submit"
                                                     value="+ ADD"
-                                                    class="btn add_to_cart ajax-submit" />
+                                                    class="btn add_to_cart ajax-submit" >
+                                                    <span class="make-it-match-btn-text">+ ADD</span>
+                                                    <div class="loading-overlay__spinner hidden">
+                                                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                                      </svg>
+                                                    </div>
+                                                  </button>
                                                 </form>
                                               </div>
                                             </div>
@@ -761,78 +873,7 @@
 
                                     {% endif %}
                                   {% endif %}
-                                  {% if curr_pro != 'Phone Cases' %}
-                                    {% if product.type == 'Phone Cases' %}
-
-                                      {% for v in product.variants %}
-                                        {% if pc_cnt == 0 and v.title == curr_pro_title %}
-                                          <li class="product phone-cases">
-                                            <div class="product-slide-inner">
-                                              <a href="{{ product.url | within: collection }}">
-                                                {% assign pc_cnt = 1 %}
-                                                <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
-                                                  <div class="tc-logo {{ v.title | downcase | replace: ' ', '-' }}">
-                                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
-                                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
-                                                  </div>
-                                                </div>
-                                              </a>
-                                              <div class="mix-pro-price">
-                                                <div>
-                                                  <h4>{{ product.type }}</h4>
-                                                  <p>You deserve a phone case made just for you.</p>
-                                                </div>
-                                                {%- if settings.show_sales_label -%}
-                                                  {% assign perc = 100 | minus: settings.sale_amount %}
-                                                  {% assign perc = perc | divided_by: 100.0 %}
-                                                  {% assign cmp_price = product.price_min | times: perc %}
-                                                  <h5>
-                                                    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-                                                  </h5>
-                                                {%- else -%}
-                                                  <h5>
-                                                    {% if product.compare_at_price > product.price %}
-                                                      <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
-                                                      <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
-                                                    {% else %}
-                                                      <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
-                                                    {% endif %}
-                                                  </h5>
-                                                {% endif %}
-
-                                                <form method="post" action="/cart/add">
-                                                  <input
-                                                    type="hidden"
-                                                    name="properties[Letters]"
-                                                    value="{{curr_pro_intial}}">
-                                                  <input
-                                                    type="hidden"
-                                                    name="properties[Letter Color]"
-                                                    value="{{curr_pro_color}}">
-                                                  <input
-                                                    type="hidden"
-                                                    name="id"
-                                                    value="{{ v.id }}" />
-                                                  <input
-                                                    min="1"
-                                                    type="hidden"
-                                                    id="quantity"
-                                                    name="quantity"
-                                                    value="1" />
-                                                  <input
-                                                    type="submit"
-                                                    value="+ ADD"
-                                                    class="btn add_to_cart ajax-submit" />
-                                                </form>
-                                              </div>
-                                            </div>
-                                          </li>
-                                        {% endif %}
-                                      {% endfor %}
-
-                                    {% endif %}
-                                  {% endif %}
+                                  
                                   {% if curr_pro != 'Card Wallets' %}
                                     {% if product.type == 'Card Wallets' %}
 
@@ -894,10 +935,100 @@
                                                     id="quantity"
                                                     name="quantity"
                                                     value="1" />
-                                                  <input
+                                                  <button
                                                     type="submit"
                                                     value="+ ADD"
-                                                    class="btn add_to_cart ajax-submit" />
+                                                    class="btn add_to_cart ajax-submit" >
+                                                    <span class="make-it-match-btn-text">+ ADD</span>
+                                                    <div class="loading-overlay__spinner hidden">
+                                                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                                      </svg>
+                                                    </div>
+                                                  </button>
+                                                </form>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        {% endif %}
+                                      {% endfor %}
+
+                                    {% endif %}
+                                  {% endif %}
+                                {% endfor %}
+
+                                {% for product in collections['passport-holders'].products %}
+                                  {% if curr_pro != 'Passport Holder' %}
+                                    {% if product.type == 'Passport Holder' %}
+
+                                      {% for v in product.variants %}
+                                        {% if ph_cnt == 0 and v.title == curr_pro_title %}
+                                          <li class="product passport-holder">
+                                            <div class="product-slide-inner">
+                                              <a href="{{ product.url | within: collection }}">
+                                                {% assign ph_cnt = 1 %}
+                                                <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials {{curr_pro_color}}">{{ curr_pro_intial }}</span>
+                                                  <div class="tc-logo">
+                                                    <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                                                    <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                                                  </div>
+                                                </div>
+                                              </a>
+                                              <div class="mix-pro-price">
+                                                <div>
+                                                  <h4>{{ product.type }}</h4>
+                                                  <p>Sleek designed passport holders which slide into any sized pocket and bag.</p>
+                                                </div>
+
+                                                {%- if settings.show_sales_label -%}
+                                                  {% assign perc = 100 | minus: settings.sale_amount %}
+                                                  {% assign perc = perc | divided_by: 100.0 %}
+                                                  {% assign cmp_price = product.price_min | times: perc %}
+                                                  <h5>
+                                                    <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+                                                  </h5>
+                                                {%- else -%}
+                                                  <h5>
+                                                    {% if product.compare_at_price > product.price %}
+                                                      <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                                      <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+                                                    {% else %}
+                                                      <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                                                    {% endif %}
+                                                  </h5>
+                                                {% endif %}
+
+                                                <form method="post" action="/cart/add">
+                                                  <input
+                                                    type="hidden"
+                                                    name="properties[Letters]"
+                                                    value="{{curr_pro_intial}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="properties[Letter Color]"
+                                                    value="{{curr_pro_color}}">
+                                                  <input
+                                                    type="hidden"
+                                                    name="id"
+                                                    value="{{ v.id }}" />
+                                                  <input
+                                                    min="1"
+                                                    type="hidden"
+                                                    id="quantity"
+                                                    name="quantity"
+                                                    value="1" />
+                                                  <button
+                                                    type="submit"
+                                                    value="+ ADD"
+                                                    class="btn add_to_cart ajax-submit" >
+                                                    <span class="make-it-match-btn-text">+ ADD</span>
+                                                    <div class="loading-overlay__spinner hidden">
+                                                      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                                      </svg>
+                                                    </div>
+                                                  </button>
                                                 </form>
                                               </div>
                                             </div>
@@ -965,10 +1096,17 @@
                                               id="quantity"
                                               name="quantity"
                                               value="1" />
-                                            <input
+                                            <button
                                               type="submit"
                                               value="+ ADD"
-                                              class="btn add_to_cart ajax-submit" />
+                                              class="btn add_to_cart ajax-submit" >
+                                              <span class="make-it-match-btn-text">+ ADD</span>
+                                              <div class="loading-overlay__spinner hidden">
+                                                <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                                </svg>
+                                              </div>
+                                            </button>
                                           </form>
                                         </div>
                                       </div>
@@ -981,30 +1119,34 @@
                           <ul class="cart-foot">
                             <li class="cart_discounts js-cart_discounts sale">
                               {% if cart.cart_level_discount_applications != blank %}
-                                {% for discount_application in cart.cart_level_discount_applications %}
-                                  <span class="cart_discounts--title">{{ discount_application.title }}</span>
+                                <ul class="discount-ul">
+                                  {% for discount_application in cart.cart_level_discount_applications %}
+                                    <li class="discount-li">
+                                      <span class="cart_discounts--title">{{ discount_application.title }}</span>
 
-                                  <span class="cart_discounts--price">
-                                    -<span class="money">
-                                      {%
-                                         render 'price-element',
-                                       price: discount_application.total_allocated_amount %}
-                                    </span>
-                                  </span>
-                                {% endfor %}
+                                      <span class="cart_discounts--price">
+                                        -<span class="money">
+                                          {%
+                                            render 'price-element',
+                                          price: discount_application.total_allocated_amount %}
+                                        </span>
+                                      </span>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
                               {% endif %}
                             </li>
 
                             <li></li>
 
-                            <li class="cart_subtotal js-cart_subtotal">
+                            <li class="cart_total js-cart_total">
                               <span class="right">
                                 <span class="money">
-                                  {{ cart.total_price | money_without_trailing_zeros }}
+                                  {{ cart.total_price | plus: total_saving | plus: cart.total_discount | money_without_trailing_zeros }}
                                 </span>
                               </span>
 
-                              <span>{{ 'layout.general.subtotal' | t }}</span>
+                              <span>Total</span>
                             </li>
 
                             <li class="cart_savings sale js-cart_savings">
@@ -1035,6 +1177,16 @@
                                     {{ settings.discount_code_text }}</span>
                                 {%- endif -%}
                               {% endif %}
+                            </li>
+
+                            <li class="cart_subtotal js-cart_subtotal">
+                              <span class="right">
+                                <span class="money">
+                                  {{ cart.total_price | money_without_trailing_zeros }}
+                                </span>
+                              </span>
+
+                              <span>{{ 'layout.general.subtotal' | t }}</span>
                             </li>
 
                             <li>
@@ -1135,6 +1287,15 @@
     </div>
   </div>
 </header>
+
+<script>
+  $(document).ready(function(){
+    $('.make-it-match-select').change(function () {
+      $(this).closest('form').find('input[name="id"]').val($(this).val());
+      $(this).closest('li').find('img.make-it-match-img').first().attr('src', $(this).find(':selected').attr('data-image'));
+    });
+  });
+</script>
 
 {% comment %} <div class="top-notify-bar-2">
   <span>FREE SHIPPING INCLUDED</span>
