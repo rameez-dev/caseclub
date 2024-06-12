@@ -131,7 +131,12 @@
 
                     <div class="{% render 'column-width', value: collections_per_row %} column thumbnail {% if settings.mobile_products_per_row == '1' %}medium-down--one-half small-down--one-whole{% else %}medium-down--one-half small-down--one-half{% endif %}">
                       <div class="product-wrap">
-                        <a href="{{ collection.url }}">
+                        {% if collection.all_products_count == 1 %}
+                          {% assign collection_url = collection.products[0].url %}
+                        {% else %}
+                          {% assign collection_url = collection.url %}
+                        {% endif %}
+                        <a href="{{ collection_url }}">
                           <div class="product-image-section">
                             <div class="personalisation">
                               Personalization
