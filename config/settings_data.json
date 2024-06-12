@@ -1310,7 +1310,7 @@
             "settings": {
               "title": "Protection with style.",
               "rv_products_custom_styles": "product-section-one",
-              "text": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality leather products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>The ultimate first-class travel companion<\/li><li>Handcrafted from premium, full-grain European leather<\/li><li>Featuring an ultra-slim design with five interior card slots for payment cards and boardingpasses<\/li><li>Our premium pebbled leather finish is design for a luxurious wear and prolonged use<\/li><\/ul>",
+              "text": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality leather products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>The ultimate first-class travel companion<\/li><li>Handcrafted from premium, full-grain European leather<\/li><li>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes<\/li><li>Our premium pebbled leather finish is design for a luxurious wear and prolonged use<\/li><\/ul>",
               "text_cardwallet": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>Our exclusive pebbled leather card wallets are individually hand wrapped by our experienced craftsmen<\/li><li>Comfortably fits 10 cards with additional room for your  cash in the middle<\/li><li>Ultra-sleek, lightweight feel that easily slides into any pocket and avoids the bulk<\/li><\/ul>",
               "image": "shopify:\/\/shop_images\/Product_page.webp",
               "iframe_video": "",
@@ -1609,8 +1609,8 @@
         "type": "featured-text",
         "disabled": true,
         "settings": {
-          "title": "SPRING SALE LIVE NOW",
-          "content": "<p>40% OFF EVERYTHING | SALE ENDS SOON<\/p>",
+          "title": "FATHER'S DAY SALE LIVE NOW",
+          "content": "<p>30% OFF EVERYTHING | SALE ENDS SOON<\/p>",
           "button_label": "",
           "button_link": "",
           "text_size": "featured_text",
@@ -2857,7 +2857,7 @@
           "First-image": "shopify:\/\/shop_images\/1x1_tom_2f0e1716-12ba-490d-865c-2fbae2f131b2.jpg",
           "Second-image": "shopify:\/\/shop_images\/black2-min_6afebb51-3f1a-4818-b0d7-3dfe9fe1aa3f.jpg",
           "Third-image": "shopify:\/\/shop_images\/75fbc39f-9e2d-4e96-9bb3-fd4b229fd52f.jpg",
-          "banner-text-II": "Summer Sale <br> 30% Off Everything",
+          "banner-text-II": "Father's Day Sale <br> 30% Off Everything",
           "banner-button-link": "shopify:\/\/collections",
           "banner-button-bg-color": "#8d8d8d",
           "banner-button-text-color": "#ffffff",
