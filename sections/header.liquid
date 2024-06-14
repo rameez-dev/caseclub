@@ -488,17 +488,27 @@
                         data-shop-name="{{ shop.name | escape }}"
                         data-cart-form="mini-cart">-->
                         {% assign free_ship_amt = 1 %}
-                        {% assign free_ship = 100 %}
+                        {% assign free_ship = 0 %}
                         {% assign cart_tot = cart.total_price | divided_by: 100 %}
                         <div class="shipping-bar">
-                          {% if cart_tot < free_ship_amt %}
-                            {% assign free_ship2 = free_ship_amt | minus: cart_tot | times: 100 %}
-                            {% assign free_ship3 = free_ship2 | divided_by: free_ship_amt %}
-                            {% assign free_ship = free_ship | minus: free_ship3 %}
-                            <span class="free-shipping-txt">You're {{ free_ship2 | money_without_trailing_zeros }} away from free shipping.</span>
-                          {% else %}
-                            <span class="free-shipping-txt">Congrats! You get free shipping.</span>
-                          {% endif %}
+                          <div class="shipping-bar-text-block">
+                            {% if cart_tot < free_ship_amt %}
+                              {% assign free_ship2 = free_ship_amt | minus: cart_tot | times: 100 %}
+                              {% comment %} {% assign free_ship3 = free_ship2 | divided_by: free_ship_amt %} {% endcomment %}
+                              {% comment %} {% assign free_ship = free_ship | minus: free_ship3 %} {% endcomment %}
+                              <span class="free-shipping-txt">You're {{ free_ship2 | money_without_trailing_zeros }} away from free shipping.</span>
+                            {% else %}
+                              {% assign free_ship = 50 %}
+                              <span class="free-shipping-txt">Congrats! You get free shipping.</span>
+                            {% endif %}
+                            
+                            {% if cart.item_count < 3 %}
+                              <span class="discount-text">Add 2+ items and get 1 <strong>FREE</strong>!</span>
+                            {% else %}
+                              {% assign free_ship = 100 %}
+                              <span class="discount-text">Congrats! You get a <strong>FREE</strong> product!</span>
+                            {% endif %}
+                          </div>
                           <div class="free-shipping-bar">
                             <span style="width: {{free_ship}}%;"></span>
                           </div>
