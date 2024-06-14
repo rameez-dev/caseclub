@@ -589,11 +589,11 @@ $(() => {
     }
 
     if(cart.item_count < 3) {
-      var discount_text = "Add 2+ items and get 1 <strong>FREE</strong>!"
+      var discount_text = "Buy 2+ items and get 2 <strong>FREE</strong>!"
     }
     else {
       free_ship = 100;
-      var discount_text = "Congrats! You get a <strong>FREE</strong> product!"
+      var discount_text = "Congrats! You get 2 <strong>FREE</strong> products!"
     }
 
     $('.free-shipping-txt').text(ship_txt);
@@ -755,7 +755,12 @@ $(() => {
         if (productHasSale === true) {
           // puts the slash through the old item price
           const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format')).replace('.00','').replace(',00','')}</span><span class="salelabel_inline_cart" style="color: {{settings.sale_label_color}} !important; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>`;
-          cartItemsHTML += `<span class="money sale">${itemPrice.replace('.00','').replace(',00','')}</strong>`;
+          if (item.final_price > 0) {
+            cartItemsHTML += `<span class="money sale">${itemPrice.replace('.00','').replace(',00','')}</strong>`;
+          }
+          else {
+            cartItemsHTML += `<span>${window.Shopify.translation.cart_free_text}</span></strong>`;
+          }
 
           // Total savings
           saving = (productCompareAtPrice - productFinalPrice) * item.quantity;
@@ -936,7 +941,7 @@ $(() => {
                       match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
                       match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
                       match_html += '</div></a>';
-                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>Sleek designed passport holders which slide into any sized pocket and bag.</p></div>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes</p></div>';
                       match_html += '<h5>';
                       match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
                       match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
