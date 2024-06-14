@@ -19817,6 +19817,7 @@ span.free-shipping-txt, span.discount-text, .gift-bar > span {
 }
 span.free-shipping-txt, span.discount-text {
   font-size: 11px;
+  line-height: 1.4;
 }
 .shipping-bar-text-block {
   display: flex;
@@ -20285,13 +20286,42 @@ span.five_plus_characters.bundle-phone, span.five_plus_characters.bundle-case {
 .top-review-section {
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
   .top-review-section .top-stock {
     padding: 0 10px 0 15px;
 }
   .new-design-block > ul {
     padding: 0;
+}
+.discount-sticker-cont {
+  display: flex;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.discount-sticker-cont img {
+  height: 18px;
+}
+.discount-sticker-cont-desktop {
+  display: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding-top: 8px;
+}
+.discount-sticker-cont-desktop img {
+  height: 20px;
+}
+@media only screen and (min-width: 800px) {
+  .discount-sticker-cont-desktop {
+    display: flex;
+  }
+  .discount-sticker-cont {
+    display: none;
+  }
 }
 .new-design-block>ul li {
   font-size: 12px;

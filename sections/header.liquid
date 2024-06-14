@@ -503,10 +503,10 @@
                             {% endif %}
                             
                             {% if cart.item_count < 3 %}
-                              <span class="discount-text">Add 2+ items and get 1 <strong>FREE</strong>!</span>
+                              <span class="discount-text">Buy 2+ items and get 2 <strong>FREE</strong>!</span>
                             {% else %}
                               {% assign free_ship = 100 %}
-                              <span class="discount-text">Congrats! You get a <strong>FREE</strong> product!</span>
+                              <span class="discount-text">Congrats! You get 2 <strong>FREE</strong> products!</span>
                             {% endif %}
                           </div>
                           <div class="free-shipping-bar">
@@ -1005,7 +1005,7 @@
                                               <div class="mix-pro-price">
                                                 <div>
                                                   <h4>{{ product.type }}</h4>
-                                                  <p>Sleek designed passport holders which slide into any sized pocket and bag.</p>
+                                                  <p>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes.</p>
                                                 </div>
 
                                                 {%- if settings.show_sales_label -%}
