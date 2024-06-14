@@ -812,6 +812,22 @@ $(() => {
             console.log('testing data after ajax call....', curr_pro);
             jQuery('.mix-match-wrap').show();
             var ph_pro = caw_pro = cah_pro = passport_pro = 0;
+
+            $.each(cart.items, (index, item) => {
+              if ( item.product_type=='Phone Cases') {
+                ph_pro++;
+              }
+              if ( item.product_type=='Card Wallets' ) {
+                caw_pro++;
+              }
+              if ( item.product_type=='Card Holders' ) {
+                cah_pro++;
+              }
+              if ( item.product_type=='Passport Holder' ) {
+                passport_pro++;
+              }
+            });
+
             if ( curr_pro != 'Strap'){
               $.each( data.products, function( key, value ) {
                 if( value.product_type != curr_pro && value.product_type=='Phone Cases'  ){

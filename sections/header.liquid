@@ -702,6 +702,24 @@
                             {% assign ph_cnt = 0 %}
                             {% assign cw_cnt = 0 %}
                             {% assign pc_cnt = 0 %}
+
+                            {% for itm in cart.items %}
+                              {% if itm.product.type=='Phone Cases'%}
+                                {% assign pc_cnt = pc_cnt | plus: 1 %}
+                              {% endif %}
+                              
+                              {% if itm.product.type=='Card Wallets' %}
+                                {% assign cw_cnt = cw_cnt | plus: 1 %}
+                              {% endif %}
+                              
+                              {% if itm.product.type=='Card Holders' %}
+                                {% assign cho_cnt = cho_cnt | plus: 1 %}
+                              {% endif %}
+                              
+                              {% if itm.product.type=='Passport Holder' %}
+                                {% assign ph_cnt = ph_cnt | plus: 1 %}
+                              {% endif %}
+                            {% endfor %}
                             <div class="full-width-desktop-padding mix-match-products">
                               <ul>
                                 {% for product in collections['phone-cases'].products %}
