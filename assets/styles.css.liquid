@@ -19798,7 +19798,7 @@ li.cart-bottom-note span {
     border-radius: 7px;
     display: table;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 4px;
 }
 .free-shipping-bar > span, .gift-bar > span {
     background-color: #037b04;
@@ -19809,11 +19809,21 @@ li.cart-bottom-note span {
   .gift-bar.half > span {
     background-color: #ffd700;
 }
-span.free-shipping-txt, .gift-bar > span {
+span.free-shipping-txt, span.discount-text, .gift-bar > span {
     text-align: center;
     width: 100%;
     display: block;
 	font-size: 13px;
+}
+span.free-shipping-txt, span.discount-text {
+  font-size: 11px;
+}
+.shipping-bar-text-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px auto 0px;
+  width: 90%;
 }
   .product_title {
     font-size: 18px;

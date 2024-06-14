@@ -578,15 +578,27 @@ $(() => {
      },100);
     
     var ship_amt = 1;
-    var free_ship = 100;
+    var free_ship = 0;
     var ship_cal = (ship_amt - (cart.total_price/100));
     if( (ship_cal < ship_amt && ship_cal>0) || cart.total_price==0 ){
-      free_ship = free_ship - ( (ship_cal*100)/ship_amt );
+      // free_ship = free_ship - ( (ship_cal*100)/ship_amt );
       var ship_txt = "You're "+window.Shopify.formatMoney(ship_cal*100, $('body').data('money-format')).replace('.00','').replace(',00','')+" away from free shipping.";
     }else{
+      free_ship = 50
       var ship_txt = "Congrats! You get free shipping.";
     }
+
+    if(cart.item_count < 3) {
+      var discount_text = "Add 2+ items and get 1 <strong>FREE</strong>!"
+    }
+    else {
+      free_ship = 100;
+      var discount_text = "Congrats! You get a <strong>FREE</strong> product!"
+    }
+
     $('.free-shipping-txt').text(ship_txt);
+    $('.discount-text').html(discount_text);
+
     $('.free-shipping-bar span').css('width',free_ship+'%');
 
 
