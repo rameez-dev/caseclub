@@ -143,6 +143,8 @@
             <div class="section-content-text style_font_white" style="color: white !important;">
             {% if product.type == "Card Holders" %}
               {{ block.settings.text_cardwallet }}
+            {% elsif product.type == "Passport Holder" %}
+              {{ block.settings.text_passport }} 
             {% else %}
               {{ block.settings.text }}
             {% endif %}
@@ -756,6 +758,11 @@
             "type": "richtext",
             "id": "text_cardwallet",
             "label": "Text (Card Wallet)"
+          },
+          {
+            "type": "richtext",
+            "id": "text_passport",
+            "label": "Text (Passport)"
           },
           {
             "type": "image_picker",

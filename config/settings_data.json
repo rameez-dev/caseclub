@@ -1290,6 +1290,7 @@
               "rv_products_custom_styles": "product-section-one",
               "text": "",
               "text_cardwallet": "",
+              "text_passport": "",
               "image": "shopify:\/\/shop_images\/product_page_icons.png",
               "iframe_video": "",
               "cssclass": "mobiel-logos"
@@ -1310,8 +1311,9 @@
             "settings": {
               "title": "Protection with style.",
               "rv_products_custom_styles": "product-section-one",
-              "text": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality leather products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>The ultimate first-class travel companion<\/li><li>Handcrafted from premium, full-grain European leather<\/li><li>Featuring an ultra-slim design with five interior card slots for payment cards and boardingpasses<\/li><li>Our premium pebbled leather finish is design for a luxurious wear and prolonged use<\/li><\/ul>",
+              "text": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality leather products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>Our exclusive pebbled leather cases are individually hand wrapped by our experienced craftsmen for snug, best-in-class protection<\/li><li>100% wireless charging compatible<\/li><li>Raised camera bevel for differentiated, scratch-free lense security and style<\/li><li>Plush microfiber inner lining <\/li><li>Water resistant<\/li><li>Made from premium, sustainably crafted leather with an emphasis on uniformity in texture, appearance, increased durability, and ease of care <\/li><\/ul>",
               "text_cardwallet": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>Our exclusive pebbled leather card wallets are individually hand wrapped by our experienced craftsmen<\/li><li>Comfortably fits 10 cards with additional room for your  cash in the middle<\/li><li>Ultra-sleek, lightweight feel that easily slides into any pocket and avoids the bulk<\/li><\/ul>",
+              "text_passport": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality leather products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>The ultimate first-class travel companion<\/li><li>Handcrafted from premium, full-grain European leather<\/li><li>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes<\/li><li>Our premium pebbled leather finish is design for a luxurious wear and prolonged use<\/li><\/ul>",
               "image": "shopify:\/\/shop_images\/Product_page.webp",
               "iframe_video": "",
               "cssclass": "meet-case"
@@ -1332,6 +1334,7 @@
               "rv_products_custom_styles": "product-section-two",
               "text": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
               "text_cardwallet": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
+              "text_passport": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
               "image": "shopify:\/\/shop_images\/Product_page_images.webp",
               "iframe_video": "",
               "cssclass": "meet-case"
@@ -1351,6 +1354,7 @@
               "rv_products_custom_styles": "product-section-one",
               "text": "<p>Join our global community of more than 100,000+ and growing happy customers! Share your pics with #MyTCC or tag @thecaseclub to be featured.<\/p>",
               "text_cardwallet": "",
+              "text_passport": "",
               "image": "shopify:\/\/shop_images\/100K_HAPPY_CUSTOMERS-min-min.jpg",
               "iframe_video": "",
               "cssclass": "meet-case"
@@ -1380,6 +1384,7 @@
               "rv_products_custom_styles": "product-section-one",
               "text": "<p>Your monogram is your power statement. We offer you the canvas for self expression. With free personalization services on our products, you’re set to impress the world. We only use the highest qualitymaterial and foils to ensure a quality, luxury product that lasts overtime.<\/p>",
               "text_cardwallet": "",
+              "text_passport": "",
               "iframe_video": "https:\/\/www.youtube.com\/watch?v=dst10Wn4eKs",
               "cssclass": "express-block"
             }
@@ -1609,8 +1614,8 @@
         "type": "featured-text",
         "disabled": true,
         "settings": {
-          "title": "SPRING SALE LIVE NOW",
-          "content": "<p>40% OFF EVERYTHING | SALE ENDS SOON<\/p>",
+          "title": "FATHER'S DAY SALE LIVE NOW",
+          "content": "<p>30% OFF EVERYTHING | SALE ENDS SOON<\/p>",
           "button_label": "",
           "button_link": "",
           "text_size": "featured_text",
@@ -2857,7 +2862,7 @@
           "First-image": "shopify:\/\/shop_images\/1x1_tom_2f0e1716-12ba-490d-865c-2fbae2f131b2.jpg",
           "Second-image": "shopify:\/\/shop_images\/black2-min_6afebb51-3f1a-4818-b0d7-3dfe9fe1aa3f.jpg",
           "Third-image": "shopify:\/\/shop_images\/75fbc39f-9e2d-4e96-9bb3-fd4b229fd52f.jpg",
-          "banner-text-II": "Summer Sale <br> 30% Off Everything",
+          "banner-text-II": "Father's Day Sale <br> 30% Off Everything",
           "banner-button-link": "shopify:\/\/collections",
           "banner-button-bg-color": "#8d8d8d",
           "banner-button-text-color": "#ffffff",
