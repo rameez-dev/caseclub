@@ -1527,7 +1527,7 @@
             "type": "image",
             "settings": {
               "image": "shopify:\/\/shop_images\/phonecaseshome.jpg",
-              "link": "shopify:\/\/collections",
+              "link": "shopify:\/\/pages\/phone-case-collections",
               "title": "",
               "text": "",
               "button_label": "<b>PHONE CASES<\/b>"
@@ -2870,6 +2870,22 @@
           "bg_width": 1.2,
           "button_position": 1.7,
           "button_position_mobile": 1.6
+        }
+      },
+      "phone-collections-template": {
+        "type": "phone-collections-template",
+        "settings": {
+          "wide_display": true,
+          "mobile_image_crop": "none",
+          "caption_content_background": "original",
+          "collection_breadcrumb": true,
+          "display_collection_title": false,
+          "align_height": false,
+          "collection_height": 200,
+          "collections_per_row": 3,
+          "pagination_limit": 48,
+          "toggle": false,
+          "collections_menu": "phone-collections-menu"
         }
       }
     },
