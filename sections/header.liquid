@@ -502,7 +502,7 @@
                               <span class="free-shipping-txt">Congrats! You get free shipping.</span>
                             {% endif %}
                             
-                            {% if cart.item_count < 3 %}
+                            {% if cart.item_count < 2 %} 
                               <span class="discount-text">Buy 2+ items and get 2 <strong>FREE</strong>!</span>
                             {% else %}
                               {% assign free_ship = 100 %}
