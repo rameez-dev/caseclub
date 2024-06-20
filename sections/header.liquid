@@ -91,10 +91,10 @@
   }, 1000);
 </script>
 <div class="top-notify-bar">
-  <div>FATHER'S DAY SALE: 30% OFF EVERYTHING WHEN YOU ORDER BEFORE
+  <div>SUMMER SALE: 30% OFF EVERYTHING WHEN YOU ORDER BEFORE
     <span class="countdown-view" style="color: gold;font-weight: bold;"></span>
   </div>
-  <div>FREE SHIPPING ON ALL ORDERS WORLDWIDE</div>
+  <div>BUY 2 ITEMS GET 2 FREE - NO CODE REQUIRED</div>
 </div> 
 
 {% comment %} <div style="display:none;">
@@ -502,7 +502,7 @@
                               <span class="free-shipping-txt">Congrats! You get free shipping.</span>
                             {% endif %}
                             
-                            {% if cart.item_count < 3 %}
+                            {% if cart.item_count < 2 %} 
                               <span class="discount-text">Buy 2+ items and get 2 <strong>FREE</strong>!</span>
                             {% else %}
                               {% assign free_ship = 100 %}
