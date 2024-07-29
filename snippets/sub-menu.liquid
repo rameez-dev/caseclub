@@ -49,7 +49,7 @@
           </div>
           <div class="menu-image">
             {%  assign img_name = link.title | downcase | replace: ' ', '-' | remove: "&" | append: '.jpg'  %}
-            <img src="{{ img_name | asset_url }}" alt="mega-menu-img" style="object-fit: cover;">
+            <img src="{{ img_name | asset_url }}" alt="mega-menu-img" style="object-fit: cover;" class="lazyload">
           </div>
         </div>
       </div>
