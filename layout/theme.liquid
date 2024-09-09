@@ -58,10 +58,7 @@ window.TriplePixelData={TripleName:"thecase-club.myshopify.com",ver:"2.12",plat:
       <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com" />
     {% endif %}
  
-     {{ 'jquery.gScrollingCarousel.css' | asset_url | stylesheet_tag }}
-    <!-- Stylesheet for Fancybox library -->
-    {{ 'fancybox.css' | asset_url | stylesheet_tag }}
-{% include 'theme-style' %}{% include 'theme-style1' %}
+    {% include 'theme-style' %}{% include 'theme-style1' %}
     <!-- Stylesheets for Turbo -->
     {{ 'styles.css' | asset_url | stylesheet_tag | replace: ' href=', ' data-href='}}
 
@@ -100,13 +97,17 @@ window.TriplePixelData={TripleName:"thecase-club.myshopify.com",ver:"2.12",plat:
     {% endif %}{%capture apps%}
 
     <script src="{{ 'jquery.min.js' | asset_url }}" defer></script> 
-	<script src="{{ 'slick.js' | asset_url }}" defer></script>   {{ 'styles.css' | asset_url | stylesheet_tag }} 
+    <script src="{{ 'slick.js' | asset_url }}" defer></script>   
+    {{ 'styles.css' | asset_url | stylesheet_tag }} 
     <script src="{{ 'jquery-simple-mobilemenu.min.js' | asset_url }}" defer></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <link rel="stylesheet" type="text/css" href="{{ 'jquery-simple-mobilemenu.css' |  asset_url }}"/>
-  	<link rel="stylesheet" type="text/css" href="{{ 'jquery-simple-mobilemenu-slide.css' |  asset_url }}"/>                                                                                                                  {%endcapture%}<script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{apps | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
+    <link rel="stylesheet" type="text/css" href="{{ 'jquery-simple-mobilemenu-slide.css' |  asset_url }}"/>
+
+  {% endcapture %}
   
+    <script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{apps | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
   
     {% if settings.show_multiple_currencies or settings.show_shipping_calculator %}
       <script type="text/javascript" src="/services/javascripts/currencies.js" data-no-instant></script>
@@ -148,205 +149,209 @@ window.TriplePixelData={TripleName:"thecase-club.myshopify.com",ver:"2.12",plat:
     <template id="price-ui-badge__sold-out">{{- 'product.badge.sold_out' | t -}}</template>
     <template id="price-ui-badge__in-stock">{{- 'product.badge.in_stock' | t -}}</template>
     {% comment %}Inject @pixelunion/shopify-price-ui/price-ui-globals end{% endcomment %}
+  <script>
+    {% render 'js-variables' %}
+  </script>
 
+  <script src="{{ 'vendors.js' | asset_url }}" defer></script>
+  <script src="{{ 'sections.js' | asset_url }}" defer></script>
+  <script src="{{ 'utilities.js' | asset_url }}" defer></script>
+  <script src="{{ 'app.js' | asset_url }}" defer></script>
 
-    <script>
-      {% render 'js-variables' %}
-    </script>
-
-    <script src="{{ 'vendors.js' | asset_url }}" defer></script>
-    <script src="{{ 'sections.js' | asset_url }}" defer></script>
-    <script src="{{ 'utilities.js' | asset_url }}" defer></script>
-    <script src="{{ 'app.js' | asset_url }}" defer></script>
-
-    {% if settings.disqus_enabled %}
-      {% if template contains "blog" or template contains "article" or template contains "index" %}
-        <script id="dsq-count-scr" src="//{{ settings.disqus_shortname }}.disqus.com/count.js" async></script>
-      {% endif %}
+  {% if settings.disqus_enabled %}
+    {% if template contains "blog" or template contains "article" or template contains "index" %}
+      <script id="dsq-count-scr" src="//{{ settings.disqus_shortname }}.disqus.com/count.js" async></script>
     {% endif %}
+  {% endif %}
 
-    {% unless settings.performance == "sport" or template contains "customer" %}
-      <script src="{{ 'instantclick.min.js' | asset_url }}" data-no-instant defer></script>
+  {% unless settings.performance == "sport" or template contains "customer" %}
+    <script src="{{ 'instantclick.min.js' | asset_url }}" data-no-instant defer></script>
 
-      <script data-no-instant>
-        window.addEventListener('DOMContentLoaded', function() {
+    <script data-no-instant>
+      window.addEventListener('DOMContentLoaded', function() {
 
-          function inIframe() {
-            try {
-              return window.self !== window.top;
-            } catch (e) {
-              return true;
-            }
+        function inIframe() {
+          try {
+            return window.self !== window.top;
+          } catch (e) {
+            return true;
           }
+        }
 
-          if (!inIframe()){
-            InstantClick.on('change', function(isInitialLoad) {
+        if (!inIframe()){
+          InstantClick.on('change', function(isInitialLoad) {
 
-              $('head script[src*="shopify"]').each(function() {
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = $(this).attr('src');
+            $('head script[src*="shopify"]').each(function() {
+              var script = document.createElement('script');
+              script.type = 'text/javascript';
+              script.src = $(this).attr('src');
 
-                $('body').append(script);
-              });
-
-              $('body').removeClass('fancybox-active');
-              $.fancybox.destroy();
-
-              InstantClick.init();
-
+              $('body').append(script);
             });
+
+            $('body').removeClass('fancybox-active');
+            $.fancybox.destroy();
+
+            InstantClick.init();
+
+          });
+        }
+      });
+    </script>
+  {% endunless %}
+
+  <script>
+    {{ settings.custom_scripts }}
+  </script>
+
+  <!-- starapps_scripts_start -->
+  <!-- This code is automatically managed by StarApps Studio -->
+  <!-- Please contact support@starapps.studio for any help -->
+  {% render "starapps-product-json", product: product, starapps_app: "VIA", starapps_attribute: "sa-product-json" %}
+  <!-- starapps_scripts_end -->                                                                                                                                                                               
+  {% include 'vital-loader' %} 
+
+  {{ content_for_header }} 
+
+  {% render 'social-meta-info' %}
+  <link rel="stylesheet" type="text/css" media="all" data-href="https://cdn.judge.me/shopify_v2.css">
+  {% if collection.previous_product %}<link rel="prev" href="{{ collection.previous_product }}">{% endif %}
+  {% if collection.next_product %}<link rel="next" href="{{ collection.next_product }}">{% endif %} 
+      
+  {% render 'judgeme_core' %}
+  {% capture apps %}  
+    <script src="https://demandforapps.com/flycart/js/aod_flycart.js"></script> 
+    <!-- GSSTART Slider code start. Do not change -->
+    {% if product.id > 1 %}
+      <script>document.write('<script src="' + 'https://gravity-software.com//js/shopify/slider_prod{{ product.id }}.js?v=' + Math.floor(Math.random() * 100) + '"\><\/script>'); </script> <script type="text/javascript" src="https://gravity-software.com/js/shopify/slider_shop31595.js?v=c022c01301a7c2adc190c4c130beaba4"></script> 
+      {% if product.variants.size > 1 %}
+        <script>
+          gsSliderDefaultV = "{{ product.selected_or_first_available_variant.id }}";
+          var variantImagesByVarianName = {};
+          var variantImagesByVarianNameMix = {};
+          var variantImagesGS = {},
+            thumbnails,
+            variant,
+            variantImage,
+            optionValue,
+            cntImages;
+            productOptions = [];
+            cntImages = 0;
+          {% for variant in product.variants %}
+            variant = {{ variant | json }};
+            if ( typeof variant.featured_image !== 'undefined' && variant.featured_image !== null ) {
+              variantImage =  variant.featured_image.src.split('?')[0].replace(/http(s)?:/,'');
+              variantImagesGS[variant.id] = variantImage;
+              variantImagesByVarianName[variant.option1] = variantImage;
+              var variantMixName = "";
+              if(variant.option1 != null) {
+                variantMixName = variant.option1;
+              }
+              if(variant.option2 != null) {
+                variantImagesByVarianName[variant.option2] = variantImage;
+                variantMixName = variantMixName + ";gs;" + variant.option2;
+              }
+              if(variant.option3 != null) {
+                variantImagesByVarianName[variant.option3] = variantImage;
+                variantMixName = variantMixName + ";gs;" + variant.option3;
+              }
+              if(variantMixName != "") {
+                variantImagesByVarianNameMix[variantMixName] = variantImage;
+              }
+              cntImages++;
+            }
+          {% endfor %}
+          if(cntImages == 0) {
+            variantImagesGS = undefined;
           }
-        });
+        </script> 
+      {% endif %}
+
+      <script>
+        var imageDimensionsWidth = {};
+        var imageDimensionsHeight = {};
+        var imageSrcAttr = {};
+        var altTag = {};  
+
+        var mediaGS = [];  
+        var productImagesGS = [];
+        var productImagesGSUrls = [];
+        {% for image in product.images %}
+          var productImageUrl = "{{ image.src }}";
+          var dotPosition = productImageUrl.lastIndexOf(".");
+          productImageUrl = productImageUrl.substr(0, dotPosition);
+          productImagesGS.push(productImageUrl);
+          imageDimensionsWidth[{{ image.id }}] = "{{ image.width }}";
+          imageDimensionsHeight[{{ image.id }}] = "{{ image.height }}";
+          altTag[{{ image.id }}] = "{{ image.alt | replace: '\"', '"' | replace: '"', '\"' | strip | strip_newlines }}";
+          imageSrcAttr[{{ image.id }}] = "{{ image.src }}";
+          productImagesGSUrls.push("{{ image.src | img_url: '240x' }}");
+        {% endfor %}
+
+        {%- for media in product.media -%}
+          {% case media.media_type %}
+            {% when "image" %}                           
+              var mediaObjectGS ={id: "{{ media.image.id  }}", mediaType:"{{ media.media_type }}", previewImgURL:"{{ media.image.src | img_url: "240x" }}", previewImg:"{{ media.image.src }}", tag:"{{ media.image.src | img_url: "240x" }}"};  
+              mediaGS.push(mediaObjectGS);
+            {% when "video" %}
+              var productImageUrl = "{{ media.preview_image }}";
+              var dotPosition = productImageUrl.lastIndexOf(".");
+              productImageUrl = productImageUrl.substr(0, dotPosition);                     
+              var mediaObjectGS ={id: "{{ media.id }}", mediaType:"{{ media.media_type }}", width: "{{ media.preview_image.width }}", height: "{{ media.preview_image.height }}", previewImgURL:"{{ media.preview_image | img_url: "500x" }}", previewImg:"" + productImageUrl +  "", tag:'{{ media | video_tag: controls: true }}'};                                  
+              mediaGS.push(mediaObjectGS);                                
+            {% when "external_video" %}                
+              var productImageUrl = "{{ media.preview_image }}";
+              var dotPosition = productImageUrl.lastIndexOf(".");
+              productImageUrl = productImageUrl.substr(0, dotPosition);                     
+              var mediaObjectGS ={id: "{{ media.id }}", mediaType:"{{ media.media_type }}", width: "{{ media.preview_image.width }}", height: "{{ media.preview_image.height }}", previewImgURL:"{{ media.preview_image | img_url: "500x" }}", previewImg:"" + productImageUrl +  "", tag:'{{ media | external_video_tag }}'};                                  
+              mediaGS.push(mediaObjectGS);
+          {% endcase %}
+        {%- endfor -%}                
       </script>
-    {% endunless %}
+    {% endif %}
+    <!-- Slider code end. Do not change GSEND --> 
+    {% render 'qikify-apps' %} 
+    {% include 'teeinblue-scripts' %}                                                                                                                 
+  {% endcapture %}
+  <script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{apps | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
+  
+    <!-- Hotjar Tracking Code for www.thecaseclubla.com -->
+    <script type='text/javascripts'>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:1935992,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+    
+    <script async data-src="https://script.click360.io/ingest.js?v=1.0.0&h=nDA3uk7kp5errL28&d=thecaseclubla.com"></script>
+    {% render 'productwiz-rio', product: product, shop: shop %} 
 
     <script>
-      {{ settings.custom_scripts }}
+      window.mlvedaShopCurrency = "{{ shop.currency }}";
+      window.shopCurrency = "{{ shop.currency }}";
+      window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
     </script>
 
-    <!-- starapps_scripts_start -->
-<!-- This code is automatically managed by StarApps Studio -->
-<!-- Please contact support@starapps.studio for any help -->
-{% render "starapps-product-json", product: product, starapps_app: "VIA", starapps_attribute: "sa-product-json" %}
-<!-- starapps_scripts_end -->                                                                                                                                                                               {% include 'vital-loader' %} 
+    <script type='text/javascripts'>
+      !function(e,t,i){e.thoughtmetricQueue=[],e.thoughtmetric=function(){e.thoughtmetricQueue.push(arguments)};var c=t.createElement("script");c.async=1,c.src="https://pixel.thoughtmetric.io/tmpixel.min.js?t="+864e5*Math.ceil(new Date/864e5);var n=t.getElementsByTagName("script")[0];n.parentNode.insertBefore(c,n)}(window,document); thoughtmetric("init","ID-df0c5a47eaf570d5"); thoughtmetric("pageview");
+    </script>
 
-
-
- {{ content_for_header }} 
-
-    {% render 'social-meta-info' %}
-<link rel="stylesheet" type="text/css" media="all" data-href="https://cdn.judge.me/shopify_v2.css">
-    {% if collection.previous_product %}<link rel="prev" href="{{ collection.previous_product }}">{% endif %}
-    {% if collection.next_product %}<link rel="next" href="{{ collection.next_product }}">{% endif %} 
-  {% render 'judgeme_core' %}{%capture apps%}  
-  <script src="https://demandforapps.com/flycart/js/aod_flycart.js"></script> <!-- GSSTART Slider code start. Do not change -->{% if product.id > 1 %}
-<script>document.write('<script src="' + 'https://gravity-software.com//js/shopify/slider_prod{{ product.id }}.js?v=' + Math.floor(Math.random() * 100) + '"\><\/script>'); </script> <script type="text/javascript" src="https://gravity-software.com/js/shopify/slider_shop31595.js?v=c022c01301a7c2adc190c4c130beaba4"></script> 
- {% if product.variants.size > 1 %}<script>
-gsSliderDefaultV = "{{ product.selected_or_first_available_variant.id }}";
-var variantImagesByVarianName = {};
-var variantImagesByVarianNameMix = {};
- var variantImagesGS = {},
-    thumbnails,
-    variant,
-    variantImage,
-    optionValue,
-    cntImages;
-    productOptions = [];
-    cntImages = 0;
-    {% for variant in product.variants %}
-       variant = {{ variant | json }};
-       if ( typeof variant.featured_image !== 'undefined' && variant.featured_image !== null ) {
-         variantImage =  variant.featured_image.src.split('?')[0].replace(/http(s)?:/,'');
-         variantImagesGS[variant.id] = variantImage;
-         variantImagesByVarianName[variant.option1] = variantImage;
-var variantMixName = "";
-if(variant.option1 != null) {
-variantMixName = variant.option1;
-}
-	 if(variant.option2 != null) {
-		variantImagesByVarianName[variant.option2] = variantImage;
-		variantMixName = variantMixName + ";gs;" + variant.option2;
-	 }
-         if(variant.option3 != null) {
-                variantImagesByVarianName[variant.option3] = variantImage;
-		variantMixName = variantMixName + ";gs;" + variant.option3;
-         }
-
-if(variantMixName != "") {
-variantImagesByVarianNameMix[variantMixName] = variantImage;
-}
-
-         cntImages++;
-       }
-    {% endfor %}
-                if(cntImages == 0) {
-          variantImagesGS = undefined;
-                }
-</script> {% endif %}
-<script>
-
-var imageDimensionsWidth = {};
-var imageDimensionsHeight = {};
-var imageSrcAttr = {};
-var altTag = {};  
-
-var mediaGS = [];  
-  var productImagesGS = [];
-var productImagesGSUrls = [];
-{% for image in product.images %}
-  var productImageUrl = "{{ image.src }}";
-  var dotPosition = productImageUrl.lastIndexOf(".");
-  productImageUrl = productImageUrl.substr(0, dotPosition);
-  productImagesGS.push(productImageUrl);
-  imageDimensionsWidth[{{ image.id }}] = "{{ image.width }}";
-  imageDimensionsHeight[{{ image.id }}] = "{{ image.height }}";
-  altTag[{{ image.id }}] = "{{ image.alt | replace: '\"', '"' | replace: '"', '\"' | strip | strip_newlines }}";
-  imageSrcAttr[{{ image.id }}] = "{{ image.src }}";
-  productImagesGSUrls.push("{{ image.src | img_url: '240x' }}");
-{% endfor %}
-
-{%- for media in product.media -%}
-    {% case media.media_type %}
-	{% when "image" %}                           
-                           var mediaObjectGS ={id: "{{ media.image.id  }}", mediaType:"{{ media.media_type }}", previewImgURL:"{{ media.image.src | img_url: "240x" }}", previewImg:"{{ media.image.src }}", tag:"{{ media.image.src | img_url: "240x" }}"};  
-            mediaGS.push(mediaObjectGS);
-    {% when "video" %}
-              var productImageUrl = "{{ media.preview_image }}";
-  var dotPosition = productImageUrl.lastIndexOf(".");
-  productImageUrl = productImageUrl.substr(0, dotPosition);                     
-  var mediaObjectGS ={id: "{{ media.id }}", mediaType:"{{ media.media_type }}", width: "{{ media.preview_image.width }}", height: "{{ media.preview_image.height }}", previewImgURL:"{{ media.preview_image | img_url: "500x" }}", previewImg:"" + productImageUrl +  "", tag:'{{ media | video_tag: controls: true }}'};                                  
-            mediaGS.push(mediaObjectGS);                                
-	{% when "external_video" %}                
-              var productImageUrl = "{{ media.preview_image }}";
-  var dotPosition = productImageUrl.lastIndexOf(".");
-  productImageUrl = productImageUrl.substr(0, dotPosition);                     
-            var mediaObjectGS ={id: "{{ media.id }}", mediaType:"{{ media.media_type }}", width: "{{ media.preview_image.width }}", height: "{{ media.preview_image.height }}", previewImgURL:"{{ media.preview_image | img_url: "500x" }}", previewImg:"" + productImageUrl +  "", tag:'{{ media | external_video_tag }}'};                                  
-            mediaGS.push(mediaObjectGS);
-    {% endcase %}
-{%- endfor -%}      
-                    
-
-</script>
-
-{% endif %}<!-- Slider code end. Do not change GSEND --> 
-  {% render 'qikify-apps' %} 
-   {% include 'teeinblue-scripts' %}                                                                                                                 {%endcapture%}<script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{apps | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
-  
-  <!-- Hotjar Tracking Code for www.thecaseclubla.com -->
-<script type='text/javascripts'>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1935992,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-    <script async data-src="https://script.click360.io/ingest.js?v=1.0.0&h=nDA3uk7kp5errL28&d=thecaseclubla.com"></script>
-  
-  {% render 'productwiz-rio', product: product, shop: shop %} 
-
-<script>
-window.mlvedaShopCurrency = "{{ shop.currency }}";
-window.shopCurrency = "{{ shop.currency }}";
-window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
-</script>
-  <script type='text/javascripts'>
-!function(e,t,i){e.thoughtmetricQueue=[],e.thoughtmetric=function(){e.thoughtmetricQueue.push(arguments)};var c=t.createElement("script");c.async=1,c.src="https://pixel.thoughtmetric.io/tmpixel.min.js?t="+864e5*Math.ceil(new Date/864e5);var n=t.getElementsByTagName("script")[0];n.parentNode.insertBefore(c,n)}(window,document); thoughtmetric("init","ID-df0c5a47eaf570d5"); thoughtmetric("pageview");
-</script>
-
-                  {% include 'bss-product-labels-configs' %}
-  <style>
-  .plyr__video-embed iframe{
-  width:100% !important
-  }@media only screen and (min-width: 768px) {
-.plyr__video-embed iframe{
-  height: 742px  !important;
-}}
-  </style>
-                    </head>
+    {% include 'bss-product-labels-configs' %}
+    <style>
+      .plyr__video-embed iframe {
+        width:100% !important
+      }
+      @media only screen and (min-width: 768px) {
+        .plyr__video-embed iframe{
+          height: 742px  !important;
+        }
+      }
+    </style>
+  </head>
              
 
   {% if template contains "index" %}
@@ -404,8 +409,7 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
           {%- endif -%}"
         data-shop-currency="{{ shop.currency }}"
         data-shop-url="{{ shop.url }}" >
-  {% include 'teeinblue-product-loader' %}
-
+    {% include 'teeinblue-product-loader' %}
 
     {% section 'header' %}
 
@@ -456,36 +460,43 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
 
     {% if settings.show_shipping_calculator and template contains "cart" %}
       {% render 'cart-shipping-scripts' %}
-    {% endif %}{%capture apps%} 
-
-   <link rel="stylesheet" href="https://gravity-software.com/js/shopify/rondell/jquery.rondellf85.css?v=123"/> {% include 'smile-initializer' %}
-
- 
-<div class='better-cart-element-better-cart-theme'>{% include 'better-cart-theme' %}</div>{% if content_for_header contains 'product_label' %}{% include 'bss-product-label-js' %}{% include 'bss-label-style-css' %}{% endif %}                                                                                                                    {%endcapture%}<script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{apps | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
+    {% endif %}
+    
+    {% capture apps %} 
+      <link rel="stylesheet" href="https://gravity-software.com/js/shopify/rondell/jquery.rondellf85.css?v=123"/> {% include 'smile-initializer' %}
+      <div class='better-cart-element-better-cart-theme'>{% render 'better-cart-theme' %}</div>
+      {% if content_for_header contains 'product_label' %}{% render 'bss-product-label-js' %}{% render 'bss-label-style-css' %}{% endif %}                                                                                                                    
+    {% endcapture %}
+    
+    <script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{apps | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
   
-{{ 'custom.min.js' | asset_url | script_tag }}
+    {{ 'custom.min.js' | asset_url | script_tag }}
   
-  <script>
-    Spurit.globalOnLoad = function(){
-      Spurit.global.atc.onBeforeEventPrevented((event, target) => {
-        target.hasAttribute('data-pre-order-atc-button');
-      });
-      Spurit.global.atc.onBefore((event, target, lineItems, submitMode, next) => {
-        next(Spurit.global.constants.ATC.SUBMIT_MODE_AJAX, lineItems);
-      });
-      Spurit.global.atc.onAfter((event, target, lineItems, submitMode) => {
-        if(submitMode !== Spurit.global.constants.ATC.SUBMIT_MODE_AJAX){
-          return;
-        }
-        //your code here to open AJAX
-      });
-    };
-</script>
-<script data-src="https://t.cometlytrack.com?uid=d7f426-6990-1c5dfa-s"></script>
+    <script>
+      Spurit.globalOnLoad = function(){
+        Spurit.global.atc.onBeforeEventPrevented((event, target) => {
+          target.hasAttribute('data-pre-order-atc-button');
+        });
+        Spurit.global.atc.onBefore((event, target, lineItems, submitMode, next) => {
+          next(Spurit.global.constants.ATC.SUBMIT_MODE_AJAX, lineItems);
+        });
+        Spurit.global.atc.onAfter((event, target, lineItems, submitMode) => {
+          if(submitMode !== Spurit.global.constants.ATC.SUBMIT_MODE_AJAX){
+            return;
+          }
+          //your code here to open AJAX
+        });
+      };
+    </script>
 
-  
-</body>
+    <script data-src="https://t.cometlytrack.com?uid=d7f426-6990-1c5dfa-s"></script>
+  </body>
 </html>
+
+{{ 'jquery.gScrollingCarousel.css' | asset_url | stylesheet_tag }}
+{{ 'fancybox.css' | asset_url | stylesheet_tag }}
+
 {% endcapture %}
+
 {% assign content = content  | replace: ' src="shttps://www.youtube.com/embed/', ' data-src="https://www.youtube.com/embed/' | replace: ' src="https://pixel.roughgroup.com/Content/', ' data-src="https://pixel.roughgroup.com/Content/'  | replace: 'src="https://cdn.judge.me/shopify_v2.js', 'data-src="https://cdn.judge.me/shopify_v2.js' | replace: 'media="nope!" href="https://cdn.judge.me/shopify_v2', 'media="nope!" data-href="https://cdn.judge.me/shopify_v2'| replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}
 {% for html in content %}{% assign htmlblock = html | strip | prepend: ' <' %}{{htmlblock | replace: ' </', '</' | replace: 'judge78d7ca7fme', '<' }}{% endfor %}
