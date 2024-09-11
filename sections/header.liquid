@@ -730,6 +730,9 @@
                                 {% assign ph_cnt = ph_cnt | plus: 1 %}
                               {% endif %}
                             {% endfor %}
+                            {% if curr_pro_title == "Default Title" %}
+                              {% assign curr_pro_title = "Caviar Black" %}
+                            {% endif %}
                             <div class="full-width-desktop-padding mix-match-products">
                               <ul>
                                 {% for product in collections['phone-cases'].products %}

@@ -703,6 +703,9 @@ $(() => {
                 }
               }
             }
+            else {
+              productData = itemVariants[0];
+            }
           }
 
           // If compare at price exists then item is on sale
@@ -734,6 +737,9 @@ $(() => {
                       productData = itemVariants[v];
                     }
                   }
+                }
+                else {
+                  productData = itemVariants[0];
                 }
               }
 
@@ -844,6 +850,8 @@ $(() => {
                 passport_pro++;
               }
             });
+
+            if(curr_pro_title == null) curr_pro_title = "Caviar Black"
 
             if ( curr_pro != 'Strap'){
               $.each( data.products, function( key, value ) {
