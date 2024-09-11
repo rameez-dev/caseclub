@@ -3446,11 +3446,12 @@ window.productPage = {
                   jQuery('.matching-products ul li.product').each(function() {
                     var cnm = jQuery(this).find('.match-colors[data-color="' + color_nm + '"]').attr('data-href');
                     var cid = jQuery(this).find('.match-colors[data-color="' + color_nm + '"]').attr('data-vid');
-                    if (cnm != '') 
+                    
+                    if (cnm != '' && (typeof cnm !== "undefined")) 
                       jQuery(this).find('img').attr('src', cnm);
                     
 
-                    if (cid != '') 
+                    if (cid != '' && (typeof cid !== "undefined")) 
                       jQuery(this).closest('li').find('[name="id"]').val(cid);
                     
 
