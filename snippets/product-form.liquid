@@ -835,6 +835,37 @@
     {% endif %}
   {% endif %}
 {% endfor %}
+
+{% assign additional_collection = collections['additional-frequently-bought-products'] %}
+{% assign product_model_title = product.title | split: '-' | first %}
+{% for prod in additional_collection.products %}
+  {% assign prod_model_title = prod.title | split: '-' | first %}
+  {% if product_model_title != prod_model_title %}
+    <li class="product passport-holder">
+      <div class="pro-head">
+        <a href="{{ prod.url | within: collection }}">
+          <div class="img-wrap"><img src="{{ prod.featured_image | product_img_url: '400x' }}"><span class="initials"></span>
+          </div>
+        </a>
+      </div>
+      <div class="pro-body">
+        <h4>{{prod_model_title}}</h4>
+        <p>{{prod.description}}</p>
+      </div>
+      <div class="pro-foot">
+
+      {% assign collection_link = '/collections/magsafe-cases' %}
+      {% for coll in prod.collections %}
+        {% if coll.metafields.custom.selector_collection %}
+          {% assign collection_link = coll.url %}
+        {% endif %}
+      {% endfor %}
+  
+      <a href="{{ collection_link }}" style="line-height: 1.2;text-align: center;" class="add_to_cart">SEE COLLECTION</a>
+      </div>
+    </li>
+  {% endif %}
+{% endfor %}
     
   </ul>
   </div>
