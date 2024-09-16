@@ -744,7 +744,7 @@
             <input type="hidden" name="id" value="{{ v.id }}" />
             <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
             <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
-            <select name="frequently-asked-products-selector" class="frequently-asked-select">
+            <select name="frequently-asked-products-selector" class="frequently-asked-select iphone-case-freq-selector">
               {% for prd in collections['phone-cases'].products %}
                 {% if prd.available %}  
                   <option value="{{ prd.selected_or_first_available_variant.id }}" 
@@ -860,8 +860,40 @@
           {% assign collection_link = coll.url %}
         {% endif %}
       {% endfor %}
+
+      {% unless customized_color contains "#" %}
+        {% assign customized_color = "#000" %}
+      {% endunless %}
+
+      {% unless customized_shade contains "#" %}
+        {% assign customized_shade = "#000" %}
+      {% endunless %}
+
+      <form method="post" action="/cart/add">
+        <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
+        <input type="hidden" name="properties[Letter Color1]" value="{{ customized_color }}">
+        <input type="hidden" name="properties[Shade Color]" value="{{ customized_shade }}">
+        <input type="hidden" name="id" value="{{ prod.selected_or_first_available_variant.id }}" />
+        <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+        <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+        <select name="frequently-asked-products-selector" class="frequently-asked-select">
+          {% assign freq_collection = blank %}
+          {% for col in prod.collections %}
+            {% if col.metafields.custom.selector_collection %}
+              {% assign freq_collection = col %}     
+            {% endif %}
+          {% endfor %}
+          {% for prd in freq_collection.products %}
+            {% if prd.available %}  
+              <option value="{{ prd.selected_or_first_available_variant.id }}" 
+                data-image="{{ prd.featured_image | product_img_url: '400x' }}" 
+                {% if forloop.index0 == 0 %}selected{% endif %}>{{ prd.title | split: "-" | last | strip }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </form>
   
-      <a href="{{ collection_link }}" style="line-height: 1.2;text-align: center;" class="add_to_cart">SEE COLLECTION</a>
+      {% comment %} <a href="{{ collection_link }}" style="line-height: 1.2;text-align: center;" class="add_to_cart">SEE COLLECTION</a> {% endcomment %}
       </div>
     </li>
   {% endif %}

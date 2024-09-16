@@ -535,6 +535,8 @@
                         {% assign curr_pro_color = '' %}
                         {% assign curr_pro_title = '' %}
                         {% assign curr_pro_model = '' %}
+                        {% assign customized_color = '' %}
+                        {% assign customized_shade = '' %}
                         <div class="cart-inner-wrap">
                           <ul class="cart_items js-cart_items">
                             {%- assign total_saving = 0 -%}
@@ -565,6 +567,8 @@
                             {%- for p in item.properties -%}
                               {% unless p.last == blank %}
                                 {%- if p.first=='Letter Color' -%}{%- assign  curr_pro_color = p.last -%}{%- endif -%}
+                                {%- if p.first=='Letter Color1' -%}{%- assign  customized_color = p.last -%}{%- endif -%}
+                                {%- if p.first=='Shade Color' -%}{%- assign  customized_shade = p.last -%}{%- endif -%}
                               {% endunless %}
                             {%- endfor -%}
                             {% for p in item.properties %}
@@ -716,7 +720,7 @@
                             {% assign pc_cnt = 0 %}
 
                             {% for itm in cart.items %}
-                              {% if itm.product.type=='Phone Cases'%}
+                              {% if itm.product.type=='Phone Cases' or itm.product.type=='Personalized Phone Cases' %}
                                 {% assign pc_cnt = pc_cnt | plus: 1 %}
                               {% endif %}
                               
@@ -1143,9 +1147,24 @@
                                   {% endif %}
                                 {% endfor %}
 
+                                {% if customized_color == blank or customized_color == "" %}
+                                  {% assign customized_color = "#000" %}
+                                {% endif %}
+                                {% if customized_shade == blank or customized_shade == "" %}
+                                  {% assign customized_shade = "#000" %}
+                                {% endif %}
+
                                 {% assign magsafe_cases = "travel-magsafe-collection,classic-font-magsafe-collection,teddy-bear-magsafe-case-collection,mon-cheri-magsafe-case-collection,love-magsafe-case-collection,heart-magsafe-case-collection,daisy-flower-magsafe-collection,blossom-magsafe-collection,monaco-magsafe-case-collection" | split: "," %}
                                 {% assign item_phone_model = curr_pro_model | split: '-' | last | strip %}
                                 {% assign item_phone_model_type = curr_pro_model | split: '-' | first | strip %}
+
+                                {% if product.type == "Phone Cases" %}
+                                  {% assign item_phone_model = curr_pro_model %}
+                                {% endif %}
+                                {% comment %} this next condition is to check if - is in title otherwise it becomes equal to item title {% endcomment %}
+                                {% unless curr_pro_model contains "-" %}
+                                  {% assign item_phone_model_type = "XXX"%}
+                                {% endunless %}
                                 {% for coll_handle in magsafe_cases %}
                                   {% assign coll = collections[coll_handle] %}
                                   {% assign prod = '' %}
@@ -1173,6 +1192,7 @@
                                         <div class="mix-pro-price">
                                           <div>
                                             <h4>{{ prod.title | split: '-' | first | strip }}</h4>
+                                            {% assign item_phone_model = prod.title | split: '-' | last | strip %}
                                             <p>{{ item_phone_model }}</p>
                                           </div>
 
@@ -1202,8 +1222,12 @@
                                               value="{{curr_pro_intial}}">
                                             <input
                                               type="hidden"
-                                              name="properties[Letter Color]"
-                                              value="{{curr_pro_color}}">
+                                              name="properties[Letter Color1]"
+                                              value="{{customized_color}}">
+                                            <input
+                                              type="hidden"
+                                              name="properties[Shade Color]"
+                                              value="{{customized_shade}}">
                                             <input
                                               type="hidden"
                                               name="id"
@@ -1234,7 +1258,7 @@
 
                                 {% comment %} straps {% endcomment %}
 
-                                {% for product in collections.all.products %}
+                                {% comment %} {% for product in collections.all.products %}
                                   {% if product.type == 'Strap' %}
                                     <li class="product strap">
                                       <div class="product-slide-inner">
@@ -1304,7 +1328,7 @@
                                       </div>
                                     </li>
                                   {% endif %}
-                                {% endfor %}
+                                {% endfor %} {% endcomment %}
                               </ul>
                             </div>
                           </div>
