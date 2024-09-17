@@ -556,13 +556,6 @@
 <div class="full-width-desktop-padding matching-products">
   <ul>
  
-  {%- capture compare_at_price -%}
-    {%-
-      render 'price-ui-templates',
-      template: 'price',
-      value: product.compare_at_price,
-    -%}
-  {%- endcapture -%}
 {% for product in collections.all.products %}
   {% if curr_pro != 'Card Holders' %}
   	{% if product.type == 'Card Holders' %}
@@ -579,6 +572,13 @@
           <h4>{{product.type}}</h4>
           <p>{{product.description}}</p>
         </div>
+        {%- capture compare_at_price -%}
+          {%-
+            render 'price-ui-templates',
+            template: 'price',
+            value: product.compare_at_price,
+          -%}
+        {%- endcapture -%}
         <div class="pro-foot">
             {%- assign saleOn = false -%}
             {%- for colprod in product.collections -%}
@@ -700,7 +700,7 @@
           </a>
         </div>
         <div class="pro-body">
-          <h4>{{product.type}}</h4>
+          <h4>The Personalized {{product.type}}</h4>
           <p>{{product.description}}</p>
         </div>
         <div class="pro-foot">
