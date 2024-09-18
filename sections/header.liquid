@@ -592,7 +592,11 @@
                         <div class="mini-cart__item-content">
                           <div class="mini-cart__item-title">
                             {% if item.product.type=='Phone Cases' or item.product.type == 'Personalized Phone Cases'%}
-							<h4 class="product_name">The Personalized Case</h4>
+                              {% if item.product.title contains "MagSafe" %}
+                                <h4 class="product_name">The Personalized {{ item.product.title | split: "-" | first | strip }}</h4>
+                              {% else %}
+                                <h4 class="product_name">The Personalized Case</h4>
+                              {% endif %}
 							{% endif %}
 							{% if item.product.type=='Card Wallets' %}
 							<h4 class="product_name">The Personalized Card Wallet</h4>
@@ -760,7 +764,7 @@
                                               </a>
                                               <div class="mix-pro-price">
                                                 <div>
-                                                  <h4>The Personalized {{ product.type }}</h4>
+                                                  <h4>The Personalized Phone Case</h4>
                                                   <p>You deserve a phone case made just for you.</p>
                                                 </div>
                                                 {%- if settings.show_sales_label -%}
@@ -848,7 +852,7 @@
                                               </a>
                                               <div class="mix-pro-price">
                                                 <div>
-                                                  <h4>{{ product.type }}</h4>
+                                                  <h4>The Personalized Card Holder</h4>
                                                   <p>Sleek designed card holders which slide into any sized pocket and bag.</p>
                                                 </div>
 
@@ -930,7 +934,7 @@
                                               </a>
                                               <div class="mix-pro-price">
                                                 <div>
-                                                  <h4>{{ product.type }}</h4>
+                                                  <h4>The Personalized Card Wallet</h4>
                                                   <p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p>
                                                 </div>
 
@@ -1013,7 +1017,7 @@
                                               </a>
                                               <div class="mix-pro-price">
                                                 <div>
-                                                  <h4>{{ product.type }}</h4>
+                                                  <h4>The Personalized Passport Holder</h4>
                                                   <p>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes.</p>
                                                 </div>
 
@@ -1193,7 +1197,7 @@
                                           <div>
                                             <h4>{{ prod.title | split: '-' | first | strip }}</h4>
                                             {% assign item_phone_model = prod.title | split: '-' | last | strip %}
-                                            <p></p>
+                                            <p>Made just for you with our brand new MagSafe technology</p>
                                           </div>
 
                                           {%- if settings.show_sales_label -%}
