@@ -674,7 +674,13 @@ $(() => {
         cartItemsHTML += `<div class="mini-cart__item-content"><div class="mini-cart__item-title">`;
 		
 		if ( item.product_type=='Phone Cases' || item.product_type ==='Personalized Phone Cases') {
-			cartItemsHTML += `<h4 class="product_name">The Personalized Case</h4>`;
+      if ( item.product_title.includes("MagSafe")) {
+        let curr_title = item.product_title.split('-')[0].trim()
+        cartItemsHTML += `<h4 class="product_name">The Personalized ${curr_title}</h4>`;
+      }
+      else {
+        cartItemsHTML += `<h4 class="product_name">The Personalized Case</h4>`;
+      }
 		}
 		if ( item.product_type=='Card Wallets' ) {
 			cartItemsHTML += `<h4 class="product_name">The Personalized Card Wallet</h4>`;
@@ -888,7 +894,7 @@ $(() => {
                       match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
                       match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
                       match_html += '</div></a>';
-                      match_html += '<div class="mix-pro-price" ><div><h4>The Personalized '+value.product_type+'</h4><p>You deserve a phone case made just for you.</p></div>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>The Personalized Phone Case</h4><p>You deserve a phone case made just for you.</p></div>';
                       match_html += '<h5>';
                       match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
                       match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
@@ -913,7 +919,7 @@ $(() => {
                       match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
                       match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
                       match_html += '</div></a>';
-                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p></div>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>The Personalized Card Wallet</h4><p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p></div>';
                       match_html += '<h5>';
                       match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
                       match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
@@ -936,7 +942,7 @@ $(() => {
                       match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
                       match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
                       match_html += '</div></a>';
-                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>Sleek designed card holders which slide into any sized pocket and bag.</p></div>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>The Personalized Card Holder</h4><p>Sleek designed card holders which slide into any sized pocket and bag.</p></div>';
                       match_html += '<h5>';
                       match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
                       match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
@@ -962,7 +968,7 @@ $(() => {
                       match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
                       match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
                       match_html += '</div></a>';
-                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes</p></div>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>The Personalized Passport Holder</h4><p>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes</p></div>';
                       match_html += '<h5>';
                       match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
                       match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
@@ -1035,7 +1041,7 @@ $(() => {
                       match_html += '<a href="/products/'+value.handle+'">';
                       match_html += '<div class="img-wrap"><img src="'+value.images[0].src+`"><span class="cart-initials-color1-text" style="color: ${ customized_color } !important; text-shadow: ${ customized_shade_color } 1px 2px 0px">` + curr_pro_intial + '</span>';
                       match_html += '</div></a>';
-                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.title.split('-')[0].trim()+'</h4><p>'+'</p></div>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.title.split('-')[0].trim()+'</h4><p>Made just for you with our brand new MagSafe technology</p></div>';
                       match_html += '<h5>';
                       match_html += (value.variants[0].price > (value.variants[0].price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value.variants[0].price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>` : (value.variants[0].compare_at_price > value.variants[0].price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value.variants[0].compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>` : '';
                       match_html += '<span>'+window.Shopify.formatMoney((value.variants[0].price*per_dis), $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
