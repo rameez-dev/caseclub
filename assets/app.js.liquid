@@ -676,7 +676,7 @@ $(() => {
 		if ( item.product_type=='Phone Cases' || item.product_type ==='Personalized Phone Cases') {
       if ( item.product_title.includes("MagSafe")) {
         let curr_title = item.product_title.split('-')[0].trim()
-        cartItemsHTML += `<h4 class="product_name">The Personalized ${curr_title}</h4>`;
+        cartItemsHTML += `<h4 class="product_name">${curr_title}</h4>`;
       }
       else {
         cartItemsHTML += `<h4 class="product_name">The Personalized Case</h4>`;
@@ -1009,12 +1009,42 @@ $(() => {
               });
 
               let magsafe_cases = ["Travel MagSafe", "Classic Font MagSafe", "Teddy Bear MagSafe", "Mon Chéri MagSafe", "Love MagSafe", "Heart MagSafe", "Daisy Flower MagSafe", "Blossom MagSafe", "Monaco MagSafe"]
+              let customOrder = [
+                "iPhone 16 Pro Max",
+                "iPhone 16 Pro",
+                "iPhone 16 Plus",
+                "iPhone 16",
+                "iPhone 15 Pro Max",
+                "iPhone 15 Pro",
+                "iPhone 14 Pro Max",
+                "iPhone 14 Pro"
+              ];
+
+              function getModelName(str) {
+                return str.split("-")[1].trim();
+              }
 
               for ( index in magsafe_cases) {
                 let current_type = magsafe_cases[index];
                 let products = data.products.filter((product) => product.title.includes(current_type))
+                products.sort((a, b) => {
+                  let modelA = getModelName(a.title);
+                  let modelB = getModelName(b.title);
+
+                  let indexA = customOrder.indexOf(modelA);
+                  let indexB = customOrder.indexOf(modelB);
+
+                  // If the model is not in the custom order, push it to the end
+                  if (indexA === -1) return 1;
+                  if (indexB === -1) return -1;
+
+                  return indexA - indexB;
+                });
                 let temp_products = products
-                let selected_products = products.filter((product) => product.title.includes(curr_pro_model))
+
+                //uncomment if need to default select on matching iphone model product
+                // let selected_products = products.filter((product) => product.title.includes(curr_pro_model))
+                let selected_products = products
 
                 if(selected_products.length > 0) {
                   products = selected_products
