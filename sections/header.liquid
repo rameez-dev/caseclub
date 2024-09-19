@@ -593,7 +593,7 @@
                           <div class="mini-cart__item-title">
                             {% if item.product.type=='Phone Cases' or item.product.type == 'Personalized Phone Cases'%}
                               {% if item.product.title contains "MagSafe" %}
-                                <h4 class="product_name">The Personalized {{ item.product.title | split: "-" | first | strip }}</h4>
+                                <h4 class="product_name">{{ item.product.title | split: "-" | first | strip }}</h4>
                               {% else %}
                                 <h4 class="product_name">The Personalized Case</h4>
                               {% endif %}
@@ -1172,11 +1172,12 @@
                                 {% for coll_handle in magsafe_cases %}
                                   {% assign coll = collections[coll_handle] %}
                                   {% assign prod = '' %}
-                                  {% for item in coll.products %}
+                                  {% comment %} uncomment if need to default select on matching iphone model product {% endcomment %}
+                                  {% comment %} {% for item in coll.products %}
                                     {% if item.title contains item_phone_model %}
                                       {% assign prod = item %}
                                     {% endif %}
-                                  {% endfor %}
+                                  {% endfor %} {% endcomment %}
                                   {% if prod == '' %}
                                     {% assign prod = coll.products | first %}
                                   {% endif %}
