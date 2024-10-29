@@ -19379,7 +19379,7 @@ span.cart-head-text {
     padding:0px;
 }
   .mix-match-products ul li h4 {
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 0;
     text-transform: inherit;
     color: #000;
@@ -19387,7 +19387,7 @@ span.cart-head-text {
     margin: 0 0px 3px;
     font-family: lato, sans-serif;
     font-weight: 700;
-    line-height:16px;
+    line-height:18px;
     
 }
 .mix-match-products ul li h5 {
@@ -21655,4 +21655,229 @@ font-size: 12px ;
 }
 .noshade:checked+label {
   border: 1px solid rgb(255, 100, 145);
+}
+
+
+/* Banner Images-II */
+
+.banner-images_container {
+  display : flex;
+  flex-direction : row;
+}
+
+.banner-images-main {
+   flex : 1;
+   position : relative;
+}
+
+.banner-images-II_link { 
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color : white !important;
+   font-family : emoji;
+   padding : 15px;
+   font-weight : 600;
+   text-align : center; 
+   font-size : 18px;
+   z-index: 1;
+}
+
+.banner-images-all {
+  height : 100%;
+}
+
+.banner-images-all img {
+   aspect-ratio : 1;
+   height : 100%;
+   width : 100%;
+   flex : 0 0 100%;
+   object-fit : cover;
+}
+.banner-single-image img{
+  height : 100%;
+  width : 100%;
+  flex : 0 0 100%;
+  object-fit : cover;
+}
+
+.banner-single-image img {
+  display : flex !important;
+}
+
+.banner-single-mbl-image img {
+  display : none;
+}
+
+.banner-single-images_container {
+  position: relative;
+}
+
+@media only screen and (max-width: 768px) { 
+   .banner-images_container {
+        display : block; 
+     }  
+   
+  .banner-images-all {
+   display : flex;
+  }   
+
+  .banner-single-image {
+    display: flex;
+  }
+
+  .banner-single-image img {
+    display : none !important;
+  }
+
+  .banner-single-mbl-image img {
+    display : flex !important;
+  height : 100%;
+  width : 100%;
+  flex : 0 0 100%;
+  object-fit : cover;
+  }
+
+  .banner-images-2nd {
+    display : none;
+  }
+
+  .banner-images-II_link {
+    padding : 20px;
+    font-size : 18px;
+    line-height : 1.3;
+  }
+}
+
+.button-show-mobile {
+  display: none
+}
+
+@media only screen and (max-width: 768px) {
+  .button-show-mobile {
+    display: inline-block;
+  }
+  .button-show-desktop {
+    display: none
+  }
+}
+
+/* Coming Soon Page */
+
+.error-page_section {
+  width : 100% !important;
+  max-width : 100%;
+}
+
+.error-page_section .container {
+  padding : unset!important;
+}
+
+.section .error-container--404 {
+  height: 100%;
+  width : 100%;
+  background-color: #f9f2ec; /* For browsers that do not support gradients */
+  background-image: linear-gradient(360deg, #f9f2ec, #93564b);
+
+}
+
+.error-page_content {
+  padding-top : 90px;
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+  justify-content : center;
+  color : white;
+}
+
+.error-page_content .error-page--title {
+  font-size : 60px; 
+  padding-bottom : 40px;
+  white-space : nowrap;
+}
+
+.error-page_subcontent {
+  text-align : center;
+  font-size : 16px;
+  max-width : 500px;
+  padding: 0px 30px;
+}
+
+input::placeholder {
+  font-size : 11px !important;
+}
+ 
+.error-page_socialicons {
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  margin-left : auto;
+  margin-right : auto;
+  gap : 10px;
+}
+
+.error-page_socialicons li {
+  display : flex;
+  justify-content : center;
+  align-items : center;
+}
+
+.error-page_socialicons a {
+  color : black !important;
+}
+
+@media screen and (max-width : 430px){
+  .error-page_content .error-page--title {
+    font-size : 50px;
+    white-space : nowrap;
+  }
+  .error-page_subcontent {
+    font-size : 14px; 
+    overflow : hidden; 
+    width : unset;
+  }
+}
+
+.locale-selectors__content form {
+  max-width: 100%;
+}
+.locale-selectors__content .locale-selectors__selector {
+  width: 100% !important;
+}
+.locale-selectors__content {
+  width: 95%;
+}
+.cart__item--content .meta, .cart__item--content .price_total, .cart_subtotal {
+  color: black;
+}
+
+.notify_form p {
+  color: #000;
+}
+
+.mix-match-products .loading-overlay__spinner {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}
+.discount-ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.discount-li {
+  display: flex;
+  padding: 0 !important;
+  width: 100%;
+  margin-bottom: 5px !important;
+}
+.discount-li:last-of-type {
+  margin: 0 !important;
+}
+
+.screen-protectors .initials {
+  display: none
 }

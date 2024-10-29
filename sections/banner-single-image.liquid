@@ -1,5 +1,5 @@
 <section class="banner-image">
-  <div class="banner-images_container">
+  <div class="banner-single-images_container"> 
     <div class="banner-images-main">
       {% if section.settings.banner-text-II != blank %}
         <a class="button-show-mobile banner-images-II_link" href="{{ section.settings.banner-button-link }}" 
@@ -7,28 +7,19 @@
           {{ section.settings.banner-text-II }}
         </a>
         {% endif %}
-      <div class="banner-images-all">  
-        {{ section.settings.First-image | image_url: width: 900 | image_tag: widths: '300, 600, 900, 1200' }}
+      <div class="banner-single-image">  
+        {{ section.settings.First-image | image_url: width: 1800 | image_tag: widths: '300, 600, 900, 1200, 1500, 1800' }}
+      </div>
+      <div class="banner-single-mbl-image">  
+        <img src={{ section.settings.second-image | image_url }}>
       </div>
     </div>
-    <div class="banner-images-II-main banner-images-main">
       {% if section.settings.banner-text-II != blank %}
       <a class="button-show-desktop banner-images-II_link" href="{{ section.settings.banner-button-link }}" 
       style="background: rgb({{ section.settings.banner-button-bg-color.rgb |  replace: ' ', ','  }}, {{ section.settings.bg_opacity }}) !important;color: {{ section.settings.banner-button-text-color }} !important; width: {{ section.settings.bg_width |  times: 200 }}px; max-width: 80%; margin-top: {{ section.settings.button_position |  times: 100 }}px">
         {{ section.settings.banner-text-II }}
       </a>
       {% endif %}
-      <div class="banner-images-all banner-images-2nd">
-        <img src={{ section.settings.Second-image | image_url }}>
-      </div>
-    </div>
-    <div class="banner-images-main">
-      <div class="banner-images-all">
-        <img src={{ section.settings.Third-image | image_url }}>
-      </div>
-    </div>
-    <div>
-    </div>
   </div>
 </section>
 
@@ -36,23 +27,17 @@
 {%  schema  %}  
 
 {
-    "name": "Banner image II",
+    "name": "Banner Single Image",
     "settings": [
       {
         "type": "image_picker",
         "id": "First-image",
-        "label": "First Image"
+        "label": "Desktop Image"
       },
       {
         "type": "image_picker",
-        "id": "Second-image",
-        "label": "Second Image"
-      }
-      ,
-      {
-        "type": "image_picker",
-        "id": "Third-image",
-        "label": "Third Image"
+        "id": "second-image",
+        "label": "Mobile Image"
       },
       {
         "type": "text",
@@ -117,7 +102,7 @@
       ],
     "presets": [
       {
-        "name": "Banner image II",
+        "name": "Banner Single Image",
         "category": "Content"
       }
     ]

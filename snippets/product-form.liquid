@@ -215,6 +215,10 @@
     <label class="form-label">Select your device</label>
     {% assign  count = count | plus:1 %}
     <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+    <option value="/products/iphone-16-pro-max" {% if product.title == "iPhone 16 Pro Max" %}selected{% endif %}>iPhone 16 Pro Max</option>
+    <option value="/products/iphone-16-pro" {% if product.title == "iPhone 16 Pro" %}selected{% endif %}>iPhone 16 Pro</option>
+    <option value="/products/iphone-16-plus" {% if product.title == "iPhone 16 Plus" %}selected{% endif %}>iPhone 16 Plus</option>
+    <option value="/products/iphone-16" {% if product.title == "iPhone 16" %}selected{% endif %}>iPhone 16</option>
             <option value="/products/iphone-15-pro-max" {% if product.title == "iPhone 15 Pro Max" %}selected{% endif %}>iPhone 15 Pro Max</option>
             <option value="/products/iphone-15-pro" {% if product.title == "iPhone 15 Pro" %}selected{% endif %}>iPhone 15 Pro</option>
             <option value="/products/iphone-15-plus" {% if product.title == "iPhone 15 Plus" %}selected{% endif %}>iPhone 15 Plus</option>
@@ -554,13 +558,6 @@
 <div class="full-width-desktop-padding matching-products">
   <ul>
  
-  {%- capture compare_at_price -%}
-    {%-
-      render 'price-ui-templates',
-      template: 'price',
-      value: product.compare_at_price,
-    -%}
-  {%- endcapture -%}
 {% for product in collections.all.products %}
   {% if curr_pro != 'Card Holders' %}
   	{% if product.type == 'Card Holders' %}
@@ -574,9 +571,16 @@
            </a>
         </div>
         <div class="pro-body">
-          <h4>{{product.type}}</h4>
+          <h4>The Personalized Card Holder</h4>
           <p>{{product.description}}</p>
         </div>
+        {%- capture compare_at_price -%}
+          {%-
+            render 'price-ui-templates',
+            template: 'price',
+            value: product.compare_at_price,
+          -%}
+        {%- endcapture -%}
         <div class="pro-foot">
             {%- assign saleOn = false -%}
             {%- for colprod in product.collections -%}
@@ -637,7 +641,7 @@
            </a>
         </div>
         <div class="pro-body"> 
-          <h4>{{product.type}}</h4>
+          <h4>The Personalized Card Wallet</h4>
           <p>{{product.description}}</p>
         </div>
         <div class="pro-foot">
@@ -698,7 +702,7 @@
           </a>
         </div>
         <div class="pro-body">
-          <h4>{{product.type}}</h4>
+          <h4>The Personalized Phone Case</h4>
           <p>{{product.description}}</p>
         </div>
         <div class="pro-foot">
@@ -744,7 +748,7 @@
             <input type="hidden" name="id" value="{{ v.id }}" />
             <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
             <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
-            <select name="frequently-asked-products-selector" class="frequently-asked-select">
+            <select name="frequently-asked-products-selector" class="frequently-asked-select iphone-case-freq-selector">
               {% for prd in collections['phone-cases'].products %}
                 {% if prd.available %}  
                   <option value="{{ prd.selected_or_first_available_variant.id }}" 
@@ -778,7 +782,7 @@
           </a>
         </div>
         <div class="pro-body">
-          <h4>{{product.type}}</h4>
+          <h4>The Personalized Passport Holder</h4>
           <p>{{product.description}}</p>
         </div>
         <div class="pro-foot">
@@ -833,6 +837,106 @@
           {% endfor %}
       </li>
     {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% assign additional_collection = collections['additional-frequently-bought-products'] %}
+{% assign product_model_title = product.title | split: '-' | first %}
+{% for prod in additional_collection.products %}
+  {% assign prod_model_title = prod.title | split: '-' | first %}
+  {% if product_model_title != prod_model_title %}
+    <li class="product magsafe-freq-prods">
+      <div class="pro-head">
+        <a href="{{ prod.url | within: collection }}">
+          <div class="img-wrap"><img src="{{ prod.featured_image | product_img_url: '400x' }}">
+          </div>
+        </a>
+      </div>
+      <div class="pro-body">
+        <h4>{{prod_model_title}}</h4>
+        <p>{{prod.description}}</p>
+      </div>
+      <div class="pro-foot">
+
+      {%- assign saleOn = false -%}
+      {%- for colprod in prod.collections -%}
+        {%- for col in settings.sale_collection_list -%}
+          {%- if colprod.id == col.id -%}
+            {%- assign saleOn = true -%}
+            {% break %}
+            {% break %}
+          {%- endif -%}  
+        {%- endfor -%}
+      {%- endfor -%}
+
+      {%- if settings.show_sales_label and saleOn -%}
+      {% assign perc = 100 | minus: settings.sale_amount %}
+      {% assign perc = perc | divided_by: 100.0 %}
+      {% assign cmp_price = prod.price_min | times: perc %}
+      <h5>
+        <span class="money compare-at-price">{% render 'price-element', price: prod.price_min %}</span>
+        <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+      </h5>
+      {%- else -%}
+        {%- capture compare_at_price -%}
+          {%-
+            render 'price-ui-templates',
+            template: 'price',
+            value: prod.compare_at_price,
+          -%}
+        {%- endcapture -%}
+        <div class="price-frequently-bought_products">
+          <span class="compare-at-price-custom money compare-at-price">{%  render 'price-ui-templates',
+            template: 'price-ui',
+            compare_at_price: compare_at_price,
+            %} 
+            </span>
+          <span class="money">{% render 'price-element', price: prod.price_min %}</span>
+          </div>
+      {% endif %}
+
+      {% assign collection_link = '/collections/magsafe-cases' %}
+      {% for coll in prod.collections %}
+        {% if coll.metafields.custom.selector_collection %}
+          {% assign collection_link = coll.url %}
+        {% endif %}
+      {% endfor %}
+
+      {% unless customized_color contains "#" %}
+        {% assign customized_color = "#000" %}
+      {% endunless %}
+
+      {% unless customized_shade contains "#" %}
+        {% assign customized_shade = "#000" %}
+      {% endunless %}
+
+      <form method="post" action="/cart/add">
+        <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
+        <input type="hidden" name="properties[Letter Color1]" value="{{ customized_color }}">
+        <input type="hidden" name="properties[Shade Color]" value="{{ customized_shade }}">
+        <input type="hidden" name="id" value="{{ prod.selected_or_first_available_variant.id }}" />
+        <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+        <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+        <select name="frequently-asked-products-selector" class="frequently-asked-select">
+          {% assign freq_collection = blank %}
+          {% for col in prod.collections %}
+            {% if col.metafields.custom.selector_collection %}
+              {% assign freq_collection = col %}     
+            {% endif %}
+          {% endfor %}
+          {% for prd in freq_collection.products %}
+            {% if prd.available %}  
+              <option value="{{ prd.selected_or_first_available_variant.id }}" 
+                data-image="{{ prd.featured_image | product_img_url: '400x' }}" 
+                {% if forloop.index0 == 0 %}selected{% endif %}>{{ prd.title | split: "-" | last | strip }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </form>
+  
+      {% comment %} <a href="{{ collection_link }}" style="line-height: 1.2;text-align: center;" class="add_to_cart">SEE COLLECTION</a> {% endcomment %}
+      </div>
+    </li>
   {% endif %}
 {% endfor %}
     

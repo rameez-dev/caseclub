@@ -91,7 +91,7 @@
   }, 1000);
 </script>
 <div class="top-notify-bar">
-  <div>NEW YEAR SALE: 40% OFF EVERYTHING WHEN YOU ORDER BEFORE
+  <div>SUMMER SALE: 30% OFF EVERYTHING WHEN YOU ORDER BEFORE
     <span class="countdown-view" style="color: gold;font-weight: bold;"></span>
   </div>
   <div>BUY 2 ITEMS GET 2 FREE - NO CODE REQUIRED</div>
@@ -534,6 +534,9 @@
                         {% assign curr_pro_intial = '' %}
                         {% assign curr_pro_color = '' %}
                         {% assign curr_pro_title = '' %}
+                        {% assign curr_pro_model = '' %}
+                        {% assign customized_color = '' %}
+                        {% assign customized_shade = '' %}
                         <div class="cart-inner-wrap">
                           <ul class="cart_items js-cart_items">
                             {%- assign total_saving = 0 -%}
@@ -564,6 +567,8 @@
                             {%- for p in item.properties -%}
                               {% unless p.last == blank %}
                                 {%- if p.first=='Letter Color' -%}{%- assign  curr_pro_color = p.last -%}{%- endif -%}
+                                {%- if p.first=='Letter Color1' -%}{%- assign  customized_color = p.last -%}{%- endif -%}
+                                {%- if p.first=='Shade Color' -%}{%- assign  customized_shade = p.last -%}{%- endif -%}
                               {% endunless %}
                             {%- endfor -%}
                             {% for p in item.properties %}
@@ -587,7 +592,11 @@
                         <div class="mini-cart__item-content">
                           <div class="mini-cart__item-title">
                             {% if item.product.type=='Phone Cases' or item.product.type == 'Personalized Phone Cases'%}
-							<h4 class="product_name">The Personalized Case</h4>
+                              {% if item.product.title contains "MagSafe" %}
+                                <h4 class="product_name">{{ item.product.title | split: "-" | first | strip }}</h4>
+                              {% else %}
+                                <h4 class="product_name">The Personalized Case</h4>
+                              {% endif %}
 							{% endif %}
 							{% if item.product.type=='Card Wallets' %}
 							<h4 class="product_name">The Personalized Card Wallet</h4>
@@ -698,6 +707,7 @@
                               {% if curr_pro == '' %}
                                 {% assign curr_pro = item.product.type %}
                                 {% assign curr_pro_title = item.variant.title %}
+                                {% assign curr_pro_model = item.product.title %}
                               {% endif; %}
                             {% endfor %}
                           </ul>
@@ -714,7 +724,7 @@
                             {% assign pc_cnt = 0 %}
 
                             {% for itm in cart.items %}
-                              {% if itm.product.type=='Phone Cases'%}
+                              {% if itm.product.type=='Phone Cases' or itm.product.type=='Personalized Phone Cases' %}
                                 {% assign pc_cnt = pc_cnt | plus: 1 %}
                               {% endif %}
                               
@@ -730,6 +740,9 @@
                                 {% assign ph_cnt = ph_cnt | plus: 1 %}
                               {% endif %}
                             {% endfor %}
+                            {% if curr_pro_title == "Default Title" %}
+                              {% assign curr_pro_title = "Caviar Black" %}
+                            {% endif %}
                             <div class="full-width-desktop-padding mix-match-products">
                               <ul>
                                 {% for product in collections['phone-cases'].products %}
@@ -751,7 +764,7 @@
                                               </a>
                                               <div class="mix-pro-price">
                                                 <div>
-                                                  <h4>{{ product.type }}</h4>
+                                                  <h4>The Personalized Phone Case</h4>
                                                   <p>You deserve a phone case made just for you.</p>
                                                 </div>
                                                 {%- if settings.show_sales_label -%}
@@ -839,7 +852,7 @@
                                               </a>
                                               <div class="mix-pro-price">
                                                 <div>
-                                                  <h4>{{ product.type }}</h4>
+                                                  <h4>The Personalized Card Holder</h4>
                                                   <p>Sleek designed card holders which slide into any sized pocket and bag.</p>
                                                 </div>
 
@@ -921,7 +934,7 @@
                                               </a>
                                               <div class="mix-pro-price">
                                                 <div>
-                                                  <h4>{{ product.type }}</h4>
+                                                  <h4>The Personalized Card Wallet</h4>
                                                   <p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p>
                                                 </div>
 
@@ -1004,7 +1017,7 @@
                                               </a>
                                               <div class="mix-pro-price">
                                                 <div>
-                                                  <h4>{{ product.type }}</h4>
+                                                  <h4>The Personalized Passport Holder</h4>
                                                   <p>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes.</p>
                                                 </div>
 
@@ -1068,9 +1081,204 @@
                                   {% endif %}
                                 {% endfor %}
 
+                                {% assign screen_protector = all_products['premium-screen-protector'] %}
+                                {% if curr_pro != 'Screen Protectors' %}
+                                  {% assign item_phone_model = curr_pro_model | split: '-' | last | strip %}
+                                  {% assign protector_variant = screen_protector.variants | where: "title", item_phone_model %}
+
+                                  {% if protector_variant.size == 0 %}
+                                    {% assign protector_variant = screen_protector.variants | last %}
+                                  {% else %}
+                                    {% assign protector_variant = protector_variant[0] %}
+                                  {% endif %}
+
+                                  <li class="product screen-protector">
+                                    <div class="product-slide-inner">
+                                      <a href="{{ protector_variant.product.url | within: collection }}">
+                                        <div class="img-wrap"><img src="{{ protector_variant.product.featured_media | product_img_url: '400x' }}">
+                                        </div>
+                                      </a>
+                                      <div class="mix-pro-price">
+                                        <div>
+                                          <h4>{{ protector_variant.product.type }}</h4>
+                                          <p>{{ protector_variant.title }}</p>
+                                        </div>
+
+                                        {%- if settings.show_sales_label -%}
+                                          {% assign perc = 100 | minus: settings.sale_amount %}
+                                          {% assign perc = perc | divided_by: 100.0 %}
+                                          {% assign cmp_price = protector_variant.product.price_min | times: perc %}
+                                          <h5>
+                                            <span class="money compare-at-price">{{ protector_variant.product.price_min | money_without_trailing_zeros }}</span>
+                                            <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+                                          </h5>
+                                        {%- else -%}
+                                          <h5>
+                                            {% if protector_variant.product.compare_at_price > protector_variant.product.price %}
+                                              <span class="money compare-at-price">{{ protector_variant.product.compare_at_price | money_without_trailing_zeros }}</span>
+                                              <span class="money" style="margin-left:5px;">{{ protector_variant.product.price | money_without_trailing_zeros }}</span>
+                                            {% else %}
+                                              <span class="money">{{ protector_variant.product.price_min | money_without_trailing_zeros }}</span>
+                                            {% endif %}
+                                          </h5>
+                                        {% endif %}
+
+                                        <form method="post" action="/cart/add">
+                                          <input
+                                            type="hidden"
+                                            name="id"
+                                            value="{{ protector_variant.id }}" />
+                                          <input
+                                            min="1"
+                                            type="hidden"
+                                            id="quantity"
+                                            name="quantity"
+                                            value="1" />
+                                          <button
+                                            type="submit"
+                                            value="+ ADD"
+                                            class="btn add_to_cart ajax-submit" >
+                                            <span class="make-it-match-btn-text">+ ADD</span>
+                                            <div class="loading-overlay__spinner hidden">
+                                              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                              </svg>
+                                            </div>
+                                          </button>
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </li>
+                                {% endif %}
+
+                                {% if customized_color == blank or customized_color == "" %}
+                                  {% assign customized_color = "#000" %}
+                                {% endif %}
+                                {% if customized_shade == blank or customized_shade == "" %}
+                                  {% assign customized_shade = "#000" %}
+                                {% endif %}
+
+                                {% assign magsafe_cases = "travel-magsafe-collection,classic-font-magsafe-collection,teddy-bear-magsafe-case-collection,mon-cheri-magsafe-case-collection,love-magsafe-case-collection,heart-magsafe-case-collection,daisy-flower-magsafe-collection,blossom-magsafe-collection,monaco-magsafe-case-collection" | split: "," %}
+                                {% assign item_phone_model = curr_pro_model | split: '-' | last | strip %}
+                                {% assign item_phone_model_type = curr_pro_model | split: '-' | first | strip %}
+
+                                {% if product.type == "Phone Cases" %}
+                                  {% assign item_phone_model = curr_pro_model %}
+                                {% endif %}
+                                {% comment %} this next condition is to check if - is in title otherwise it becomes equal to item title {% endcomment %}
+                                {% unless curr_pro_model contains "-" %}
+                                  {% assign item_phone_model_type = "XXX"%}
+                                {% endunless %}
+                                {% for coll_handle in magsafe_cases %}
+                                  {% assign coll = collections[coll_handle] %}
+                                  {% assign prod = '' %}
+                                  {% comment %} uncomment if need to default select on matching iphone model product {% endcomment %}
+                                  {% comment %} {% for item in coll.products %}
+                                    {% if item.title contains item_phone_model %}
+                                      {% assign prod = item %}
+                                    {% endif %}
+                                  {% endfor %} {% endcomment %}
+                                  {% if prod == '' %}
+                                    {% assign prod = coll.products | first %}
+                                  {% endif %}
+
+                                  {% unless prod.title contains item_phone_model_type or prod == blank %}
+                                    <li class="product magsafe_mix_match">
+                                      <div class="product-slide-inner">
+                                        <a href="{{ prod.url | within: collection }}">
+                                          {% assign ph_cnt = 1 %}
+                                          <div class="img-wrap"><img src="{{ prod.featured_media | product_img_url: '400x' }}"><span class="cart-initials-color1-text">{{ curr_pro_intial }}</span>
+                                            <div class="tc-logo">
+                                              <span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>
+                                              <span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span>
+                                            </div>
+                                          </div>
+                                        </a>
+                                        <div class="mix-pro-price">
+                                          <div>
+                                            <h4>{{ prod.title | split: '-' | first | strip }}</h4>
+                                            {% assign item_phone_model = prod.title | split: '-' | last | strip %}
+                                            <p>Made just for you with our brand new MagSafe technology</p>
+                                          </div>
+
+                                          {%- if settings.show_sales_label -%}
+                                            {% assign perc = 100 | minus: settings.sale_amount %}
+                                            {% assign perc = perc | divided_by: 100.0 %}
+                                            {% assign cmp_price = prod.price_min | times: perc %}
+                                            <h5>
+                                              <span class="money compare-at-price">{{ prod.price_min | money_without_trailing_zeros }}</span>
+                                              <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+                                            </h5>
+                                          {%- else -%}
+                                            <h5>
+                                              {% if prod.compare_at_price > prod.price %}
+                                                <span class="money compare-at-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</span>
+                                                <span class="money" style="margin-left:5px;">{{ prod.price | money_without_trailing_zeros }}</span>
+                                              {% else %}
+                                                <span class="money">{{ prod.price_min | money_without_trailing_zeros }}</span>
+                                              {% endif %}
+                                            </h5>
+                                          {% endif %}
+
+                                          <form method="post" action="/cart/add">
+                                            <input
+                                              type="hidden"
+                                              name="properties[Letters]"
+                                              value="{{curr_pro_intial}}">
+                                            <input
+                                              type="hidden"
+                                              name="properties[Letter Color1]"
+                                              value="{{customized_color}}">
+                                            <input
+                                              type="hidden"
+                                              name="properties[Shade Color]"
+                                              value="{{customized_shade}}">
+                                            <input
+                                              type="hidden"
+                                              name="id"
+                                              value="{{ prod.selected_or_first_available_variant.id }}" />
+                                            <input
+                                              min="1"
+                                              type="hidden"
+                                              id="quantity"
+                                              name="quantity"
+                                              value="1" />
+                                            <button
+                                              type="submit"
+                                              value="+ ADD"
+                                              class="btn add_to_cart ajax-submit" >
+                                              <span class="make-it-match-btn-text">+ ADD</span>
+                                              <div class="loading-overlay__spinner hidden">
+                                                <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                                </svg>
+                                              </div>
+                                            </button>
+                                            <select name="make-it-match-selector" class="make-it-match-select">
+                                              {% assign make_match_collection = blank %}
+                                              {% for col in prod.collections %}
+                                                {% if col.metafields.custom.selector_collection %}
+                                                  {% assign make_match_collection = col %}     
+                                                {% endif %}
+                                              {% endfor %}
+                                              {% for prd in make_match_collection.products %}
+                                                {% if prd.available %}  
+                                                  <option value="{{ prd.selected_or_first_available_variant.id }}" 
+                                                    data-image="{{ prd.selected_or_first_available_variant.featured_media | product_img_url: '400x' }}" 
+                                                    {% if prd.selected_or_first_available_variant.id == prod.selected_or_first_available_variant.id %}selected{% endif %}>{{ prd.title | split: '-' | last | strip }}</option>
+                                                {% endif %}
+                                              {% endfor %}
+                                            </select>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  {% endunless %}
+                                {% endfor %}
+
                                 {% comment %} straps {% endcomment %}
 
-                                {% for product in collections.all.products %}
+                                {% comment %} {% for product in collections.all.products %}
                                   {% if product.type == 'Strap' %}
                                     <li class="product strap">
                                       <div class="product-slide-inner">
@@ -1140,7 +1348,7 @@
                                       </div>
                                     </li>
                                   {% endif %}
-                                {% endfor %}
+                                {% endfor %} {% endcomment %}
                               </ul>
                             </div>
                           </div>
@@ -1319,6 +1527,7 @@
 <script>
   $(document).ready(function(){
     $('.make-it-match-select').change(function () {
+      console.log("change")
       $(this).closest('form').find('input[name="id"]').val($(this).val());
       $(this).closest('li').find('img.make-it-match-img').first().attr('src', $(this).find(':selected').attr('data-image'));
     });
