@@ -1,0 +1,2935 @@
+{
+  "current": {
+    "performance": "ludicrous",
+    "image_loading_style": "appear",
+    "custom_scripts": "",
+    "logo_color": "#3b3b3b",
+    "regular_color": "#2b2a2a",
+    "headline_color": "#454545",
+    "headline_footer_text_color": "#3b3b3b",
+    "sub_footer_text_color": "#8d8d8d",
+    "sale_color": "#020f4c",
+    "was_price_color": "#d13937",
+    "product_hover_text_color": "#5b5b5b",
+    "promo_text_color": "#ffffff",
+    "shop_home_page_content_text_color": "#363636",
+    "newsletter_popup_color": "#363636",
+    "newsletter_section_color": "#2b2a2a",
+    "collection_filter_color": "#333333",
+    "top_bar_color": "#000000",
+    "top_bar_color_hover": "#181717",
+    "nav_color": "#080808",
+    "nav_color_home": "#2b2a2a",
+    "nav_color_hover": "#020f4c",
+    "link_color": "#020f4c",
+    "link_hover_color": "#555d85",
+    "sidebar_nav_color": "#020f4c",
+    "sidebar_nav_color_hover": "#555d85",
+    "sub_footer_link_color": "#8d8d8d",
+    "sub_footer_link_color_hover": "#2b2a2a",
+    "btn_color": "#000000",
+    "btn_hover_color": "#181717",
+    "btn_text_color": "#ffffff",
+    "button_style": "square",
+    "read_more_style": "link",
+    "banner_button_color": "#000000",
+    "banner_color": "#ffffff",
+    "banner_mustard_background_color": "#93564b",
+    "banner_background_color": "#212c35",
+    "banner_placeholder_background_color": "#ecf0f3",
+    "swatch_style": "rounded",
+    "table_styles_enabled": false,
+    "slideshow_arrow_size": "light",
+    "arrow_color": "#ffffff",
+    "slideshow_button_style": false,
+    "slideshow_nav_buttons": false,
+    "border_color": "#8d8d8d",
+    "headline_border_color": "#cccccc",
+    "headline_border": "0",
+    "divider_style": "solid",
+    "sub_footer_border_color": "#cccccc",
+    "sale_banner_color": "#020f4c",
+    "new_banner_color": "#aeaeaf",
+    "search_section_color": "#333333",
+    "search_section_bg_color": "#d2d9df",
+    "testimonial_color": "#333333",
+    "testimonial_bg_color": "#ffffff",
+    "featured_promotions_color": "#ffffff",
+    "featured_promotions_color_hover": "#fff",
+    "featured_promotions_background": "#43505a",
+    "featured_promotions_mobile_background": false,
+    "modal_background_color": "#ffffff",
+    "modal_text_color": "#2b2e38",
+    "shop_bg_color": "#f9f2ec",
+    "custom_bg": "",
+    "repeat_bg": "repeat",
+    "bg_fixed": true,
+    "bg_stretched": false,
+    "top_bar_bg_color": "#ffffff",
+    "top_bar_cart_bg_color": "#ffffff",
+    "minicart_bg_color": "#ffffff",
+    "header_bg_color": "#ffffff",
+    "header_background": true,
+    "transparent_header": true,
+    "promo_bg_color": "#080808",
+    "shop_home_page_content_bg_color": "#ffffff",
+    "featured_links_background": "#d2d9df",
+    "product_hover_bg_color": "#f5f7f8",
+    "sub_footer_color": "#f9f2ec",
+    "footer_bg": "",
+    "footer_bg_stretched": false,
+    "newsletter_popup_background_color": "#ffffff",
+    "newsletter_section_background_color": "#f2f1f1",
+    "password_page_text_color": "#ffffff",
+    "password_page_background_color": "#2b2a2a",
+    "logo__font": "roboto_n4",
+    "logo_font_style": "none",
+    "logo_font_size": 20,
+    "top_bar_font_size": 16,
+    "top_bar_letter_spacing": 1,
+    "nav__font": "roboto_n4",
+    "nav_font_style": "none",
+    "nav_font_size": 14,
+    "nav_letter_spacing": 0,
+    "nav_shadow": false,
+    "button_weight": "bold",
+    "button_font_style": "uppercase",
+    "button_font_size": 14,
+    "mega_text_font_size": 14,
+    "mega_text_letter_spacing": 1,
+    "headline__font": "serif",
+    "headline_font_style": "none",
+    "headline_font_size": 28,
+    "headline_letter_spacing": 1,
+    "slideshow_headline__font": "serif",
+    "slideshow_headline_font_style": "none",
+    "slideshow_headline_size": 26,
+    "slideshow_headline_letter_spacing": 1,
+    "slideshow_headline_shadow": false,
+    "slideshow_subtitle__font": "roboto_n4",
+    "slideshow_subtitle_font_style": "none",
+    "slideshow_subtitle_size": 16,
+    "slideshow_subtitle_letter_spacing": 0,
+    "slideshow_shadow": false,
+    "regular__font": "roboto_n4",
+    "regular_font_style": "none",
+    "regular_font_size": 16,
+    "footer_logo_font_size": 22,
+    "footer_heading_font_size": 14,
+    "footer_font_size": 12,
+    "mega_menu_1": true,
+    "mega_menu_2": false,
+    "mega_menu_3": false,
+    "mega_menu_4": false,
+    "mega_menu_5": false,
+    "show_sales_label": false,
+    "sale_text": "SAVE 30%",
+    "discount_code_text": "SPRING30",
+    "sale_amount": 0,
+    "sale_label_color": "#ffffff",
+    "sale_bg_color": "#c1463e",
+    "sale_collection_list": [
+      "card-wallets",
+      "phone-cases",
+      "small-leather-goods",
+      "card-holders",
+      "phone-charms",
+      "best-selling-products"
+    ],
+    "search_option": "product",
+    "search_pagination_type": "infinite_scroll",
+    "enable_autocomplete": true,
+    "search_to_display": 5,
+    "align_height": false,
+    "collection_height": 200,
+    "thumbnail_hover_enabled": true,
+    "display_vendor": false,
+    "collection_secondary_image": false,
+    "sale_banner_enabled": true,
+    "collection_swatches": true,
+    "mobile_products_per_row": "2",
+    "pagination_type": "infinite_scroll",
+    "notify_me_form": true,
+    "notify_me_richtext": "<p>Notify me when this product is available:<\/p>",
+    "product_form_style": "dropdown",
+    "display_product_quantity": false,
+    "limit_quantity": false,
+    "display_inventory_left": false,
+    "inventory_threshold": 10,
+    "display_price": false,
+    "sold_out_text": "Sold Out",
+    "free_price_text": "Free",
+    "size_chart": "",
+    "enable_shopify_review_comments": true,
+    "enable_shopify_collection_badges": false,
+    "quick_shop_enabled": true,
+    "quick_shop_style": "popup",
+    "product_thumbs": true,
+    "gallery_arrows": true,
+    "activate_zoom": true,
+    "slideshow_speed": 0,
+    "slideshow_animation": "fade",
+    "thumbnail_position": "left-thumbnails",
+    "enable_thumbnail_slider": true,
+    "quick_shop_display_vendor": false,
+    "quick_shop_full_description": false,
+    "description_words": 25,
+    "quick_shop_product_description_position": "top",
+    "quick_shop_display_savings": true,
+    "show_payment_button": false,
+    "product_images_position": "left",
+    "video_looping": false,
+    "cart_action": "ajax",
+    "show_lock_icon": true,
+    "display_tos_checkbox": false,
+    "tos_page": "",
+    "go_to_checkout": true,
+    "display_special_instructions": false,
+    "display_savings": true,
+    "cart_message": "",
+    "show_shipping_calculator": false,
+    "shipping_calculator_default_country": "United States",
+    "currency_format": "money_format",
+    "show_multiple_currencies": false,
+    "supported_currencies": "USD CAD AUD GBP EUR JPY",
+    "default_currency": "USD",
+    "mailchimp_link": "",
+    "secondary_newsletter_banner": false,
+    "newsletter_popup": false,
+    "newsletter_popup_close": true,
+    "newsletter_popup_mobile": false,
+    "newsletter_popup_form": true,
+    "display_first_name": false,
+    "display_last_name": false,
+    "use_newsletter_border": true,
+    "newsletter_bg": "shopify:\/\/shop_images\/necklace-square.jpg",
+    "image_crop": "center",
+    "newsletter_popup_image_align": "left",
+    "newsletter_popup_title": "Join our VIP Club today and get 15% off your first order",
+    "newsletter_popup_text": "<p>Subscribe to our newsletter for sneak peeks at new collections and&nbsp;early access to flash sales!<\/p>",
+    "newsletter_popup_text_align": "left",
+    "popup_button1": "",
+    "popup_button1_link": "",
+    "popup_button1_highlight": false,
+    "popup_button2": "",
+    "popup_button2_link": "",
+    "popup_button2_highlight": false,
+    "newsletter_popup_seconds": 8,
+    "newsletter_popup_days": "7",
+    "favicon": "shopify:\/\/shop_images\/favicontcc.png",
+    "disqus_enabled": false,
+    "disqus_shortname": "",
+    "checkout_header_image": "shopify:\/\/shop_images\/rose-ring2.jpg",
+    "checkout_logo_image": "shopify:\/\/shop_images\/2023-Checkout-header.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#e7e7e7",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#8d8d8d",
+    "checkout_button_color": "#357821",
+    "checkout_error_color": "#cf2d2d",
+    "featured_links_weight": "bold",
+    "featured_blog_position": "13",
+    "side_cart_button_position": "bottom",
+    "shipping_calculator_submit_button_label": "Calculate shipping rates",
+    "copyright_text": "",
+    "slide1_alt_text": "",
+    "slideshow_arrows": "0",
+    "image_4_button2_text": "",
+    "image_2_button1_highlight": false,
+    "image_4_button1_link": "",
+    "blog_newsletter": true,
+    "blog_date": true,
+    "slide3_button1_text": "",
+    "slide4_button1_text": "",
+    "image_3_alt_text": "",
+    "quick_shop_product_thumbs": true,
+    "image_1_text_align": "center",
+    "feature5_title": "",
+    "image_1_button1_highlight": false,
+    "feature6_enabled": false,
+    "display_vendor_collection": false,
+    "image_4_headline": "",
+    "content_top_padding": "100",
+    "quick_shop_slideshow_animation": "slide",
+    "instagram_count": "4",
+    "tags_text": "Filter",
+    "newsletter_enabled": true,
+    "feature1_button": "",
+    "homepage_sidebar": false,
+    "aspect_ratio": "16:9",
+    "promo_text": "",
+    "banner_video_autoloop": false,
+    "image_1_link": "",
+    "feature5_button": "",
+    "frontpage_display_description": false,
+    "slideshow_menu": "true",
+    "contact_banner_enabled": true,
+    "image_1_subtitle": "from Out of the Sandbox",
+    "image_5_button1_link": "",
+    "image_3_button1_link": "",
+    "image_5_button1_highlight": false,
+    "feature1_text": "420x265",
+    "feature4_link": "https:\/\/twitter.com\/outofthesandbox",
+    "image_blog_subtitle": "",
+    "icon_btn_color": "#969696",
+    "quick_shop_product_images_position": "left",
+    "slide6_alt_text": "",
+    "featured_promos_per_row": "4",
+    "collection_sidebar_vendor_text": "Vendors",
+    "image_6_subtitle": "",
+    "slide5_text_align": "left",
+    "shipping_calculator_submit_button_label_disabled": "Calculating...",
+    "slide2_headline": "Just a banner heading here",
+    "image_3_button1_highlight": false,
+    "slide5_enabled": false,
+    "featured_links": true,
+    "image_4_link": "",
+    "video_button2_link": "",
+    "image_3_text_align": "center",
+    "slide1_button2_text": "",
+    "feature8_link": "",
+    "headline_websafe_font": "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "feature7_title": "",
+    "logo_font": "Google_'Playfair+Display'",
+    "product_slideshow_animation": "slide",
+    "mlvedaACS_messageContent": "<<shop.name>> process all orders in <<shop.currency>>. While the content of your cart is currently displayed in <<shop.selected_currency>>, you will checkout using <<shop.currency>> at the most current exchange rate.",
+    "image_3_position": "5",
+    "image_5_link": "",
+    "slideshow_headline_font_text": "normal",
+    "product_breadcrumb": true,
+    "shop_use_home_page_content_bg_color": true,
+    "newsletter_popup_max_width": "600",
+    "nav_weight": "normal",
+    "regular_weight": "lighter",
+    "image_6_button1_text": "",
+    "feature8_description": "",
+    "frontpage_products_per_row2": "4",
+    "slide3_subtitle": "",
+    "content_1_position": "4",
+    "menu_position": "inline",
+    "feature6_description": "",
+    "mlvedaACS_positionTop": "10px",
+    "feature4_description": "Let us know when your new shop launches on Twitter",
+    "video_text_position": "center",
+    "slideshow_6_enabled": false,
+    "blog_banner_enabled": false,
+    "filter_by_category": false,
+    "slide6_pretext": "",
+    "image_1_button1_link": "",
+    "blog_tags": true,
+    "nav_websafe_font": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
+    "feature2_description": "Visit the Out of the Sandbox Support Center for Turbo-related articles and how-tos",
+    "quick_shop_zoom": false,
+    "footer_logo": false,
+    "phone_number": "",
+    "total_text": "TOTAL",
+    "filter_by_tag": true,
+    "slide6_headline": "",
+    "image_6_text_color": "#ffffff",
+    "image_3_button2_text": "",
+    "position_1": "1",
+    "main_linklist2": "",
+    "position_2": "12",
+    "position_3": "7",
+    "mlvedaACS_defaultCurrency": "EUR",
+    "position_4": "9",
+    "position_5": "16",
+    "feature8_button": "",
+    "slide5_alt_text": "",
+    "display_type": true,
+    "article_banner_enabled": false,
+    "footer_text_color": "#ffffff",
+    "slide1_button1_highlight": false,
+    "mlvedaACS_messageBackgroundColor": "inherit",
+    "instagram_title": "Instagram",
+    "newsletter_success_text": "Thank you for joining our mailing list!",
+    "mlvedaACS_position": "hide",
+    "contact_address": "",
+    "slide3_headline": "",
+    "display_collections": true,
+    "image_4_button1_highlight": false,
+    "image_1_pretext": "Introducing the",
+    "slideshow_text_animation": "fadeIn",
+    "mlvedaACS_enable": false,
+    "image_4_pretext": "",
+    "feature2_enabled": true,
+    "mlvedaACS_supportedCurrencies": "EUR CAD GBP USD",
+    "logo_alignment": "center",
+    "twitter_theme": "light",
+    "feature3_link": "",
+    "position_6": "15",
+    "position_7": "0",
+    "position_8": "0",
+    "slide1_button1_link": "",
+    "position_9": "0",
+    "slide2_alt_text": "",
+    "image_5_subtitle": "",
+    "image_1_button2_link": "",
+    "review_position": "below_gallery",
+    "slide3_pretext": "",
+    "image_contact_subtitle": "",
+    "display_social_buttons_blog": true,
+    "slide3_button1_highlight": false,
+    "slideshow_headline_font": "Google_'Playfair+Display'",
+    "flickr_link": "",
+    "inventory_left_text": "items left",
+    "slide3_text_align": "left",
+    "image_4_alt_text": "",
+    "blog_widget_select": "news",
+    "mlvedaACS_autoSwitch": true,
+    "slideshow_subtitle_font": "Google_Montserrat",
+    "blog_articles_per_row": "3",
+    "shop_content_bg_color": "",
+    "frontpage_collection_full": "",
+    "frontpage_collection2": "",
+    "slide5_subtitle": "",
+    "use_logo_home": false,
+    "slide4_button1_highlight": false,
+    "blog_posts_per_page": "6",
+    "sidebar_enabled": false,
+    "image_5_text_color": "#ffffff",
+    "og_image_fallback": "shopify:\/\/shop_images\/turbo-florence-social-share-image.jpg",
+    "logo_top_padding": "15",
+    "slideshow_subtitle_typeface_method": "google_webfonts",
+    "top_bar_menu": "",
+    "slide3_button2_highlight": false,
+    "image_4_button1_text": "",
+    "fixed_header": true,
+    "image_5_button1_text": "",
+    "slide4_pretext": "",
+    "mlvedaACS_isCustomized": true,
+    "homepage1": "frontpage",
+    "product_description_position": "bottom",
+    "homepage2": "",
+    "homepage3": "",
+    "nav_font": "Google_Montserrat",
+    "image_2_height": "550",
+    "image_4_height": "600",
+    "display_tags": true,
+    "blog_content_page": "",
+    "quick_shop_color": "#000000",
+    "slide2_button1_highlight": true,
+    "slide4_enabled": false,
+    "newsletter_text": "News & Updates",
+    "feature5_link": "",
+    "products_per_row": "4",
+    "image_blog_headline": "",
+    "featured_links_count": "3",
+    "regular_font": "Google_Montserrat",
+    "main_linklist": "main-menu",
+    "headline_font": "Google_Montserrat",
+    "video_subtitle": "",
+    "image_2_alt_text": "",
+    "featured_product_position": "9",
+    "slide4_text_align": "left",
+    "slideshow_3_enabled": false,
+    "slideshow_headline_weight": "normal",
+    "image_5_text_align": "center",
+    "featured_promos_grid": "full_width",
+    "icon_btn_text_color": "#FFFFFF",
+    "image_6_pretext": "",
+    "blog_breadcrumb": true,
+    "tweet_count": "3",
+    "video_button1_highlight": true,
+    "slide1_button2_highlight": false,
+    "image_5_position": "10",
+    "collection_top_sidebar_page": "",
+    "image_6_text_align": "left",
+    "use_newsletter_section_bg_image": false,
+    "slide5_button2_text": "",
+    "logo_color_home": "#ffffff",
+    "image_2_button2_text": "",
+    "mlvedaACS_roundDecimal": false,
+    "display_designed_by": true,
+    "zoom_level": "15",
+    "banner_video_id": "eGyhA-DIYvg",
+    "share_banner_color": "#007a87",
+    "homepage_arrow": true,
+    "feature7_link": "",
+    "newsletter_img_alt_text": "",
+    "image_1_text_color": "#ffffff",
+    "frontpage_collection": "frontpage",
+    "collection_sidebar_products": true,
+    "feature4_enabled": true,
+    "mlvedaACS_os2": false,
+    "slide1_button1_text": "",
+    "blog_author": true,
+    "side_cart_enabled": true,
+    "feature3_enabled": true,
+    "feature7_description": "",
+    "slide2_button1_text": "Button 1",
+    "image_5_pretext": "",
+    "slide4_headline": "",
+    "collection_sort": true,
+    "image_2_button1_link": "",
+    "cart_return": "checkout",
+    "slide4_button2_link": "",
+    "home_blog_slider": "0",
+    "mlvedaACS_positionRight": "10px",
+    "product_sidebar": false,
+    "banner_video_source": "youtube",
+    "feature3_description": "Publish Turbo as your main theme when you're ready to launch!",
+    "frontpage_linklist": "",
+    "collection_sidebar_page": "",
+    "image_6_button1_highlight": false,
+    "slide4_alt_text": "",
+    "newsletter_popup_page": "",
+    "image_3_link": "",
+    "footer_link_color_hover": "#fc4c02",
+    "image_1_button2_text": "",
+    "slide2_button2_highlight": false,
+    "feature4_button": "",
+    "collection_breadcrumb": true,
+    "video_dark_overlay": false,
+    "article_banner_darken": true,
+    "video_button2_highlight": false,
+    "display_social_buttons": true,
+    "mlvedaACS_roundDecimalValue": 1,
+    "blog_sidebar_tags": true,
+    "mlvedaACS_backgroundColor": "inherit",
+    "slideshow_2_enabled": false,
+    "instagram_client_id": "",
+    "mlvedaACS_textHoverColor": "inherit",
+    "frontpage_text_align": "left",
+    "slide1_headline": "This is a big heading",
+    "image_3_height": "550",
+    "image_5_button2_highlight": false,
+    "mlvedaACS_borderLineColor": "inherit",
+    "slide6_button2_text": "",
+    "slide6_text_align": "left",
+    "feature2_link": "http:\/\/help.outofthesandbox.com\/",
+    "footer_link_color": "#55c0d4",
+    "image_4_button2_highlight": false,
+    "display_sku": false,
+    "instagram_widget": false,
+    "slideshow_1_enabled": true,
+    "logo_position": "center",
+    "display_collection_title": true,
+    "image_6_position": "2",
+    "quick_shop_text": "Quick View",
+    "slideshow_4_enabled": false,
+    "image_3_subtitle": "",
+    "slide3_text_position": "left",
+    "image_3_button2_highlight": false,
+    "image_1_button_text": "",
+    "slide2_button2_link": "",
+    "feature1_enabled": true,
+    "slide3_button2_link": "",
+    "display_collection_header_title": false,
+    "collection_tags": true,
+    "image_6_button_text": "",
+    "image_2_button2_highlight": false,
+    "image_2_text_color": "#ffffff",
+    "logo_typeface_method": "google_webfonts",
+    "newsletter_system": "shopify",
+    "image_5_button_text": "",
+    "image_2_text_align": "center",
+    "use_newsletter_image": true,
+    "image_2_button_text": "",
+    "image_3_button_text": "",
+    "feature3_text": "420x265",
+    "image_4_button_text": "",
+    "use_logo_mobile": false,
+    "slideshow_subtitle_weight": "normal",
+    "image_6_headline": "",
+    "slide4_text_position": "left",
+    "twitter_username": "",
+    "google_link": "",
+    "image_1_button2_highlight": false,
+    "image_5_alt_text": "",
+    "read_more_link": true,
+    "slide1_button2_link": "",
+    "shop_use_content_bg_color": false,
+    "slide3_alt_text": "",
+    "featured_products_position": "8",
+    "slide5_pretext": "",
+    "nav_typeface_method": "google_webfonts",
+    "image_6_button2_highlight": false,
+    "collection_sidebar_linklist2": "",
+    "image_6_button2_link": "",
+    "image_1_height": "550",
+    "image_5_height": "550",
+    "video_button2_text": "",
+    "slide6_button1_link": "",
+    "logo_websafe_font": "Helvetica, Arial, sans-serif",
+    "image_1_headline": "Turbo Shopify theme",
+    "twitter_widget": false,
+    "promo_banner_global": false,
+    "feature6_title": "",
+    "frontpage_collection_style": "slider",
+    "banner_style": "square",
+    "use_logo": false,
+    "use_custom_footer_image": false,
+    "activate_autoplay": false,
+    "slide6_enabled": false,
+    "image_1_alt_text": "",
+    "tax_included": false,
+    "image_4_text_color": "#ffffff",
+    "cart_icon": "cart",
+    "video_button1_link": "",
+    "instagram_tag_name": "",
+    "newsletter_banner": true,
+    "image_2_headline": "",
+    "regular_websafe_font": "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "image_2_button1_text": "",
+    "slide2_subtitle": "",
+    "headline_sub_footer_text_color": "#404040",
+    "slide5_button2_link": "",
+    "slide1_text_align": "right",
+    "enable_shopify_product_badges": true,
+    "display_related_products": true,
+    "nav_active_color": "#B8C6C6",
+    "feature8_enabled": false,
+    "image_6_link": "",
+    "content_2_position": "6",
+    "image_2_position": "3",
+    "display_payment_methods": true,
+    "pagination_limit": "24",
+    "pagework_page_bg_stretched": true,
+    "feature3_button": "",
+    "mlvedaACS_positionLeft": "10px",
+    "blog_comment_count": true,
+    "headline_animation": "fadeIn",
+    "social_icons_footer": true,
+    "logo_width": 160,
+    "image_3_button1_text": "",
+    "banner_video_mp4": "",
+    "footer_linklist_2": "main-menu",
+    "feature5_enabled": false,
+    "slide6_subtitle": "",
+    "slideshow_subtitle_font_text": "normal",
+    "footer_linklist_1": "footer",
+    "search_enabled": true,
+    "image_contact_headline": "",
+    "image_5_button2_link": "",
+    "slide3_enabled": false,
+    "slide4_button2_text": "",
+    "video_text_align": "center",
+    "mlvedaACS_currencyFormat": "money_with_currency_format",
+    "menu_top_padding": "10",
+    "slide5_button1_link": "",
+    "mlvedaACS_displayFlag": true,
+    "footer_linklist_3": "",
+    "collection_sidebar": false,
+    "image_2_subtitle": "",
+    "password-page-background": "",
+    "slide5_button2_highlight": false,
+    "products_per_slide": "3",
+    "feature1_link": "",
+    "social_icons_header": true,
+    "slide1_text_position": "right",
+    "image_5_headline": "",
+    "frontpage_collection_style2": "grid",
+    "blog_additional_articles": true,
+    "image_3_pretext": "",
+    "image_5_text_position": "left",
+    "home_page_articles": "4",
+    "slide6_button2_link": "",
+    "feature_title_on_image_enabled": true,
+    "slide6_text_position": "left",
+    "shipping_calculator_heading": "Shipping rates calculator",
+    "image_6_height": "550",
+    "featured_text": "#ffffff",
+    "position_17": "0",
+    "logo_weight": "normal",
+    "position_18": "0",
+    "position_15": "0",
+    "position_16": "0",
+    "feature8_title": "",
+    "position_13": "0",
+    "position_14": "0",
+    "position_11": "0",
+    "featured_links_style": "",
+    "position_12": "0",
+    "constrain_logo": true,
+    "mlvedaACS_borderLook": false,
+    "position_10": "0",
+    "slide4_button2_highlight": false,
+    "slidespeed": "6000",
+    "featured_social_position": "14",
+    "image_3_headline": "",
+    "image_6_text_position": "left",
+    "video_headline": "Optional heading here",
+    "quick_shop_gallery_arrows": true,
+    "collection_banner_enabled": false,
+    "feature2_button": "",
+    "feature6_button": "",
+    "mlvedaACS_textColor": "inherit",
+    "mlvedaACS_flagStyle": "circle",
+    "tab_background_color": "#ffffff",
+    "mlvedaACS_isMessageDisplay": true,
+    "image_4_subtitle": "",
+    "footer_color": "#16161d",
+    "image_4_text_align": "center",
+    "slide5_text_position": "left",
+    "video_pretext": "Full-width video section",
+    "collection_sidebar_vendors": false,
+    "slide2_text_align": "center",
+    "mlvedaACS_messageColor": "inherit",
+    "featured_collections_position": "15",
+    "featured_promos_text_color": "#ffffff",
+    "featured_links_position": "2",
+    "slide6_button2_highlight": false,
+    "feature7_enabled": false,
+    "slide1_enabled": true,
+    "slide2_button1_link": "",
+    "slide4_button1_link": "",
+    "slide5_button1_highlight": false,
+    "slide1_pretext": "A full-width slideshow",
+    "slide3_button2_text": "",
+    "image_4_button2_link": "",
+    "banner_video_text": false,
+    "related_products_title": "Related Items",
+    "image_2_button2_link": "",
+    "feature4_title": "Promo 4",
+    "mobile_menu_color": "black",
+    "image_6_button2_text": "",
+    "headline_weight": "normal",
+    "regular_typeface_method": "websafe",
+    "image_6_button1_link": "",
+    "frontpage_product_stagger": true,
+    "menu_alignment": "align_left",
+    "collection_sidebar_linklist": "",
+    "social_icons_enabled": "true",
+    "image_4_text_position": "left",
+    "side_cart_position": "right",
+    "image_2_pretext": "",
+    "headline_typeface_method": "google_webfonts",
+    "slide6_button1_text": "",
+    "feature5_description": "",
+    "frontpage_products_per_row": "4",
+    "newsletter_section_text_align": "center",
+    "slide5_headline": "",
+    "slide5_button1_text": "",
+    "custom_logo": "",
+    "feature1_description": "Optional description can go here",
+    "slide2_enabled": true,
+    "slideshow_text_background": false,
+    "feature1_title": "Promo 1",
+    "slide2_pretext": "",
+    "banner_video_ogv": "",
+    "caption_background": false,
+    "slide2_text_position": "center",
+    "image_3_text_color": "#ffffff",
+    "blog_widget": "false",
+    "image_1_text_position": "center",
+    "image_5_button2_text": "",
+    "use_password_bg_image": "1",
+    "slide4_subtitle": "",
+    "slide2_button2_text": "Button 2",
+    "dropdown_column_links": "10",
+    "feature7_button": "",
+    "slide6_button1_highlight": false,
+    "feature2_text": "420x265",
+    "blog_search": true,
+    "footer_content_page": "",
+    "mlvedaACS_positionBottom": "10px",
+    "banner_video_autoplay": false,
+    "image_2_link": "",
+    "content_3_position": "10",
+    "newsletter_description": "Sign up to get the latest on sales, new releases and more …",
+    "image_2_text_position": "left",
+    "image_1_button1_text": "",
+    "mobile_header_bg_color": "#666666",
+    "feature2_title": "Promo 2",
+    "instagram_username": "",
+    "display_recent_articles": false,
+    "add_to_cart_text": "Add to Cart",
+    "video_button1_text": "Play Video",
+    "image_4_position": "7",
+    "use_custom_bg_image": false,
+    "behind_menu": true,
+    "headline_font_text": "normal",
+    "slideshow_5_enabled": false,
+    "mlvedaACS_hideDecimal": false,
+    "slide3_button1_link": "",
+    "mlvedaACS_hoverBackgroundColor": "inherit",
+    "feature6_link": "",
+    "slide1_subtitle": "This is a subheading where you can include more text if you wish",
+    "feature3_title": "Promo 3",
+    "quick_shop_thumbnail_position": "bottom-thumbnails",
+    "image_3_button2_link": "",
+    "image_3_text_position": "left",
+    "frontpage_collections_per_row": "1",
+    "image_6_alt_text": "",
+    "sections": {
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "wide_display": true,
+          "display_first_name": false,
+          "display_last_name": false,
+          "newsletter_title": "join our vip club",
+          "newsletter_text": "<p>Subscribe to our monthly newsletter for sneak peeks at new collections and early access to promos and flash sales!<\/p>",
+          "newsletter_section_text_align": "center",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "product-clutches": {
+        "type": "product-clutches",
+        "blocks": {
+          "c30d9cb4-1c22-4cf2-8802-6e91a731d72d": {
+            "type": "text",
+            "settings": {
+              "title": "Meet your Clutch.",
+              "text": "<p>Clutches designed to accompany you everywhere you go – from the office, to the beach, to your nights out. Inside, the clutch features a card holder to hold your cards, while on the other size there is an inside pocket with zipper closure to hold your essentials. The strap is detachable.<br\/><br\/>✔️ Holds all your necessities<br\/>✔️ Fit for work and pleasure<br\/>✔️ Stop losing your items<\/p>",
+              "iframe_video": "https:\/\/player.vimeo.com\/video\/518065486",
+              "cssclass": "meet-case"
+            }
+          },
+          "afbe3fc9-d20e-4a72-b192-24b2f7b0fbb4": {
+            "type": "text",
+            "settings": {
+              "title": "Express Yourself",
+              "text": "<p>Your monogram is your power statement. We offer you the canvas for self expression. With free personalization services on our products, you’re set to impress the world. We only use the highest quality premium leather and foils to ensure a quality, luxury product that lasts overtime.<\/p>",
+              "iframe_video": "https:\/\/www.youtube.com\/watch?v=dst10Wn4eKs",
+              "cssclass": "express-block"
+            }
+          },
+          "3e97f9e6-e288-4cd7-9a20-7335b3dc76c9": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "From our Club #MyTCC",
+              "pro_html_content": "<div class=\"insta-carousel-wrap\">\n  <div class=\"insta-carousel\">\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc5-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc6-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc7-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc8-min.jpg\" alt=\"\"><\/span>\n  <\/div>\n<\/div>",
+              "html_cssclass": "instas-slider"
+            }
+          },
+          "7b9ec354-d727-450c-aa5a-573c44cd723f": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "Heading",
+              "pro_html_content": "<div class=\"protective-block\">\n  <div class=\"half-block\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/clutch.jpg\">\n  <\/div>\n  <div class=\"half-block\">\n    <h3>From the office to your night out<\/h3>\n    <p>Designed to hold everything you need easy access to during the day, this Clutch is sure to keep your phone, make-up, wallet and keys together in the most personal way possible. It plays the part during both work and pleasure. The clutch features a card holder inside and an extra zip pocket.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "protective-wap"
+            }
+          },
+          "fbf88658-c9e0-41a0-b6dd-14c559cc2327": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "free-ship",
+              "pro_html_content": "<div class=\"free-ship-wrap\">\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Leather-icon.png\" alt=\"\">\n    <h4>Personalize Your Item<\/h4>\n    <p>Your personal monogram holds power. Apply your power statement onto your most personal products. Pick your favorite color and add your name or initials.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Free-Shipping.png\" alt=\"\">\n    <h4>Free Shipping<\/h4>\n    <p>We personalize your item uniquely for you, then ship your order out within 1 day. Shipping is free worldwide, or choose Next Day Delivery for a flat fee.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/selfie-icon.png\" alt=\"\">\n    <h4>Stylish &amp; Protected<\/h4>\n    <p>Your phone is protected in the most stylish way possible and you’re ready to impress the world.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "free-ship section"
+            }
+          }
+        },
+        "block_order": [
+          "c30d9cb4-1c22-4cf2-8802-6e91a731d72d",
+          "fbf88658-c9e0-41a0-b6dd-14c559cc2327",
+          "3e97f9e6-e288-4cd7-9a20-7335b3dc76c9",
+          "afbe3fc9-d20e-4a72-b192-24b2f7b0fbb4",
+          "7b9ec354-d727-450c-aa5a-573c44cd723f"
+        ],
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": false,
+          "activate_zoom": false,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left",
+          "enable_thumbnail_slider": true,
+          "display_vendor": false,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": false,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 500,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "next_to_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed Items",
+          "rv_products_style": "grid",
+          "rv_max_display": 4,
+          "rv_per": 4
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1517272349437": {
+            "type": "link_list",
+            "settings": {
+              "menu": "collections",
+              "social_icons_footer": false
+            }
+          },
+          "2b0f35cc-025d-4cf8-8b7b-8a5ab0073aac": {
+            "type": "link_list",
+            "settings": {
+              "menu": "customer-care",
+              "social_icons_footer": false
+            }
+          },
+          "1517271848854": {
+            "type": "link_list",
+            "settings": {
+              "menu": "login-menu",
+              "social_icons_footer": false
+            }
+          },
+          "c53c4fb5-c7ab-4893-80c6-8163e38bc132": {
+            "type": "empty",
+            "settings": {
+              "social_icons_footer": false
+            }
+          }
+        },
+        "block_order": [
+          "1517272349437",
+          "2b0f35cc-025d-4cf8-8b7b-8a5ab0073aac",
+          "1517271848854",
+          "c53c4fb5-c7ab-4893-80c6-8163e38bc132"
+        ],
+        "settings": {
+          "copyright_text": "",
+          "display_designed_by": false,
+          "display_payment_methods": true,
+          "show_locale_selector": true,
+          "show_currency_selector": false
+        }
+      },
+      "contact-template": {
+        "type": "contact-template",
+        "settings": {
+          "wide_display": true,
+          "mobile_image_crop": "none",
+          "contact_heading": "Get in touch",
+          "contact_subheading": "Subheading",
+          "caption_content_background": "original",
+          "contact_text": "",
+          "show_map": false,
+          "map_wide_display": true,
+          "map_address": "",
+          "map_height": 400,
+          "zoom_level": 12,
+          "api_key": "",
+          "show_pin": true,
+          "map_style": "default"
+        }
+      },
+      "page-faq-template": {
+        "type": "page-faq-template",
+        "blocks": {
+          "page-faq-template-0": {
+            "type": "heading",
+            "settings": {
+              "heading": "Shipping"
+            }
+          },
+          "1589564584837": {
+            "type": "Content",
+            "settings": {
+              "title": "Do you offer curbside pickup or local delivery?",
+              "subtitle": ""
+            }
+          },
+          "page-faq-template-1": {
+            "type": "Content",
+            "settings": {
+              "title": "What Shipping Methods Are Available?",
+              "subtitle": "<p>We offer free tracked shipping on all orders worldwide through DHL. Orders from The Netherlands are shipped with PostNL.<\/p><p><\/p><p>For a flat fee we offer FedEx International Priority shipping, ensuring worldwide next-day delivery before 12:00 PM.<\/p><p><\/p>"
+            }
+          },
+          "page-faq-template-4": {
+            "type": "heading",
+            "settings": {
+              "heading": "Shipping + handling"
+            }
+          },
+          "page-faq-template-5": {
+            "type": "Content",
+            "settings": {
+              "title": "What is your design approach and philosophy?",
+              "subtitle": "<p>We’re grounded in a belief that magnificence lies in elegance, not ostentation. Pursuing sophistication in the unexpected, we create thoughtfully designed pieces that are unique, yet crafted to be versatile and cherished for years.  With aesthetic influences hailing from mid-century architecture and ancient goldsmithing to minimalist art and sculpture, ourentire  collection explores the marriage of daring dichotomies—earthy and modern, streamlined and textured, restrained and sexy, delicate and strong.<\/p>"
+            }
+          },
+          "page-faq-template-2": {
+            "type": "Content",
+            "settings": {
+              "title": "Where do you get your gemstones from?",
+              "subtitle": "<p>All of our stones are conflict-free, from sources that adhere to the Kimberley Process or from Canadian mines. When we wear recycled materials we honor our own power to adapt, reinvent and flourish. It also reduces our carbon footprint. And by using gems sourced from Canadian mines and Kimberly-certified distributors, we support an honest day’s work.<br\/><br\/>We also use lab-created stones for some of our colored gemstones to further reduce the impact of mining rare natural gems out of the ground. They are visually and chemically the exactly the same as mined stones, but do not contribute to the land destruction and resource depletion in the way that naturally-mined stones do. We offer our custom bridal clients the option to choose lab-created diamonds, which also are exactly the same as natural diamonds, except they don’t require the environmental damage incurred in mining.<\/p>"
+            }
+          },
+          "page-faq-template-3": {
+            "type": "Content",
+            "settings": {
+              "title": "Where are your products made?",
+              "subtitle": "<p>Creating our jewelry in the USA in-house and with small independent producers is an incredibly important aspect of our philosophy. It not only allows us to work closely with the artisans fabricating the jewelry, but it also enables us to deliver handmade pieces to order - keeping a close eye on quality, which we wouldn’t be able to do if we were shipping them from overseas. More importantly, as an American company we want to support other creatives, namely other jewelers, stone setters, casters, CAD artists, and US-based suppliers to the industry. <strong>Our jewelry requires precision in fabrication, and that means skilled work from talented individuals.<\/strong> A history of quality craftsmanship is part of the American tradition and has in recent history been in danger of being lost forever in various industries.  Even though we’re small, we’re a company creating new products and we want to be part of supporting the revival of that tradition as well as supporting other small businesses.<\/p>"
+            }
+          },
+          "page-faq-template-6": {
+            "type": "Content",
+            "settings": {
+              "title": "Do you ship internationally?",
+              "subtitle": "<p>We can ship anywhere in the world but rates vary according to distance. We use UPS and Federal Express, depending on the destination country.  Please <a href=\"\/pages\/contact-us\" title=\"Contact Us\">contact us<\/a> for specific rates.<\/p>"
+            }
+          },
+          "page-faq-template-7": {
+            "type": "Content",
+            "settings": {
+              "title": "Do you offer free shipping?",
+              "subtitle": "<p>At this time, we can only offer free standard shipping to Europe or the UK on orders of minimum $100.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "page-faq-template-0",
+          "page-faq-template-1",
+          "page-faq-template-2",
+          "page-faq-template-3",
+          "page-faq-template-5",
+          "page-faq-template-4",
+          "1589564584837",
+          "page-faq-template-6",
+          "page-faq-template-7"
+        ],
+        "settings": {
+          "wide_display": true,
+          "show_banner": true,
+          "image": "shopify:\/\/shop_images\/Schermafbeelding.png",
+          "mobile_image_crop": "none",
+          "caption_content_background": "original",
+          "pretext": "",
+          "title": "Frequently Asked Questions",
+          "subtitle": "",
+          "text_position": "center",
+          "text_align": "center",
+          "button1": "",
+          "button1_link": "",
+          "button1_style": "global-button--banner",
+          "button2": "",
+          "button2_link": "",
+          "button2_style": "global-button--banner"
+        }
+      },
+      "1631878973b10dcc68": {
+        "type": "featured-text",
+        "disabled": true,
+        "settings": {
+          "title": "COLLECTIONS",
+          "content": "<p>Shop our collection of premium leather goods. We offer complimentary personalization services on almost all of our products.<\/p>",
+          "button_label": "",
+          "button_link": "",
+          "text_size": "featured_text",
+          "text_alignment": "center",
+          "css_class": "collections-home-text",
+          "custom_css": ""
+        }
+      },
+      "1632569983d980eccd": {
+        "type": "image-with-text-overlay",
+        "settings": {
+          "wide_display": true,
+          "image": "shopify:\/\/shop_images\/Laag_23.jpg",
+          "pretext": "",
+          "title": "A lifestyle of refinement.",
+          "subtitle": "<p>The Case Club is more than a luxury accessories brand. Our goods symbolize a lifestyle of refinement. Our brand's inspiration has been derived from a multitude of passions: Architecture, cars, real estate, exciting destinations, and the arts. Our goods are the sensible, tangible embodiment of this, and our aim is to make owning a piece of it accessible.<\/p>",
+          "button1": "",
+          "button1_link": "",
+          "button1_style": "global-button--banner",
+          "button2": "",
+          "button2_link": "",
+          "button2_style": "global-button--banner",
+          "text_position": "left",
+          "text_align": "left",
+          "caption_content_background": "original",
+          "mobile_image": "shopify:\/\/shop_images\/Laag_23.jpg",
+          "mobile_image_crop": "none",
+          "mobile_text_below_image": true,
+          "mobile_text_color": "",
+          "css_class": "express-banner",
+          "custom_css": ""
+        }
+      },
+      "mega-menu-1": {
+        "type": "mega-menu-1",
+        "blocks": {
+          "1518728437122": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/pctn.png",
+              "image_caption_top": "Phone Cases",
+              "image_link_top": "shopify:\/\/collections\/phone-cases",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "1518728434416": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/chtn.png",
+              "image_caption_top": "Card Holders",
+              "image_link_top": "shopify:\/\/collections\/card-holders",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "1518728432123": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/CWtn.png",
+              "image_caption_top": "Card Wallets",
+              "image_link_top": "shopify:\/\/collections\/card-wallets",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "1518728429381": {
+            "type": "column",
+            "disabled": true,
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/ctn.png",
+              "image_caption_top": "Clutches",
+              "image_link_top": "shopify:\/\/collections\/clutches",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          }
+        },
+        "block_order": [
+          "1518728437122",
+          "1518728434416",
+          "1518728432123",
+          "1518728429381"
+        ],
+        "settings": {
+          "parent": "Store"
+        }
+      },
+      "mega-menu-2": {
+        "type": "mega-menu-2",
+        "blocks": {
+          "1518730450462": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "Arizona Collection",
+              "image_link_bottom": "shopify:\/\/pages\/arizona-collection",
+              "richtext_bottom": ""
+            }
+          },
+          "1518730447419": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_caption_top": "Eclipse Collection",
+              "image_link_top": "shopify:\/\/pages\/eclipse-collection",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "1518730444679": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_caption_top": "Linea Collection",
+              "image_link_top": "shopify:\/\/pages\/gallery",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "1520623203710": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": "<p>Each of our carefully researched, styled, tested and distributed collections reflects a particular aesthetic and ethos. We hope some of these speak to your own style, and help you refine and redefine your own look and style philosophy in the process.<\/p>"
+            }
+          },
+          "1519339292332": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          }
+        },
+        "block_order": [
+          "1520623203710",
+          "1518730444679",
+          "1518730447419",
+          "1518730450462",
+          "1519339292332"
+        ],
+        "settings": {
+          "parent": "Lookbooks"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "featured_image": "banner",
+          "wide_display": true,
+          "blog_breadcrumb": true,
+          "blog_pagination": true,
+          "blog_tags": false,
+          "blog_byline": false,
+          "read_time": true,
+          "blog_date": true,
+          "blog_author": false,
+          "display_social_buttons": true,
+          "blog_comment_count": true,
+          "blog_additional_posts": true,
+          "read_more_link": false,
+          "toggle": false
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "blocks": {
+          "06c4bf0c-01ce-4017-91e0-ab2cbfff5481": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "title": "1",
+              "rv_products_custom_styles": "product-section-one",
+              "text": "",
+              "text_cardwallet": "",
+              "text_passport": "",
+              "image": "shopify:\/\/shop_images\/product_page_icons.png",
+              "iframe_video": "",
+              "cssclass": "mobiel-logos"
+            }
+          },
+          "b8688bca-f65d-4194-910e-0d76eacdbbde": {
+            "type": "slide",
+            "disabled": true,
+            "settings": {
+              "title": "Protection with style.",
+              "text": "<p>You deserve a phone case made just for you. You already catch the eye, but you still need a phone case to match your striking personality. The truth is, our iconic phone case is designed to do just that. <strong>Personalized by you, <\/strong>our <strong>premium pebble leather<\/strong> offers the perfect canvas for self expression. Compatible with wireless charging.<\/p>",
+              "iframe_video": "https:\/\/player.vimeo.com\/video\/518060132?loop=0&title=0&portrait=0&byline=0&color&autopause=0&autoplay=1",
+              "cssclass": ""
+            }
+          },
+          "c63854f3-088e-4024-b072-91e679a11d8f": {
+            "type": "text",
+            "settings": {
+              "title": "Protection with style.",
+              "rv_products_custom_styles": "product-section-one",
+              "text": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality leather products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>Our exclusive pebbled leather cases are individually hand wrapped by our experienced craftsmen for snug, best-in-class protection<\/li><li>100% wireless charging compatible<\/li><li>Raised camera bevel for differentiated, scratch-free lense security and style<\/li><li>Plush microfiber inner lining <\/li><li>Water resistant<\/li><li>Made from premium, sustainably crafted leather with an emphasis on uniformity in texture, appearance, increased durability, and ease of care <\/li><\/ul>",
+              "text_cardwallet": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>Our exclusive pebbled leather card wallets are individually hand wrapped by our experienced craftsmen<\/li><li>Comfortably fits 10 cards with additional room for your  cash in the middle<\/li><li>Ultra-sleek, lightweight feel that easily slides into any pocket and avoids the bulk<\/li><\/ul>",
+              "text_passport": "<p>The Case Club is more than just a luxury accessories brand - We epitomize a lifestyle of refined elegance. We are committed to delivering <strong>bespoke, high-quality leather products personalized exclusively by you, at no additional charge.<\/strong> Our iconic pieces are meticulously crafted to serve as a platform for your individual expression, with a <strong>premium pebbled texture<\/strong> that provides an exquisite canvas for self-discovery. <\/p><p><\/p><ul><li>The ultimate first-class travel companion<\/li><li>Handcrafted from premium, full-grain European leather<\/li><li>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes<\/li><li>Our premium pebbled leather finish is design for a luxurious wear and prolonged use<\/li><\/ul>",
+              "image": "shopify:\/\/shop_images\/Product_page.webp",
+              "iframe_video": "",
+              "cssclass": "meet-case"
+            }
+          },
+          "f30113e4-ecdd-4de7-844b-83d74ce6824a": {
+            "type": "html-1",
+            "settings": {
+              "premium_heading": "Designed with an eye for detail",
+              "premium_text": "All of our products are hand finished by craftsmen who have over 30 years of experience in the field. This ensures that you receive a quality product that will last for years to come.",
+              "premium_image": "shopify:\/\/shop_images\/leatherworks.webp"
+            }
+          },
+          "3fbee6f9-c71b-4181-8ee6-be8a04d9ca57": {
+            "type": "text",
+            "settings": {
+              "title": "The most stylish case. Ever.",
+              "rv_products_custom_styles": "product-section-two",
+              "text": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
+              "text_cardwallet": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
+              "text_passport": "<p>Loved worldwide for it's stylish design and elegance. Handmade with love, just for you. Upgrade your mirror selfies with your monogrammed statement piece!<\/p>",
+              "image": "shopify:\/\/shop_images\/Product_page_images.webp",
+              "iframe_video": "",
+              "cssclass": "meet-case"
+            }
+          },
+          "ae39342f-5bce-41ce-8601-5704b7c871cb": {
+            "type": "image",
+            "settings": {
+              "customer_image": "shopify:\/\/shop_images\/Product_page_happy_customers.webp"
+            }
+          },
+          "f670ef70-445d-415f-b9dd-182153be885d": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "title": "Join The Club",
+              "rv_products_custom_styles": "product-section-one",
+              "text": "<p>Join our global community of more than 100,000+ and growing happy customers! Share your pics with #MyTCC or tag @thecaseclub to be featured.<\/p>",
+              "text_cardwallet": "",
+              "text_passport": "",
+              "image": "shopify:\/\/shop_images\/100K_HAPPY_CUSTOMERS-min-min.jpg",
+              "iframe_video": "",
+              "cssclass": "meet-case"
+            }
+          },
+          "dc34f74b-6e88-4181-b701-08180a34b519": {
+            "type": "html-1",
+            "disabled": true,
+            "settings": {
+              "premium_heading": "Premium bovine leather",
+              "premium_text": "Basic of our products is also the most important. We work with a European leather tannery to ensure only the highest quality premium bovine leather for our products"
+            }
+          },
+          "c7397820-0bcf-4e16-8b82-0092eab8bd3f": {
+            "type": "html-1",
+            "disabled": true,
+            "settings": {
+              "premium_heading": "Premium bovine leather",
+              "premium_text": "Basic of our products is also the most important. We work with a European leather tannery to ensure only the highest quality premium bovine leather for our products"
+            }
+          },
+          "f895b63d-f72d-4791-aba6-748e14b7ffe5": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "title": "Express Yourself",
+              "rv_products_custom_styles": "product-section-one",
+              "text": "<p>Your monogram is your power statement. We offer you the canvas for self expression. With free personalization services on our products, you’re set to impress the world. We only use the highest qualitymaterial and foils to ensure a quality, luxury product that lasts overtime.<\/p>",
+              "text_cardwallet": "",
+              "text_passport": "",
+              "iframe_video": "https:\/\/www.youtube.com\/watch?v=dst10Wn4eKs",
+              "cssclass": "express-block"
+            }
+          },
+          "d1f09c48-42a7-4502-8d9e-d1ce685612c4": {
+            "type": "html-1",
+            "disabled": true,
+            "settings": {
+              "premium_heading": "Premium bovine leather",
+              "premium_text": "Basic of our products is also the most important. We work with a European leather tannery to ensure only the highest quality premium bovine leather for our products"
+            }
+          }
+        },
+        "block_order": [
+          "06c4bf0c-01ce-4017-91e0-ab2cbfff5481",
+          "b8688bca-f65d-4194-910e-0d76eacdbbde",
+          "c63854f3-088e-4024-b072-91e679a11d8f",
+          "f30113e4-ecdd-4de7-844b-83d74ce6824a",
+          "3fbee6f9-c71b-4181-8ee6-be8a04d9ca57",
+          "ae39342f-5bce-41ce-8601-5704b7c871cb",
+          "f670ef70-445d-415f-b9dd-182153be885d",
+          "dc34f74b-6e88-4181-b701-08180a34b519",
+          "c7397820-0bcf-4e16-8b82-0092eab8bd3f",
+          "f895b63d-f72d-4791-aba6-748e14b7ffe5",
+          "d1f09c48-42a7-4502-8d9e-d1ce685612c4"
+        ],
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": false,
+          "activate_zoom": false,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left",
+          "enable_thumbnail_slider": true,
+          "display_vendor": false,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": false,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": true,
+          "product_height": 540,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "below_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed Items",
+          "rv_products_style": "slider",
+          "rv_max_display": 5,
+          "rv_per": 5
+        }
+      },
+      "page-gallery-template": {
+        "type": "page-gallery-template",
+        "blocks": {
+          "1511541525152": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/linea-5.png"
+            }
+          },
+          "1511541554234": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/linea-6.png"
+            }
+          },
+          "1511541585905": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/linea-7.png"
+            }
+          },
+          "1511541167047": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SHOP.SEZIO_LOOKBOOK_1024x1024_bcd035f2-b5e5-49bb-b68e-23284c232951.jpg"
+            }
+          },
+          "1511541276097": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/linea-2.png"
+            }
+          },
+          "1511541703994": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/linea-9.png"
+            }
+          },
+          "1511541184590": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/linea-1.png"
+            }
+          },
+          "1511541374490": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Whitespace_1003_copyBOOK_SIZE_1024x1024_056ee827-b856-420d-a672-351a9124afd4.jpg"
+            }
+          },
+          "1511541322328": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/linea-3.png"
+            }
+          }
+        },
+        "block_order": [
+          "1511541167047",
+          "1511541184590",
+          "1511541276097",
+          "1511541322328",
+          "1511541525152",
+          "1511541554234",
+          "1511541585905",
+          "1511541374490",
+          "1511541703994"
+        ],
+        "settings": {
+          "show_divider": false,
+          "wide_display": false,
+          "gallery_type": "masonry",
+          "grid-size": 3,
+          "enable_lightbox": true
+        }
+      },
+      "1516141567792": {
+        "type": "featured-promotions",
+        "blocks": {
+          "1516141567792-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/phonecaseshome.jpg",
+              "link": "shopify:\/\/pages\/phone-case-collections",
+              "title": "",
+              "text": "",
+              "button_label": "<b>PHONE CASES<\/b>"
+            }
+          },
+          "1516141567792-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/cardholdershome.jpg",
+              "link": "shopify:\/\/products\/card-holder",
+              "title": "",
+              "text": "",
+              "button_label": "<b>CARD HOLDERS<\/b>"
+            }
+          },
+          "8090767b-9e6f-4147-bb78-28c6a824bb79": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/passport.webp",
+              "link": "shopify:\/\/products\/passport-holder",
+              "title": "",
+              "text": "",
+              "button_label": "<b>PASSPORT HOLDERS<\/b>"
+            }
+          },
+          "1c33f8e9-3248-4861-852e-86c717c4b567": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/shopall-tcc.webp",
+              "link": "shopify:\/\/collections",
+              "title": "",
+              "text": "",
+              "button_label": "<b>SHOP ALL<\/b>"
+            }
+          }
+        },
+        "block_order": [
+          "1516141567792-1",
+          "1516141567792-0",
+          "8090767b-9e6f-4147-bb78-28c6a824bb79",
+          "1c33f8e9-3248-4861-852e-86c717c4b567"
+        ],
+        "settings": {
+          "wide_display": false,
+          "promo_text_on_image_enabled": true,
+          "featured_promos_per_row": 4,
+          "featured_links_animation": "fadeInUp",
+          "feature_style": "square",
+          "css_class": "collections-home",
+          "custom_css": ""
+        }
+      },
+      "product-recently-viewed-template": {
+        "type": "product-recently-viewed-template",
+        "settings": {}
+      },
+      "1631875450eeee4ab3": {
+        "type": "image-with-text-overlay",
+        "disabled": true,
+        "settings": {
+          "wide_display": true,
+          "image": "shopify:\/\/shop_images\/Spring-Sale-Header-Desktop.webp",
+          "pretext": "",
+          "title": "Personalised Leather Goods",
+          "subtitle": "<p>An extension of yourself. Make it yours.<\/p>",
+          "button1": "SHOP NOW",
+          "button1_link": "shopify:\/\/products\/iphone-13-pro-max",
+          "button1_style": "global-button--primary",
+          "button2": "",
+          "button2_link": "",
+          "button2_style": "global-button--banner",
+          "text_position": "left",
+          "text_align": "left",
+          "caption_content_background": "original",
+          "mobile_image": "shopify:\/\/shop_images\/Spring-Sale-Header-Mobile.webp",
+          "mobile_image_crop": "center",
+          "mobile_text_below_image": false,
+          "mobile_text_color": "",
+          "css_class": "main-banner",
+          "custom_css": ""
+        }
+      },
+      "163256937068321f8b": {
+        "type": "featured-text",
+        "disabled": true,
+        "settings": {
+          "title": "FATHER'S DAY SALE LIVE NOW",
+          "content": "<p>30% OFF EVERYTHING | SALE ENDS SOON<\/p>",
+          "button_label": "",
+          "button_link": "",
+          "text_size": "featured_text",
+          "text_alignment": "center",
+          "css_class": "sale-banner",
+          "custom_css": ""
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "blocks": {
+          "1510948981359": {
+            "type": "search",
+            "settings": {}
+          },
+          "1515094813511": {
+            "type": "recent_posts",
+            "settings": {
+              "blog_post_count": "10"
+            }
+          },
+          "1510948989642": {
+            "type": "post_tags",
+            "settings": {}
+          },
+          "1510948997688": {
+            "type": "newsletter",
+            "settings": {
+              "newsletter_title": "join our vip club",
+              "newsletter_text": "<p>Subscribe to our newsletter for sneak peeks at new collections and&nbsp;early access to flash sales!<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1510948981359",
+          "1515094813511",
+          "1510948989642",
+          "1510948997688"
+        ],
+        "settings": {
+          "wide_display": true,
+          "image": "shopify:\/\/shop_images\/BW-double.jpg",
+          "subtitle": "",
+          "blog_posts_per_row": 3,
+          "blog_posts_per_page": 8,
+          "blog_tags": false,
+          "blog_author": false,
+          "read_time": true,
+          "blog_date": true,
+          "blog_comment_count": false,
+          "read_more_link": false,
+          "toggle": true
+        }
+      },
+      "product-details-template": {
+        "type": "product-details-template",
+        "blocks": {
+          "1517942735093": {
+            "type": "image_gallery",
+            "settings": {
+              "wide_display": true,
+              "detail_image_1": "shopify:\/\/shop_images\/deet1.jpg",
+              "detail_image_2": "shopify:\/\/shop_images\/deet2.jpg",
+              "detail_image_3": "shopify:\/\/shop_images\/deet3.jpg"
+            }
+          },
+          "1515089499610": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 20,
+              "divider_border": false
+            }
+          },
+          "1517955962886": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 20,
+              "divider_border": false
+            }
+          },
+          "product-details-template-4": {
+            "type": "image_with_text_overlay",
+            "settings": {
+              "wide_display": true,
+              "image": "shopify:\/\/shop_images\/flair.jpg",
+              "pretext": "",
+              "title": "give your product pages some flair",
+              "subtitle": "<p>with Turbo's unique \"product details\" template<\/p>",
+              "button1": "read more",
+              "button1_link": "https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115006910647",
+              "button1_style": "global-button--primary",
+              "button2": "",
+              "button2_style": "global-button--banner",
+              "text_position": "left",
+              "text_align": "center",
+              "caption_content_background": "original",
+              "mobile_image_crop": "none",
+              "mobile_text_below_image": true,
+              "mobile_text_color": ""
+            }
+          },
+          "1515089489541": {
+            "type": "rich_text_and_image",
+            "settings": {
+              "title": "",
+              "content": "<p>When you apply the <em>product.details<\/em> template to one or more of your products, you will have some additional settings available that will allow you to add some extra content blocks to your product page. You can then add content below your main product area, such as a Rich text and image section,<strong> <\/strong>Image gallery (3 photos per row), a full-width <strong>I<\/strong>mage with text overlay, or an Image with text which has text on one side and an image on the other. You can even control the spacing between all these additional content blocks by adding a &quot;divider&quot; section!<\/p><p><\/p><p><\/p>",
+              "button_label": "",
+              "text_size": "featured_text",
+              "text_alignment": "center"
+            }
+          },
+          "1515091009596": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 20,
+              "divider_border": false
+            }
+          }
+        },
+        "block_order": [
+          "product-details-template-4",
+          "1515091009596",
+          "1515089489541",
+          "1515089499610",
+          "1517942735093",
+          "1517955962886"
+        ],
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": true,
+          "activate_zoom": true,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "bottom",
+          "enable_thumbnail_slider": true,
+          "display_vendor": false,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": true,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 500,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "enable_reviews_in_description": false
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "blocks": {
+          "1541169778803": {
+            "type": "featured_collection",
+            "disabled": true,
+            "settings": {
+              "title": "You may also be interested in:",
+              "collection_description": true,
+              "collection": "homepage-highlights",
+              "collection_style": "slider",
+              "products_per": 5,
+              "products_limit": 14
+            }
+          }
+        },
+        "block_order": [
+          "1541169778803"
+        ],
+        "settings": {
+          "display_special_instructions": false,
+          "display_savings": true,
+          "cart_message": ""
+        }
+      },
+      "page-details-template": {
+        "type": "page-details-template",
+        "blocks": {
+          "73323fa9-1963-41ae-9ff2-52897cd7617e": {
+            "type": "custom_html",
+            "settings": {
+              "custom_html": "<div class=\"about-wrap\">\n  <div class=\"about-content\">\n    <h2>Our Story<\/h2>\n    <p>\nNestled in the heart of the Netherlands, The Case Club was founded in 2017 through a passion for bespoke goods, bringing back traditional hot stamping and applying it to functional, modern day products. \n\nThe hand-crafted personalization of our products reflects a tradition of refinement and service.\n\nAs one of the few accessories that accompanies us everywhere, our phones merit a case that reflects their value. \n\nIn 2024, we are dedicated to propelling the business to new levels of success. Our team plans to expand on our legacy of true quality craftsmanship and diversify our product range. \n<\/p>\n    <h2>Our Mission<\/h2>\n    <p>Our mission is to empower individuals through the significance of their personal monogram, recognizing it as a profound symbol of self-expression. We inspire you to incorporate your unique power statement into your most cherished products, ensuring they accompany you on every personal journey.<\/p>\n  <\/div>\n  <div class=\"about-video\">\n    <iframe width=\"560\" height=\"315\" src=\"https:\/\/www.youtube.com\/embed\/dst10Wn4eKs\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen><\/iframe>\n  <\/div>\n<\/div>"
+            }
+          }
+        },
+        "block_order": [
+          "73323fa9-1963-41ae-9ff2-52897cd7617e"
+        ],
+        "settings": {}
+      },
+      "personalization-page-template": {
+        "type": "personalization-page-template",
+        "blocks": {
+          "17f0ab5b-1882-407a-b488-d249a28626ea": {
+            "type": "custom_html",
+            "settings": {
+              "custom_html": "<div class=\"personalization-wrap\">\n  <div class=\"art-wrap personalization-title\">Art of Personalization<\/div>\n  <p>Each monogram is traditionally hand pressed with the upmost care and eye for detail. Our renowned hot foil stamping process is a traditional method for embossing first used in 1892. At The Case Club, we’ve revamped this by applying the technique to elegant, modern day products. Your product is made out of the highest quality materials available – ensuring a refined product that lasts overtime.  <\/p>\n  <div class=\"preperation personalization-title\"> Preperation<\/div>\n  <p>Your chosen letters and foil color are collected by our craftsmen to begin the monogramming process.  <\/p>\n  <div class=\"stamping personalization-title\">Hot stamping<\/div>\n  <p>Your monogram is embossed into your leather goods. We take pride in only using the highest quality foil from Germany to ensure your monogram doesn’t fade quickly. Before packing it, we thoroughly assess the finalized product in 5 different areas to make sure it conforms to our strict quality measurements.  <\/p>\n  <div class=\"packing personalization-title\">Packing your products <\/div>\n  <p>After assessing your product, it is ready to be dispatched in our signature packaging. We carefully wrap your newly personalized goods and prepare them for shipment directly to you.  <\/p>\n<\/div>"
+            }
+          }
+        },
+        "block_order": [
+          "17f0ab5b-1882-407a-b488-d249a28626ea"
+        ],
+        "settings": {}
+      },
+      "product-card-wallets": {
+        "type": "product-card-wallets",
+        "blocks": {
+          "c2567204-e6ba-4353-9aa2-d98a30534eec": {
+            "type": "text",
+            "settings": {
+              "title": "Meet your Card Wallet.",
+              "text": "<p>Keep your cards, coins and bills <strong>organized<\/strong> at all times with our sleek designed card wallets. This stylish wallet contains multiple pockets and card slots to ensure enough space for your daily necessities.<\/p><p><br\/>✔️ Never lose your cards and cash again<br\/>✔️ Sleek design to fit any pocket<br\/>✔️ Say no to bulky wallets<br\/>✔️ Enough pockets to fit all your essentials<\/p>",
+              "iframe_video": "https:\/\/player.vimeo.com\/video\/518064416",
+              "cssclass": "meet-case"
+            }
+          },
+          "7529cdf1-1a61-4636-a791-091ff7a37093": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "free-ship",
+              "pro_html_content": "<div class=\"free-ship-wrap\">\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Leather-icon.png\" alt=\"\">\n    <h4>Personalize Your Item<\/h4>\n    <p>Your personal monogram holds power. Apply your power statement onto your most personal products. Pick your favorite color and add your name or initials.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Free-Shipping.png\" alt=\"\">\n    <h4>Free Shipping<\/h4>\n    <p>We personalize your item uniquely for you, then ship your order out within 1 day. Shipping is free worldwide, or choose Next Day Delivery for a flat fee.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/selfie-icon.png\" alt=\"\">\n    <h4>Stylish &amp; Protected<\/h4>\n    <p>Your phone is protected in the most stylish way possible and you’re ready to impress the world.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "free-ship section"
+            }
+          },
+          "1cff6287-43bd-4e7b-b775-ef13c568c3de": {
+            "type": "text",
+            "settings": {
+              "title": "Express Yourself",
+              "text": "<p>Your monogram is your power statement. We offer you the canvas for self expression. With free personalization services on our products, you’re set to impress the world. We only use the highest quality premium leather and foils to ensure a quality, luxury product that lasts overtime.<\/p>",
+              "iframe_video": "https:\/\/www.youtube.com\/watch?v=dst10Wn4eKs",
+              "cssclass": "express-block"
+            }
+          },
+          "880e4502-e0ea-4e58-9e1c-98af055ae9ea": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "From our Club #MyTCC",
+              "pro_html_content": "<div class=\"insta-carousel-wrap\">\n  <div class=\"insta-carousel\">\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc5-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc6-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc7-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc8-min.jpg\" alt=\"\"><\/span>\n  <\/div>\n<\/div>",
+              "html_cssclass": "instas-slider"
+            }
+          },
+          "87de2aa7-8fa6-4c56-b30c-3845bee3fb6e": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "Heading",
+              "pro_html_content": "<div class=\"protective-block\">\n  <div class=\"half-block\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/cardwallets.jpg\">\n  <\/div>\n  <div class=\"half-block\">\n    <h3>The ultimate Wallet<\/h3>\n    <p>Designed on demand, our Card Wallet is made for those who wish to hold more than just cards. With 4 card slots and a 5th, larger slot made for coins, notes or even more cards, this compact, premium leather wallet is sure to hold all your wallet necessities. It shares the same size as our Card Holder and fits neatly in any pocket.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "protective-wap"
+            }
+          }
+        },
+        "block_order": [
+          "c2567204-e6ba-4353-9aa2-d98a30534eec",
+          "7529cdf1-1a61-4636-a791-091ff7a37093",
+          "880e4502-e0ea-4e58-9e1c-98af055ae9ea",
+          "1cff6287-43bd-4e7b-b775-ef13c568c3de",
+          "87de2aa7-8fa6-4c56-b30c-3845bee3fb6e"
+        ],
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": false,
+          "activate_zoom": false,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left",
+          "enable_thumbnail_slider": true,
+          "display_vendor": false,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": false,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 500,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "next_to_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed Items",
+          "rv_products_style": "grid",
+          "rv_max_display": 4,
+          "rv_per": 4
+        }
+      },
+      "product-full-width-images-template": {
+        "type": "product-full-width-images-template",
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": true,
+          "activate_zoom": true,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left-thumbnails",
+          "enable_thumbnail_slider": true,
+          "display_vendor": true,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": true,
+          "display_type": true,
+          "display_tags": true,
+          "display_social_buttons": true,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 500,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "next_to_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed",
+          "rv_products_style": "grid",
+          "rv_max_display": 3,
+          "rv_per": 3
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "wide_display": true,
+          "mobile_image_crop": "none",
+          "caption_content_background": "original",
+          "collection_breadcrumb": true,
+          "display_collection_title": false,
+          "align_height": false,
+          "collection_height": 200,
+          "collections_per_row": 3,
+          "pagination_limit": 48,
+          "toggle": false,
+          "collections_menu": "collections-menu"
+        }
+      },
+      "1631880235d872fb6f": {
+        "type": "video",
+        "disabled": true,
+        "settings": {
+          "wide_display": false,
+          "aspect_ratio": "16:9",
+          "autoplay": false,
+          "autoloop": true,
+          "mute_video": false,
+          "show_controls": true,
+          "video_dark_overlay": false,
+          "iframe_video": "https:\/\/youtu.be\/dst10Wn4eKs",
+          "html5_video": "",
+          "display_text_over_video": false,
+          "preheading": "<p><\/p>",
+          "heading": "",
+          "subheading": "<p><\/p>",
+          "button1_label": "",
+          "button1_link": "",
+          "button1_style": "global-button--banner",
+          "button2_label": "",
+          "button2_link": "",
+          "button2_style": "global-button--banner",
+          "text_position": "center",
+          "text_align": "center",
+          "caption_content_background": "original",
+          "mobile_image_crop": "none",
+          "mobile_text_below_image": true,
+          "mobile_text_color": "",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "search-template": {
+        "type": "search-template",
+        "blocks": {
+          "1520891390224": {
+            "type": "filter_by_type",
+            "settings": {}
+          },
+          "1520891366971": {
+            "type": "text",
+            "settings": {
+              "title": "find what you seek",
+              "text": "<p>Turbo's <strong>predictive search feature<\/strong>&nbsp;makes the search task faster by predicting the keyword or&nbsp;query as it is typed, providing a dropdown list of suggestions.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1520891390224",
+          "1520891366971"
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/orchids.jpg",
+          "search_breadcrumb": true,
+          "search_term": "Search...",
+          "products_per_row": 4,
+          "pagination_limit": 12,
+          "blog_author": false,
+          "read_more_link": true,
+          "blog_date": true,
+          "toggle": false
+        }
+      },
+      "163395936095e0da52": {
+        "type": "custom-html",
+        "disabled": true,
+        "settings": {
+          "custom_html": "<a href=\"#\">free delivery worldwide<\/a>\n<a href=\"#\">order before 17:00 for next day delivery<\/a>",
+          "css_class": "home-banner-btn mobile",
+          "custom_css": ""
+        }
+      },
+      "1632569379bbf73315": {
+        "type": "custom-html",
+        "settings": {
+          "custom_html": "<a href=\"#\" class=\"free-delivery\">free delivery worldwide<\/a>\n<a href=\"#\">Same Day Dispatch When Ordering before 4pm<\/a>\n<a href=\"#\">Free Personalization<\/a>",
+          "css_class": "home-banner-btn",
+          "custom_css": ""
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "blocks": {
+          "1515170889403": {
+            "type": "filter",
+            "settings": {
+              "filter_name": "Metal",
+              "filter_tags": "White Gold, Yellow Gold, Rose Gold, Sterling Silver",
+              "enable_filter_swatches": false
+            }
+          }
+        },
+        "block_order": [
+          "1515170889403"
+        ],
+        "settings": {
+          "featured_collection_image": true,
+          "wide_display": true,
+          "image": "shopify:\/\/shop_images\/storeheada-min.jpg",
+          "mobile_image_crop": "none",
+          "caption_content_background": "original",
+          "display_collection_title": true,
+          "collection_breadcrumb": true,
+          "collection_tags": true,
+          "collection_sort": true,
+          "products_per_row": 4,
+          "pagination_limit": 12,
+          "toggle": false
+        }
+      },
+      "password-template": {
+        "type": "password-template",
+        "settings": {
+          "custom_logo": "shopify:\/\/shop_images\/florence-logo-navy.png",
+          "logo_width": 280,
+          "custom_pagework_page_bg": true,
+          "password-page-background": "shopify:\/\/shop_images\/collec-rings.jpg",
+          "pagework_page_bg_stretched": true,
+          "password_message": "",
+          "show_newsletter": true,
+          "password_text": "",
+          "social_media": true
+        }
+      },
+      "1631881519694e1cd7": {
+        "type": "instafeed",
+        "settings": {
+          "heading_font": "helvetica_n4",
+          "heading_size": 20,
+          "feed_width": 100,
+          "html_area": ""
+        }
+      },
+      "product-card-holders": {
+        "type": "product-card-holders",
+        "blocks": {
+          "9281e8e9-08c4-449e-956d-0c6327eb94eb": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "free-ship",
+              "pro_html_content": "<div class=\"free-ship-wrap\">\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Leather-icon.png\" alt=\"\">\n    <h4>Personalize Your Item<\/h4>\n    <p>Your personal monogram holds power. Apply your power statement onto your most personal products. Pick your favorite color and add your name or initials.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Free-Shipping.png\" alt=\"\">\n    <h4>Free Shipping<\/h4>\n    <p>We personalize your item uniquely for you, then ship your order out within 1 day. Shipping is free worldwide, or choose Next Day Delivery for a flat fee.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/selfie-icon.png\" alt=\"\">\n    <h4>Stylish &amp; Protected<\/h4>\n    <p>Your phone is protected in the most stylish way possible and you’re ready to impress the world.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "free-ship section"
+            }
+          },
+          "0fe7210a-de94-4699-9767-3fc283088236": {
+            "type": "text",
+            "settings": {
+              "title": "Meet your case.",
+              "text": "<p>Sleek designed card holders which slide into any sized pocket and bag. Created as the perfect pocket companion, with four card slots (2 each side) and a middle pocket. Say goodbye to loose cards and bulky wallets.<\/p><p><\/p><p>✔️ Never lose your cards again<\/p><p>✔️ Sleek design to fit any pocket<\/p><p>✔️ Say no to bulky wallets<\/p><p>✔️ Enough pockets to fit all your essentials<\/p>",
+              "iframe_video": "https:\/\/player.vimeo.com\/video\/518063592",
+              "cssclass": "meet-case"
+            }
+          },
+          "97906cec-cde8-4aae-8763-274ad50dc1c4": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "Heading",
+              "pro_html_content": "<div class=\"protective-block\">\n  <div class=\"half-block\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/cardholders.jpg\">\n  <\/div>\n  <div class=\"half-block\">\n    <h3>Compact essential<\/h3>\n    <p>Designed to fit all your cards while keeping compactness in mind, our card holder features 2 card slots on both sides, with a bigger 5th on top, designed to hold multiple cards. Made out of premium leather and finished with your monogram, staying organized was never done in such a fashionable way.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "protective-wap"
+            }
+          },
+          "d3cd508d-ea8d-4cd8-987f-ed0987567ef7": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "From our Club #MyTCC",
+              "pro_html_content": "<div class=\"insta-carousel-wrap\">\n  <div class=\"insta-carousel\">\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc5-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc6-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc7-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc8-min.jpg\" alt=\"\"><\/span>\n  <\/div>\n<\/div>",
+              "html_cssclass": "instas-slider"
+            }
+          },
+          "6a65fce8-88d7-4ed5-b1bc-11225a2c05ef": {
+            "type": "text",
+            "settings": {
+              "title": "Express Yourself",
+              "text": "<p>Your monogram is your power statement. We offer you the canvas for self expression. With free personalization services on our products, you’re set to impress the world. We only use the highest quality premium leather and foils to ensure a quality, luxury product that lasts overtime.<\/p>",
+              "iframe_video": "https:\/\/www.youtube.com\/watch?v=dst10Wn4eKs",
+              "cssclass": "express-block"
+            }
+          }
+        },
+        "block_order": [
+          "0fe7210a-de94-4699-9767-3fc283088236",
+          "9281e8e9-08c4-449e-956d-0c6327eb94eb",
+          "d3cd508d-ea8d-4cd8-987f-ed0987567ef7",
+          "6a65fce8-88d7-4ed5-b1bc-11225a2c05ef",
+          "97906cec-cde8-4aae-8763-274ad50dc1c4"
+        ],
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": false,
+          "activate_zoom": false,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left",
+          "enable_thumbnail_slider": true,
+          "display_vendor": false,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": false,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 500,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "below_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed Items",
+          "rv_products_style": "slider",
+          "rv_max_display": 5,
+          "rv_per": 5
+        }
+      },
+      "1632571825d4e3070e": {
+        "type": "custom-html",
+        "disabled": true,
+        "settings": {
+          "custom_html": "<div class=\"instashop-wrap\">\n\t<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0277\/2212\/1295\/files\/4-SoftTotes-v2_1_1.jpg?v=1681346043\">\t\t\t\n<\/div>",
+          "css_class": "instashop-banner",
+          "custom_css": ""
+        }
+      },
+      "product-description-bottom-template": {
+        "type": "product-description-bottom-template",
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": true,
+          "activate_zoom": true,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left-thumbnails",
+          "enable_thumbnail_slider": true,
+          "display_vendor": true,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": true,
+          "display_type": true,
+          "display_tags": true,
+          "display_social_buttons": true,
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 500,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "next_to_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed",
+          "rv_products_style": "slider",
+          "rv_max_display": 5,
+          "rv_per": 3
+        }
+      },
+      "1631878994ec2533cd": {
+        "type": "custom-html",
+        "disabled": true,
+        "settings": {
+          "custom_html": "<h2>Express Yourself<\/h2><p>Your monogram is your power statement. We offer you the canvas for self expression.<br>\n<span class=\"hide-phone\">With complimentary personalization services on our products, you’re set to impress the world.<\/span><br>\nWe only use the highest quality premium leather and foils to ensure a quality, luxury product that lasts overtime.<\/p>",
+          "css_class": "express-home",
+          "custom_css": ""
+        }
+      },
+      "1631880244065c91c9": {
+        "type": "custom-html",
+        "settings": {
+          "custom_html": "<h2>Join The Club\n<\/h2>\n<p>Tag @thecaseclub to be featured<\/p>",
+          "css_class": "join-club-home",
+          "custom_css": ""
+        }
+      },
+      "collection-sub-collections-template": {
+        "type": "collection-sub-collections-template",
+        "settings": {
+          "featured_collection_image": false,
+          "wide_display": true,
+          "mobile_image_crop": "none",
+          "caption_content_background": "original",
+          "collection_breadcrumb": true,
+          "display_collection_title": false,
+          "collection_tags": false,
+          "collection_sort": false,
+          "align_height": false,
+          "collection_height": 200,
+          "collections_per_row": 4,
+          "products_per_row": 4,
+          "pagination_limit": 48,
+          "toggle": false
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "promo_text": "",
+          "social_icons_header": false,
+          "phone_number": "",
+          "top_bar_menu": "",
+          "show_cart": true,
+          "cart_icon": "cart",
+          "show_locale_selector": false,
+          "show_currency_selector": false,
+          "logo_display_width": 125,
+          "logo": "shopify:\/\/shop_images\/tccshopify.png",
+          "logo_mobile": "shopify:\/\/shop_images\/shopifymobile.png",
+          "main_linklist": "new-main-menu-desktop",
+          "main_linklist2": "",
+          "vertical_menu": false,
+          "dropdown_click": false,
+          "search_enabled": false,
+          "fixed_header": true,
+          "logo_position": "center",
+          "logo_alignment": "center",
+          "menu_position": "inline",
+          "menu_alignment": "align_left"
+        }
+      },
+      "product-sidebar": {
+        "type": "product-sidebar",
+        "settings": {
+          "toggle": false
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": false,
+          "product_recommendations_style": "grid",
+          "product_recommendations_heading": "You may also like",
+          "products_per_row": 4,
+          "recommended_products_limit": 4
+        }
+      },
+      "163257051032732ae8": {
+        "type": "slideshow",
+        "blocks": {
+          "163257051032732ae8-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/tomreview.webp",
+              "pretext": "<p>Tom, customer from London<\/p>",
+              "title": "What others are saying..",
+              "subtitle": "<p>Received the cases and card holders I bought for myself and my partner and I can honestly say I'm seriously, seriously impressed. The leather and finishing of the monogram is beautiful and I can tell this is a quality accessory. <\/p>",
+              "button1": "SHOP Now",
+              "button1_link": "shopify:\/\/products\/iphone-13-pro-max",
+              "button1_style": "global-button--primary",
+              "button2": "",
+              "button2_link": "",
+              "button2_style": "global-button--banner",
+              "text_position": "center",
+              "text_align": "center",
+              "caption_content_background": "original",
+              "mobile_image_crop": "none"
+            }
+          },
+          "b814cf26-23be-4151-a034-29b93808c3e0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/emmareview.webp",
+              "pretext": "<p>Emma, customer from Zürich<\/p>",
+              "title": "What others are saying..",
+              "subtitle": "<p>I'm in love with my new case and card holder set! The leather texture feels amazing and I love the fact my name is on it!! Ordered some more as gifts for the whole family!<\/p>",
+              "button1": "SHOP NOW",
+              "button1_link": "shopify:\/\/products\/iphone-13-pro-max",
+              "button1_style": "global-button--primary",
+              "button2": "",
+              "button2_link": "",
+              "button2_style": "global-button--banner",
+              "text_position": "center",
+              "text_align": "center",
+              "caption_content_background": "original",
+              "mobile_image_crop": "none"
+            }
+          },
+          "d6e34ac5-dc59-4cfd-aae3-a4af7caffa74": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Laag_16.jpg",
+              "pretext": "<p>Sam, customer from New York<\/p>",
+              "title": "What others are saying..",
+              "subtitle": "<p>I’m obessed with my new sling bag! It’s become such an essential part of my outfit and it holds everything I take with me on a daily basis, which is my phone and card holder. I love the colour and the personalisation on it!<\/p>",
+              "button1": "SHOP NOW",
+              "button1_link": "shopify:\/\/products\/sling-bag",
+              "button1_style": "global-button--primary",
+              "button2": "",
+              "button2_link": "",
+              "button2_style": "global-button--banner",
+              "text_position": "center",
+              "text_align": "center",
+              "caption_content_background": "original",
+              "mobile_image_crop": "none"
+            }
+          },
+          "3ce76837-e24c-46d3-ae75-416ce4b05405": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/lailareview.webp",
+              "pretext": "<p>Laila, customer from Los Angeles<\/p>",
+              "title": "What others are saying..",
+              "subtitle": "<p>The luxury accessory I've been looking for all my life! I know it probably sounds geeky but I'm totally obsessed with my new goods. Delivery was super quick, this is the best purchase I made in 2023!<\/p>",
+              "button1": "SHOP NOW",
+              "button1_link": "shopify:\/\/products\/iphone-13-pro-max",
+              "button1_style": "global-button--primary",
+              "button2": "",
+              "button2_link": "",
+              "button2_style": "global-button--banner",
+              "text_position": "center",
+              "text_align": "center",
+              "caption_content_background": "original",
+              "mobile_image_crop": "none"
+            }
+          },
+          "0a3f86e3-95b0-437c-b3d7-5dd712242823": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Laag_16.jpg",
+              "pretext": "<p>Sam, customer from New York<\/p>",
+              "title": "What others are saying..",
+              "subtitle": "<p>I’m obessed with my new sling bag! It’s become such an essential part of my outfit and it holds everything I take with me on a daily basis, which is my phone and card holder. I love the colour and the personalisation on it!<\/p>",
+              "button1": "SHOP NOW",
+              "button1_link": "shopify:\/\/products\/iphone-13-pro-max",
+              "button1_style": "global-button--primary",
+              "button2": "",
+              "button2_link": "",
+              "button2_style": "global-button--banner",
+              "text_position": "center",
+              "text_align": "center",
+              "caption_content_background": "original",
+              "mobile_image_crop": "none"
+            }
+          },
+          "e6219064-d8d9-4dd0-aec4-f0125c416dc7": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Laag_16.jpg",
+              "pretext": "<p>Sam, customer from New York<\/p>",
+              "title": "What others are saying..",
+              "subtitle": "<p>I’m obessed with my new sling bag! It’s become such an essential part of my outfit and it holds everything I take with me on a daily basis, which is my phone and card holder. I love the colour and the personalisation on it!<\/p>",
+              "button1": "SHOP NOW",
+              "button1_link": "shopify:\/\/products\/iphone-13-pro-max",
+              "button1_style": "global-button--primary",
+              "button2": "",
+              "button2_link": "",
+              "button2_style": "global-button--banner",
+              "text_position": "center",
+              "text_align": "center",
+              "caption_content_background": "original",
+              "mobile_image_crop": "none"
+            }
+          }
+        },
+        "block_order": [
+          "163257051032732ae8-0",
+          "b814cf26-23be-4151-a034-29b93808c3e0",
+          "d6e34ac5-dc59-4cfd-aae3-a4af7caffa74",
+          "3ce76837-e24c-46d3-ae75-416ce4b05405",
+          "0a3f86e3-95b0-437c-b3d7-5dd712242823",
+          "e6219064-d8d9-4dd0-aec4-f0125c416dc7"
+        ],
+        "settings": {
+          "wide_display": false,
+          "slideshow_text_animation": "fadeInDown",
+          "slideshow_animation": "slide",
+          "slideshow_speed": 7,
+          "activate_adaptiveHeight": false,
+          "mobile_text_below_image": true,
+          "mobile_text_color": "",
+          "css_class": "instashop-slider",
+          "custom_css": ""
+        }
+      },
+      "page-team-template": {
+        "type": "page-team-template",
+        "blocks": {
+          "page-team-template-0": {
+            "type": "employee",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/flo1.jpg",
+              "title": "",
+              "job_title": "Nicole Chowdhury",
+              "description": "<p><strong>Founder and CEO.<br\/><\/strong><\/p><p><\/p><p><br\/>I have a passion for fashion, vintage decor and macarons!<\/p>",
+              "twitter": "shopify"
+            }
+          },
+          "page-team-template-1": {
+            "type": "employee",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/flo2.jpg",
+              "title": "",
+              "job_title": "Kati Reese",
+              "description": "<p><strong>Master jeweller.<br\/><br\/><\/strong><\/p><p>Powered by cats, coffee and hip hop!<\/p>",
+              "twitter": "shopify"
+            }
+          }
+        },
+        "block_order": [
+          "page-team-template-0",
+          "page-team-template-1"
+        ],
+        "settings": {
+          "image_position": "left",
+          "title": "Meet the dynamic duo behind florence",
+          "text": "<p>We are Nicole and Kati, and we design for our fellow modern woman - mothers, sisters, friends, confidants, rulebreakers, entrepreneurs, badasses - all gorgeously complex individuals and an endless source of inspiration.  We also believe that we vote for the future with our purchases, so we are constantly working to create our pieces as sustainably and responsibly as we can, creating an opportunity for you to choose with purpose and intention.  We use recycled gold and conflict free stones, and as firm believers in quality-over-quantity, each piece is made by hand in our studio.<\/p>",
+          "text_position": "center",
+          "employee_per_row": 2,
+          "member_color": "#2b2a2a",
+          "member_accent_color": "#555d85",
+          "member_overlay_color": "#ffffff"
+        }
+      },
+      "product-dog-collar": {
+        "type": "product-dog-collar",
+        "blocks": {
+          "bfc5b9f8-d27b-400e-8e38-52779f752bbf": {
+            "type": "text",
+            "settings": {
+              "title": "Meet your dog's new stylish set.",
+              "text": "<p>Let the dogs out in style. With our <strong>personalised, animal-friendly vegan leather collar and leash set<\/strong>, your dog is the most stylish dog in the park. Your dog will thank you for it. Personalise the leather tag with the first letter of your dog in gold or silver foil. Dogs like making a statement too!<\/p><p>✔️ Animal-friendly vegan leather<\/p><p>✔️ Luxurious, stylish set for your dog<\/p><p>✔️ Personalised with your dog's initial<\/p><p>✔️ The most stylish dog in the park<\/p>",
+              "image": "shopify:\/\/shop_images\/Dogcollar-min.jpg",
+              "iframe_video": "",
+              "cssclass": "meet-case"
+            }
+          },
+          "d078ee33-5a55-4b6d-b546-a3d3d8610340": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "free-ship",
+              "pro_html_content": "<div class=\"free-ship-wrap\">\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Leather-icon.png\" alt=\"\">\n    <h4>Personalize Your Item<\/h4>\n    <p>Your personal monogram holds power. Apply your power statement onto your most personal products. Pick your favorite color and add your name or initials.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Free-Shipping.png\" alt=\"\">\n    <h4>Free Shipping<\/h4>\n    <p>We personalize your item uniquely for you, then ship your order out within 1 day. Shipping is free worldwide, or choose Next Day Delivery for a flat fee.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/selfie-icon.png\" alt=\"\">\n    <h4>Stylish &amp; Protected<\/h4>\n    <p>Your phone is protected in the most stylish way possible and you’re ready to impress the world.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "free-ship section"
+            }
+          },
+          "6c7f3925-a0db-4565-9284-19d38985fedc": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "From our Club #MyTCC",
+              "pro_html_content": "<div class=\"insta-carousel-wrap\">\n  <div class=\"insta-carousel\">\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc5-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc6-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc7-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc8-min.jpg\" alt=\"\"><\/span>\n  <\/div>\n<\/div>",
+              "html_cssclass": "instas-slider"
+            }
+          },
+          "27da0bcd-78ea-466f-b465-a706af310f03": {
+            "type": "text",
+            "settings": {
+              "title": "Sizing Chart",
+              "text": "<p>No matter the size of your dog, we've got you covered. Pick the right size collar for your dog with the help of our sizing chart. The leashes are the same length no matter which size you pick for the collar. Measure your current collar from end to end to find the right size.<\/p>",
+              "image": "shopify:\/\/shop_images\/dogcollarsizing.jpg",
+              "iframe_video": "",
+              "cssclass": "express-block"
+            }
+          },
+          "3870341f-b296-47f2-81da-359a76616811": {
+            "type": "html-1",
+            "settings": {
+              "html_title": "Heading",
+              "pro_html_content": "<div class=\"protective-block\">\n  <div class=\"half-block\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/files\/dogcollar2-min.jpg?v=1637247875\">\n  <\/div>\n  <div class=\"half-block\">\n    <h3>Comfortable &amp; Stylish<\/h3>\n    <p>Our non-slip grip vegan leather makes sure your dog is comfortable while wearing the collar while you're comfortable holding the leash. The personalised collar will reflect your dog's unique personality. Make a stylish statement with this ultimate dog's wardrobe accessory while keeping your dog safe. Your dog deserves the best of both worlds.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "protective-wap"
+            }
+          }
+        },
+        "block_order": [
+          "bfc5b9f8-d27b-400e-8e38-52779f752bbf",
+          "d078ee33-5a55-4b6d-b546-a3d3d8610340",
+          "6c7f3925-a0db-4565-9284-19d38985fedc",
+          "27da0bcd-78ea-466f-b465-a706af310f03",
+          "3870341f-b296-47f2-81da-359a76616811"
+        ],
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": false,
+          "activate_zoom": false,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left",
+          "enable_thumbnail_slider": true,
+          "display_vendor": false,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": false,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 500,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "next_to_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed Items",
+          "rv_products_style": "grid",
+          "rv_max_display": 4,
+          "rv_per": 4
+        }
+      },
+      "product-simple-products": {
+        "type": "product-simple-products",
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": false,
+          "activate_zoom": false,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left",
+          "enable_thumbnail_slider": true,
+          "display_vendor": false,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": false,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 500,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "below_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed Items",
+          "rv_products_style": "slider",
+          "rv_max_display": 5,
+          "rv_per": 5
+        }
+      },
+      "product-customily-products": {
+        "type": "product-customily-products",
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": false,
+          "activate_zoom": false,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left",
+          "enable_thumbnail_slider": true,
+          "display_vendor": false,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": false,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 500,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "below_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed Items",
+          "rv_products_style": "grid",
+          "rv_max_display": 5,
+          "rv_per": 5
+        }
+      },
+      "product-sling-bag": {
+        "type": "product-sling-bag",
+        "blocks": {
+          "a6e6d8df-8fb0-40e5-a25b-f846d5e0939c": {
+            "type": "text",
+            "settings": {
+              "title": "1",
+              "text": "",
+              "image": "shopify:\/\/shop_images\/slingbag_icons-min.png",
+              "iframe_video": "",
+              "cssclass": "mobiel-logos"
+            }
+          },
+          "33dbaff9-131a-42ac-b634-c3305d825b73": {
+            "type": "text",
+            "settings": {
+              "title": "The new it-bag.",
+              "text": "<p>Say goodbye to carrying around unnecessary heavy bags. This stylish crossbody bag is designed to fit your essentials. It fits any phone model + a card holder or even your passport. Featuring 2 card slots on the back, an adjustable strap and a magnetic closure, this bag is designed for those who are after effortless style combined with comfort.<\/p>",
+              "image": "shopify:\/\/shop_images\/pp-min.jpg",
+              "iframe_video": "",
+              "cssclass": "meet-case"
+            }
+          },
+          "6c3e4679-59cb-440f-bed4-a7a6103bd2e5": {
+            "type": "text",
+            "settings": {
+              "title": "Grab life with both hands.",
+              "text": "<p>Whether you're going for lunch or attending an event at night, keep your hands free and your essentials secure with our Sling Bag. Hand crafted from premium materials, simply add your monogram on the leather tag for timeless elegance. Adjust the strap to your desired length and you're set to make a statement with this crossbody bag.<\/p>",
+              "image": "shopify:\/\/shop_images\/pp2-min.jpg",
+              "iframe_video": "",
+              "cssclass": "meet-case"
+            }
+          },
+          "a05082d0-e8d8-4567-85a0-e23ec2cee5e4": {
+            "type": "text",
+            "settings": {
+              "title": "Join The Club",
+              "text": "<p>Join our global community of more than 100.000+ and growing happy customers! Share your pics with #MyTCC or tag @thecaseclub to be featured.<\/p>",
+              "image": "shopify:\/\/shop_images\/100K_HAPPY_CUSTOMERS-min-min.jpg",
+              "iframe_video": "",
+              "cssclass": "meet-case"
+            }
+          },
+          "d587b276-9185-482e-8ddb-b742d9c6d4fe": {
+            "type": "html-1",
+            "disabled": true,
+            "settings": {
+              "html_title": "free-ship",
+              "pro_html_content": "<div class=\"free-ship-wrap\">\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Leather-icon.png\" alt=\"\">\n    <h4>Personalize Your Item<\/h4>\n    <p>Your personal monogram holds power. Apply your power statement onto your most personal products. Pick your favorite color and add your name or initials.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/Free-Shipping.png\" alt=\"\">\n    <h4>Free Shipping<\/h4>\n    <p>We personalize your item uniquely for you, then ship your order out within 1 day. Shipping is free worldwide, or choose Next Day Delivery for a flat fee.<\/p>\n  <\/div>\n  <div class=\"inner-ship\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/selfie-icon.png\" alt=\"\">\n    <h4>Stylish &amp; Protected<\/h4>\n    <p>Your phone is protected in the most stylish way possible and you’re ready to impress the world.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "free-ship section"
+            }
+          },
+          "b2118fa5-6f1d-4078-aed8-e1a5d4da2fa7": {
+            "type": "html-1",
+            "disabled": true,
+            "settings": {
+              "html_title": "From our Club #MyTCC",
+              "pro_html_content": "<div class=\"insta-carousel-wrap\">\n  <div class=\"insta-carousel\">\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc1-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc2-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc3-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc4-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc5-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc6-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc7-min.jpg\" alt=\"\"><\/span>\n    <span class=\"insta-img\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/t\/2\/assets\/mytcc8-min.jpg\" alt=\"\"><\/span>\n  <\/div>\n<\/div>",
+              "html_cssclass": "instas-slider"
+            }
+          },
+          "f61c87ba-89c9-4661-8d8a-8f0a8b8b02c1": {
+            "type": "text",
+            "settings": {
+              "title": "Express Yourself",
+              "text": "<p>Your monogram is your power statement. We offer you the canvas for self expression. With free personalization services on our products, you’re set to impress the world. We only use the highest quality premium leather and foils to ensure a quality, luxury product that lasts overtime.<\/p>",
+              "iframe_video": "https:\/\/www.youtube.com\/watch?v=dst10Wn4eKs",
+              "cssclass": "express-block"
+            }
+          },
+          "af0bfb15-9727-43e0-a841-2dc45592b593": {
+            "type": "html-1",
+            "disabled": true,
+            "settings": {
+              "html_title": "Heading",
+              "pro_html_content": "<div class=\"protective-block\">\n  <div class=\"half-block\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/0595\/8192\/3483\/files\/protectiveandstylish_2000x.jpg?v=1632051261\">\n  <\/div>\n  <div class=\"half-block\">\n    <h3>Protective &amp; Stylish<\/h3>\n    <p>Our non-slip grip leather, plush microfiber inside lining and raised edges around the phone case make sure to protect your phone whilst remaining stylish. Perfect your look with this ultimate fashion accessoire while keeping your phone safe. You deserve the best of both worlds.<\/p>\n  <\/div>\n<\/div>",
+              "html_cssclass": "protective-wap"
+            }
+          }
+        },
+        "block_order": [
+          "a6e6d8df-8fb0-40e5-a25b-f846d5e0939c",
+          "33dbaff9-131a-42ac-b634-c3305d825b73",
+          "6c3e4679-59cb-440f-bed4-a7a6103bd2e5",
+          "a05082d0-e8d8-4567-85a0-e23ec2cee5e4",
+          "d587b276-9185-482e-8ddb-b742d9c6d4fe",
+          "b2118fa5-6f1d-4078-aed8-e1a5d4da2fa7",
+          "f61c87ba-89c9-4661-8d8a-8f0a8b8b02c1",
+          "af0bfb15-9727-43e0-a841-2dc45592b593"
+        ],
+        "settings": {
+          "product_thumbs": true,
+          "gallery_arrows": true,
+          "enable_product_lightbox": false,
+          "activate_zoom": false,
+          "slideshow_speed": 0,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "left",
+          "enable_thumbnail_slider": true,
+          "display_vendor": false,
+          "product_breadcrumb": true,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": false,
+          "product_description_position": "top",
+          "display_savings": true,
+          "show_payment_button": false,
+          "product_images_position": "left",
+          "set_product_height": false,
+          "product_height": 540,
+          "video_looping": false,
+          "enable_shopify_product_badges": false,
+          "review_position": "below_gallery",
+          "display_recently_viewed": false,
+          "rv_title": "Recently Viewed Items",
+          "rv_products_style": "slider",
+          "rv_max_display": 5,
+          "rv_per": 5
+        }
+      },
+      "085d313c-172c-482e-ab32-645317469e9b": {
+        "type": "quality",
+        "blocks": {
+          "409242f5-2583-47a6-8705-ea5754efd3c1": {
+            "type": "slide",
+            "settings": {
+              "slide_image": "shopify:\/\/shop_images\/Laag_20.jpg",
+              "slide_heading": "Handcrafted in the Netherlands",
+              "slide_text": "The cornerstone of our products is craftsmanship. We work closely with our partners in the Netherlands to ensure only the highest quality artisanship for our products."
+            }
+          },
+          "32317f0d-7fd9-45ae-b79a-a7a51b78fdca": {
+            "type": "slide",
+            "settings": {
+              "slide_image": "shopify:\/\/shop_images\/leatherworks.webp",
+              "slide_heading": "Designed with an eye for detail",
+              "slide_text": "All of our products are hand finished by craftsmen who have over 30 years of experience in the field. This ensures that you receive a quality product that will last for years to come."
+            }
+          },
+          "25c29508-891e-4f7e-b2d7-bbb465e0e2c0": {
+            "type": "slide",
+            "settings": {
+              "slide_image": "shopify:\/\/shop_images\/Laag_18.jpg",
+              "slide_heading": "Complimentary personalization",
+              "slide_text": "Every product comes with free personalization. We believe your personal monogram holds power and is a form of self expression. Apply your statement on your most personal products and embark on your journey of self empowerment."
+            }
+          },
+          "e02bcbbb-badc-4bcc-bf8d-b71db136a384": {
+            "type": "slide",
+            "settings": {
+              "slide_image": "shopify:\/\/shop_images\/Laag_19.jpg",
+              "slide_heading": "Elegance, from A to Z",
+              "slide_text": "From the materials we use, the attention to detail our craftsmen put into finishing the product, to the delivery in our signature packaging, shopping with us is an experience worth having."
+            }
+          }
+        },
+        "block_order": [
+          "409242f5-2583-47a6-8705-ea5754efd3c1",
+          "32317f0d-7fd9-45ae-b79a-a7a51b78fdca",
+          "25c29508-891e-4f7e-b2d7-bbb465e0e2c0",
+          "e02bcbbb-badc-4bcc-bf8d-b71db136a384"
+        ],
+        "settings": {
+          "custom_html": ""
+        }
+      },
+      "038c6a36-4c21-45ea-bbdb-b9020e1f37de": {
+        "type": "banner-image",
+        "disabled": true,
+        "settings": {
+          "custom_html": "",
+          "banner_image": "shopify:\/\/shop_images\/IMG_1251.jpg",
+          "banner_heading": "Spring Sale",
+          "banner_subheading": "20% Off Everything",
+          "banner_button_text": "Spring Sale",
+          "banner_button_link": "shopify:\/\/collections"
+        }
+      },
+      "collection-list1": {
+        "type": "collection-list1",
+        "blocks": {
+          "8a8487a6-bddc-40ab-9fa9-774cb52c8ccf": {
+            "type": "collection",
+            "settings": {
+              "feature_collection": "phone-cases"
+            }
+          },
+          "3161c1c9-d9ed-4b63-acd3-42f8988dc66a": {
+            "type": "collection",
+            "settings": {
+              "feature_collection": "the-blossom-case"
+            }
+          },
+          "922bbef5-d9ce-4d61-84f7-6cdb651ded64": {
+            "type": "collection",
+            "settings": {
+              "feature_collection": "phone-cases"
+            }
+          },
+          "ef59ae74-1a02-4e73-aada-bda34d2782a0": {
+            "type": "collection",
+            "settings": {
+              "feature_collection": "the-blossom-case"
+            }
+          }
+        },
+        "block_order": [
+          "8a8487a6-bddc-40ab-9fa9-774cb52c8ccf",
+          "3161c1c9-d9ed-4b63-acd3-42f8988dc66a",
+          "922bbef5-d9ce-4d61-84f7-6cdb651ded64",
+          "ef59ae74-1a02-4e73-aada-bda34d2782a0"
+        ],
+        "settings": {
+          "title": "iPhone Cases",
+          "align_height": false,
+          "collection_height": 200,
+          "frontpage_collections_per_row": 3,
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "banner_image_ii_Hm4UbH": {
+        "type": "banner-image-II",
+        "disabled": true,
+        "settings": {
+          "First-image": "shopify:\/\/shop_images\/1x1_tom_2f0e1716-12ba-490d-865c-2fbae2f131b2.jpg",
+          "Second-image": "shopify:\/\/shop_images\/black2-min_6afebb51-3f1a-4818-b0d7-3dfe9fe1aa3f.jpg",
+          "Third-image": "shopify:\/\/shop_images\/75fbc39f-9e2d-4e96-9bb3-fd4b229fd52f.jpg",
+          "banner-text-II": "Summer Sale <br> 30% Off Everything",
+          "banner-button-link": "shopify:\/\/collections",
+          "banner-button-bg-color": "#8d8d8d",
+          "banner-button-text-color": "#ffffff",
+          "bg_opacity": 0.7,
+          "bg_width": 1.2,
+          "button_position": 1.7,
+          "button_position_mobile": 1.6
+        }
+      },
+      "phone-collections-template": {
+        "type": "phone-collections-template",
+        "settings": {
+          "wide_display": true,
+          "mobile_image_crop": "none",
+          "caption_content_background": "original",
+          "collection_breadcrumb": true,
+          "display_collection_title": false,
+          "align_height": false,
+          "collection_height": 200,
+          "collections_per_row": 3,
+          "pagination_limit": 48,
+          "toggle": false,
+          "collections_menu": "phone-collections-menu"
+        }
+      },
+      "banner_single_image_GG7F79": {
+        "type": "banner-single-image",
+        "settings": {
+          "First-image": "shopify:\/\/shop_images\/desktop-collage.jpg",
+          "second-image": "shopify:\/\/shop_images\/mobile-collage_1.jpg",
+          "banner-text-II": "Summer Sale <br> 30% Off Everything",
+          "banner-button-link": "shopify:\/\/collections",
+          "banner-button-bg-color": "#8d8d8d",
+          "banner-button-text-color": "#ffffff",
+          "bg_opacity": 0.7,
+          "bg_width": 1.2,
+          "button_position": 1.7,
+          "button_position_mobile": -0.5
+        }
+      }
+    },
+    "content_for_index": [
+      "163256937068321f8b",
+      "163395936095e0da52",
+      "banner_image_ii_Hm4UbH",
+      "banner_single_image_GG7F79",
+      "038c6a36-4c21-45ea-bbdb-b9020e1f37de",
+      "1631875450eeee4ab3",
+      "1632569379bbf73315",
+      "1631878973b10dcc68",
+      "1516141567792",
+      "1631878994ec2533cd",
+      "1631880235d872fb6f",
+      "1632569983d980eccd",
+      "1632571825d4e3070e",
+      "163257051032732ae8",
+      "085d313c-172c-482e-ab32-645317469e9b",
+      "1631880244065c91c9",
+      "1631881519694e1cd7"
+    ],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  }
+}
