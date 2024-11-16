@@ -1,3 +1,26 @@
+<style>
+  @media (max-width:798px) {
+    #header.mobile_nav-fixed--true {
+      position: absolute;
+      top: 30px;
+      transition: 0.2s;
+    }
+    .top-bar a,
+    .top-bar a:visited,
+    .top-bar a:active,
+    .top-bar a span,
+    .top-bar select.currencies,
+    a.mini_cart,
+    a.mini_cart span,
+    .feature_image .header .top-bar .menu a,
+    .feature_image .header .top-bar .menu a span {
+      color: white !important;
+    }
+    .mobile_nav div span {
+     background: white !important;
+    }
+  }
+</style>
 <a name="pagecontent" id="pagecontent"></a>
 <div class="index-sections">
   {{ content_for_index }}

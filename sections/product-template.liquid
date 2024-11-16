@@ -1,9 +1,23 @@
+<style>
+  .footer,
+  .shopify-section--footer {
+    background-color: white;
+  } 
+  @media (min-width:424px) { 
+    .matching-products .smallertext span.initials {
+      font-size: 20px;
+    }
+  }
+  @media (max-width:798px) {
+  .sticky #header.mobile_nav-fixed--true .top-bar .cart-container a, .sticky #header.mobile_nav-fixed--true .top-bar .cart-container span {
+    color: black !important;
+  } 
+}
+</style>
 <script
   type="application/json"
   data-section-type="product-template"
-  data-section-id="{{ section.id }}"
->
-</script>
+  data-section-id="{{ section.id }}"></script>
 
 {% if section.settings.product_breadcrumb == false %}
   {% style %}
@@ -13,44 +27,43 @@
   {% endstyle %}
 {% endif %}
 <div class="product-banner section">
-	<div class="section">
+  <div class="section">
     {%
-      render 'product',
-      product: product,
-      variant: product.selected_or_first_available_variant,
-      display_sku: section.settings.display_sku,
-      display_tags: section.settings.display_tags,
-      display_social_buttons: section.settings.display_social_buttons,
-      display_thumbnails: section.settings.product_thumbs,
-      display_type: section.settings.display_type,
-      display_vendor: section.settings.display_vendor,
-      display_collections: section.settings.display_collections,
-      enable_product_lightbox: section.settings.enable_product_lightbox,
-      enable_shopify_review_comments: settings.enable_shopify_review_comments
-      enable_shopify_product_badges: section.settings.enable_shopify_product_badges,
-      review_position: section.settings.review_position,
-      enable_reviews_in_description: nil,
-      enable_thumbnail_slider: section.settings.enable_thumbnail_slider,
-      enable_zoom: section.settings.activate_zoom,
-      size_chart: settings.size_chart,
-      gallery_arrows: section.settings.gallery_arrows,
-      display_savings: section.settings.display_savings,
-      product_description_position: section.settings.product_description_position,
-      product_description_words: nil,
-      product_images_position: section.settings.product_images_position,
-      set_product_height: section.settings.set_product_height,
-      product_height: section.settings.product_height,
-      show_payment_button: section.settings.show_payment_button,
-      slideshow_transition: section.settings.slideshow_animation,
-      slideshow_speed: section.settings.slideshow_speed,
-      thumbnail_position: section.settings.thumbnail_position,
-      video_looping: section.settings.video_looping,
-      template: 'product',
-    %}
+       render 'product',
+       product: product,
+       variant: product.selected_or_first_available_variant,
+       display_sku: section.settings.display_sku,
+       display_tags: section.settings.display_tags,
+       display_social_buttons: section.settings.display_social_buttons,
+       display_thumbnails: section.settings.product_thumbs,
+       display_type: section.settings.display_type,
+       display_vendor: section.settings.display_vendor,
+       display_collections: section.settings.display_collections,
+       enable_product_lightbox: section.settings.enable_product_lightbox,
+       enable_shopify_review_comments: settings.enable_shopify_review_comments
+       enable_shopify_product_badges: section.settings.enable_shopify_product_badges,
+       review_position: section.settings.review_position,
+       enable_reviews_in_description: nil,
+       enable_thumbnail_slider: section.settings.enable_thumbnail_slider,
+       enable_zoom: section.settings.activate_zoom,
+       size_chart: settings.size_chart,
+       gallery_arrows: section.settings.gallery_arrows,
+       display_savings: section.settings.display_savings,
+       product_description_position: section.settings.product_description_position,
+       product_description_words: nil,
+       product_images_position: section.settings.product_images_position,
+       set_product_height: section.settings.set_product_height,
+       product_height: section.settings.product_height,
+       show_payment_button: section.settings.show_payment_button,
+       slideshow_transition: section.settings.slideshow_animation,
+       slideshow_speed: section.settings.slideshow_speed,
+       thumbnail_position: section.settings.thumbnail_position,
+       video_looping: section.settings.video_looping,
+       template: 'product', %}
   </div>
 </div>
-{% if product.description != blank and product.description contains '<!-- split -->'  %}
-  <br />
+{% if product.description != blank and product.description contains '<!-- split -->' %}
+  <br/>
   <div class="one-whole column">
     <div class="description">
       {{ product.description | split: '<!-- split -->' | last }}
@@ -67,125 +80,223 @@
 {% endif %}
 
 <div class="product-desp-content container">
-{% for block in section.blocks %}
-  {% if block.settings.title != blank %}
-  <div class="one-whole column {{ block.settings.cssclass }}">
-  <div class="is-flex is-flex-wrap equal-columns--outside-trim">
-  <div class="one-half column medium-down--one-whole">
-  <h3>{{ block.settings.title }}</h3>
-  <div>{{ block.settings.text }}</div>
-  </div>
-    
-  <div class="one-half column medium-down--one-whole">
-  {% if block.settings.image != blank %}
-  {% render 'image-element', image: block.settings.image, alt: link_title %}
-  {% endif %}
-  
-  {% if block.settings.iframe_video != blank %}
-  {% if block.settings.iframe_video contains 'vimeo' %}
-  <div class="plyr__video-embed" id="video-{{ object.id }}" data-video-element data-external-video>
-    <iframe src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
-  </div>
-  {% else %}
-  <div class="plyr__video-embed" data-video-element data-external-video>
-    <iframe src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
-  </div>
-  {% endif %}
-  {% endif %}
-  </div>
-  </div>
-  </div>
-  {% endif %}
-  
-  {% if block.settings.html_title != blank %}
-  <div class="{{ block.settings.html_cssclass }}">
-    <div class="heading">{{block.settings.html_title}}</div>
-    <div class="block-content">{{block.settings.pro_html_content}}</div>
-  </div>
-  {% endif %}
-{% endfor %}
+  {% for block in section.blocks %}
+
+    {% if block.type == "slide" %}
+      <div class="one-whole column product-desp-main">
+        <div class="is-flex is-flex-wrap equal-columns--outside-trim {{ block.settings.cssclass }}">
+          <div class="one-half column medium-down--one-whole">
+            <h3>{{ block.settings.title }}</h3>
+            <div>{{ block.settings.text }}</div>
+          </div>
+
+          <div class="one-half column medium-down--one-whole">
+            {% if block.settings.image != blank %}
+              {% render 'image-element', image: block.settings.image, alt: link_title %}
+            {% endif %}
+            {% if block.settings.iframe_video != blank %}
+              {% if block.settings.iframe_video contains 'vimeo' %}
+                <div
+                  class="plyr__video-embed"
+                  id="video-{{ object.id }}"
+                  data-video-element
+                  data-external-video>
+                  <iframe
+                    src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
+                    allowfullscreen
+                    allowtransparency
+                    allow="autoplay"></iframe>
+                </div>
+              {% else %}
+                <div
+                  class="plyr__video-embed"
+                  data-video-element
+                  data-external-video>
+                  <iframe
+                    src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                    allowfullscreen
+                    allowtransparency
+                    allow="autoplay"></iframe>
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    <style>
+      .section-content-text ul {
+        padding-inline-start: 15px;
+        list-style: square;
+      }
+    </style>
+
+    {% if block.settings.title != blank and block.type != "slide" %}
+      <div class="one-whole column product-desp-main {{ block.settings.rv_products_custom_styles }}">
+        <div
+          class="is-flex is-flex-wrap equal-columns--outside-trim {{ block.settings.cssclass }}"
+          {% if block.settings.rv_products_custom_styles == 'product-section-two' %}
+          style="padding: 0;"
+          {% endif %}>
+          <div class="one-half column medium-down--one-whole section-description" style="display: flex; flex-direction: column; justify-content:center">
+            <h3>{{ block.settings.title }}</h3>
+            <div class="section-content-text style_font_white" style="color: white !important;">
+            {% if product.type == "Card Holders" %}
+              {{ block.settings.text_cardwallet }}
+            {% elsif product.type == "Passport Holder" %}
+              {{ block.settings.text_passport }} 
+            {% else %}
+              {{ block.settings.text }}
+            {% endif %}
+            </div>
+          </div>
+
+          <div class="one-half column medium-down--one-whole product-desp">
+            {% if block.settings.image != blank %}
+              {% assign cut_height = 'true' %}
+              {% if block.settings.rv_products_custom_styles == 'product-section-two' %}
+                {% assign cut_height = 'true' %}
+              {% endif %}
+              {% render 'image-element', image: block.settings.image, alt: link_title, cut_height: cut_height %}
+            {% endif %}
+
+            <div class="video-section">
+              {% if block.settings.iframe_video != blank %}
+                {% if block.settings.iframe_video contains 'vimeo' %}
+                  <div
+                    class="plyr__video-embed"
+                    id="video-{{ object.id }}"
+                    data-video-element
+                    data-external-video>
+                    <iframe
+                      src="https://player.vimeo.com/video/{{ block.settings.iframe_video }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
+                      allowfullscreen
+                      allowtransparency
+                      allow="autoplay"></iframe>
+                  </div>
+                {% else %}
+                  <div
+                    class="plyr__video-embed"
+                    data-video-element
+                    data-external-video>
+                    <iframe
+                      src="https://www.youtube.com/embed/{{ block.settings.iframe_video }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                      allowfullscreen
+                      allowtransparency
+                      allow="autoplay"></iframe>
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+
+    {% if block.type == "html-1" %}
+      <div class="premium-wrap">
+        <div class="block-content">
+          <div class="is-flex is-flex-wrap equal-columns--outside-trim meet-case lesser_padding">
+            <div class="one-half column medium-down--one-whole is-relative premium-custom-height">
+              <img src={{ block.settings.premium_image | image_url }}>
+            </div>
+            <div class="one-half column medium-down--one-whole section-description">
+              <div class="content-main style_font_white">
+                <h3>{{ block.settings.premium_heading }}</h3>
+                <p>{{ block.settings.premium_text }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.type == "image" %}
+      <img class="customer_review_image" src={{ block.settings.customer_image | image_url}}>
+    {% endif %}
+  {% endfor %}
 </div>
 
 <div class="judgeme-reviews">
   <h4>Customer Reviews</h4>
   {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
-
 </div>
 
-<div class="personalize-bottom-section">
-  <h3>Become one of our happy customers today! A statement piece. Bold, personal and uniquely yours.</h3>
-<img src="//cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Payment-Seals-trim.png">
-
-</div> 
-
-<div class="faq-container">
-  <div class="faq-block open">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Does this case protect my phone?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-          <p>Yes, our phone cases were designed while keeping both style and protection in mind. All cases have raised edges to make sure it protects your screen when faced down, while it protects the camera when faced up. Your phone is protected during those heart-aching drops.</p>
+<div class="faq-wrap">
+  <div class="faq-container">
+    <div class="one-half column medium-down--one-whole phonecase-faq">
+      <h3 class="mobile_center_aligned">Frequently Asked Questions</h3>
+      <div class="faq-block">
+        <div class="faq-heading custom-faq-heading">
+          <h4>
+            <span class="faq-title-text">Does this case protect my phone?</span>
+            <i class="icon-down-arrow"></i>
+            <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+            <p>Yes, our phone cases were designed while keeping both style and protection in mind. All cases have raised edges to make sure it protects your screen when faced down, while it protects the camera when faced up. Your phone is protected during those heart-aching drops.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Is it made out of real leather?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-          <p>Yes, we use premium bovine pebble leather for all of our products. You're receiving a quality product that will last.          </p>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+            <span class="faq-title-text">Does personalization cost extra?</span>
+            <i class="icon-down-arrow"></i>
+            <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+            <p>No, personalization is free of charge on all of our products.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Does personalization cost extra?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-        <p>No, personalization is free of charge on all of our products.</p>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+            <span class="faq-title-text">What materials are used?</span>
+            <i class="icon-down-arrow"></i>
+            <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+            <p>Our products are handcrafted with premium, vegan leather for increased uniformity in texture, appearance, durability, and ease of care for our customers.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">Will the letters fade?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-      <p>It is very uncommon for the letters to fade. We use the finest foils to prevent that from happening and will resolve any issues within a reasonable time frame if fading does occur.</p>
-    </div>
-    </div>
-  </div>
-  <div class="faq-block">
-    <div class="faq-heading">
-      <h4>
-          <span class="faq-title-text">How to properly care for my leather case?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
-      </h4>
-    </div>
-    <div class="faq-body" style="">
-      <div class="faq-content">
-          <p>A natural side effect of leather is that over time, colors may transfer and fade. In order to keep your leather case beautiful overtime, we recommend to keep your leather product out of the sun and prevent contact with oil substances.</p>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+            <span class="faq-title-text">Will the letters fade?</span>
+            <i class="icon-down-arrow"></i>
+            <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+            <p>It is very uncommon for the letters to fade. We use the finest foils to prevent that from happening and will resolve any issues within a reasonable time frame if fading does occur.</p>
+          </div>
+        </div>
+      </div>
+      <div class="faq-block">
+        <div class="faq-heading">
+          <h4>
+            <span class="faq-title-text">How to properly care for my case?</span>
+            <i class="icon-down-arrow"></i>
+            <i class="icon-up-arrow"></i>
+          </h4>
+        </div>
+        <div class="faq-body" style="">
+          <div class="faq-content">
+            <p>A natural side effect of daily use is that over time, colors may transfer or fade slightly. In order to maintain your product's beauty, we recommend you avoid extended periods of sun exposure and prevent contact with harsh oil substances.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -196,106 +307,140 @@
 {% assign cw_cnt = 0 %}
 {% assign pc_cnt = 0 %}
 <div class="full-width-desktop-padding matching-products">
-  <h2>Matching Products</h2>
+  <h2>Mix and Match</h2>
   <ul>
-{% for product in collections.all.products %}
-  {% if curr_pro != 'Card Holders' %}
-  	{% if product.type == 'Card Holders' %}
-      <li class="product card-holders">
-      {% for v in product.variants %}
-      {% if cho_cnt==0 %}
-           <a href="{{ product.url | within: collection }}">
-        	{% assign cho_cnt = 1 %}
-             <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
-          	<h4>{{product.type}}</h4>
-        	  {%- assign saleOn = false -%}
-  {%- for colprod in product.collections -%}
-    {%- for col in settings.sale_collection_list -%}
-      {%- if colprod.id == col.id -%}
-        {%- assign saleOn = true -%}
-        {% break %}
-        {% break %}
-      {%- endif -%}  
-    {%- endfor -%}
-  {%- endfor -%}
+    {% for product in collections.all.products %}
+      {% if curr_pro != 'Card Holders' %}
+        {% if product.type == 'Card Holders' %}
+          <li class="product card-holders">
+            {% for v in product.variants %}
+              {% if cho_cnt == 0 %}
+                <a href="{{ product.url | within: collection }}">
+                  {% assign cho_cnt = 1 %}
+                  <div class="img-wrap smallertext"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span>
+                  </div>
+                  <h4>{{ product.type }}</h4>
+                  {%- assign saleOn = false -%}
+                  {%- for colprod in product.collections -%}
+                    {%- for col in settings.sale_collection_list -%}
+                      {%- if colprod.id == col.id -%}
+                        {%- assign saleOn = true -%}
+                        {% break %}
+                        {% break %}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endfor -%}
 
-  {%- if settings.show_sales_label and saleOn -%}
-  {% assign perc = 100 | minus: settings.sale_amount %}
-  {% assign perc = perc | divided_by: 100.0 %}
-  {% assign cmp_price = product.price_min | times: perc %}
-  <h5>
-	<span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-	<span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-  </h5>
-  {%- else -%}
-    <h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
-  {% endif %} 
-           </a>
-          {% endif %}
-        
-        <span class="match-colors" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
-          {% endfor %}
-      </li>
-     {% endif %}
-  {% endif %}
-  {% if curr_pro != 'Phone Cases' %}
-  {% if product.type == 'Phone Cases' %}
-      <li class="product phone-cases">
-      {% for v in product.variants %}
-      {% if pc_cnt==0 %}
-           <a href="{{ product.url | within: collection }}">
-        	{% assign pc_cnt = 1 %}
-             <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
-          	<h4>{{product.type}}</h4>
-        	<h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
-        	</a>
-          {% endif %}
-        
-        <span class="match-colors" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
-          {% endfor %}
-      </li>
-  {% endif %}
-  {% endif %}
-  {% if curr_pro != 'Card Wallets' %}
-  {% if product.type == 'Card Wallets' %}
-      <li class="product card-wallets">
-      {% for v in product.variants %}
-      {% if cw_cnt==0 %}
-           <a href="{{ product.url | within: collection }}">
-        	{% assign cw_cnt = 1 %}
-             <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
-          	<h4>{{product.type}}</h4>
-          {%- for colprod in product.collections -%}
-            {%- for col in settings.sale_collection_list -%}
-              {%- if colprod.id == col.id -%}
-                {%- assign saleOn = true -%}
-                {% break %}
-                {% break %}
-              {%- endif -%}  
-            {%- endfor -%}
-          {%- endfor -%}
+                  {%- if settings.show_sales_label and saleOn -%}
+                    {% assign perc = 100 | minus: settings.sale_amount %}
+                    {% assign perc = perc | divided_by: 100.0 %}
+                    {% assign cmp_price = product.price_min | times: perc %}
+                    <h5>
+                      <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+                      <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+                    </h5>
+                  {%- else -%}
+                    <h5>
+                      {% if product.compare_at_price > product.price %}
+                        <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                        <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+                      {% else %}
+                        <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                      {% endif %}
+                    </h5>
+                  {% endif %}
+                </a>
+              {% endif %}
 
-          {%- if settings.show_sales_label and saleOn -%}
-          {% assign perc = 100 | minus: settings.sale_amount %}
-          {% assign perc = perc | divided_by: 100.0 %}
-          {% assign cmp_price = product.price_min | times: perc %}
-          <h5><span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-          <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-          </h5>
-          {%- else -%}
-        	<h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
-          {% endif %}
-           </a>
-          {% endif %}
-        
-        <span class="match-colors" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
-          {% endfor %}
-      </li>
-  {% endif %}
-  {% endif %}
-{% endfor %}
+              <span
+                class="match-colors"
+                data-color="{{ v.title }}"
+                data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
+            {% endfor %}
+          </li>
+        {% endif %}
+      {% endif %}
+      {% if curr_pro != 'Phone Cases' %}
+        {% if product.type == 'Phone Cases' %}
+          <li class="product phone-cases">
+            {% for v in product.variants %}
+              {% if pc_cnt == 0 %}
+                <a href="{{ product.url | within: collection }}">
+                  {% assign pc_cnt = 1 %}
+                  <div class="img-wrap smallertext"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span>
+                  </div>
+                  <h4>{{ product.type }}</h4>
+                  <h5>
+                    {% if product.compare_at_price > product.price %}
+                      <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                      <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+                    {% else %}
+                      <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                    {% endif %}
+                  </h5>
+                </a>
+              {% endif %}
+
+              <span
+                class="match-colors"
+                data-color="{{ v.title }}"
+                data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
+            {% endfor %}
+          </li>
+        {% endif %}
+      {% endif %}
+      {% if curr_pro != 'Card Wallets' %}
+        {% if product.type == 'Card Wallets' %}
+          <li class="product card-wallets">
+            {% for v in product.variants %}
+              {% if cw_cnt == 0 %}
+                <a href="{{ product.url | within: collection }}">
+                  {% assign cw_cnt = 1 %}
+                  <div class="img-wrap smallertext"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span>
+                  </div>
+                  <h4>{{ product.type }}</h4>
+                  {%- for colprod in product.collections -%}
+                    {%- for col in settings.sale_collection_list -%}
+                      {%- if colprod.id == col.id -%}
+                        {%- assign saleOn = true -%}
+                        {% break %}
+                        {% break %}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endfor -%}
+
+                  {%- if settings.show_sales_label and saleOn -%}
+                    {% assign perc = 100 | minus: settings.sale_amount %}
+                    {% assign perc = perc | divided_by: 100.0 %}
+                    {% assign cmp_price = product.price_min | times: perc %}
+                    <h5>
+                      <span class="money compare-at-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+                      <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+                    </h5>
+                  {%- else -%}
+                    <h5>
+                      {% if product.compare_at_price > product.price %}
+                        <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                        <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+                      {% else %}
+                        <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+                      {% endif %}
+                    </h5>
+                  {% endif %}
+                </a>
+              {% endif %}
+
+              <span
+                class="match-colors"
+                data-color="{{ v.title }}"
+                data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
+            {% endfor %}
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
   </ul>
-  </div>
+</div>
 
 {% if section.settings.display_recently_viewed %}
   {% render 'include-recently-viewed' %}
@@ -304,347 +449,380 @@
 <div data-product-recommendations-container></div>
 
 {% schema %}
-{
-  "name": "Product",
-  "class": "shopify-section--product-template has-sidebar-option",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Product gallery"
-    },
-    {
-      "type": "checkbox",
-      "id": "product_thumbs",
-      "label": "Show thumbnails",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "gallery_arrows",
-      "label": "Show arrows",
-      "info": "Only applies to desktop",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_product_lightbox",
-      "label": "Enable lightbox",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "activate_zoom",
-      "label": "Magnify product images on hover"
-    },
-    {
-      "type": "range",
-      "id": "slideshow_speed",
-      "label": "Gallery speed",
-      "min": 0,
-      "max": 6,
-      "unit": "sec",
-      "default": 0,
-      "info": "Set to 0 to disable autoplay."
-    },
-    {
-      "type": "select",
-      "id": "slideshow_animation",
-      "label": "Transition",
-      "options": [
-        {
-          "value": "slide",
-          "label": "Slide"
-        },
-        {
-          "value": "fade",
-          "label": "Fade"
-        }
-      ],
-      "default": "slide"
-    },
-    {
-      "type": "select",
-      "id": "thumbnail_position",
-      "label": "Thumbnails",
-      "default": "bottom",
-      "options": [
-        {
-          "value": "bottom",
-          "label": "Bottom"
-        },
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_thumbnail_slider",
-      "label": "Enable thumbnail slider",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Product information"
-    },
-    {
-      "type": "checkbox",
-      "id": "display_vendor",
-      "label": "Show vendor"
-    },
-    {
-      "type": "checkbox",
-      "id": "product_breadcrumb",
-      "label": "Show breadcrumb links"
-    },
-    {
-      "type": "checkbox",
-      "id": "display_sku",
-      "label": "Show SKU"
-    },
-    {
-      "type": "checkbox",
-      "id": "display_collections",
-      "label": "Show collections"
-    },
-    {
-      "type": "checkbox",
-      "id": "display_type",
-      "label": "Show type"
-    },
-    {
-      "type": "checkbox",
-      "id": "display_tags",
-      "label": "Show tags"
-    },
-    {
-      "type": "checkbox",
-      "id": "display_social_buttons",
-      "label": "Show social media share icons",
-      "default": true
-    },
-    {
-      "type": "radio",
-      "id": "product_description_position",
-      "label": "Description position",
-      "options": [
-        {
-          "value": "top",
-          "label": "Above product form"
-        },
-        {
-          "value": "bottom",
-          "label": "Below product form"
-        }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "id": "display_savings",
-      "label": "Show price savings",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Dynamic checkout button"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_button",
-      "label": "Show dynamic checkout button",
-      "default": true,
-      "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
-    },
-    {
-      "type": "header",
-      "content": "Media",
-      "info": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
-    },
-    {
-      "type": "radio",
-      "id": "product_images_position",
-      "label": "Media position",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "id": "set_product_height",
-      "label": "Set height of product media",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "product_height",
-      "label": "Product media height",
-      "min": 200,
-      "max": 800,
-      "step": 10,
-      "default": 500,
-      "unit": "px"
-    },
-    {
-      "type": "checkbox",
-      "id": "video_looping",
-      "label": "Enable video looping",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Product reviews"
-    },
-    {
-      "type": "paragraph",
-      "content": "Reviews app must be enabled. [Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360008549274#section2)"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_shopify_product_badges",
-      "label": "Display star rating on product",
-      "default": false
-    },
-    {
-      "type": "radio",
-      "id": "review_position",
-      "label": "Reviews position",
-      "default": "next_to_gallery",
-      "options": [
-        {
-          "value": "next_to_gallery",
-          "label": "In product description area"
-        },
-        {
-          "value": "below_gallery",
-          "label": "Below image\/description"
-        }
-      ]
-    },
-    {
-      "type": "header",
-      "content": "Recently viewed products"
-    },
-    {
-      "type": "paragraph",
-      "content": "To test the recently viewed products, view your online store outside of the Editor and visit multiple product pages. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115008765228)"
-    },
-    {
-      "type": "checkbox",
-      "id": "display_recently_viewed",
-      "label": "Show recently viewed products",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "rv_title",
-      "label": "Title",
-      "default": "Recently Viewed Items"
-    },
-    {
-      "type": "radio",
-      "id": "rv_products_style",
-      "label": "Layout",
-      "default": "grid",
-      "options": [
-        {
-          "value": "slider",
-          "label": "Slider"
-        },
-        {
-          "value": "grid",
-          "label": "Grid"
-        }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "rv_max_display",
-      "label": "Products limit",
-      "min": 3,
-      "max": 10,
-      "step": 1,
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "rv_per",
-      "label": "Products per row",
-      "min": 3,
-      "max": 5,
-      "step": 1,
-      "default": 4
-    }
-  ],
-  "blocks": [
-	{
-	"type": "html-1",
-    "name": "Html Content",
+  {
+    "name": "Product",
+    "class": "shopify-section--product-template has-sidebar-option",
     "settings": [
       {
-          "type": "text",
-          "id": "html_title",
-          "label": "Heading",
-          "default": "Heading"
-        },{
-      "type": "html",
-      "id": "pro_html_content",
-      "label": "Html Content"
-      },{
-          "type": "text",
-          "id": "html_cssclass",
-          "label": "CSS Class"
-        }
-    ]
-  },{
-      "type": "text",
-      "name": "Text",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Heading",
-          "default": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text",
-          "default": "<p>Text area can be used for special announcements or general information.</p>"
-        },
-        {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image",
-        "info": "Select Image."
-        },
-		{
-          "type": "video_url",
-          "id": "iframe_video",
-          "label": "Video link",
-          "accept": ["youtube", "vimeo"],
-          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
-        },{
-          "type": "text",
-          "id": "cssclass",
-          "label": "CSS Class"
-        }
-      ]
+        "type": "header",
+        "content": "Product gallery"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_thumbs",
+        "label": "Show thumbnails",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "gallery_arrows",
+        "label": "Show arrows",
+        "info": "Only applies to desktop",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_product_lightbox",
+        "label": "Enable lightbox",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "activate_zoom",
+        "label": "Magnify product images on hover"
+      }, {
+        "type": "range",
+        "id": "slideshow_speed",
+        "label": "Gallery speed",
+        "min": 0,
+        "max": 6,
+        "unit": "sec",
+        "default": 0,
+        "info": "Set to 0 to disable autoplay."
+      }, {
+        "type": "select",
+        "id": "slideshow_animation",
+        "label": "Transition",
+        "options": [
+          {
+            "value": "slide",
+            "label": "Slide"
+          }, {
+            "value": "fade",
+            "label": "Fade"
+          }
+        ],
+        "default": "slide"
+      }, {
+        "type": "select",
+        "id": "thumbnail_position",
+        "label": "Thumbnails",
+        "default": "bottom",
+        "options": [
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }, {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }, {
+        "type": "checkbox",
+        "id": "enable_thumbnail_slider",
+        "label": "Enable thumbnail slider",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "Product information"
+      }, {
+        "type": "checkbox",
+        "id": "display_vendor",
+        "label": "Show vendor"
+      }, {
+        "type": "checkbox",
+        "id": "product_breadcrumb",
+        "label": "Show breadcrumb links"
+      }, {
+        "type": "checkbox",
+        "id": "display_sku",
+        "label": "Show SKU"
+      }, {
+        "type": "checkbox",
+        "id": "display_collections",
+        "label": "Show collections"
+      }, {
+        "type": "checkbox",
+        "id": "display_type",
+        "label": "Show type"
+      }, {
+        "type": "checkbox",
+        "id": "display_tags",
+        "label": "Show tags"
+      }, {
+        "type": "checkbox",
+        "id": "display_social_buttons",
+        "label": "Show social media share icons",
+        "default": true
+      }, {
+        "type": "radio",
+        "id": "product_description_position",
+        "label": "Description position",
+        "options": [
+          {
+            "value": "top",
+            "label": "Above product form"
+          }, {
+            "value": "bottom",
+            "label": "Below product form"
+          }
+        ]
+      }, {
+        "type": "checkbox",
+        "id": "display_savings",
+        "label": "Show price savings",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "Dynamic checkout button"
+      }, {
+        "type": "checkbox",
+        "id": "show_payment_button",
+        "label": "Show dynamic checkout button",
+        "default": true,
+        "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+      }, {
+        "type": "header",
+        "content": "Media",
+        "info": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+      }, {
+        "type": "radio",
+        "id": "product_images_position",
+        "label": "Media position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }, {
+        "type": "checkbox",
+        "id": "set_product_height",
+        "label": "Set height of product media",
+        "default": false
+      }, {
+        "type": "range",
+        "id": "product_height",
+        "label": "Product media height",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "default": 500,
+        "unit": "px"
+      }, {
+        "type": "checkbox",
+        "id": "video_looping",
+        "label": "Enable video looping",
+        "default": false
+      }, {
+        "type": "header",
+        "content": "Product reviews"
+      }, {
+        "type": "paragraph",
+        "content": "Reviews app must be enabled. [Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360008549274#section2)"
+      }, {
+        "type": "checkbox",
+        "id": "enable_shopify_product_badges",
+        "label": "Display star rating on product",
+        "default": false
+      }, {
+        "type": "radio",
+        "id": "review_position",
+        "label": "Reviews position",
+        "default": "next_to_gallery",
+        "options": [
+          {
+            "value": "next_to_gallery",
+            "label": "In product description area"
+          }, {
+            "value": "below_gallery",
+            "label": "Below image\/description"
+          }
+        ]
+      }, {
+        "type": "header",
+        "content": "Recently viewed products"
+      }, {
+        "type": "paragraph",
+        "content": "To test the recently viewed products, view your online store outside of the Editor and visit multiple product pages. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115008765228)"
+      }, {
+        "type": "checkbox",
+        "id": "display_recently_viewed",
+        "label": "Show recently viewed products",
+        "default": false
+      }, {
+        "type": "text",
+        "id": "rv_title",
+        "label": "Title",
+        "default": "Recently Viewed Items"
+      }, {
+        "type": "radio",
+        "id": "rv_products_style",
+        "label": "Layout",
+        "default": "grid",
+        "options": [
+          {
+            "value": "slider",
+            "label": "Slider"
+          }, {
+            "value": "grid",
+            "label": "Grid"
+          }
+        ]
+      }, {
+        "type": "range",
+        "id": "rv_max_display",
+        "label": "Products limit",
+        "min": 3,
+        "max": 10,
+        "step": 1,
+        "default": 4
+      }, {
+        "type": "range",
+        "id": "rv_per",
+        "label": "Products per row",
+        "min": 3,
+        "max": 5,
+        "step": 1,
+        "default": 4
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Customer Review Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "customer_image",
+            "label": "Image"
+          }
+        ]
+      }, {
+        "type": "html-1",
+        "name": "Premium Banner",
+        "settings": [
+          {
+            "type": "text",
+            "id": "premium_heading",
+            "label": "Heading",
+            "default": "Premium bovine leather"
+          }, {
+            "type": "text",
+            "id": "premium_text",
+            "label": "Text",
+            "default": "Basic of our products is also the most important. We work with a European leather tannery to ensure only the highest quality premium bovine leather for our products"
+          }, {
+            "type": "image_picker",
+            "id": "premium_image",
+            "label": "Image"
+          }
+        ]
+      }, {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "radio",
+            "id": "rv_products_custom_styles",
+            "label": "Class",
+            "default": "product-section-one",
+            "options": [
+              {
+                "value": "product-section-one",
+                "label": "product-section-one"
+              }, {
+                "value": "product-section-two",
+                "label": "product-section-two"
+              }
+            ]
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Text area can be used for special announcements or general information.</p>"
+          },
+          {
+            "type": "richtext",
+            "id": "text_cardwallet",
+            "label": "Text (Card Wallet)"
+          },
+          {
+            "type": "richtext",
+            "id": "text_passport",
+            "label": "Text (Passport)"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Select Image."
+          }, {
+            "type": "video_url",
+            "id": "iframe_video",
+            "label": "Video link",
+            "accept": [
+              "youtube", "vimeo"
+            ],
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+          }, {
+            "type": "text",
+            "id": "cssclass",
+            "label": "CSS Class"
+          }
+        ]
+      }, {
+        "type": "slide",
+        "name": "No Image in mobile",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Text area can be used for special announcements or general information.</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Select Image."
+          },
+          {
+            "type": "video_url",
+            "id": "iframe_video",
+            "label": "Video link",
+            "accept": [
+              "youtube", "vimeo"
+            ],
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+          }, {
+            "type": "text",
+            "id": "cssclass",
+            "label": "CSS Class"
+          }
+        ]
+      }
+    ],
+    "default": {
+      "settings": {}
     }
-  ],
-  "default": {
-    "settings": {}
   }
-}
 {% endschema %}

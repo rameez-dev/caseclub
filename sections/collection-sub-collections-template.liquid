@@ -227,8 +227,9 @@
     }
   </style>
 {% endif %}
-
-{% if sp_paginate_by %}{% render 'spurit_po2_collection_template_snippet', paginate_by: sp_paginate_by %}{% endif %}{% schema %}
+{% comment %} 
+{% if sp_paginate_by %}{% render 'spurit_po2_collection_template_snippet', paginate_by: sp_paginate_by %}{% endif %} {% endcomment %}
+{% schema %}
 {
   "name": "Sub-collection",
   "class": "shopify-section--collection-template",

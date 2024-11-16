@@ -2,8 +2,16 @@
   type="application/json"
   data-section-type="product-template"
   data-section-id="{{ section.id }}"
->
+> 
 </script>
+<style>
+  
+@media (max-width:798px) {
+  .sticky #header.mobile_nav-fixed--true .top-bar .cart-container a, .sticky #header.mobile_nav-fixed--true .top-bar .cart-container span {
+    color: black !important;
+  } 
+}
+</style>
 
 {% if section.settings.product_breadcrumb == false %}
   {% style %}
@@ -118,7 +126,7 @@
 </div> 
 
 <div class="faq-container">
-  <div class="faq-block open">
+  <div class="faq-block">
     <div class="faq-heading">
       <h4>
           <span class="faq-title-text">What can this Card Wallet hold?</span>
@@ -163,14 +171,15 @@
   <div class="faq-block">
     <div class="faq-heading">
       <h4>
-          <span class="faq-title-text">Is it made out of real leather?</span>
-          <i class="icon-plus"></i>
-          <i class="icon-minus"></i>
+        <span class="faq-title-text">What materials are used?</span>
+        <i class="icon-plus"></i>
+        <i class="icon-minus"></i>
       </h4>
     </div>
     <div class="faq-body" style="">
       <div class="faq-content">
-        <p>Yes, we use premium bovine pebble leather for all of our products. You're receiving a quality product that will last.</p>
+        <p>Our products are handcrafted with premium, vegan leather for increased uniformity in texture, appearance, durability, and ease of care for our customers.
+        </p>
       </div>
     </div>
   </div>
@@ -244,7 +253,6 @@
   {% endif %} 
            </a>
           {% endif %}
-        
         <span class="match-colors" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
           {% endfor %}
       </li>

@@ -306,6 +306,12 @@
       },
       {
         "type": "color",
+        "id": "banner_mustard_background_color",
+        "label": "Banner mutstard box",
+        "default": "#9c5347"
+      },
+      {
+        "type": "color",
         "id": "banner_background_color",
         "label": "Banner text box",
         "default": "#000000"

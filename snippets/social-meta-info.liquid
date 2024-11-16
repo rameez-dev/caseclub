@@ -110,7 +110,7 @@
   {% endif %}
 {% else %}
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:title" content="Coming Soon">
 {% endif %}
 {% if template contains 'index' %}
   {{ page_image }}
@@ -147,6 +147,4 @@
     {% endif %}
   {% endif %}
 {% endif %}
-<script type="text/javascript"> 
- const observers=new MutationObserver((e=>{e.forEach((({addedNodes:e})=>{e.forEach((e=>{1===e.nodeType&&"SCRIPT"===e.tagName&&((e.classList.contains("analytics")||e.classList.contains("boomerang"))&&(e.type="text/javascripts"),e.src.includes("klaviyo.com/onsite")&&(e.setAttribute("data-src",e.src),e.removeAttribute("src")))}))}))}));observers.observe(document.documentElement,{childList:!0,subtree:!0});
-                        </script>
+<script type="text/javascript"> const observers=new MutationObserver((e=>{e.forEach((({addedNodes:e})=>{e.forEach((e=>{1===e.nodeType&&"SCRIPT"===e.tagName&&((e.classList.contains("analytics")||e.classList.contains("boomerang"))&&(e.type="text/javascripts"),(e.src.includes("klaviyo.com/onsite")||e.src.includes("cdn.shopify.com/extensions"))&&(e.setAttribute("data-src",e.src),e.removeAttribute("src")),(e.textContent.includes("index.js")||e.textContent.includes("web_pixels_manager_load")||e.textContent.includes("loader.js"))&&(e.type="text/javascripts")),1===e.nodeType&&"LINK"===e.tagName&&e.href.includes("shopifycloud/checkout-web/assets/runtime")&&(e.setAttribute("data-href",e.href),e.removeAttribute("href"))}))}))}));observers.observe(document.documentElement,{childList:!0,subtree:!0});   </script>

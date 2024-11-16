@@ -2,7 +2,7 @@
 $(() => {
   window.utils.enableDisclosure();
   const oldFlickityCreate = window.Flickity.prototype._create;
-
+ 
   window.Flickity.prototype._create = function () {
     const that = this;
     if (this.element.addEventListener) {
@@ -40,7 +40,7 @@ $(() => {
   window.testimonials.init();
   window.video.init();
   window.gallery.init();
-  window.videoFeature.setupVideoPlayer();
+  window.videoFeature.setupVideoPlayer(); 
   window.featuredPromotions.init();
   window.featuredCollection.init();
   window.collectionSidebarFilter.init();
@@ -544,6 +544,7 @@ $(() => {
     let cartItemsHTML = "";
     let cartDiscountsHTML = "";
     let cartActionHTML = "";
+    let cartTotalHTML = "";
     let cartSavingsHTML = "";
     const $cartForm = $('[data-cart-form]');
     let productHasSale = false;
@@ -577,15 +578,27 @@ $(() => {
      },100);
     
     var ship_amt = 1;
-    var free_ship = 100;
+    var free_ship = 0;
     var ship_cal = (ship_amt - (cart.total_price/100));
     if( (ship_cal < ship_amt && ship_cal>0) || cart.total_price==0 ){
-      free_ship = free_ship - ( (ship_cal*100)/ship_amt );
+      // free_ship = free_ship - ( (ship_cal*100)/ship_amt );
       var ship_txt = "You're "+window.Shopify.formatMoney(ship_cal*100, $('body').data('money-format')).replace('.00','').replace(',00','')+" away from free shipping.";
     }else{
+      free_ship = 50 
       var ship_txt = "Congrats! You get free shipping.";
     }
+
+    if(cart.item_count < 2) {
+      var discount_text = "Buy 2+ items and get 2 <strong>FREE</strong>!"
+    }
+    else {
+      free_ship = 100;
+      var discount_text = "Congrats! Add 2 <strong>FREE</strong> products!"
+    }
+
     $('.free-shipping-txt').text(ship_txt);
+    $('.discount-text').html(discount_text);
+
     $('.free-shipping-bar span').css('width',free_ship+'%');
 
 
@@ -603,16 +616,29 @@ $(() => {
       let curr_pro_intial = '';
       let curr_pro_color = '';
       let curr_pro_title = '';
+      let curr_pro_model = '';
+      let customized_color = "";
+      let customized_shade_color = "";      
       
       var curr_symbol = Shopify.currency.active;
 
       $.each(cart.items, (index, item) => {
         if( curr_pro=='' ){
           curr_pro_title = item.variant_title;
+          curr_pro_model = (item.product_title.split('-')[1] || 'iPhone 16 Pro Max').trim() || 'iPhone 16 Pro Max';
+          if (item.product_type == "Phone Cases") {
+            curr_pro_model = item.product_title
+          }
+          curr_pro_model_type = (item.product_title.split('-')[0] || '').trim() || '';
+          if(!item.product_title.includes("-")) { 
+            curr_pro_model_type = "XXX"
+          } 
           curr_pro = item.product_type;
           $.each( item.properties, function( key, value ) {
             if( key=='Letters' ) curr_pro_intial = value; 
             if( key=='Letter Color' ) curr_pro_color = value;
+            if( key=='Letter Color1' ) customized_color = value;
+            if( key=='Shade Color' ) customized_shade_color = value;
           });
         }
         const itemDiscounts = item.discounts;
@@ -626,18 +652,35 @@ $(() => {
 
         cartItemsHTML += `<li class="mini-cart__item ${item.product_type.replace(' ', '-').toLowerCase()}" data-cart-item data-line-id="${lineID}" data-variant-id="${item.id}">`
         + `<a href="${item.url}" class="mini-cart__item-a">` ;
-        if (item.product_type!='Strap')
+        if (item.product_title.toLowerCase().includes('bundle')) {
+          cartItemsHTML += `<span class="initials bundle-phone-cart ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
+          cartItemsHTML += `<span class="initials bundle-case-cart ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
+        }
+        else if (item.product_type!='Strap' && item.product_type!='Personalized Phone Cases')
         cartItemsHTML += `<span class="initials ${item.properties['Letter Color']}">${item.properties['Letters']}</span>`;
-        if (item.image) {
+       
+        if (item.image && item.product_type!='Personalized Phone Cases') {
           cartItemsHTML += `${'<div class="cart_image">'
               + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />`
             + '</div><div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span><span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div></a>';
         }
-
+        else if (item.image && item.product_type ==='Personalized Phone Cases'){
+          cartItemsHTML += `${'<div class="cart_image mini-cart__item-image" style="position: relative;">'
+          + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />`
+          + `<span class="cart-initials-color1-text" style="color: ${item.properties['Letter Color1']} !important; text-shadow: ${item.properties['Shade Color']} 1px 2px 0px" >${item.properties['Letters']}</span></div>`;
+          + '</a>';
+    
+        }
         cartItemsHTML += `<div class="mini-cart__item-content"><div class="mini-cart__item-title">`;
 		
-		if ( item.product_type=='Phone Cases' ) {
-			cartItemsHTML += `<h4 class="product_name">The Personalized Case</h4>`;
+		if ( item.product_type=='Phone Cases' || item.product_type ==='Personalized Phone Cases') {
+      if ( item.product_title.includes("MagSafe")) {
+        let curr_title = item.product_title.split('-')[0].trim()
+        cartItemsHTML += `<h4 class="product_name">${curr_title}</h4>`;
+      }
+      else {
+        cartItemsHTML += `<h4 class="product_name">The Personalized Case</h4>`;
+      }
 		}
 		if ( item.product_type=='Card Wallets' ) {
 			cartItemsHTML += `<h4 class="product_name">The Personalized Card Wallet</h4>`;
@@ -648,63 +691,108 @@ $(() => {
     if ( item.product_type=='Strap' ) {
 			cartItemsHTML += `<h4 class="product_name">Strap</h4>`;
 		}
+    if ( item.product_type=='Passport Holder' ) {
+			cartItemsHTML += `<h4 class="product_name">The Personalized Passport Holder</h4>`;
+		}
 		
 		cartItemsHTML += `<a href="${item.url}">${item.title}`;	
         if (item.properties && item.product_type!='Strap') {
           $.each(item.properties, (title, value) => {
-            if (value) {
-              cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
+            if ( title != '_Design') {
+              if (value) {
+                cartItemsHTML += `<div class="line-item color-${value}">${title}: ${value} </div>`;
+              }
             }
           });
         }
         cartItemsHTML += `</a>`;
 
         cartItemsHTML += '</div><div class="mini-cart__item-price">';
-		
-        $.ajax({
-          dataType: 'json',
-          async: false,
-          cache: false,
-          url: `/products/${item.handle}.js`,
-          success(data) {
-            let productData = data;
-            // If item has more than one variant, need to make sure we are pulling data from the correct variant
-            if (productData.variants) {
-              const itemVariants = productData.variants;
-              if (itemVariants.length > 1) {
-                for (let v = 0; v < itemVariants.length; v++) {
-                  if (itemVariants[v].id === item.id) {
-                    productData = itemVariants[v];
-                  }
+
+        if(allProductsData) {
+          let myproductItem = allProductsData.find((element) => element.id == item.product_id)
+          let productData = myproductItem;
+          // If item has more than one variant, need to make sure we are pulling data from the correct variant
+          if (productData.variants) {
+            const itemVariants = productData.variants;
+            if (itemVariants.length > 1) {
+              for (let v = 0; v < itemVariants.length; v++) {
+                if (itemVariants[v].id === item.id) {
+                  productData = itemVariants[v];
                 }
               }
             }
-
-            // If compare at price exists then item is on sale
-            if (productData.compare_at_price) {
-              if (productData.compare_at_price > productData.price) {
-                productHasSale = true;
-                productCompareAtPrice = productData.compare_at_price;
-                productFinalPrice = productData.price;
-              }
-            } else {
-              // Check required for non-sale items
-              productHasSale = false;
+            else {
+              productData = itemVariants[0];
             }
-          },
-        });
+          }
+
+          // If compare at price exists then item is on sale
+          if (parseFloat(productData.compare_at_price)) {
+            if (parseFloat(productData.compare_at_price) > parseFloat(productData.price)) {
+              productHasSale = true;
+              productCompareAtPrice = parseFloat(productData.compare_at_price) * 100;
+              productFinalPrice = parseFloat(productData.price) * 100;
+            }
+          } else {
+            // Check required for non-sale items
+            productHasSale = false;
+          }
+        }
+        else {
+          $.ajax({
+            dataType: 'json',
+            async: false,
+            cache: false,
+            url: `/products/${item.handle}.js`,
+            success(data) {
+              let productData = data;
+              // If item has more than one variant, need to make sure we are pulling data from the correct variant
+              if (productData.variants) {
+                const itemVariants = productData.variants;
+                if (itemVariants.length > 1) {
+                  for (let v = 0; v < itemVariants.length; v++) {
+                    if (itemVariants[v].id === item.id) {
+                      productData = itemVariants[v];
+                    }
+                  }
+                }
+                else {
+                  productData = itemVariants[0];
+                }
+              }
+
+              // If compare at price exists then item is on sale
+              if (productData.compare_at_price) {
+                if (productData.compare_at_price > productData.price) {
+                  productHasSale = true;
+                  productCompareAtPrice = productData.compare_at_price;
+                  productFinalPrice = productData.price;
+                }
+              } else {
+                // Check required for non-sale items
+                productHasSale = false;
+              }
+            },
+          });
+        }
 
         if (productHasSale === true) {
           // puts the slash through the old item price
-          const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format'))}</span>`;
-          cartItemsHTML += `<span class="money sale">${itemPrice.replace('.00','').replace(',00','')}</strong>`;
+          const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format')).replace('.00','').replace(',00','')}</span><span class="salelabel_inline_cart" style="color: {{settings.sale_label_color}} !important; background-color: {{settings.sale_bg_color}};" >{{ settings.sale_text }}</span>`;
+          if (item.final_price > 0) {
+            cartItemsHTML += `<span class="money sale">${itemPrice.replace('.00','').replace(',00','')}</strong>`;
+          }
+          else {
+            cartItemsHTML += `<span>${window.Shopify.translation.cart_free_text}</span></strong>`;
+          }
 
           // Total savings
           saving = (productCompareAtPrice - productFinalPrice) * item.quantity;
           totalSaving = saving + totalSaving;
         } else if (item.price > item.final_price) {
           // puts the slash through the old item price
-          const itemPrice = `${window.Shopify.formatMoney(item.final_price, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(item.price, $('body').data('money-format'))}</span>`;
+          const itemPrice = `${window.Shopify.formatMoney(item.final_price, $('body').data('money-format'))} </span><span class="money compare-at-price">${window.Shopify.formatMoney(item.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`;
           cartItemsHTML += `<span class="money sale">${itemPrice.replace('.00','').replace(',00','')}</strong>`;
         } else {
           const itemPrice = window.Shopify.formatMoney(item.price, $('body').data('money-format'));
@@ -735,46 +823,130 @@ $(() => {
 
         cartItemsHTML += '<div class="product-quantity-box">';
         cartItemsHTML += '<span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>';
-        cartItemsHTML += `<input type="number" min="0" class="quantity" name="updates[]" id="updates_${item.id}" value="${item.quantity}" data-cart-quantity-input="mini-cart" />`;
+        cartItemsHTML += `<input type="number" min="0" class="quantity" name="updates[]" id="updates_${item.id}" value="${item.quantity}" data-cart-quantity-input="mini-cart" disabled />`;
         cartItemsHTML += '<span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>';
         cartItemsHTML += '</div></div></div>';
         cartItemsHTML += `<a href="/cart/change?line=${lineID}&amp;quantity=0" class="js-cart-remove-btn cart__remove-btn" data-line-id="${lineID}" data-remove-item="mini-cart"><span class="remove-icon"></span></a>`;
       });
+         
       
       //console.log({curr_pro,curr_pro_intial,curr_pro_color,curr_pro_title});
       var per_dis = 100 -  window.Shopify.theme_settings.sale_amount;
-
       
       var procolor = curr_pro_color;
       var match_html = '';
-      $.ajax({
-          dataType: 'json',
-          async: false,
-          cache: false,
-          url: `/products.json`,
-          success(data) {
+      let data = {}
+
+      if(allProductsData) {
+        data = { 'products': allProductsData};
+      }
+      else {
+        $.ajax({
+            dataType: 'json',
+            async: false,
+            cache: false,
+            url: `/products.json?limit=200`,
+            success(newdata) {
+              data = newdata;
+        }});
+      }
+
             console.log('testing data after ajax call....', curr_pro);
             jQuery('.mix-match-wrap').show();
-            var ph_pro = caw_pro = cah_pro = 0;
+            var ph_pro = caw_pro = cah_pro = screen_pro = passport_pro = 0;
+
+            $.each(cart.items, (index, item) => {
+              if ( item.product_type=='Phone Cases' || item.product_type=='Personalized Phone Cases') {
+                ph_pro++;
+              }
+              if ( item.product_type=='Card Wallets' ) {
+                caw_pro++;
+              }
+              if ( item.product_type=='Card Holders' ) {
+                cah_pro++;
+              }
+              if ( item.product_type=='Passport Holder' ) {
+                passport_pro++;
+              }
+            });
+
+            if(curr_pro_title == null) curr_pro_title = "Caviar Black"
+
+            let customOrder = [
+                "iPhone 16 Pro Max",
+                "iPhone 16 Pro",
+                "iPhone 16 Plus",
+                "iPhone 16",
+                "iPhone 15 Pro Max",
+                "iPhone 15 Pro",
+                "iPhone 15 Plus",
+                "iPhone 15",
+                "iPhone 14 Pro Max",
+                "iPhone 14 Pro",
+                "iPhone 14 Plus",
+                "iPhone 14",
+                "iPhone 13 Pro Max",
+                "iPhone 13 Pro",
+                "iPhone 13 Plus",
+                "iPhone 13",
+                "iPhone 12 Pro Max",
+                "iPhone 12 Pro",
+                "iPhone 12 Plus",
+                "iPhone 12",
+                "iPhone 11 Pro Max",
+                "iPhone 11 Pro",
+                "iPhone 11 Plus",
+                "iPhone 11",
+              ];
+
             if ( curr_pro != 'Strap'){
+              let phone_products = data.products.filter((value) => (value.product_type=='Phone Cases'));
+              phone_products.sort((a, b) => {
+                let modelA = a.title;
+                let modelB = b.title;
+
+                let indexA = customOrder.indexOf(modelA);
+                let indexB = customOrder.indexOf(modelB);
+
+                // If the model is not in the custom order, push it to the end
+                if (indexA === -1) return 1;
+                if (indexB === -1) return -1;
+
+                return indexA - indexB;
+              });
+
               $.each( data.products, function( key, value ) {
                 if( value.product_type != curr_pro && value.product_type=='Phone Cases'  ){
+                  let selector = '<select name="make-it-match-selector" class="make-it-match-select">'
+                  phone_products.forEach ((item, index) => {
+                    if (item.product_type=='Phone Cases') {
+                      let available_variant = item.variants.find((variant) => variant.available);
+                      if (available_variant) {
+                        let option = `<option value="${available_variant.id}" data-image="${available_variant.featured_image.src}" ${(index == 0) ? 'selected' : ''}>${item.title}</option>`
+                        selector += option;
+                      }
+                    }
+                  });
+                  selector += `</select>`;
                   $.each( value.variants, function( key2, value2 ) {
                     if( value2.title == curr_pro_title && ph_pro==0 ){
                       match_html += '<li class="product phone-cases"><div class="product-slide-inner">';
                       match_html += '<a href="/products/'+value.handle+'">';
-                      match_html += '<div class="img-wrap"><img src="'+value2.featured_image.src+'"><span class="initials '+curr_pro_color+'">'+curr_pro_intial+'</span>';
+                      match_html += '<div class="img-wrap"><img class="make-it-match-img" src="'+value2.featured_image.src+'"><span class="initials '+curr_pro_color+'">'+curr_pro_intial+'</span>';
                       match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
                       match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
                       match_html += '</div></a>';
-                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>You deserve a phone case made just for you.</p></div>';
-                      match_html += '<h5>'+'<span class="compare-at-price">'+window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+
-                      '<br><span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>The Personalized Phone Case</h4><p>You deserve a phone case made just for you.</p></div>';
+                      match_html += '<h5>';
+                      match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
+                      match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
                       match_html += '<form method="post" action="/cart/add">';
                       match_html += '<input type="hidden" name="properties[Letters]" value="'+curr_pro_intial+'">';
                       match_html += '<input type="hidden" name="properties[Letter Color]" value="'+curr_pro_color+'">';
                       match_html += '<input type="hidden" name="id" value="'+value2.id+'" />';
-                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" /></form>';
+                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><button type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" ><span class="make-it-match-btn-text">+ ADD</span><div class="loading-overlay__spinner hidden"><svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div></button>';
+                      match_html += selector;
+                      match_html += '</form>'
                       match_html += '</div></div></li>';
                       ph_pro++;
                     }
@@ -789,14 +961,15 @@ $(() => {
                       match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
                       match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
                       match_html += '</div></a>';
-                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p></div>';
-                      match_html += '<h5>'+'<span class="compare-at-price">'+window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+
-                      '<br><span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>The Personalized Card Wallet</h4><p>Keep your cards, coins and bills organized at all times with our sleek designed card wallets.</p></div>';
+                      match_html += '<h5>';
+                      match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
+                      match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
                       match_html += '<form method="post" action="/cart/add">';
                       match_html += '<input type="hidden" name="properties[Letters]" value="'+curr_pro_intial+'">';
                       match_html += '<input type="hidden" name="properties[Letter Color]" value="'+curr_pro_color+'">';
                       match_html += '<input type="hidden" name="id" value="'+value2.id+'" />';
-                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" /></form>';
+                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><button type="submit" value="+ ADD" class="btn add_to_cart ajax-submit"><span class="make-it-match-btn-text">+ ADD</span><div class="loading-overlay__spinner hidden"><svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div></button></form>';
                   match_html += '</div></div></li>';
                       caw_pro++;
                     }
@@ -811,42 +984,166 @@ $(() => {
                       match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
                       match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
                       match_html += '</div></a>';
-                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>Sleek designed card holders which slide into any sized pocket and bag.</p></div>';
-                      match_html += '<h5>'+'<span class="compare-at-price">'+window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+
-                      '<br><span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>The Personalized Card Holder</h4><p>Sleek designed card holders which slide into any sized pocket and bag.</p></div>';
+                      match_html += '<h5>';
+                      match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
+                      match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
                       match_html += '<form method="post" action="/cart/add">';
                       match_html += '<input type="hidden" name="properties[Letters]" value="'+curr_pro_intial+'">';
                       match_html += '<input type="hidden" name="properties[Letter Color]" value="'+curr_pro_color+'">';
                       match_html += '<input type="hidden" name="id" value="'+value2.id+'" />';
-                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" /></form>';
+                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><button type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" ><span class="make-it-match-btn-text">+ ADD</span><div class="loading-overlay__spinner hidden"><svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div></button></form>';
                   match_html += '</div></div></li>';
                       cah_pro++;
                     }
                   });
                 }
-              
               });
-              $.each( data.products, function( key, value ) {
-                if( value.product_type == 'Strap') {
-                  console.log('feautured image....', value);
-                  match_html += '<li class="product strap"><div class="product-slide-inner">';
-                  match_html += '<a href="/products/'+value.handle+'">';
-                  match_html += '<div class="img-wrap"><img src="'+value.variants[0].featured_image.src+'">';
-                  match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
-                  match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
-                  match_html += '</div></a>';
-                  match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>'+value.title+'</p></div>';
-                  match_html += '<h5>'+'<span class="compare-at-price">'+window.Shopify.formatMoney(value.variants[0].price, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+
-                      '<br><span>'+window.Shopify.formatMoney(value.variants[0].price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
-                  match_html += '<form method="post" action="/cart/add">';
-                  match_html += '<input type="hidden" name="properties[Letters]" value="'+curr_pro_intial+'">';
-                  match_html += '<input type="hidden" name="properties[Letter Color]" value="'+curr_pro_color+'">';
-                  match_html += '<input type="hidden" name="id" value="'+value.variants[0].id+'" />';
-                  match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" /></form>';
-                  match_html += '</div></div></li>';
 
+              $.each( data.products, function( key, value ) {
+                if(  value.product_type != curr_pro && value.product_type=='Passport Holder'  ){
+                  $.each( value.variants, function( key2, value2 ) {
+                    if( value2.title == curr_pro_title && passport_pro==0 ){
+                      match_html += '<li class="product passport-holder"><div class="product-slide-inner">';
+                      match_html += '<a href="/products/'+value.handle+'">';
+                      match_html += '<div class="img-wrap"><img src="'+value2.featured_image.src+'"><span class="initials '+curr_pro_color+'">'+curr_pro_intial+'</span>';
+                      match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
+                      match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
+                      match_html += '</div></a>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>The Personalized Passport Holder</h4><p>Featuring an ultra-slim design with five interior card slots for payment cards and boarding passes</p></div>';
+                      match_html += '<h5>';
+                      match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
+                      match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
+                      match_html += '<form method="post" action="/cart/add">';
+                      match_html += '<input type="hidden" name="properties[Letters]" value="'+curr_pro_intial+'">';
+                      match_html += '<input type="hidden" name="properties[Letter Color]" value="'+curr_pro_color+'">';
+                      match_html += '<input type="hidden" name="id" value="'+value2.id+'" />';
+                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><button type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" ><span class="make-it-match-btn-text">+ ADD</span><div class="loading-overlay__spinner hidden"><svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div></button></form>';
+                      match_html += '</div></div></li>';
+                    passport_pro++;
+                    }
+                  });
                 }
               });
+
+              $.each( data.products, function( key, value ) {
+                if(  value.product_type != curr_pro && value.product_type=='Screen Protectors'  ){
+                  $.each( value.variants, function( key2, value2 ) {
+                    if( value2.title == curr_pro_model && screen_pro==0 ){
+                      console.log(value);
+                      console.log(value2);
+                      match_html += '<li class="product screen-protector"><div class="product-slide-inner">';
+                      match_html += '<a href="/products/'+value.handle+'">';
+                      match_html += '<div class="img-wrap"><img src="'+value.images[0].src+'">';
+                      match_html += '</div></a>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>' + value2.title + '</p></div>';
+                      match_html += '<h5>';
+                      match_html += (value2.price > (value2.price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: (value2.compare_at_price > value2.price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value2.compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>`: '';
+                      match_html += '<span>'+window.Shopify.formatMoney(value2.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
+                      match_html += '<form method="post" action="/cart/add">';
+                      match_html += '<input type="hidden" name="id" value="'+value2.id+'" />';
+                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><button type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" ><span class="make-it-match-btn-text">+ ADD</span><div class="loading-overlay__spinner hidden"><svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div></button></form>';
+                      match_html += '</div></div></li>';
+                    screen_pro++;
+                    }
+                  });
+                }
+              });
+
+              let magsafe_cases = ["Travel MagSafe", "Classic Font MagSafe", "Teddy Bear MagSafe", "Mon Chéri MagSafe", "Love MagSafe", "Heart MagSafe", "Daisy Flower MagSafe", "Blossom MagSafe", "Monaco MagSafe"]
+
+              function getModelName(str) {
+                return str.split("-")[1].trim();
+              }
+
+              for ( index in magsafe_cases) {
+                let current_type = magsafe_cases[index];
+                let products = data.products.filter((product) => product.title.includes(current_type))
+                products.sort((a, b) => {
+                  let modelA = getModelName(a.title);
+                  let modelB = getModelName(b.title);
+
+                  let indexA = customOrder.indexOf(modelA);
+                  let indexB = customOrder.indexOf(modelB);
+
+                  // If the model is not in the custom order, push it to the end
+                  if (indexA === -1) return 1;
+                  if (indexB === -1) return -1;
+
+                  return indexA - indexB;
+                });
+                let temp_products = products
+
+                //uncomment if need to default select on matching iphone model product
+                // let selected_products = products.filter((product) => product.title.includes(curr_pro_model))
+                let selected_products = products
+
+                if(selected_products.length > 0) {
+                  products = selected_products
+                }
+                if ( products.length > 0 ) {
+                  products = [products[0]]
+                  $.each(products, function( key, value ) {
+                    if( !value.title.includes(curr_pro_model_type)) {
+
+                      let selector = '<select name="make-it-match-selector" class="make-it-match-select">'
+                      temp_products.forEach ((item, index) => {
+                        let available_variant = item.variants.find((variant) => variant.available);
+                        if (available_variant) {
+                          let option = `<option value="${available_variant.id}" data-image="${item.images[0].src}" ${(available_variant.id == value.variants[0].id) ? 'selected' : ''}>${item.title.split('-')[1].trim()}</option>`
+                          selector += option;
+                        }
+                      });
+                      selector += `</select>`;
+
+                      if(customized_color == "") customized_color = "#000"
+                      if(customized_shade_color == "") customized_shade_color = "#000"
+                      
+                      match_html += '<li class="product magsafe_mix_match"><div class="product-slide-inner">';
+                      match_html += '<a href="/products/'+value.handle+'">';
+                      match_html += '<div class="img-wrap"><img src="'+value.images[0].src+`"><span class="cart-initials-color1-text" style="color: ${ customized_color } !important; text-shadow: ${ customized_shade_color } 1px 2px 0px">` + curr_pro_intial + '</span>';
+                      match_html += '</div></a>';
+                      match_html += '<div class="mix-pro-price" ><div><h4>'+value.title.split('-')[0].trim()+'</h4><p>Made just for you with our brand new MagSafe technology</p></div>';
+                      match_html += '<h5>';
+                      match_html += (value.variants[0].price > (value.variants[0].price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value.variants[0].price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>` : (value.variants[0].compare_at_price > value.variants[0].price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value.variants[0].compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>` : '';
+                      match_html += '<span>'+window.Shopify.formatMoney((value.variants[0].price*per_dis), $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
+                      match_html += '<form method="post" action="/cart/add">';
+                      match_html += '<input type="hidden" name="properties[Letters]" value="'+curr_pro_intial+'">';
+                      match_html += '<input type="hidden" name="properties[Letter Color1]" value="'+customized_color +'">';
+                      match_html += '<input type="hidden" name="properties[Shade Color]" value="'+ customized_shade_color +'">';
+                      match_html += '<input type="hidden" name="id" value="'+value.variants[0].id+'" />';
+                      match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><button type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" ><span class="make-it-match-btn-text">+ ADD</span><div class="loading-overlay__spinner hidden"><svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div></button>';
+                      match_html += selector;
+                      match_html += "</form>";
+                      match_html += '</div></div></li>';
+
+                    }
+                  });
+                }
+              }
+
+              // $.each( data.products, function( key, value ) {
+              //   if( value.product_type == 'Strap') {
+              //     console.log('feautured image....', value);
+              //     match_html += '<li class="product strap"><div class="product-slide-inner">';
+              //     match_html += '<a href="/products/'+value.handle+'">';
+              //     match_html += '<div class="img-wrap"><img src="'+value.variants[0].featured_image.src+'">';
+              //     match_html += '<div class="tc-logo"><span class="gold-logo" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo.png)"></span>';
+              //     match_html += '<span class="silver-logo active" style="background-image:url(https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/tccwearlogo-silver.png)"></span></div>';
+              //     match_html += '</div></a>';
+              //     match_html += '<div class="mix-pro-price" ><div><h4>'+value.product_type+'</h4><p>'+value.title+'</p></div>';
+              //     match_html += '<h5>';
+              //     match_html += (value.variants[0].price > (value.variants[0].price*per_dis/100)) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value.variants[0].price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>` : (value.variants[0].compare_at_price > value.variants[0].price) ? `<span class="compare-at-price">${window.Shopify.formatMoney(value.variants[0].compare_at_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span>` : '';
+              //     match_html += '<span>'+window.Shopify.formatMoney((value.variants[0].price*per_dis), $('body').data('money-format')).replace('.00','').replace(',00','')+'</span>'+'</h5>';
+              //     match_html += '<form method="post" action="/cart/add">';
+              //     match_html += '<input type="hidden" name="properties[Letters]" value="'+curr_pro_intial+'">';
+              //     match_html += '<input type="hidden" name="properties[Letter Color]" value="'+curr_pro_color+'">';
+              //     match_html += '<input type="hidden" name="id" value="'+value.variants[0].id+'" />';
+              //     match_html += '<input min="1" type="hidden" id="quantity" name="quantity" value="1"><button type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" ><span class="make-it-match-btn-text">+ ADD</span><div class="loading-overlay__spinner hidden"><svg aria-hidden="true" focusable="false" role="presentation" class="spinner" style="stroke: black;" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div></button></form>';
+              //     match_html += '</div></div></li>';
+
+              //   }
+              // });
             }
             
             jQuery('.mix-match-products > ul.slick-slider').slick('unslick');
@@ -861,24 +1158,60 @@ $(() => {
       autoplaySpeed: 5000,
     });
             jQuery('.tc-logo').addClass(procolor);
-          }
+          
+          // }}); //ajax ended here before
+
+      $('.make-it-match-select').change(function () {
+        console.log("chnage")
+        $(this).closest('form').find('input[name="id"]').val($(this).val());
+        $(this).closest('li').find('img.make-it-match-img').first().attr('src', $(this).find(':selected').attr('data-image'));
       });
 
-      const cartDiscounts = cart.cart_level_discount_applications;
+      var cartDiscounts = cart.cart_level_discount_applications;
+      cartDiscounts = cartDiscounts.map(function (item) {
+        if (item.hasOwnProperty('discount_application')){
+          return item.discount_application
+        }
+        return item
+      })
 
-      for (let i = 0; i < cartDiscounts.length; i++) {
-        const amount = window.Shopify.formatMoney(cartDiscounts[i].total_allocated_amount, $('body').data('money-format'));
-        const { title } = cartDiscounts[i];
+      let uniqueDiscounts = [];
+      cartDiscounts.forEach((item) => {
+        if(uniqueDiscounts.some((x) => x.title === item.title)){
+          let temp_index = uniqueDiscounts.findIndex((x) => x.title === item.title)
+          let new_amount = uniqueDiscounts[temp_index].total_allocated_amount + item.total_allocated_amount;
+          uniqueDiscounts[temp_index].total_allocated_amount = new_amount;
+        }
+        else {
+          let newobj = {...item}
+          uniqueDiscounts.push(newobj);
+        }
+      });
 
-        cartDiscountsHTML += `<span class="cart_discounts--title">${title}</span>`;
-        cartDiscountsHTML += '<span class="cart_discounts--price">';
-        cartDiscountsHTML += `-<span class="money">${amount}</span></span>`;
+      if(uniqueDiscounts.length) {
+        cartDiscountsHTML += '<ul class="discount-ul">'
       }
 
-      cartActionHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(cart.total_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>${Shopify.translation.cart_subtotal_text}</span>`;
+      for (let i = 0; i < uniqueDiscounts.length; i++) {
+        const amount = window.Shopify.formatMoney(uniqueDiscounts[i].total_allocated_amount, $('body').data('money-format'));
+        const { title } = uniqueDiscounts[i];
+
+        cartDiscountsHTML += `<li class="discount-li"><span class="cart_discounts--title">${title}</span>`;
+        cartDiscountsHTML += '<span class="cart_discounts--price">';
+        cartDiscountsHTML += `-<span class="money">${amount}</span></span></li>`;
+      }
+
+      if(cartDiscounts.length) {
+        cartDiscountsHTML += '</ul>'
+      }
+
       totalSaving += cart.total_discount;
+      let fulltotal = cart.total_price + totalSaving;
+      cartTotalHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(fulltotal, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>Total</span>`;
+      
+      cartActionHTML += `<span class="right"><span class="money">${window.Shopify.formatMoney(cart.total_price, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span> <span>${Shopify.translation.cart_subtotal_text}</span>`;
       if (window.Shopify.theme_settings.display_savings && totalSaving > 0) {
-        cartSavingsHTML = `<span class="right"><span class="money">-${window.Shopify.formatMoney(totalSaving, $('body').data('money-format'))}</span></span>`
+        cartSavingsHTML = `<span class="right"><span class="money">-${window.Shopify.formatMoney(totalSaving, $('body').data('money-format')).replace('.00','').replace(',00','')}</span></span>`
             + `<span>${window.Shopify.translation.cart_savings_text}
             <span id="cart-sale-tag" style="color: #fff !important; background-color: #000 !important;">
                               <svg focusable="false" width="10" height="10" class="icon icon--discount-badge" viewBox="0 0 10 10" 
@@ -891,8 +1224,10 @@ $(() => {
       }
     }
 
+    $('.cart-count-num').html(`${cart.item_count} Item${(cart.item_count > 1)? 's': ''}`);
     $('.js-cart_items').html(cartItemsHTML);
     $('.js-cart_discounts').html(cartDiscountsHTML);
+    $('.js-cart_total').html(cartTotalHTML);
     $('.js-cart_subtotal').html(cartActionHTML);
     $('.js-cart_savings').html(cartSavingsHTML);
     jQuery('.tc-logo').addClass(procolor);
@@ -942,10 +1277,22 @@ $(() => {
   });
 
   if (window.Shopify.theme_settings.cart_action === 'ajax') {
-    $(document).on('click', '.ajax-submit', function (e) {
-      e.preventDefault();
+    $(document).on('click', '.ajax-submit', async function (e) {
       const $addToCartForm = $(this).closest('form');
       const $addToCartBtn = $addToCartForm.find('.add_to_cart');
+      $addToCartBtn.attr('disabled', 'disabled').addClass('disabled');
+
+      $addToCartBtn.find('span').addClass('hidden');
+      $addToCartBtn.find('div.loading-overlay__spinner').removeClass('hidden');
+      e.preventDefault();
+      
+      if(document.getElementById("snapshot") !== null) {
+        const custom_image = await takeScreenshot();
+        console.log ('custom image ...', custom_image);
+        const formData = $(this).closest('form');
+        formData.append('<input type="hidden" name="properties[_Design]" value= ' + custom_image + '>');
+        console.log('form data ..', formData.serialize());
+      }
 
       // Refresh page on quick shop add to cart if on cart page
       if ($('body').hasClass('cart')) {
@@ -959,17 +1306,20 @@ $(() => {
         type: 'post',
         data: $addToCartForm.serialize(),
         beforeSend() {
-          $addToCartBtn.attr('disabled', 'disabled').addClass('disabled');
           $addToCartBtn.find('span').removeClass('fadeInDown').addClass('animated zoomOut');
         },
         success() {
+          $addToCartBtn.find('div.loading-overlay__spinner').addClass('hidden');
+          $addToCartBtn.find('span').removeClass('hidden');
           $addToCartBtn.find('.checkmark').addClass('checkmark-active');
 
           window.setTimeout(() => {
             $addToCartBtn.removeAttr('disabled').removeClass('disabled');
             $addToCartBtn.find('.checkmark').removeClass('checkmark-active');
-            $addToCartBtn.find('span').removeClass('zoomOut').addClass('fadeInDown');
-          }, 1000);
+            setTimeout(() => {
+              $addToCartBtn.find('span').removeClass('zoomOut');
+            }, 800);
+          }, 800);
 
           $.ajax({
             url: '/cart.js',
@@ -1014,6 +1364,8 @@ $(() => {
           $addToCartForm.after(warning);
           $addToCartBtn.removeAttr('disabled').removeClass('disabled');
           $addToCartBtn.find('span').text(window.Shopify.translation.add_to_cart).removeClass('zoomOut').addClass('zoomIn');
+          $addToCartBtn.find('div.loading-overlay__spinner').addClass('hidden');
+          $addToCartBtn.find('span').removeClass('hidden');
         },
       });
 
@@ -1489,3 +1841,53 @@ $(document).ready(function(){
       },1000);
     }
 });
+
+//s3 upload ....
+function takeScreenshot() {
+  console.log('screeeeeeeeeeeeeeeeeeeeeeeeeeeeen');
+  const response = new Promise (function (resolve, reject) {
+  var bucketName = "caseclubhtmlcanvas";
+  var bucketRegion = "us-east-1";
+  var IdentityPoolId = "us-east-1:5d9945a8-60d4-4bf4-bf59-64b79445bb80";
+  var image_url = "";
+
+  AWS.config.update({
+    region: bucketRegion,
+    credentials: new AWS.CognitoIdentityCredentials({ IdentityPoolId: IdentityPoolId })
+  });
+  var s3 = new AWS.S3({
+    apiVersion: '2012-10-17',
+    params: {Bucket: bucketName}
+  });
+  console.log(s3);
+  console.log("snapshot");
+  console.log(document.querySelector("#snapshot"));
+
+  html2canvas(document.querySelector("#snapshot"), { onclone: function (clonedDoc) {
+    clonedDoc.getElementById('snapshot').style.display = 'block';
+    }, backgroundColor: null , allowTaint: true, useCORS: true, scale: 1}).then(canvas => {
+    
+    canvas.toBlob((blob) => {
+      if (blob != null) {
+        console.log(blob);
+      var params = {
+          Key: Date.now() + "." + blob.type.split("/")[1],
+          Body: blob,
+          ContentType: blob.type,
+          ACL: 'public-read'
+      }
+      s3.upload(params, function(err, data) {
+            if(err) {
+              console.log('hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
+              reject(err);
+            } else {
+              image_url = data.Location;
+              resolve(image_url);
+            }
+        });
+      }
+    });
+  });
+});
+    return response;
+}

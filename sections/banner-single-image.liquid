@@ -1,0 +1,111 @@
+<section class="banner-image">
+  <div class="banner-single-images_container"> 
+    <div class="banner-images-main">
+      {% if section.settings.banner-text-II != blank %}
+        <a class="button-show-mobile banner-images-II_link" href="{{ section.settings.banner-button-link }}" 
+        style="background: rgb({{ section.settings.banner-button-bg-color.rgb |  replace: ' ', ','  }}, {{ section.settings.bg_opacity }}) !important;color: {{ section.settings.banner-button-text-color }} !important; width: {{ section.settings.bg_width |  times: 200 }}px; max-width: 80%; margin-top: {{ section.settings.button_position_mobile |  times: 100 }}px">
+          {{ section.settings.banner-text-II }}
+        </a>
+        {% endif %}
+      <div class="banner-single-image">  
+        {{ section.settings.First-image | image_url: width: 1800 | image_tag: widths: '300, 600, 900, 1200, 1500, 1800' }}
+      </div>
+      <div class="banner-single-mbl-image">  
+        <img src={{ section.settings.second-image | image_url }}>
+      </div>
+    </div>
+      {% if section.settings.banner-text-II != blank %}
+      <a class="button-show-desktop banner-images-II_link" href="{{ section.settings.banner-button-link }}" 
+      style="background: rgb({{ section.settings.banner-button-bg-color.rgb |  replace: ' ', ','  }}, {{ section.settings.bg_opacity }}) !important;color: {{ section.settings.banner-button-text-color }} !important; width: {{ section.settings.bg_width |  times: 200 }}px; max-width: 80%; margin-top: {{ section.settings.button_position |  times: 100 }}px">
+        {{ section.settings.banner-text-II }}
+      </a>
+      {% endif %}
+  </div>
+</section>
+
+
+{%  schema  %}  
+
+{
+    "name": "Banner Single Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "First-image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "second-image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "text",
+        "id": "banner-text-II",
+        "label": "Button Text",
+        "default": "SHOP NOW"
+      }
+      ,
+      {
+        "type": "url",
+        "id": "banner-button-link",
+        "label": "Button Link"
+      }
+      ,
+      {
+        "type": "color",
+        "id": "banner-button-bg-color",
+        "label": "Button Background",
+        "default": "#000"
+      }
+      ,
+      {
+        "type": "color",
+        "id": "banner-button-text-color",
+        "label": "Button Text",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "bg_opacity",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "label": "Button Background Opacity",
+        "default": 0.8
+      },
+      {
+        "type": "range",
+        "id": "bg_width",
+        "min": 0.2,
+        "max": 2,
+        "step": 0.2,
+        "label": "Button Background Scale",
+        "default": 1
+      },{
+        "type": "range",
+        "id": "button_position",
+        "min": -5,
+        "max": 5,
+        "step": 0.1,
+        "label": "Button Position Desktop",
+        "default": 0
+      },{
+        "type": "range",
+        "id": "button_position_mobile",
+        "min": -5,
+        "max": 5,
+        "step": 0.1,
+        "label": "Button Position Mobile",
+        "default": 0
+      }
+      ],
+    "presets": [
+      {
+        "name": "Banner Single Image",
+        "category": "Content"
+      }
+    ]
+  }  
+
+{% endschema %} 

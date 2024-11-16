@@ -17,8 +17,9 @@
 <div class="
     {%
       render 'column-width',
-      value: products_per_row
+      value: 3
     %}
+    collections-types
     column
     {% if settings.mobile_products_per_row == '1' %}
       medium-down--one-half small-down--one-whole
@@ -34,7 +35,10 @@
     product-{{ product.id }}"
     {% if settings.pagination_type == 'load_more_button' %}data-load-more--grid-item{% endif %}>
   <div class="product-wrap {% if settings.collection_secondary_image != blank and secondaryImage != blank %}has-secondary-media-swap{% endif %}">
-    <div class="relative product_image">
+    <div class="personalisation">
+      Personalization
+    </div>
+    <div class="relative product_image product-image-custom">
       <a href="{{ product.url | within: collection }}">
         <div class="image__container">
           {% if settings.product_form_style == 'dropdown' %}
@@ -93,7 +97,10 @@
     %}
   </div>
   
-  <h3 class="product-title"><a href="{{product.url}}" class="">{{product.title}}</a></h3>
+  <h3 class="product-title">
+    <a href="{{product.url}}" class="">{{product.title}}</a>
+<!--     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
+-->  </h3> 
 
   <a class="product-info__caption {% if settings.thumbnail_hover_enabled %}hidden{% endif %}" href="{{ product.url | within: collection }}">
     {%
@@ -143,6 +150,13 @@
     <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
   </h5>
   {%- else -%}
-  <h5><span class="money">{{ product.price_min | money_without_trailing_zeros }}</span></h5>
+  <h5>
+    {% if product.compare_at_price > product.price %}
+      <span class="money compare-at-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+      <span class="money" style="margin-left:5px;">{{ product.price | money_without_trailing_zeros }}</span>
+    {% else %}
+      <span class="money">{{ product.price_min | money_without_trailing_zeros }}</span>
+    {% endif %}
+  </h5>
   {% endif %} 
 </div>

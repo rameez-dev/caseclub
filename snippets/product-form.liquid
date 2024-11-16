@@ -1,3 +1,57 @@
+<style>
+  .text-color-swatches {
+    display: flex;
+  }
+  .text-color-input { 
+    clip: rect(0,0,0,0);
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+  }  
+  .text-color-label {
+    border: 1px transparent solid;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+    overflow: hidden;
+    border-radius: 25px;
+    margin: 5px;
+    text-indent: 100%;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  input[ type= 'radio'].text-color-input:checked + label {
+    border-color: rgb(255, 100, 145);
+    border-width: 2px;
+}
+.initials-color1-text {
+    font-family: 'LibreBaskerville-Bold';
+    display: flex;
+    text-transform: uppercase;
+    font-size: 10px;
+    z-index:11;
+    transform: rotate(270deg);
+    /*height: 540px;*/
+    width: 60%;
+    margin: 29% 19% 11% 21%;
+    /* margin: 25% 20% 15%; */
+    aspect-ratio: 1;
+    align-items: center;
+    justify-content: center;
+}
+@media only screen and (max-width: 481px) {
+    .initials-color1-text {
+      /*height: 310px;*/
+      width: 60%;
+      aspect-ratio: 1;
+  }
+  #pwzrswiper-slide-0{
+    height: 310px;
+  }
+}
+
+</style>
 {% if show_payment_button == false or product.selling_plan_groups.size > 0 %}
   {% assign show_payment_button = false %}
 {% else %}
@@ -55,50 +109,32 @@
 
 {% assign  count = 1 %}
   
-{% if product.type == 'Phone Cases' %}
-  <ul class="phone-case-info"><li><i class="icon-check"></i> Protect your phone in style</li>
-<li><i class="icon-check"></i> Express your personality</li>
-<li><i class="icon-check"></i> Say no to bulky plastic cases</li></ul>
+{% if product.type == 'Phone Cases' or product.type == 'Personalized Phone Cases' %}
+  <ul class="phone-case-info"><li><span class="square-icon"></span> Protect your phone in style</li>
+<li><span class="square-icon"></span> Express your personality</li>
+<li><span class="square-icon"></span> Say no to bulky plastic cases</li></ul>
   
-  <div class="select-model">
-    <label class="form-label"><span class="label-badge">{{count}}</span>Select your device</label>
-    {% assign  count = count | plus:1 %}
-    <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
-            <option value="/products/iphone-14-pro-max" {% if product.title == "iPhone 14 Pro Max" %}selected{% endif %}>iPhone 14 Pro Max</option>
-            <option value="/products/iphone-14-pro" {% if product.title == "iPhone 14 Pro" %}selected{% endif %}>iPhone 14 Pro</option>
-            <option value="/products/iphone-14-plus" {% if product.title == "iPhone 14 Plus" %}selected{% endif %}>iPhone 14 Plus</option>
-            <option value="/products/iphone-14" {% if product.title == "iPhone 14" %}selected{% endif %}>iPhone 14</option>
-			<option value="/products/iphone-13-pro-max" {% if product.title == "iPhone 13 Pro Max" %}selected{% endif %}>iPhone 13 Pro Max</option>
-      		<option value="/products/iphone-13-pro" {% if product.title == "iPhone 13 Pro" %}selected{% endif %}>iPhone 13 Pro</option>
-      		<option value="/products/iphone-13" {% if product.title == "iPhone 13" %}selected{% endif %}>iPhone 13</option>
-      		<option value="/products/iphone-12-pro-max" {% if product.title == "iPhone 12 Pro Max" %}selected{% endif %}>iPhone 12 Pro Max</option>
-      		<option value="/products/iphone-12-pro" {% if product.title == "iPhone 12 Pro" %}selected{% endif %}>iPhone 12 Pro</option>
-      		<option value="/products/iphone-12" {% if product.title == "iPhone 12" %}selected{% endif %}>iPhone 12</option>
-      		<option value="/products/iphone-11-pro-max" {% if product.title == "iPhone 11 Pro Max" %}selected{% endif %}>iPhone 11 Pro Max</option>  
-      		<option value="/products/iphone-11-pro" {% if product.title == "iPhone 11 Pro" %}selected{% endif %}>iPhone 11 Pro</option>
-      		<option value="/products/iphone-11" {% if product.title == "iPhone 11" %}selected{% endif %}>iPhone 11</option>
-      		<option value="/products/iphone-xs" {% if product.title == "iPhone X(S)" %}selected{% endif %}>iPhone X(S)</option>
-      		<option value="/products/iphone-xr" {% if product.title == "iPhone XR" %}selected{% endif %}>iPhone XR</option>
-    </select>
-    <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
-      {% for product1 in collections.all.products %}
-  		{% if product1.type == 'Phone Cases' %}
-      		<option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
-        {% endif %}
-      	{% endfor %}
-    </select>-->
-  </div>
-{% endif %}
-{% if product.type != 'Phone Cases' and product.type!="Simple Product" and product.type!="Gift Cards" %}
+    {% endif %}
+ 
+{% if product.type=="Passport Holder" %}
+  <ul class="phone-case-info">
+    <li><span class="square-icon"></span>Protect your passport in style</li>
+    <li><span class="square-icon"></span>Express your personality</li>
+    <li><span class="square-icon"></span>Elevate your travel experience with timeless elegance</li>
+  </ul>
+  {% endif %}
+
+{% if product.type != 'Phone Cases' and product.type != 'Personalized Phone Cases' and product.type!="Simple Product" and product.type!="Gift Cards" and product.type!="Passport Holder" %}
 <ul class="phone-case-info">
-<li><i class="icon-check"></i> Never lose your cards again</li>
-<li><i class="icon-check"></i> Fits in any pocket without bulk</li>
-<li><i class="icon-check"></i> Holds all your essentials</li></ul>
+  <li><span class="square-icon"></span>Never lose your cards again</li>
+  <li><span class="square-icon"></span>Fits in any pocket without bulk</li>
+  <li><span class="square-icon"></span>Holds all your essentials</li>
+</ul>
 {% endif %}
   {% form 'product', product %}
 
   {% if product.options.size == 1 and settings.product_form_style == 'dropdown' and product.options[0] == 'Color' %}
-    <label class="form-label"><span class="label-badge">{{count}}</span>Select your color</label>
+  <label class="form-label"><span class="label-text">Color</span><span id="color-name-display">{% if product.selected_variant.title %} {{ product.selected_variant.title }} {% else %} Caviar Black {% endif %}</span></label>
     {% assign  count = count | plus:1 %}
   {% elsif product.options.size == 1 and settings.product_form_style == 'dropdown' and product.options[0] == 'Size' %}
     <label class="form-label"><span class="label-badge">{{count}}</span>Select your size</label>
@@ -111,9 +147,9 @@
     "
   >
 
-    {% if product.options.size == 1 and settings.product_form_style == 'dropdown' %}
+    <!-- {% if product.options.size == 1 and settings.product_form_style == 'dropdown' %}
       <label>{{ product.options[0] }}</label>
-    {% endif %}
+    {% endif %} -->
 
     <div class="selection-product-variation">
      {% if template.suffix != "customily-products" %}
@@ -129,10 +165,33 @@
       </select>
     {% endif %}
     </div>
+    {% if product.handle contains 'bundle' %}
+      <style>
+        .color-swatch-option .color-swatch span {
+          background-position-x: -20px;
+        }
+      </style>
+    {% elsif product.handle contains 'travel' %}
+      <style>
+        .cart-initials-color1-text {
+          margin-top: 6px;
+          margin-left: 3px;
+        }
+        .color-swatch-option .color-swatch span {
+          background-position-x: 90px;
+          background-position-y: -10px;
+        }
+      </style>
+    {% endif %}
     <div class="color-swatch-option">
     {% for v in product.variants %}
     	<div class="color-swatch {% if v == variant %}active{% endif %}" data-value="{{ v.id }}" title="{{ v.title }}">
-          <span style="background-image:url({{ v.featured_media | product_img_url: '200x' }});"></span>
+          {% if v.metafields.custom.swatch %}
+            {% assign swatch_url = v.metafields.custom.swatch | image_url: width: '200x' %}
+          {% else %}
+            {% assign swatch_url = v.featured_media | product_img_url: '200x' %}
+          {% endif %}
+          <span style="background-image:url({{ swatch_url }});"></span>
         </div>
     {% endfor %}
     </div>
@@ -149,6 +208,121 @@
       {% endfor %}
     </div>
   {% endif %}
+
+  {% if product.type == 'Phone Cases' %}
+  
+  <div class="select-model">
+    <label class="form-label">Select your device</label>
+    {% assign  count = count | plus:1 %}
+    <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+    <option value="/products/iphone-16-pro-max" {% if product.title == "iPhone 16 Pro Max" %}selected{% endif %}>iPhone 16 Pro Max</option>
+    <option value="/products/iphone-16-pro" {% if product.title == "iPhone 16 Pro" %}selected{% endif %}>iPhone 16 Pro</option>
+    <option value="/products/iphone-16-plus" {% if product.title == "iPhone 16 Plus" %}selected{% endif %}>iPhone 16 Plus</option>
+    <option value="/products/iphone-16" {% if product.title == "iPhone 16" %}selected{% endif %}>iPhone 16</option>
+            <option value="/products/iphone-15-pro-max" {% if product.title == "iPhone 15 Pro Max" %}selected{% endif %}>iPhone 15 Pro Max</option>
+            <option value="/products/iphone-15-pro" {% if product.title == "iPhone 15 Pro" %}selected{% endif %}>iPhone 15 Pro</option>
+            <option value="/products/iphone-15-plus" {% if product.title == "iPhone 15 Plus" %}selected{% endif %}>iPhone 15 Plus</option>
+            <option value="/products/iphone-15" {% if product.title == "iPhone 15" %}selected{% endif %}>iPhone 15</option>
+            <option value="/products/iphone-14-pro-max" {% if product.title == "iPhone 14 Pro Max" %}selected{% endif %}>iPhone 14 Pro Max</option>
+            <option value="/products/iphone-14-pro" {% if product.title == "iPhone 14 Pro" %}selected{% endif %}>iPhone 14 Pro</option>
+            <option value="/products/iphone-14-plus" {% if product.title == "iPhone 14 Plus" %}selected{% endif %}>iPhone 14 Plus</option>
+            <option value="/products/iphone-14" {% if product.title == "iPhone 14" %}selected{% endif %}>iPhone 14</option>
+			<option value="/products/iphone-13-pro-max" {% if product.title == "iPhone 13 Pro Max" %}selected{% endif %}>iPhone 13 Pro Max</option>
+      		<option value="/products/iphone-13-pro" {% if product.title == "iPhone 13 Pro" %}selected{% endif %}>iPhone 13 Pro</option>
+      		<option value="/products/iphone-13" {% if product.title == "iPhone 13" %}selected{% endif %}>iPhone 13</option>
+      		<option value="/products/iphone-12-pro-max" {% if product.title == "iPhone 12 Pro Max" %}selected{% endif %}>iPhone 12 Pro Max</option>
+      		<option value="/products/iphone-12-pro" {% if product.title == "iPhone 12 Pro" %}selected{% endif %}>iPhone 12 Pro</option>
+      		<option value="/products/iphone-12" {% if product.title == "iPhone 12" %}selected{% endif %}>iPhone 12</option>
+      		<option value="/products/iphone-11-pro-max" {% if product.title == "iPhone 11 Pro Max" %}selected{% endif %}>iPhone 11 Pro Max</option>  
+      		<option value="/products/iphone-11-pro" {% if product.title == "iPhone 11 Pro" %}selected{% endif %}>iPhone 11 Pro</option>
+      		<option value="/products/iphone-11" {% if product.title == "iPhone 11" %}selected{% endif %}>iPhone 11</option>
+    </select>
+    <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+      {% for product1 in collections.all.products %}
+  		{% if product1.type == 'Phone Cases' %}
+      		<option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
+        {% endif %}
+      	{% endfor %}
+    </select>-->
+  </div>
+{%  elsif product.handle contains 'bundle' %}
+  <div class="select-model">
+    <label class="form-label">Select your device</label>
+    {% assign  count = count | plus:1 %}
+    <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+        <option value="/products/iphone-15-pro-max-bundle" {% if product.title == "iPhone 15 Pro Max Bundle" %}selected{% endif %}>iPhone 15 Pro Max</option>
+        <option value="/products/iphone-15-pro-bundle" {% if product.title == "iPhone 15 Pro Bundle" %}selected{% endif %}>iPhone 15 Pro</option>
+        <option value="/products/iphone-15-plus-bundle" {% if product.title == "iPhone 15 Plus Bundle" %}selected{% endif %}>iPhone 15 Plus</option>
+        <option value="/products/iphone-15-bundle" {% if product.title == "iPhone 15 Bundle" %}selected{% endif %}>iPhone 15</option>
+        <option value="/products/iphone-14-pro-max-bundle" {% if product.title == "iPhone 14 Pro Max Bundle" %}selected{% endif %}>iPhone 14 Pro Max</option>
+        <option value="/products/iphone-14-pro-bundle" {% if product.title == "iPhone 14 Pro Bundle" %}selected{% endif %}>iPhone 14 Pro</option>
+        <option value="/products/iphone-14-plus-bundle" {% if product.title == "iPhone 14 Plus Bundle" %}selected{% endif %}>iPhone 14 Plus</option>
+        <option value="/products/iphone-14-bundle" {% if product.title == "iPhone 14 Bundle" %}selected{% endif %}>iPhone 14</option>
+			  <option value="/products/iphone-13-pro-max-bundle" {% if product.title == "iPhone 13 Pro Max Bundle" %}selected{% endif %}>iPhone 13 Pro Max</option>
+        <option value="/products/iphone-13-pro-bundle" {% if product.title == "iPhone 13 Pro Bundle" %}selected{% endif %}>iPhone 13 Pro</option>
+        <option value="/products/iphone-13-bundle" {% if product.title == "iPhone 13 Bundle" %}selected{% endif %}>iPhone 13</option>
+        <option value="/products/iphone-12-pro-max-bundle" {% if product.title == "iPhone 12 Pro Max Bundle" %}selected{% endif %}>iPhone 12 Pro Max</option>
+        <option value="/products/iphone-12-bundle" {% if product.title == "iPhone 12 (Pro) Bundle" %}selected{% endif %}>iPhone 12 Pro</option>
+    </select>
+    <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+      {% for product1 in collections.all.products %}
+  		{% if product1.type == 'Phone Cases' %}
+      		<option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
+        {% endif %}
+      	{% endfor %}
+    </select>-->
+  </div>
+  {%  else %}
+    {% assign iphone_selector_collection = blank %}
+    {% for col in product.collections %}
+      {% if col.metafields.custom.selector_collection %}
+        {% assign iphone_selector_collection = col %}     
+      {% endif %}
+    {% endfor %}
+
+
+    {% if iphone_selector_collection != blank %}
+      <div class="select-model">
+        <label class="form-label">Select your device</label>
+        <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+          {% for prod in iphone_selector_collection.products %}
+            <option value="{{ prod.url }}" {% if prod.title == product.title %}selected{% endif %}>{{ prod.title }}</option> 
+          {% endfor %}
+        </select>
+        <!--<select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+          {% for product1 in collections.all.products %}
+          {% if product1.type == 'Phone Cases' %}
+              <option value="{{product1.url}}" {% if product.title == product1.title %}selected{% endif %}>{{product1.title}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>-->
+      </div> 
+    {% endif %}
+    
+{% endif %}
+{% comment %} new personalised phone cases {% endcomment %}
+{% if product.type == 'Personalized Phone Cases' %}
+    {% for tag in product.tags %}
+      {% if tag contains "related:" %}
+        {% capture related_tag %}{{tag}}{% endcapture %}
+        {% capture related_tag_type %}{{tag | split: ':' | last | strip}}{% endcapture %}
+      {% endif %}
+    {% endfor %}
+
+    {% if related_tag %}
+      <div class="select-model">
+        <label class="form-label">Select your device</label>
+        <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+          {% for p in collections.all.products %}  
+          {% if p.tags contains related_tag and p.type == 'Personalized Phone Cases'%} 
+            <option value="{{ p.url }}" {% if product.title == p.title %}selected{% endif %}>{{p.title}}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
+{% endif %}
+{% comment %} new personalised phone cases {% endcomment %}
 
   {% if product.available %}
     {% if settings.display_inventory_left %}
@@ -168,16 +342,31 @@
       </div>
     {% endif %}
   {% endif %}
-  
+    
   {% if product.type!="Simple Product" and product.type!="Gift Cards" and template.suffix != "customily-products" %}
-     {% if product.type == 'Phone Cases' %}
-      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your case</label>
-    {% elsif product.type == 'Card Holders' %}
-      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card holder</label>
-    {% elsif product.type == 'Card Wallets' %}
-      <label class="form-label"><span class="label-badge">{{count}}</span>Personalise your card wallet</label>
-    {% endif %}
+      
+      <label class="form-label">Personalize for free</label>
       <div class="new-tcc-design">
+        {% if product.type=="Personalized Phone Cases" %}
+        <div class="tcc-initial-wrap">
+          <input type="text" name='properties[Letters]' class="tcc-initial-input" autocomplete="off" maxlength="3" placeholder="Type your text">
+          <span class="max-words">0/3</span>
+        </div>
+        <label>Color 1</label>
+        <div class="text-color-swatches">
+          {% for color1 in product.metafields.custom.color1.value %}
+            <input type="radio" name="properties[Letter Color1]" class="text-color-input" value="{{color1}}" id="color1-{{color1}}" {% if forloop.index0 == 0 %}checked{% endif %} >
+            <label for="color1-{{color1}}" class="text-color-label" style="background-color:{{color1}};"></label>
+          {% endfor %}
+          </div>
+        <label>Color 2 <input type="radio" name="properties[Shade Color]" class="noshade" id="noshade" value="No shade"><label for="noshade">No Shade</label></label>
+        <div class="text-color-swatches">
+          {% for color2 in product.metafields.custom.color2.value %}
+            <input type="radio" name="properties[Shade Color]" class="text-color-input" value="{{color2}}" id="color2-{{color2}}" {% if forloop.index0 == 0 %}checked{% endif %}>
+            <label for="color2-{{color2}}" class="text-color-label" style="background-color:{{color2}};"></label>
+          {% endfor %}
+        </div>
+        {%  else %}
         <div class="tcc-left-section">
           <div class="tcc-initial-wrap">
             <input type="text" name='properties[Letters]' class="tcc-initial-input" autocomplete="off" maxlength="8" placeholder="Type your text">
@@ -192,14 +381,15 @@
               </style>
               <label class="container"> 
                 <input type="radio" name="properties[Letter Color]" class="tcc-color-select" value="gold" checked><span class="checkmark">
-                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Gold-color.png"></span> 
+                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/files/goldgold-min.webp?v=1701871302"></span> 
               </label>
               <label class="container"> 
                 <input type="radio" name="properties[Letter Color]" class="tcc-color-select" value="silver"><span class="checkmark">
-                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/Silver-color.png"></span> </label>
+                <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/files/silversilver-min.webp?v=1701871307"></span> </label>
             </div>
           </div>
         </div>
+        {% endif %}
       </div> 
   {% endif %}
   
@@ -240,12 +430,89 @@
         "
         data-label={{ add_to_cart_label | json }}
       >
+      <style>  
+        .hidden{
+          display: none !important;
+        }      
+        .spinner {
+          animation: rotator 1.4s linear infinite;
+          stroke-dasharray: 280;
+          stroke-dashoffset: 0;
+          transform-origin: center;
+          stroke: white;
+          animation: dash 1.4s ease-in-out infinite;
+        }
+  
+  .compare-at-price-custom .salelabel_inline {
+    display : none !important;
+  }
+
+  .price-frequently-bought_products .compare-at-price  {
+    margin-top : unset !important; 
+  }
+
+  .price-frequently-bought_products {
+    display: inline-flex;
+    float: inline-end; 
+    gap: 5px;  
+    margin-top: 5px;
+  }
+
+@media only screen and (max-width : 894px) {
+  .price-frequently-bought_products {
+      font-size : 12px; 
+    }
+}
+
+  @media only screen and (max-width : 494px) {
+    .price-frequently-bought_products {
+      font-size : 12px; 
+    }
+  }
+
+  @media only screen and (max-width : 290px){
+    .price-frequently-bought_products {
+      font-size : 10px; 
+    }
+  }
+       .loading-overlay__spinner {
+          width: 19.8px;
+          height: 19.8px;
+          display: inline-block;
+        }
+        @keyframes rotator {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(270deg);
+          }
+        }
+        @keyframes dash {
+          0% {
+            stroke-dashoffset: 280;
+          }
+          50% {
+            stroke-dashoffset: 75;
+            transform: rotate(135deg);
+          }
+          100% {
+            stroke-dashoffset: 280;
+            transform: rotate(450deg);
+          }
+        }
+      </style>
         <span class="text">
           {% if product.available %}{{ add_to_cart_label }}{% else %}{{ settings.sold_out_text }}{% endif %}
         </span>
         <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
           <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
         </svg>
+        <div class="loading-overlay__spinner hidden">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
       </button>
       {% if show_payment_button %}
         {{ form | payment_button }}
@@ -263,10 +530,13 @@
   {% assign seconds12 = 4 | times: 24 | times: 60 | times: 60 %}
   <div class="new-design-block">
     <ul>
-      <li><b>Free shipping</b> to <span class="country-info"></span></li>
-      <li>Order today, <b>estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</li></b>
+      {% if product.type == "Card Holders" %}
+        <li><span class="circle-icon"></span>Comfortably fits 10 cards with room for cash in the middle</li>
+      {% endif %}
+      <li><span class="circle-icon"></span><b>Free shipping</b> to <span class="country-info"></span></li> 
+      <li><span class="circle-icon"></span>Order today, <b>estimated delivery date {{ "now" | date: "%s" | plus: seconds11 | date: "%d %b" }} - {{ "now" | date: "%s" | plus: seconds12 | date: "%d %b" }}</b></li>
       {% if product.type == 'Phone Cases' %}
-      <li><b>Buy 2</b> items, get <b>extra 10% off</b> with code <b>XM2</b></li>
+      <li><span class="circle-icon"></span><b>Buy 2</b> items, get <b>extra 10% off</b> with code <b>XM2</b></li>
       {% endif %}
     </ul>
     <quote>
@@ -276,17 +546,18 @@
       ever and I'm ordering another color as we speak :)."
       <br><i>-Liza B.</i>
     </quote>
+    
     <div class="brought-product">
       <h2>Frequently Bought Products</h2>
       
 {% assign cho_cnt = 0 %}
+{% assign ph_cnt = 0 %}
 {% assign cw_cnt = 0 %}
 {% assign pc_cnt = 0 %}
 {% assign pc_cnt2 = 0 %}
 <div class="full-width-desktop-padding matching-products">
   <ul>
  
-    
 {% for product in collections.all.products %}
   {% if curr_pro != 'Card Holders' %}
   	{% if product.type == 'Card Holders' %}
@@ -300,9 +571,16 @@
            </a>
         </div>
         <div class="pro-body">
-          <h4>{{product.type}}</h4>
+          <h4>The Personalized Card Holder</h4>
           <p>{{product.description}}</p>
         </div>
+        {%- capture compare_at_price -%}
+          {%-
+            render 'price-ui-templates',
+            template: 'price',
+            value: product.compare_at_price,
+          -%}
+        {%- endcapture -%}
         <div class="pro-foot">
             {%- assign saleOn = false -%}
             {%- for colprod in product.collections -%}
@@ -324,9 +602,16 @@
               <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
             </h5>
             {%- else -%}
-              <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
+              <div class="price-frequently-bought_products">
+                <span class="compare-at-price-custom money compare-at-price">{%  render 'price-ui-templates',
+                  template: 'price-ui',
+                  compare_at_price: compare_at_price,
+                   %} 
+                   </span>
+                <span class="money">{% render 'price-element', price: product.price_min %}</span>
+                </div>
             {% endif %} 
-          <form method="post" action="/cart/add">
+          <form method="post" action="/cart/add"> 
             <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
             <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
             <input type="hidden" name="id" value="{{ v.id }}" />
@@ -343,62 +628,6 @@
      {% endif %}
   {% endif %}
   
-  {% if curr_pro != 'Phone Cases' %}
-  {% if product.type == 'Phone Cases' %}
-    {% if pc_cnt2==0 %}
-  {% assign pc_cnt2 = 1 %}
-      <li class="product phone-cases">
-      {% for v in product.variants %}
-      {% if pc_cnt==0 %}
-        <div class="pro-head">
-            <a href="{{ product.url | within: collection }}">
-        	{% assign pc_cnt = 1 %}
-             <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
-        	</a>
-        </div>
-        <div class="pro-body">
-          <h4>{{product.type}}</h4>
-          <p>{{product.description}}</p>
-        </div>
-        <div class="pro-foot">
-            {%- assign saleOn = false -%}
-            {%- for colprod in product.collections -%}
-              {%- for col in settings.sale_collection_list -%}
-                {%- if colprod.id == col.id -%}
-                  {%- assign saleOn = true -%}
-                  {% break %}
-                  {% break %}
-                {%- endif -%}  
-              {%- endfor -%}
-            {%- endfor -%}
-
-            {%- if settings.show_sales_label and saleOn -%}
-            {% assign perc = 100 | minus: settings.sale_amount %}
-            {% assign perc = perc | divided_by: 100.0 %}
-            {% assign cmp_price = product.price_min | times: perc %}
-            <h5>
-              <span class="money compare-at-price">{% render 'price-element', price: product.price_min %}</span>
-              <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
-            </h5>
-            {%- else -%}
-              <h5><span class="money">{% render 'price-element', price: product.price_min %}</span></h5>
-            {% endif %} 
-          <form method="post" action="/cart/add">
-            <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
-            <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
-            <input type="hidden" name="id" value="{{ v.id }}" />
-            <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
-            <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
-          </form>
-        </div>
-        {% endif %}
-        
-        <span class="match-colors" data-vid="{{ v.id }}" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
-          {% endfor %}
-      </li>
-  {% endif %}
-  {% endif %}
-  {% endif %}
     
   {% if curr_pro != 'Card Wallets' %}
   {% if product.type == 'Card Wallets' %}
@@ -411,8 +640,8 @@
              <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
            </a>
         </div>
-        <div class="pro-body">
-          <h4>{{product.type}}</h4>
+        <div class="pro-body"> 
+          <h4>The Personalized Card Wallet</h4>
           <p>{{product.description}}</p>
         </div>
         <div class="pro-foot">
@@ -457,6 +686,259 @@
   {% endif %}
   {% endif %}
 {% endfor %}
+
+{% for product in collections['phone-cases'].products %}
+  {% if curr_pro != 'Phone Cases' %}
+  {% if product.type == 'Phone Cases' %}
+    {% if pc_cnt2==0 %}
+  {% assign pc_cnt2 = 1 %}
+      <li class="product phone-cases">
+      {% for v in product.variants %}
+      {% if pc_cnt==0 %}
+        <div class="pro-head">
+            <a href="{{ product.url | within: collection }}">
+          {% assign pc_cnt = 1 %}
+             <div class="img-wrap"><img class="freq-asked-img" src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
+          </a>
+        </div>
+        <div class="pro-body">
+          <h4>The Personalized Phone Case</h4>
+          <p>{{product.description}}</p>
+        </div>
+        <div class="pro-foot">
+            {%- assign saleOn = false -%}
+            {%- for colprod in product.collections -%}
+              {%- for col in settings.sale_collection_list -%}
+                {%- if colprod.id == col.id -%}
+                  {%- assign saleOn = true -%}
+                  {% break %}
+                  {% break %}
+                {%- endif -%}  
+              {%- endfor -%}
+            {%- endfor -%}
+
+            {%- capture compare_at_price -%}
+              {%-
+                render 'price-ui-templates',
+                template: 'price',
+                value: product.compare_at_price,
+              -%}
+            {%- endcapture -%}
+            {%- if settings.show_sales_label and saleOn -%}
+            {% assign perc = 100 | minus: settings.sale_amount %}
+            {% assign perc = perc | divided_by: 100.0 %}
+            {% assign cmp_price = product.price_min | times: perc %}
+            <h5>
+              <span class="money compare-at-price">{% render 'price-element', price: product.price_min %}</span>
+              <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+            </h5>
+            {%- else -%}
+              <div class="price-frequently-bought_products">
+                <span class="compare-at-price-custom money compare-at-price">{%  render 'price-ui-templates',
+                  template: 'price-ui',
+                  compare_at_price: compare_at_price, 
+                   %}   
+                   </span>
+                <span class="money">{% render 'price-element', price: product.price_min %}</span>
+                </div>
+            {% endif %} 
+          <form method="post" action="/cart/add">
+            <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
+            <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
+            <input type="hidden" name="id" value="{{ v.id }}" />
+            <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+            <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+            <select name="frequently-asked-products-selector" class="frequently-asked-select iphone-case-freq-selector">
+              {% for prd in collections['phone-cases'].products %}
+                {% if prd.available %}  
+                  <option value="{{ prd.selected_or_first_available_variant.id }}" 
+                    data-image="{{ prd.selected_or_first_available_variant.featured_media | product_img_url: '400x' }}" 
+                    {% if forloop.index0 == 0 %}selected{% endif %}>{{ prd.title }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </form>
+        </div>
+        {% endif %}
+        
+        <span class="match-colors" data-vid="{{ v.id }}" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
+          {% endfor %}
+      </li>
+  {% endif %}
+  {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% for product in collections['passport-holders'].products %}
+  {% if curr_pro != 'Passport Holder' %}
+    {% if product.type == 'Passport Holder' %}
+      <li class="product passport-holder">
+      {% for v in product.variants %}
+      {% if ph_cnt==0 %}
+        <div class="pro-head">
+          <a href="{{ product.url | within: collection }}">
+          {% assign ph_cnt = 1 %}
+            <div class="img-wrap"><img src="{{ v.featured_media | product_img_url: '400x' }}"><span class="initials"></span></div>
+          </a>
+        </div>
+        <div class="pro-body">
+          <h4>The Personalized Passport Holder</h4>
+          <p>{{product.description}}</p>
+        </div>
+        <div class="pro-foot">
+            {%- assign saleOn = false -%}
+            {%- for colprod in product.collections -%}
+              {%- for col in settings.sale_collection_list -%}
+                {%- if colprod.id == col.id -%}
+                  {%- assign saleOn = true -%}
+                  {% break %}
+                  {% break %}
+                {%- endif -%}  
+              {%- endfor -%}
+            {%- endfor -%}
+
+            {%- if settings.show_sales_label and saleOn -%}
+            {% assign perc = 100 | minus: settings.sale_amount %}
+            {% assign perc = perc | divided_by: 100.0 %}
+            {% assign cmp_price = product.price_min | times: perc %}
+            <h5>
+              <span class="money compare-at-price">{% render 'price-element', price: product.price_min %}</span>
+              <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+            </h5>
+            {%- else -%}
+              {%- capture compare_at_price -%}
+                {%-
+                  render 'price-ui-templates',
+                  template: 'price',
+                  value: product.compare_at_price,
+                -%}
+              {%- endcapture -%}
+              <div class="price-frequently-bought_products">
+                <span class="compare-at-price-custom money compare-at-price">{%  render 'price-ui-templates',
+                  template: 'price-ui',
+                  compare_at_price: compare_at_price,
+                  %} 
+                  </span>
+                <span class="money">{% render 'price-element', price: product.price_min %}</span>
+                </div>
+            {% endif %} 
+          <form method="post" action="/cart/add"> 
+            <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
+            <input type="hidden" class="curr_color" name="properties[Letter Color]" value="">
+            <input type="hidden" name="id" value="{{ v.id }}" />
+            <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+            <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+          </form>
+        </div>
+        
+          {% endif %}
+        
+        <span class="match-colors" data-vid="{{ v.id }}" data-color="{{ v.title }}" data-href="{{ v.featured_media | product_img_url: '400x' }}"></span>
+          {% endfor %}
+      </li>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% assign additional_collection = collections['additional-frequently-bought-products'] %}
+{% assign product_model_title = product.title | split: '-' | first %}
+{% for prod in additional_collection.products %}
+  {% assign prod_model_title = prod.title | split: '-' | first %}
+  {% if product_model_title != prod_model_title %}
+    <li class="product magsafe-freq-prods">
+      <div class="pro-head">
+        <a href="{{ prod.url | within: collection }}">
+          <div class="img-wrap"><img src="{{ prod.featured_image | product_img_url: '400x' }}">
+          </div>
+        </a>
+      </div>
+      <div class="pro-body">
+        <h4>{{prod_model_title}}</h4>
+        <p>{{prod.description}}</p>
+      </div>
+      <div class="pro-foot">
+
+      {%- assign saleOn = false -%}
+      {%- for colprod in prod.collections -%}
+        {%- for col in settings.sale_collection_list -%}
+          {%- if colprod.id == col.id -%}
+            {%- assign saleOn = true -%}
+            {% break %}
+            {% break %}
+          {%- endif -%}  
+        {%- endfor -%}
+      {%- endfor -%}
+
+      {%- if settings.show_sales_label and saleOn -%}
+      {% assign perc = 100 | minus: settings.sale_amount %}
+      {% assign perc = perc | divided_by: 100.0 %}
+      {% assign cmp_price = prod.price_min | times: perc %}
+      <h5>
+        <span class="money compare-at-price">{% render 'price-element', price: prod.price_min %}</span>
+        <span class="money" style="margin-left:5px;">{{ cmp_price | money_without_trailing_zeros }}</span>
+      </h5>
+      {%- else -%}
+        {%- capture compare_at_price -%}
+          {%-
+            render 'price-ui-templates',
+            template: 'price',
+            value: prod.compare_at_price,
+          -%}
+        {%- endcapture -%}
+        <div class="price-frequently-bought_products">
+          <span class="compare-at-price-custom money compare-at-price">{%  render 'price-ui-templates',
+            template: 'price-ui',
+            compare_at_price: compare_at_price,
+            %} 
+            </span>
+          <span class="money">{% render 'price-element', price: prod.price_min %}</span>
+          </div>
+      {% endif %}
+
+      {% assign collection_link = '/collections/magsafe-cases' %}
+      {% for coll in prod.collections %}
+        {% if coll.metafields.custom.selector_collection %}
+          {% assign collection_link = coll.url %}
+        {% endif %}
+      {% endfor %}
+
+      {% unless customized_color contains "#" %}
+        {% assign customized_color = "#000" %}
+      {% endunless %}
+
+      {% unless customized_shade contains "#" %}
+        {% assign customized_shade = "#000" %}
+      {% endunless %}
+
+      <form method="post" action="/cart/add">
+        <input type="hidden" class="curr_letter" name="properties[Letters]" value="">
+        <input type="hidden" name="properties[Letter Color1]" value="{{ customized_color }}">
+        <input type="hidden" name="properties[Shade Color]" value="{{ customized_shade }}">
+        <input type="hidden" name="id" value="{{ prod.selected_or_first_available_variant.id }}" />
+        <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+        <input type="submit" value="+ ADD" class="btn add_to_cart ajax-submit" />
+        <select name="frequently-asked-products-selector" class="frequently-asked-select">
+          {% assign freq_collection = blank %}
+          {% for col in prod.collections %}
+            {% if col.metafields.custom.selector_collection %}
+              {% assign freq_collection = col %}     
+            {% endif %}
+          {% endfor %}
+          {% for prd in freq_collection.products %}
+            {% if prd.available %}  
+              <option value="{{ prd.selected_or_first_available_variant.id }}" 
+                data-image="{{ prd.featured_image | product_img_url: '400x' }}" 
+                {% if forloop.index0 == 0 %}selected{% endif %}>{{ prd.title | split: "-" | last | strip }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </form>
+  
+      {% comment %} <a href="{{ collection_link }}" style="line-height: 1.2;text-align: center;" class="add_to_cart">SEE COLLECTION</a> {% endcomment %}
+      </div>
+    </li>
+  {% endif %}
+{% endfor %}
     
   </ul>
   </div>
@@ -488,7 +970,7 @@
 		</svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
           <path d="M13,16c-0.2,0-0.4-0.1-0.6-0.2L8,12.5l-4.4,3.3c-0.4,0.3-0.8,0.3-1.2,0c-0.4-0.3-0.5-0.7-0.3-1.1l1.9-5.2L0.4,6.8 C0.1,6.5-0.1,6.1,0.1,5.7C0.2,5.3,0.6,5,1,5h4.5l1.5-4.3C7.2,0.3,7.6,0,8,0s0.8,0.3,0.9,0.7L10.5,5H15c0.4,0,0.8,0.3,0.9,0.7 c0.1,0.4,0,0.9-0.3,1.1l-3.5,2.6l1.9,5.2c0.1,0.4,0,0.9-0.3,1.1C13.4,15.9,13.2,16,13,16z"></path>
-		</svg>
+		</svg> 
       </div>
     </div>
     <div class="review-box">My go-to brand for all my accessories.<br>Excellent quality and service.</div>
@@ -506,3 +988,12 @@
   <a href="javascript:void(0);" class="personalize-btn button tcc-pre-1 hidden">PERSONALIZE<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="25px" width="25px" fill="#ffffff" xml:space="preserve" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;" viewBox="0 0 7.837 7.8377" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd"><defs><style type="text/css">.fil0 {fill:#ffffff;fill-rule:nonzero}</style></defs><g><path class="fil0" d="M2.89434 6.10358l-1.15421 -1.15421 -1.74012 2.88834 2.89434 -1.73412zm4.05405 -3.90685l0.165702 0.165602 -1.32612 1.32612 -0.165702 -0.165602 1.32612 -1.32612zm-3.95285 3.80565c1.31122,-1.31112 2.62433,-2.61983 3.93615,-3.93025l-1.16571 -1.16561c-1.30912,1.31302 -2.61403,2.63023 -3.92465,3.94175l1.15421 1.15411zm4.00935 -4.00325l0.104801 -0.105001 -1.16581 -1.16591 -0.104901 0.105101 1.16591 1.16581zm0.177902 -0.178002l0.109901 -0.109701 -1.16621 -1.16621 -0.109501 0.109901 1.16581 1.16601zm0.183102 -0.182702l0.108801 -0.108901 -1.16641 -1.16631 -0.108701 0.108901 1.16631 1.16631zm0.181902 -0.181902c0.0369005,-0.0370005 0.0734009,-0.0725009 0.106501,-0.113101l-1.15991 -1.15991c-0.0407005,0.0331004 -0.076001,0.0695009 -0.113001,0.106601l1.16641 1.16641zm0.167102 -0.198703c0.195602,-0.317704 0.155902,-0.741509 -0.118702,-1.01621 -0.276704,-0.276704 -0.699009,-0.314804 -1.01631,-0.118802l1.13501 1.13501z"></path></g></svg></a>
   <a href="javascript:void(0);" class="add-cart-btn button hidden">Grab Mine Now <img src="https://cdn.shopify.com/s/files/1/0595/8192/3483/t/2/assets/hand.png" class="hand-add"></a>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('.frequently-asked-select').change(function () {
+      $(this).closest('form').find('input[name="id"]').val($(this).val());
+      $(this).closest('li').find('img.freq-asked-img').first().attr('src', $(this).find(':selected').attr('data-image'));
+    });
+  });
+</script>

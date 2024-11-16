@@ -18,17 +18,17 @@
             {%- assign values = values | join: ',' -%}
             {%- assign values = values | append: ',' | append: value -%}
             {%- assign values = values | split: ',' -%}
-
+<!-- 
             <a href="{{ variant.url | within: collection }}" class="swatch" data-swatch-name="meta-{{ downcased_option }}_{{ value | replace: ' ', '_' | downcase }}">
               <span {% if section.settings.products_per_row == 2 %}data-image="{{ variant.featured_image | product_img_url: '600x' }}"{% elsif section.settings.products_per_row == 3 %}data-image="{{ variant.featured_image | product_img_url: '500x' }}"{% else %}data-image="{{ variant.featured_image | product_img_url: '400x' }}"{% endif %} style="background-image: url({{ value | handle | append: '.' | append: file_extension | asset_img_url: '50x' | prepend: 'https:' }}); background-color: {{ value | split: ' ' | last | handle }};">
               </span>
-            </a>
+            </a> -->
           {% endunless %}
 		  {% endif %}
           {% assign pc_cnts = pc_cnts | plus: 1 %}
         {% endfor %}
-        {% if pc_cnts > 4 %}
-           <a href="">+ {{pc_cnts | minus: 4}} More</a>
+        {% if pc_cnts > 1 %}
+           <a href="" class="available_colr">Available in {{pc_cnts }} colors</a>
         {% endif %}
       </div>
     {% endif %}
