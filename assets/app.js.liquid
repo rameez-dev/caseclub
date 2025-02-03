@@ -901,6 +901,11 @@ $(() => {
 
             if ( curr_pro != 'Strap'){
               let phone_products = data.products.filter((value) => (value.product_type=='Phone Cases'));
+              let wallet_products = data.products.filter((value) => (value.product_type=='Card Wallets'));
+              let card_holder_products = data.products.filter((value) => (value.product_type=='Card Holders'));
+              let passport_holder_products = data.products.filter((value) => (value.product_type=='Passport Holder'));
+              let protector_products = data.products.filter((value) => (value.product_type=='Screen Protectors'));
+
               phone_products.sort((a, b) => {
                 let modelA = a.title;
                 let modelB = b.title;
@@ -915,7 +920,7 @@ $(() => {
                 return indexA - indexB;
               });
 
-              $.each( data.products, function( key, value ) {
+              $.each( phone_products, function( key, value ) {
                 if( value.product_type != curr_pro && value.product_type=='Phone Cases'  ){
                   let selector = '<select name="make-it-match-selector" class="make-it-match-select">'
                   phone_products.forEach ((item, index) => {
@@ -952,6 +957,9 @@ $(() => {
                     }
                   });
                 }
+              });
+
+              $.each( data.products, function( key, value ) {
                 if( value.product_type != curr_pro && value.product_type=='Card Wallets'  ){
                   $.each( value.variants, function( key2, value2 ) {
                     if( value2.title == curr_pro_title && caw_pro==0 ){
@@ -1000,7 +1008,7 @@ $(() => {
                 }
               });
 
-              $.each( data.products, function( key, value ) {
+              $.each( passport_holder_products, function( key, value ) {
                 if(  value.product_type != curr_pro && value.product_type=='Passport Holder'  ){
                   $.each( value.variants, function( key2, value2 ) {
                     if( value2.title == curr_pro_title && passport_pro==0 ){
@@ -1026,7 +1034,7 @@ $(() => {
                 }
               });
 
-              $.each( data.products, function( key, value ) {
+              $.each( protector_products, function( key, value ) {
                 if(  value.product_type != curr_pro && value.product_type=='Screen Protectors'  ){
                   $.each( value.variants, function( key2, value2 ) {
                     if( value2.title == curr_pro_model && screen_pro==0 ){
