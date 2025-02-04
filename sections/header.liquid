@@ -1282,7 +1282,7 @@
                                                     {% assign prd_cmp_price = prd.compare_at_price %}
                                                   {% endif %}
                                                   <option value="{{ prd.selected_or_first_available_variant.id }}" data-price="{{ prd_price | money_without_trailing_zeros }}" data-cmp-price="{{ prd_cmp_price | money_without_trailing_zeros }}"
-                                                    data-image="{{ prd.selected_or_first_available_variant.featured_media | product_img_url: '400x' }}" 
+                                                    data-image="{{ prd.featured_media | product_img_url: '400x' }}" 
                                                     {% if prd.selected_or_first_available_variant.id == prod.selected_or_first_available_variant.id %}selected{% endif %}>{{ prd.title | split: '-' | last | strip }}</option>
                                                 {% endif %}
                                               {% endfor %}
