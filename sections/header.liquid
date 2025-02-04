@@ -816,8 +816,17 @@
                                                     </button>
                                                     <select name="make-it-match-selector" class="make-it-match-select">
                                                     {% for prd in collections['phone-cases'].products %}
+                                                      {%- if settings.show_sales_label -%}
+                                                        {% assign perc = 100 | minus: settings.sale_amount %}
+                                                        {% assign perc = perc | divided_by: 100.0 %}
+                                                        {% assign prd_price = prd.price_min | times: perc %}
+                                                        {% assign prd_cmp_price = prd.price_min %}
+                                                      {%- else -%}
+                                                        {% assign prd_price = prd.price_min %}
+                                                        {% assign prd_cmp_price = prd.compare_at_price %}
+                                                      {% endif %}
                                                       {% if prd.available %}  
-                                                        <option value="{{ prd.selected_or_first_available_variant.id }}" 
+                                                        <option value="{{ prd.selected_or_first_available_variant.id }}" data-price="{{ prd_price | money_without_trailing_zeros }}" data-cmp-price="{{ prd_cmp_price | money_without_trailing_zeros }}"
                                                           data-image="{{ prd.selected_or_first_available_variant.featured_media | product_img_url: '400x' }}" 
                                                           {% if forloop.index0 == 0 %}selected{% endif %}>{{ prd.title }}</option>
                                                       {% endif %}
@@ -1263,7 +1272,16 @@
                                               {% endfor %}
                                               {% for prd in make_match_collection.products %}
                                                 {% if prd.available %}  
-                                                  <option value="{{ prd.selected_or_first_available_variant.id }}" 
+                                                  {%- if settings.show_sales_label -%}
+                                                    {% assign perc = 100 | minus: settings.sale_amount %}
+                                                    {% assign perc = perc | divided_by: 100.0 %}
+                                                    {% assign prd_price = prd.price_min | times: perc %}
+                                                    {% assign prd_cmp_price = prd.price_min %}
+                                                  {%- else -%}
+                                                    {% assign prd_price = prd.price_min %}
+                                                    {% assign prd_cmp_price = prd.compare_at_price %}
+                                                  {% endif %}
+                                                  <option value="{{ prd.selected_or_first_available_variant.id }}" data-price="{{ prd_price | money_without_trailing_zeros }}" data-cmp-price="{{ prd_cmp_price | money_without_trailing_zeros }}"
                                                     data-image="{{ prd.selected_or_first_available_variant.featured_media | product_img_url: '400x' }}" 
                                                     {% if prd.selected_or_first_available_variant.id == prod.selected_or_first_available_variant.id %}selected{% endif %}>{{ prd.title | split: '-' | last | strip }}</option>
                                                 {% endif %}
@@ -1530,6 +1548,13 @@
       console.log("change")
       $(this).closest('form').find('input[name="id"]').val($(this).val());
       $(this).closest('li').find('img.make-it-match-img').first().attr('src', $(this).find(':selected').attr('data-image'));
+      if($(this).find(':selected').attr('data-cmp-price') != "")
+      {
+        $(this).closest('li').find('.mix-pro-price h5').html(`<span class="money compare-at-price">${$(this).find(':selected').attr('data-cmp-price')}</span><span class="money" style="margin-left:5px;">${$(this).find(':selected').attr('data-price')}</span>`)
+      }
+      else {
+        $(this).closest('li').find('.mix-pro-price h5').html(`<span class="money">${$(this).find(':selected').attr('data-price')}</span>`);
+      }
     });
   });
 </script>
