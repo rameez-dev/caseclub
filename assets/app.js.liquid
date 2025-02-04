@@ -927,7 +927,11 @@ $(() => {
                     if (item.product_type=='Phone Cases') {
                       let available_variant = item.variants.find((variant) => variant.available);
                       if (available_variant) {
-                        let option = `<option value="${available_variant.id}" data-image="${available_variant.featured_image.src}" ${(index == 0) ? 'selected' : ''}>${item.title}</option>`
+                        let prd_price = window.Shopify.formatMoney(available_variant.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','');
+                        let prd_cmp_price = (available_variant.price > (available_variant.price*per_dis/100)) ? available_variant.price : (available_variant.compare_at_price > available_variant.price) ? available_variant.compare_at_price : 0;
+                        prd_cmp_price = (prd_cmp_price) ? window.Shopify.formatMoney(prd_cmp_price, $('body').data('money-format')).replace('.00','').replace(',00','') : '';
+
+                        let option = `<option value="${available_variant.id}" data-price="${prd_price}" data-cmp-price="${prd_cmp_price}" data-image="${available_variant.featured_image.src}" ${(index == 0) ? 'selected' : ''}>${item.title}</option>`
                         selector += option;
                       }
                     }
@@ -1098,7 +1102,11 @@ $(() => {
                       temp_products.forEach ((item, index) => {
                         let available_variant = item.variants.find((variant) => variant.available);
                         if (available_variant) {
-                          let option = `<option value="${available_variant.id}" data-image="${item.images[0].src}" ${(available_variant.id == value.variants[0].id) ? 'selected' : ''}>${item.title.split('-')[1].trim()}</option>`
+                          let prd_price = window.Shopify.formatMoney(available_variant.price*per_dis, $('body').data('money-format')).replace('.00','').replace(',00','');
+                          let prd_cmp_price = (available_variant.price > (available_variant.price*per_dis/100)) ? available_variant.price : (available_variant.compare_at_price > available_variant.price) ? available_variant.compare_at_price : 0;
+                          prd_cmp_price = (prd_cmp_price) ? window.Shopify.formatMoney(prd_cmp_price, $('body').data('money-format')).replace('.00','').replace(',00','') : '';
+                          
+                          let option = `<option value="${available_variant.id}" data-price="${prd_price}" data-cmp-price="${prd_cmp_price}" data-image="${item.images[0].src}" ${(available_variant.id == value.variants[0].id) ? 'selected' : ''}>${item.title.split('-')[1].trim()}</option>`
                           selector += option;
                         }
                       });
@@ -1173,6 +1181,14 @@ $(() => {
         console.log("chnage")
         $(this).closest('form').find('input[name="id"]').val($(this).val());
         $(this).closest('li').find('img.make-it-match-img').first().attr('src', $(this).find(':selected').attr('data-image'));
+
+        if($(this).find(':selected').attr('data-cmp-price') != "")
+        {
+          $(this).closest('li').find('.mix-pro-price h5').html(`<span class="money compare-at-price">${$(this).find(':selected').attr('data-cmp-price')}</span><span class="money" style="margin-left:5px;">${$(this).find(':selected').attr('data-price')}</span>`)
+        }
+        else {
+          $(this).closest('li').find('.mix-pro-price h5').html(`<span class="money">${$(this).find(':selected').attr('data-price')}</span>`);
+        }
       });
 
       var cartDiscounts = cart.cart_level_discount_applications;
