@@ -584,20 +584,20 @@ $(() => {
       // free_ship = free_ship - ( (ship_cal*100)/ship_amt );
       var ship_txt = "You're "+window.Shopify.formatMoney(ship_cal*100, $('body').data('money-format')).replace('.00','').replace(',00','')+" away from free shipping.";
     }else{
-      free_ship = 50 
+      free_ship = 100 
       var ship_txt = "Congrats! You get free shipping.";
     }
 
-    if(cart.item_count < 2) {
-      var discount_text = "Buy 2+ items and get 2 <strong>FREE</strong>!"
-    }
-    else {
-      free_ship = 100;
-      var discount_text = "Congrats! Add 2 <strong>FREE</strong> products!"
-    }
+    // if(cart.item_count < 2) {
+    //   var discount_text = "Buy 2+ items and get 2 <strong>FREE</strong>!"
+    // }
+    // else {
+    //   free_ship = 100;
+    //   var discount_text = "Congrats! Add 2 <strong>FREE</strong> products!"
+    // }
 
     $('.free-shipping-txt').text(ship_txt);
-    $('.discount-text').html(discount_text);
+    // $('.discount-text').html(discount_text);
 
     $('.free-shipping-bar span').css('width',free_ship+'%');
 

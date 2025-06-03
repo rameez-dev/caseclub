@@ -140,7 +140,7 @@
         <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
       {% endif %}
 
-      <div class="discount-sticker-cont-desktop"><img src="{{ 'buy2get2free.png' |  asset_url }}"></div>
+      {% comment %} <div class="discount-sticker-cont-desktop"><img src="{{ 'buy2get2free.png' |  asset_url }}"></div> {% endcomment %}
       <div class="feature_divider"></div>
 
       {%- assign product_tags = product.tags | join: ' ' -%}
