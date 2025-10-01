@@ -215,6 +215,10 @@
     <label class="form-label">Select your device</label>
     {% assign  count = count | plus:1 %}
     <select name="phone-dropdown" onchange="this.options[this.selectedIndex].value(window.location = this.options[this.selectedIndex].value);">
+      <option value="/products/iphone-17-pro-max" {% if product.title == "iPhone 17 Pro Max" %}selected{% endif %}>iPhone 17 Pro Max</option>
+        <option value="/products/iphone-17-pro" {% if product.title == "iPhone 17 Pro" %}selected{% endif %}>iPhone 17 Pro</option>
+    <option value="/products/iphone-17-air" {% if product.title == "iPhone 17 Air" %}selected{% endif %}>iPhone 17 Air</option>
+    <option value="/products/iphone-17" {% if product.title == "iPhone 17" %}selected{% endif %}>iPhone 17</option>
     <option value="/products/iphone-16-pro-max" {% if product.title == "iPhone 16 Pro Max" %}selected{% endif %}>iPhone 16 Pro Max</option>
     <option value="/products/iphone-16-pro" {% if product.title == "iPhone 16 Pro" %}selected{% endif %}>iPhone 16 Pro</option>
     <option value="/products/iphone-16-plus" {% if product.title == "iPhone 16 Plus" %}selected{% endif %}>iPhone 16 Plus</option>
