@@ -2088,7 +2088,7 @@
       "1631881519694e1cd7": {
         "type": "instafeed",
         "settings": {
-          "heading_font": "helvetica_n4",
+          "heading_font": "sans_serif_n4",
           "heading_size": 20,
           "feed_width": 100,
           "html_area": ""
@@ -2888,28 +2888,12 @@
           "toggle": false,
           "collections_menu": "phone-collections-menu"
         }
-      },
-      "banner_single_image_GG7F79": {
-        "type": "banner-single-image",
-        "settings": {
-          "First-image": "shopify:\/\/shop_images\/desktop-collage.jpg",
-          "second-image": "shopify:\/\/shop_images\/mobile-collage_1.jpg",
-          "banner-text-II": "Summer Sale! <br> 30% Off Everything",
-          "banner-button-link": "shopify:\/\/collections",
-          "banner-button-bg-color": "#8d8d8d",
-          "banner-button-text-color": "#ffffff",
-          "bg_opacity": 0.7,
-          "bg_width": 1.2,
-          "button_position": 1.7,
-          "button_position_mobile": -0.5
-        }
       }
     },
     "content_for_index": [
       "163256937068321f8b",
       "163395936095e0da52",
       "banner_image_ii_Hm4UbH",
-      "banner_single_image_GG7F79",
       "038c6a36-4c21-45ea-bbdb-b9020e1f37de",
       "1631875450eeee4ab3",
       "1632569379bbf73315",
